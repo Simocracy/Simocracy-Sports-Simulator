@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Simocracy.SportSim.Data.Team">
+    <Position X="5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgBAAAAQAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Team.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simocracy.SportSim.Data.Footballteam">
+    <Position X="8.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAABAEABAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Data\Footballteam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
