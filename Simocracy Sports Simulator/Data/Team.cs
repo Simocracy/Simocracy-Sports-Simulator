@@ -18,17 +18,19 @@ namespace Simocracy.SportSim.Data
 		/// Name des Teams
 		/// </summary>
 		public string Name
-		{
-			get; set;
-		}
+		{ get; set; }
+
+		/// <summary>
+		/// Dateiname des Logos im Wiki
+		/// </summary>
+		public string LogoFileName
+		{ get; set; }
 
 		/// <summary>
 		/// Gesamtstärke des Teams
 		/// </summary>
 		public abstract int Strength
-		{
-			get;
-		}
+		{ get; }
 
 		/// <summary>
 		/// Durchschnittsstärke eines Spielers

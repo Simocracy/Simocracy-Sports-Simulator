@@ -11,6 +11,28 @@ namespace Simocracy.SportSim.Data
 	public class Footballteam : Team
 	{
 
+		#region Constructors
+		
+		public Footballteam(string name)
+			: this(name, String.Empty, 0, 0, 0, 0)
+		{ }
+
+		public Footballteam(string name, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
+			: this(name, String.Empty, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength)
+		{ }
+
+		public Footballteam(string name, string logo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
+		{
+			Name = name;
+			LogoFileName = logo;
+			GoalkeeperStrength = goalkeeperStrength;
+			DefenseStrength = defenseStrength;
+			MidfieldStrength = midfieldStrength;
+			ForwardStrength = forwardStrength;
+		}
+
+		#endregion
+
 		#region Properties
 
 		/// <summary>
