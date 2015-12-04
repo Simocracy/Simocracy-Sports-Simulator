@@ -8,33 +8,33 @@ namespace Simocracy.SportSim.Data
 	/// <summary>
 	/// Fussballteam
 	/// </summary>
-	public class Footballteam : Team
+	public class FootballTeam : Team
 	{
 
 		#region Constructors
 
 		/// <summary>
-		/// Erstellt ein neues Fussballteam
+		/// Erstellt ein neues Fußballteam
 		/// </summary>
 		/// <param name="name"></param>
-		public Footballteam(string name)
+		public FootballTeam(string name)
 			: this(name, String.Empty, 0, 0, 0, 0)
 		{ }
 
 		/// <summary>
-		/// Erstellt ein neues
+		/// Erstellt ein neues Fußballteam
 		/// </summary>
 		/// <param name="name">Name des Teams</param>
 		/// <param name="goalkeeperStrength">Stärke des Torhüters</param>
 		/// <param name="defenseStrength">Stärke der Verteidigung</param>
 		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
 		/// <param name="forwardStrength">Stärke der Offensive</param>
-		public Footballteam(string name, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
+		public FootballTeam(string name, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
 			: this(name, String.Empty, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength)
 		{ }
 
 		/// <summary>
-		/// Erstellt ein neues Fussballteam
+		/// Erstellt ein neues Fußballteam
 		/// </summary>
 		/// <param name="name">Name des Teams</param>
 		/// <param name="logo">Name der Logodatei</param>
@@ -42,7 +42,7 @@ namespace Simocracy.SportSim.Data
 		/// <param name="defenseStrength">Stärke der Verteidigung</param>
 		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
 		/// <param name="forwardStrength">Stärke der Offensive</param>
-		public Footballteam(string name, string logo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
+		public FootballTeam(string name, string logo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
 			: base(name, logo)
 		{
 			GoalkeeperStrength = goalkeeperStrength;

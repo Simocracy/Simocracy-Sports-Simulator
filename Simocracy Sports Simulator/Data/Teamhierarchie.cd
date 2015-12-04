@@ -7,18 +7,12 @@
       <FileName>Data\Team.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Simocracy.SportSim.Data.Footballteam">
-    <Position X="8.75" Y="4.5" Width="1.5" />
+  <Class Name="Simocracy.SportSim.Data.FootballTeam">
+    <Position X="5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAABAAAABAEABAAAAAAAAAAAAAIAA=</HashCode>
-      <FileName>Data\Footballteam.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Simocracy.SportSim.Data.TeamCollection">
-    <Position X="10" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Data\TeamCollection.cs</FileName>
+      <FileName>Data\FootballTeam.cs</FileName>
+      <NewMemberFileName>Data\Footballteam.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

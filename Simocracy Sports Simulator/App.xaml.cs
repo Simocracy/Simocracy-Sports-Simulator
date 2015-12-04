@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Simocracy_Sports_Simulator
+namespace Simocracy.SportSim
 {
 	/// <summary>
 	/// Interaktionslogik für "App.xaml"

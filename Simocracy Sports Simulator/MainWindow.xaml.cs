@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Simocracy.SportSim.Data;
 
-namespace Simocracy_Sports_Simulator
+namespace Simocracy.SportSim
 {
 	/// <summary>
 	/// Interaktionslogik für MainWindow.xaml
