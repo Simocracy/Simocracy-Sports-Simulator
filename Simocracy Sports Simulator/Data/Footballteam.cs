@@ -12,19 +12,39 @@ namespace Simocracy.SportSim.Data
 	{
 
 		#region Constructors
-		
+
+		/// <summary>
+		/// Erstellt ein neues Fussballteam
+		/// </summary>
+		/// <param name="name"></param>
 		public Footballteam(string name)
 			: this(name, String.Empty, 0, 0, 0, 0)
 		{ }
 
+		/// <summary>
+		/// Erstellt ein neues
+		/// </summary>
+		/// <param name="name">Name des Teams</param>
+		/// <param name="goalkeeperStrength">Stärke des Torhüters</param>
+		/// <param name="defenseStrength">Stärke der Verteidigung</param>
+		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
+		/// <param name="forwardStrength">Stärke der Offensive</param>
 		public Footballteam(string name, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
 			: this(name, String.Empty, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength)
 		{ }
 
+		/// <summary>
+		/// Erstellt ein neues Fussballteam
+		/// </summary>
+		/// <param name="name">Name des Teams</param>
+		/// <param name="logo">Name der Logodatei</param>
+		/// <param name="goalkeeperStrength">Stärke des Torhüters</param>
+		/// <param name="defenseStrength">Stärke der Verteidigung</param>
+		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
+		/// <param name="forwardStrength">Stärke der Offensive</param>
 		public Footballteam(string name, string logo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
+			: base(name, logo)
 		{
-			Name = name;
-			LogoFileName = logo;
 			GoalkeeperStrength = goalkeeperStrength;
 			DefenseStrength = defenseStrength;
 			MidfieldStrength = midfieldStrength;

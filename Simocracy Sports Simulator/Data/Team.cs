@@ -11,6 +11,28 @@ namespace Simocracy.SportSim.Data
 	/// </summary>
 	public abstract class Team
 	{
+		#region Constructor
+
+		/// <summary>
+		/// Erstellt ein neues Team
+		/// </summary>
+		/// <param name="name">Name des Teams</param>
+		public Team(string name)
+			: this(name, String.Empty)
+		{ }
+
+		/// <summary>
+		/// Erstellt ein neues Team
+		/// </summary>
+		/// <param name="name">Name des Teams</param>
+		/// <param name="logo">Name der Logodatei</param>
+		public Team(string name, string logo)
+		{
+			Name = name;
+			LogoFileName = logo;
+		}
+
+		#endregion
 
 		#region Properties
 
@@ -39,7 +61,7 @@ namespace Simocracy.SportSim.Data
 		{
 			get
 			{
-				return Strength / 11;
+				return Strength / PlayerCount;
 			}
 		}
 
