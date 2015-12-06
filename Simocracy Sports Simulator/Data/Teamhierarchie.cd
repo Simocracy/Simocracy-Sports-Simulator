@@ -15,5 +15,20 @@
       <NewMemberFileName>Data\Footballteam.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Simocracy.SportSim.Data.FootballTeamCollection">
+    <Position X="10" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEIAAAAAAAAAAABAAAAAEAAAAIAAAACAQAAAAAAAAAA=</HashCode>
+      <FileName>Data\FootballTeamCollection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Simocracy.SportSim.Data.ITeamCollection&lt;T&gt;">
+    <Position X="9.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\ITeamCollection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

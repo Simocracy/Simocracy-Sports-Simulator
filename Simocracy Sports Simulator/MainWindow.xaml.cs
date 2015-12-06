@@ -24,6 +24,11 @@ namespace Simocracy.SportSim
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			var ftc = new FootballTeamCollection();
+			ftc.Add("Team A");
+			var t = ftc‌.Get("Team A");
+			var u = ftc[0];
 		}
 	}
 }
