@@ -27,9 +27,22 @@ namespace Simocracy.SportSim.Data
 		/// <param name="name">Name des Teams</param>
 		/// <param name="logo">Name der Logodatei</param>
 		public Team(string name, string logo)
+			: this(name, logo, null, null)
+		{ }
+
+		/// <summary>
+		/// Erstellt ein neues Team
+		/// </summary>
+		/// <param name="name">Name des Teams</param>
+		/// <param name="logo">Name der Logodatei</param>
+		/// <param name="state">Staat des Teams</param>
+		/// <param name="stadium">Stadion des Teams</param>
+		public Team(string name, string logo, State state, Stadium stadium)
 		{
 			Name = name;
 			LogoFileName = logo;
+			State = state;
+			Stadium = stadium;
 		}
 
 		#endregion
@@ -46,6 +59,18 @@ namespace Simocracy.SportSim.Data
 		/// Dateiname des Logos im Wiki
 		/// </summary>
 		public string LogoFileName
+		{ get; set; }
+
+		/// <summary>
+		/// Staat des Teams
+		/// </summary>
+		public State State
+		{ get; set; }
+
+		/// <summary>
+		/// Stadion des Teams
+		/// </summary>
+		public Stadium Stadium
 		{ get; set; }
 
 		/// <summary>
