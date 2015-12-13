@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Simocracy.SportSim.Data
+namespace Simocracy.SportSim
 {
 	/// <summary>
 	/// Fussballteam
@@ -17,8 +17,8 @@ namespace Simocracy.SportSim.Data
 		/// Erstellt ein neues Fußballteam
 		/// </summary>
 		/// <param name="name"></param>
-		public FootballTeam(string name)
-			: this(name, String.Empty, 0, 0, 0, 0)
+		public FootballTeam(int id, string name)
+			: this(id, name, String.Empty, 0, 0, 0, 0)
 		{ }
 
 		/// <summary>
@@ -29,8 +29,8 @@ namespace Simocracy.SportSim.Data
 		/// <param name="defenseStrength">Stärke der Verteidigung</param>
 		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
 		/// <param name="forwardStrength">Stärke der Offensive</param>
-		public FootballTeam(string name, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
-			: this(name, String.Empty, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength)
+		public FootballTeam(int id, string name, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
+			: this(id, name, String.Empty, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength)
 		{ }
 
 		/// <summary>
@@ -42,8 +42,8 @@ namespace Simocracy.SportSim.Data
 		/// <param name="defenseStrength">Stärke der Verteidigung</param>
 		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
 		/// <param name="forwardStrength">Stärke der Offensive</param>
-		public FootballTeam(string name, string logo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
-			: base(name, logo)
+		public FootballTeam(int id, string name, string logo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
+			: base(id, name, logo)
 		{
 			GoalkeeperStrength = goalkeeperStrength;
 			DefenseStrength = defenseStrength;

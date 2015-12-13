@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Simocracy.SportSim.Data;
 
 namespace Simocracy.SportSim
 {
@@ -24,11 +23,6 @@ namespace Simocracy.SportSim
 		public MainWindow()
 		{
 			InitializeComponent();
-
-			var ftc = new FootballTeamCollection();
-			ftc.Add("Team A");
-			var t = ftc‌.Get("Team A");
-			var u = ftc[0];
 		}
 	}
 }

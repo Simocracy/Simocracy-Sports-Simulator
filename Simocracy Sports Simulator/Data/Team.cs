@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace Simocracy.SportSim.Data
+namespace Simocracy.SportSim
 {
 	/// <summary>
 	/// Abstrakte Basisklasse für Teams
@@ -16,29 +16,33 @@ namespace Simocracy.SportSim.Data
 		/// <summary>
 		/// Erstellt ein neues Team
 		/// </summary>
+		/// <param name="id">ID des Teams</param>
 		/// <param name="name">Name des Teams</param>
-		public Team(string name)
-			: this(name, String.Empty)
+		public Team(int id, string name)
+			: this(id, name, String.Empty)
 		{ }
 
 		/// <summary>
 		/// Erstellt ein neues Team
 		/// </summary>
+		/// <param name="id">ID des Teams</param>
 		/// <param name="name">Name des Teams</param>
 		/// <param name="logo">Name der Logodatei</param>
-		public Team(string name, string logo)
-			: this(name, logo, null, null)
+		public Team(int id, string name, string logo)
+			: this(id, name, logo, null, null)
 		{ }
 
 		/// <summary>
 		/// Erstellt ein neues Team
 		/// </summary>
+		/// <param name="id">ID des Teams</param>
 		/// <param name="name">Name des Teams</param>
 		/// <param name="logo">Name der Logodatei</param>
 		/// <param name="state">Staat des Teams</param>
 		/// <param name="stadium">Stadion des Teams</param>
-		public Team(string name, string logo, State state, Stadium stadium)
+		public Team(int id, string name, string logo, State state, Stadium stadium)
 		{
+			ID = id;
 			Name = name;
 			LogoFileName = logo;
 			State = state;
@@ -48,6 +52,12 @@ namespace Simocracy.SportSim.Data
 		#endregion
 
 		#region Properties
+
+		/// <summary>
+		/// ID des Teams
+		/// </summary>
+		public int ID
+		{ get; set; }
 
 		/// <summary>
 		/// Name des Teams

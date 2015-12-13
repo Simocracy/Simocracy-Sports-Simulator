@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simocracy.SportSim.Data
+namespace Simocracy.SportSim
 {
-	public enum EStadiumTye
+	public enum EStadiumType
 	{
 		/// <summary>
 		/// Generisches Stadion für Platzhalter

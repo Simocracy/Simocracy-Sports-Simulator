@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simocracy.SportSim.Data
+namespace Simocracy.SportSim
 {
 	/// <summary>
 	/// Stellt verschiedene Methoden zum Verwalten von Fußballteams zur Verfügung
@@ -19,7 +19,7 @@ namespace Simocracy.SportSim.Data
 		/// <param name="name">Name des Teams</param>
 		public void Add(string name)
 		{
-			Add(new FootballTeam(name));
+			Add(new FootballTeam(Count, name));
 		}
 
 		/// <summary>
@@ -32,7 +32,7 @@ namespace Simocracy.SportSim.Data
 		/// <param name="forwardStrength">Stärke der Offensive</param>
 		public void Add(string name, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
 		{
-			Add(new FootballTeam(name, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength));
+			Add(new FootballTeam(Count, name, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength));
 		}
 
 		/// <summary>
@@ -46,7 +46,7 @@ namespace Simocracy.SportSim.Data
 		/// <param name="forwardStrength">Stärke der Offensive</param>
 		public void Add(string name, string logo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
 		{
-			Add(new FootballTeam(name, logo, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength));
+			Add(new FootballTeam(Count, name, logo, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength));
 		}
 
 		/// <summary>
@@ -57,6 +57,17 @@ namespace Simocracy.SportSim.Data
 		public FootballTeam Get(string name)
 		{
 			var teams = this.Where(x => x.Name == name);
+			return (teams.Count() != 1) ? null : teams.First();
+		}
+
+		/// <summary>
+		/// Gibt das Team mit der angegebenen ID zurück
+		/// </summary>
+		/// <param name="name">ID des Teams</param>
+		/// <returns>Team mit der angegebenen ID</returns>
+		public FootballTeam Get(int id)
+		{
+			var teams = this.Where(x => x.ID == id);
 			return (teams.Count() != 1) ? null : teams.First();
 		}
 
@@ -112,6 +123,28 @@ namespace Simocracy.SportSim.Data
 		{
 			var maxStrength = this.Max(x => x.ForwardStrength);
 			return this.First(x => x.ForwardStrength == maxStrength);
+		}
+
+		#endregion
+
+		#region Utilities
+
+		/// <summary>
+		/// Gibt die höchste bestehende ID eines Teams zurück
+		/// </summary>
+		/// <returns>Höchste ID</returns>
+		public int GetMaxID()
+		{
+			return this.Max(x => x.ID);
+		}
+
+		/// <summary>
+		/// Gibt eine neue ID für ein Team zurück
+		/// </summary>
+		/// <returns>Neue ID</returns>
+		private int GetNewID()
+		{
+			return GetMaxID() + 1;
 		}
 
 		#endregion
