@@ -11,7 +11,7 @@ namespace Simocracy.SportSim
 	/// Klasse für Staaten in Simocracy
 	/// </summary>
 	[DataContract]
-	public class State
+	public class State : IExtensibleDataObject
 	{
 		#region Members
 
@@ -37,18 +37,6 @@ namespace Simocracy.SportSim
 			Flag = flag;
 		}
 
-		/// <summary>
-		/// Deserialisiert einen Staat
-		/// </summary>
-		/// <param name="info">SerializationInfo zum deserialisieren</param>
-		/// <param name="context">StreamingContext zum deserialisieren</param>
-		public State(SerializationInfo info, StreamingContext context)
-		{
-			ID = info.GetInt32("id");
-			Name = info.GetString("name");
-			Flag = info.GetString("flag");
-		}
-
 		#endregion
 
 		#region Properties
@@ -67,36 +55,29 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// ID des Staates
 		/// </summary>
-		[DataMember]
+		[DataMember(Order = 10)]
 		public int ID { get; private set; }
 
 		/// <summary>
 		/// Name des Staates
 		/// </summary>
-		[DataMember]
+		[DataMember(Order = 20)]
 		public string Name { get; private set; }
 
 		/// <summary>
 		/// Flaggenkürzel des Staates
 		/// </summary>
-		[DataMember]
+		[DataMember(Order = 30)]
 		public string Flag { get; private set; }
 
 		#endregion
 
-		#region Serialization
+		#region IExtensibleDataObject
 
 		/// <summary>
-		/// Serialisiert einen Staat
+		/// Erweiterungsdaten
 		/// </summary>
-		/// <param name="info">SerializationInfo</param>
-		/// <param name="context">StreamingContext</param>
-		public void GetObjectData(SerializationInfo info, StreamingContext context)
-		{
-			info.AddValue("id", ID);
-			info.AddValue("name", Name);
-			info.AddValue("flag", Flag);
-		}
+		public ExtensionDataObject ExtensionData { get; set; }
 
 		#endregion
 	}

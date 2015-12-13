@@ -12,14 +12,17 @@ namespace Simocracy.SportSim
 	/// Klasse für Stadien bzw. Sporthallen, in denen Teams ihre Matches austragen
 	/// </summary>
 	[DataContract]
-	public class Stadium
+	public class Stadium : IExtensibleDataObject
 	{
-		#region Static Members
+		#region Members
 
 		/// <summary>
 		/// Leeres Stadion ohne Angaben
 		/// </summary>
 		private static Stadium _NoStadium = new Stadium(-1, String.Empty, State.NoState, String.Empty, 0, EStadiumType.GenericStadium);
+
+		private State _State;
+		private int _StateID;
 
 		#endregion
 
@@ -44,21 +47,6 @@ namespace Simocracy.SportSim
 			StadiumType = stadiumType;
 		}
 
-		/// <summary>
-		/// Deserialisiert einen Staat
-		/// </summary>
-		/// <param name="info">SerializationInfo zum deserialisieren</param>
-		/// <param name="context">StreamingContext zum deserialisieren</param>
-		public Stadium(SerializationInfo info, StreamingContext context)
-		{
-			ID = info.GetInt32("id");
-			Name = info.GetString("name");
-
-			City = info.GetString("city");
-			Capacity = info.GetInt32("capacity");
-			StadiumType = (EStadiumType) info.GetValue("type", typeof(EStadiumType));
-		}
-
 		#endregion
 
 		#region Properties
@@ -77,57 +65,69 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// ID des Stadions
 		/// </summary>
-		[DataMember]
+		[DataMember(Order = 10)]
 		public int ID { get; private set; }
 
 		/// <summary>
 		/// Name des Stadions
 		/// </summary>
-		[DataMember]
+		[DataMember(Order = 20)]
 		public string Name { get; private set; }
 
 		/// <summary>
 		/// Staat in dem das Stadion liegt
 		/// </summary>
-		//[DataMember]
-		public State State { get; private set; }
+		[IgnoreDataMember]
+		public State State
+		{
+			get { return _State; }
+			private set
+			{
+				_State = value;
+				_StateID = value.ID;
+			}
+		}
+
+		/// <summary>
+		/// Staat-ID in dem das Stadion liegt
+		/// </summary>
+		[DataMember(Order = 30)]
+		private int StateID
+		{
+			get { return _StateID; }
+			set
+			{
+				_StateID = value;
+				_State = Settings.States.Get(value);
+			}
+		}
 
 		/// <summary>
 		/// Stadt in dem das Stadion liegt
 		/// </summary>
-		[DataMember]
+		[DataMember(Order = 40)]
 		public string City { get; private set; }
 
 		/// <summary>
 		/// Kapazität des Stadions
 		/// </summary>
-		[DataMember]
+		[DataMember(Order = 50)]
 		public int Capacity { get; private set; }
 
 		/// <summary>
 		/// Typ des Stadions
 		/// </summary>
-		[DataMember]
+		[DataMember(Order = 60)]
 		public EStadiumType StadiumType { get; private set; }
 
 		#endregion
 
-		#region Serialization
+		#region IExtensibleDataObject
 
 		/// <summary>
-		/// Serialisiert ein Stadion
+		/// Erweiterungsdaten
 		/// </summary>
-		/// <param name="info">SerializationInfo</param>
-		/// <param name="context">StreamingContext</param>
-		public void GetObjectData(SerializationInfo info, StreamingContext context)
-		{
-			info.AddValue("id", ID);
-			info.AddValue("name", Name);
-			info.AddValue("stateID", State.ID);
-			info.AddValue("city", City);
-			info.AddValue("capacity", Capacity);
-			info.AddValue("type", StadiumType);
-		}
+		public ExtensionDataObject ExtensionData { get; set; }
 
 		#endregion
 	}

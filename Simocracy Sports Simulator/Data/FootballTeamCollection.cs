@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace Simocracy.SportSim
 	/// <summary>
 	/// Stellt verschiedene Methoden zum Verwalten von Fußballteams zur Verfügung
 	/// </summary>
+	[CollectionDataContract(Name = "FootballTeams")]
 	public class FootballTeamCollection : List<FootballTeam>, ITeamCollection<FootballTeam>
 	{
 		#region Manage Teams
@@ -146,6 +148,15 @@ namespace Simocracy.SportSim
 		{
 			return GetMaxID() + 1;
 		}
+
+		#endregion
+
+		#region Extension Data
+
+		/// <summary>
+		/// Erweiterungsdaten
+		/// </summary>
+		public ExtensionDataObject ExtensionData { get; set; }
 
 		#endregion
 	}

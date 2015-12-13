@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Simocracy.SportSim
@@ -8,6 +9,7 @@ namespace Simocracy.SportSim
 	/// <summary>
 	/// Fussballteam
 	/// </summary>
+	[DataContract]
 	public class FootballTeam : Team
 	{
 
@@ -43,7 +45,22 @@ namespace Simocracy.SportSim
 		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
 		/// <param name="forwardStrength">Stärke der Offensive</param>
 		public FootballTeam(int id, string name, string logo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
-			: base(id, name, logo)
+			: this(id, name, logo, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength, State.NoState, Stadium.NoStadium)
+		{ }
+
+		/// <summary>
+		/// Erstellt ein neues Fußballteam
+		/// </summary>
+		/// <param name="name">Name des Teams</param>
+		/// <param name="logo">Name der Logodatei</param>
+		/// <param name="goalkeeperStrength">Stärke des Torhüters</param>
+		/// <param name="defenseStrength">Stärke der Verteidigung</param>
+		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
+		/// <param name="forwardStrength">Stärke der Offensive</param>
+		/// <param name="state">Staat des Teams</param>
+		/// <param name="stadium">Stadion des Teams</param>
+		public FootballTeam(int id, string name, string logo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength, State state, Stadium stadium)
+			: base(id, name, logo, state, stadium)
 		{
 			GoalkeeperStrength = goalkeeperStrength;
 			DefenseStrength = defenseStrength;
@@ -80,24 +97,28 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Stärke des Torhüters
 		/// </summary>
+		[DataMember(Order = 1000)]
 		public int GoalkeeperStrength
 		{ get; set; }
 
 		/// <summary>
 		/// Stärke der Verteidigung
 		/// </summary>
+		[DataMember(Order = 1100)]
 		public int DefenseStrength
 		{ get; set; }
 
 		/// <summary>
 		/// Stärke des Mittelfelds
 		/// </summary>
+		[DataMember(Order = 1200)]
 		public int MidfieldStrength
 		{ get; set; }
 
 		/// <summary>
 		/// Stärke der Stürmer
 		/// </summary>
+		[DataMember(Order = 1300)]
 		public int ForwardStrength
 		{ get; set; }
 

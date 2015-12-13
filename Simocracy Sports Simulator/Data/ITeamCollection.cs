@@ -10,7 +10,7 @@ namespace Simocracy.SportSim
 	/// <summary>
 	/// Interface für TeamCollections
 	/// </summary>
-	public interface ITeamCollection<T>
+	public interface ITeamCollection<T> : IExtensibleDataObject
 	{
 
 		/// <summary>

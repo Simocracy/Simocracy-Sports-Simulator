@@ -25,27 +25,29 @@ namespace Simocracy.SportSim
 			//application.InitializeComponent();
 			//application.Run();
 
-			var staat = new State(0, "Teststaat", "Testflagge");
-			var stadion = new Stadium(0, "teststadion", staat, "teststadt", 123456, EStadiumType.GenericStadium);
+			var staat = new State(7, "Teststaat", "Testflagge");
+			var stadion = new Stadium(5, "teststadion", staat, "teststadt", 123456, EStadiumType.GenericStadium);
+			var team = new FootballTeam(12, "testteam", "testlogo", 2, 3, 4, 5, staat, stadion);
 
-			var staaten = new List<State>();
-			staaten.Add(staat);
+			Settings.States = new StateCollection();
+			Settings.States.Add(staat);
 
-			var stadien = new List<Stadium>();
-			stadien.Add(stadion);
+			Settings.Stadiums = new StadiumCollection();
+			Settings.Stadiums.Add(stadion);
+
+			Settings.FootballTeams = new FootballTeamCollection();
+			Settings.FootballTeams.Add(team);
 
 			using(FileStream writer = new FileStream("file.xml", FileMode.Create, FileAccess.Write))
-			//using(var writer = new System.Xml.Serialization.XmlSerializer())
 			{
-				DataContractSerializer ser = new DataContractSerializer(typeof(List<Stadium>));
-				ser.WriteObject(writer, stadien);
+				DataContractSerializer ser = new DataContractSerializer(typeof(FootballTeamCollection));
+				ser.WriteObject(writer, Settings.FootballTeams);
 			}
-			List<Stadium> loadObj;
+			FootballTeamCollection loadObj;
 			using(FileStream reader = new FileStream("file.xml", FileMode.Open, FileAccess.Read))
 			{
-				DataContractSerializer ser = new DataContractSerializer(typeof(List<Stadium>));
-				loadObj = (List<Stadium>) ser.ReadObject(reader);
-
+				DataContractSerializer ser = new DataContractSerializer(typeof(FootballTeamCollection));
+				loadObj = (FootballTeamCollection) ser.ReadObject(reader);
 			}
 		}
 	}

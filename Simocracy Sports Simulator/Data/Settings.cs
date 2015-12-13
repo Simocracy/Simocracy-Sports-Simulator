@@ -14,7 +14,20 @@ namespace Simocracy.SportSim
 
 		#region Lists
 
+		/// <summary>
+		/// Liste aller Fussballteams
+		/// </summary>
 		public static FootballTeamCollection FootballTeams { get; set; }
+
+		/// <summary>
+		/// Liste aller Staaten
+		/// </summary>
+		public static StateCollection States { get; set; }
+
+		/// <summary>
+		/// Liste aller Stadien
+		/// </summary>
+		public static StadiumCollection Stadiums { get; set; }
 
 		#endregion
 
