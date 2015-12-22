@@ -38,17 +38,18 @@ namespace Simocracy.SportSim
 			Settings.FootballTeams = new FootballTeamCollection();
 			Settings.FootballTeams.Add(team);
 
-			using(FileStream writer = new FileStream("file.xml", FileMode.Create, FileAccess.Write))
-			{
-				DataContractSerializer ser = new DataContractSerializer(typeof(FootballTeamCollection));
-				ser.WriteObject(writer, Settings.FootballTeams);
-			}
-			FootballTeamCollection loadObj;
-			using(FileStream reader = new FileStream("file.xml", FileMode.Open, FileAccess.Read))
-			{
-				DataContractSerializer ser = new DataContractSerializer(typeof(FootballTeamCollection));
-				loadObj = (FootballTeamCollection) ser.ReadObject(reader);
-			}
+			//using(FileStream writer = new FileStream("file.xml", FileMode.Create, FileAccess.Write))
+			//{
+			//	DataContractSerializer ser = new DataContractSerializer(typeof(FootballTeamCollection));
+			//	ser.WriteObject(writer, Settings.FootballTeams);
+			//}
+			//FootballTeamCollection loadObj;
+			//using(FileStream reader = new FileStream("file.xml", FileMode.Open, FileAccess.Read))
+			//{
+			//	DataContractSerializer ser = new DataContractSerializer(typeof(FootballTeamCollection));
+			//	loadObj = (FootballTeamCollection) ser.ReadObject(reader);
+			//}
+			Settings.Save();
 		}
 	}
 }
