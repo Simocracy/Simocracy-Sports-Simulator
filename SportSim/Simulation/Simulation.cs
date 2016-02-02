@@ -13,12 +13,12 @@ namespace Simocracy.SportSim
     public class Simulation
     {
 
-        var teamA, teamB;
+        FootballTeam teamA, teamB;
 
-        public New(int idA, int idB)
+        public void New(int idA, int idB)
         {
-            teamA = Settings.FootballTeams.get(idA);
-            teamB = Settings.FootballTeams.get(idB);
+            teamA = Settings.FootballTeams.Get(idA);
+            teamB = Settings.FootballTeams.Get(idB);
         }
        
     }
