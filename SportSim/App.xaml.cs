@@ -21,35 +21,45 @@ namespace Simocracy.SportSim
 		[STAThread]
 		public static void Main()
 		{
-			//var application = new App();
-			//application.InitializeComponent();
-			//application.Run();
+			// Load Settings
+			// not yet
+			// Settings.Load();
 
-			var staat = new State(7, "Teststaat", "Testflagge");
-			var stadion = new Stadium(5, "teststadion", staat, "teststadt", 123456, EStadiumType.GenericStadium);
-			var team = new FootballTeam(12, "testteam", "testlogo", 2, 3, 4, 5, staat, stadion);
+			// Open MainWindow
+			App app = new App();
+			MainWindow window = new MainWindow();
+			app.Run(window);
 
-			Settings.States = new StateCollection();
-			Settings.States.Add(staat);
 
-			Settings.Stadiums = new StadiumCollection();
-			Settings.Stadiums.Add(stadion);
+			////var application = new App();
+			////application.InitializeComponent();
+			////application.Run();
 
-			Settings.FootballTeams = new FootballTeamCollection();
-			Settings.FootballTeams.Add(team);
+			//var staat = new State(7, "Teststaat", "Testflagge");
+			//var stadion = new Stadium(5, "teststadion", staat, "teststadt", 123456, EStadiumType.GenericStadium);
+			//var team = new FootballTeam(12, "testteam", "testlogo", 2, 3, 4, 5, staat, stadion);
 
-			//using(FileStream writer = new FileStream("file.xml", FileMode.Create, FileAccess.Write))
-			//{
-			//	DataContractSerializer ser = new DataContractSerializer(typeof(FootballTeamCollection));
-			//	ser.WriteObject(writer, Settings.FootballTeams);
-			//}
-			//FootballTeamCollection loadObj;
-			//using(FileStream reader = new FileStream("file.xml", FileMode.Open, FileAccess.Read))
-			//{
-			//	DataContractSerializer ser = new DataContractSerializer(typeof(FootballTeamCollection));
-			//	loadObj = (FootballTeamCollection) ser.ReadObject(reader);
-			//}
-			Settings.Save();
+			//Settings.States = new StateCollection();
+			//Settings.States.Add(staat);
+
+			//Settings.Stadiums = new StadiumCollection();
+			//Settings.Stadiums.Add(stadion);
+
+			//Settings.FootballTeams = new FootballTeamCollection();
+			//Settings.FootballTeams.Add(team);
+
+			////using(FileStream writer = new FileStream("file.xml", FileMode.Create, FileAccess.Write))
+			////{
+			////	DataContractSerializer ser = new DataContractSerializer(typeof(FootballTeamCollection));
+			////	ser.WriteObject(writer, Settings.FootballTeams);
+			////}
+			////FootballTeamCollection loadObj;
+			////using(FileStream reader = new FileStream("file.xml", FileMode.Open, FileAccess.Read))
+			////{
+			////	DataContractSerializer ser = new DataContractSerializer(typeof(FootballTeamCollection));
+			////	loadObj = (FootballTeamCollection) ser.ReadObject(reader);
+			////}
+			//Settings.Save();
 		}
 	}
 }

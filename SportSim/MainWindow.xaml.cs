@@ -20,9 +20,78 @@ namespace Simocracy.SportSim
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+
+		#region Constructor
+
 		public MainWindow()
 		{
 			InitializeComponent();
 		}
+
+		#endregion
+
+		#region Menu Commands
+
+		/// <summary>
+		/// Daten speichern
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void _MenuItemSave_Click(object sender, RoutedEventArgs e)
+		{
+			Settings.Save();
+		}
+
+		/// <summary>
+		/// Teamverwaltung öffnen
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void _MenuItemTeams_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		/// <summary>
+		/// Stadionverwaltung öffnen
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void _MenuItemStadiums_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		/// <summary>
+		/// Staatenverwaltung öffnen
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void _MenuItemStates_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		/// <summary>
+		/// Fußballliga simulieren
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void _MenuItemFootballLeague_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		/// <summary>
+		/// Fußballturnier simulieren
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void _MenuItemFootballTournament_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		#endregion
 	}
 }

@@ -111,6 +111,8 @@ namespace Simocracy.SportSim
                     case 23:
                         return 10;
                 }
+
+			return 0;
         }
 
         private int Kickoff()

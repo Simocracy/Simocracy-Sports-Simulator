@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Simocracy.SportSim"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="Simocracy Sport Simulator" Height="500" Width="525">
+	<Grid >
+		<Grid.RowDefinitions>
+			<RowDefinition Height="20"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<StackPanel Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}">
+			<Menu x:Name="_MenuSettings" >
+				<MenuItem Header="Verwaltung">
+					<MenuItem Name="_MenuItemSave" Header="_Speichern" InputGestureText="Ctrl+S" Click="_MenuItemSave_Click"/>
+					<Separator/>
+					<MenuItem Name="_MenuItemTeams" Header="Teams" Click="_MenuItemTeams_Click"/>
+					<MenuItem Name="_MenuItemStadiums" Header="Stadien" Click="_MenuItemStadiums_Click"/>
+					<MenuItem Name="_MenuItemStates" Header="Staaten" Click="_MenuItemStates_Click"/>
+				</MenuItem>
+				<MenuItem Header="Simulation">
+					<MenuItem Header="Fußball">
+						<MenuItem Name="_MenuItemFootballLeague" Header="Liga" Click="_MenuItemFootballLeague_Click"/>
+						<MenuItem Name="_MenuItemFootballTournament" Header="Turnier" Click="_MenuItemFootballTournament_Click"/>
+					</MenuItem>
+				</MenuItem>
+			</Menu>
+		</StackPanel>
+		<Frame x:Name="_MainFrame" Grid.Row="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+	</Grid>
 </Window>
