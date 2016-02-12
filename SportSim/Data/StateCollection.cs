@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Simocracy.SportSim
 	/// Stellt verschiedene Methoden zum Verwalten von Staaten zur Verfügung
 	/// </summary>
 	[CollectionDataContract(Name = "States")]
-	public class StateCollection : List<State>, IExtensibleDataObject
+	public class StateCollection : ObservableCollection<State>, IExtensibleDataObject
 	{
 		#region Manage States
 

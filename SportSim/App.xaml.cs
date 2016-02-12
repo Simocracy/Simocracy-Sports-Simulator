@@ -25,28 +25,25 @@ namespace Simocracy.SportSim
 			// not yet
 			// Settings.Load();
 
-			// Open MainWindow
-			App app = new App();
-			MainWindow window = new MainWindow();
-			app.Run(window);
-
 
 			////var application = new App();
 			////application.InitializeComponent();
 			////application.Run();
 
-			//var staat = new State(7, "Teststaat", "Testflagge");
-			//var stadion = new Stadium(5, "teststadion", staat, "teststadt", 123456, EStadiumType.GenericStadium);
-			//var team = new FootballTeam(12, "testteam", "testlogo", 2, 3, 4, 5, staat, stadion);
+			var staat = new State(7, "Teststaat", "Testflagge");
+			var stadion = new Stadium(5, "teststadion", staat, "teststadt", 123456, EStadiumType.GenericStadium);
+			var team = new FootballTeam(12, "testteam", "testlogo", 2, 3, 4, 5, staat, stadion);
 
-			//Settings.States = new StateCollection();
-			//Settings.States.Add(staat);
+			Settings.States = new StateCollection();
+			Settings.States.Add(staat);
+			staat = new State(6, "Teststaat2", "Testflagge2");
+			Settings.States.Add(staat);
 
-			//Settings.Stadiums = new StadiumCollection();
-			//Settings.Stadiums.Add(stadion);
+			Settings.Stadiums = new StadiumCollection();
+			Settings.Stadiums.Add(stadion);
 
-			//Settings.FootballTeams = new FootballTeamCollection();
-			//Settings.FootballTeams.Add(team);
+			Settings.FootballTeams = new FootballTeamCollection();
+			Settings.FootballTeams.Add(team);
 
 			////using(FileStream writer = new FileStream("file.xml", FileMode.Create, FileAccess.Write))
 			////{
@@ -60,6 +57,13 @@ namespace Simocracy.SportSim
 			////	loadObj = (FootballTeamCollection) ser.ReadObject(reader);
 			////}
 			//Settings.Save();
+
+
+
+			// Open MainWindow
+			App app = new App();
+			MainWindow window = new MainWindow();
+			app.Run(window);
 		}
 	}
 }
