@@ -19,7 +19,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Leeres Stadion ohne Angaben
 		/// </summary>
-		private static Stadium _NoStadium = new Stadium(-1, String.Empty, State.NoState, String.Empty, 0, EStadiumType.GenericStadium);
+		private static Stadium _NoneStadium = new Stadium(-1, String.Empty, State.NoneState, String.Empty, 0, EStadiumType.GenericStadium);
 
 		private State _State;
 		private int _StateID;
@@ -54,11 +54,11 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Leeres Stadion ohne Angaben
 		/// </summary>
-		public static Stadium NoStadium
+		public static Stadium NoneStadium
 		{
 			get
 			{
-				return _NoStadium;
+				return _NoneStadium;
 			}
 		}
 

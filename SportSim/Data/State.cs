@@ -18,7 +18,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Leerer Staat ohne Angaben
 		/// </summary>
-		private static State _NoState = new State(-1, String.Empty, String.Empty);
+		private static State _NoneState = new State(-1, String.Empty, String.Empty);
 
 		#endregion
 
@@ -44,11 +44,11 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Leerer Staat ohne Angaben
 		/// </summary>
-		public static State NoState
+		public static State NoneState
 		{
 			get
 			{
-				return _NoState;
+				return _NoneState;
 			}
 		}
 
