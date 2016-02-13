@@ -122,7 +122,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Data\EStadiumType.cs" />
+    <Compile Include="Data\Enums.cs" />
     <Compile Include="Data\FootballTeam.cs" />
     <Compile Include="Data\FootballTeamCollection.cs" />
     <Compile Include="Data\Settings.cs" />
