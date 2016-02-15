@@ -12,9 +12,40 @@ namespace Simocracy.SportSim
 	/// Stellt verschiedene Methoden zum Verwalten von Staaten zur Verfügung
 	/// </summary>
 	[CollectionDataContract(Name = "States")]
-	public class StateCollection : ObservableCollection<State>, IExtensibleDataObject
+	public class StateCollection : ObservableCollection<State>, ICollection<State>
 	{
 		#region Manage States
+
+		/// <summary>
+		/// Erstellt einen neuen Staat und fügt ihn der Liste hinzu
+		/// </summary>
+		/// <param name="name">Name des Staates</param>
+		public void Add(string name)
+		{
+			Add(new State(GetNewID(), name));
+		}
+
+		/// <summary>
+		/// Erstellt einen neuen Staat und fügt ihn der Liste hinzu
+		/// </summary>
+		/// <param name="name">Name des Staates</param>
+		/// <param name="flag">Flaggenkürzel des Staates</param>
+		/// <param name="continent">Kontinent des Staates</param>
+		public void Add(string name, string flag, Continent continent)
+		{
+			Add(new State(GetNewID(), name, flag, continent));
+		}
+
+		/// <summary>
+		/// Gibt den Staat mit dem angegebenen Namen zurück
+		/// </summary>
+		/// <param name="name">Name des Staates</param>
+		/// <returns>Staat mit dem angegebenen Namen</returns>
+		public State Get(string name)
+		{
+			var states = this.Where(x => x.Name == name);
+			return (states.Count() != 1) ? null : states.First();
+		}
 
 		/// <summary>
 		/// Gibt den Staat mit der angegebenen ID zurück
@@ -25,6 +56,28 @@ namespace Simocracy.SportSim
 		{
 			var states = this.Where(x => x.ID == id);
 			return (states.Count() != 1) ? null : states.First();
+		}
+
+		#endregion
+
+		#region Utilities
+
+		/// <summary>
+		/// Gibt die höchste bestehende ID eines Teams zurück
+		/// </summary>
+		/// <returns>Höchste ID</returns>
+		public int GetMaxID()
+		{
+			return this.Max(x => x.ID);
+		}
+
+		/// <summary>
+		/// Gibt eine neue ID für ein Team zurück
+		/// </summary>
+		/// <returns>Neue ID</returns>
+		public int GetNewID()
+		{
+			return GetMaxID() + 1;
 		}
 
 		#endregion

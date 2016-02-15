@@ -11,7 +11,7 @@ namespace Simocracy.SportSim
 	/// Klasse für Staaten in Simocracy
 	/// </summary>
 	[DataContract]
-	public class State : IExtensibleDataObject
+	public class State : SSSDataObject
 	{
 		#region Members
 
@@ -29,12 +29,20 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="id">ID des Staates</param>
 		/// <param name="name">Name des Staates</param>
+		public State(int id, string name)
+			: this(id, name, String.Empty, Continent.Unknown)
+		{ }
+
+		/// <summary>
+		/// Erstellt einen neuen Staat
+		/// </summary>
+		/// <param name="id">ID des Staates</param>
+		/// <param name="name">Name des Staates</param>
 		/// <param name="flag">Flaggenkürzel des Staates</param>
 		/// <param name="continent">Kontinent des Staates</param>
 		public State(int id, string name, string flag, Continent continent)
+			: base(id, name)
 		{
-			ID = id;
-			Name = name;
 			Flag = flag;
 			Continent = continent;
 		}
@@ -55,37 +63,16 @@ namespace Simocracy.SportSim
 		}
 
 		/// <summary>
-		/// ID des Staates
-		/// </summary>
-		[DataMember(Order = 10)]
-		public int ID { get; private set; }
-
-		/// <summary>
-		/// Name des Staates
-		/// </summary>
-		[DataMember(Order = 20)]
-		public string Name { get; private set; }
-
-		/// <summary>
 		/// Flaggenkürzel des Staates
 		/// </summary>
-		[DataMember(Order = 30)]
+		[DataMember(Order = 100)]
 		public string Flag { get; private set; }
 
 		/// <summary>
 		/// Hauptkontinent des Staates
 		/// </summary>
-		[DataMember(Order = 40)]
+		[DataMember(Order = 110)]
 		public Continent Continent { get; private set; }
-
-		#endregion
-
-		#region IExtensibleDataObject
-
-		/// <summary>
-		/// Erweiterungsdaten
-		/// </summary>
-		public ExtensionDataObject ExtensionData { get; set; }
 
 		#endregion
 	}

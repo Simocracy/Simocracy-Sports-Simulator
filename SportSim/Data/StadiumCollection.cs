@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -11,9 +12,42 @@ namespace Simocracy.SportSim
 	/// Stellt verschiedene Methoden zum Verwalten von Stadien zur Verfügung
 	/// </summary>
 	[CollectionDataContract(Name = "Stadiums")]
-	public class StadiumCollection : List<Stadium>, IExtensibleDataObject
+	public class StadiumCollection : ObservableCollection<Stadium>, ICollection<Stadium>
 	{
-		#region Manage States
+		#region Manage Stadiums
+
+		/// <summary>
+		/// Erstellt ein neues Stadion und fügt es der Liste hinzu
+		/// </summary>
+		/// <param name="name">Name des Stadions</param>
+		public void Add(string name)
+		{
+			Add(new Stadium(GetNewID(), name));
+		}
+
+		/// <summary>
+		/// Erstellt ein neues Stadion und fügt es der Liste hinzu
+		/// </summary>
+		/// <param name="name">Name des Stadions</param>
+		/// <param name="state">Staat in dem das Stadion liegt</param>
+		/// <param name="city">Stadt in dem das Stadion liegt</param>
+		/// <param name="capacity">Kapazität des Stadions</param>
+		/// <param name="stadiumType">Typ des Stadions</param>
+		public void Add(string name, State state, string city, int capacity, EStadiumType stadiumType)
+		{
+			Add(new Stadium(GetNewID(), name, state, city, capacity, stadiumType));
+		}
+
+		/// <summary>
+		/// Gibt das Stadion mit dem angegebenen Namen zurück
+		/// </summary>
+		/// <param name="name">Name des Stadions</param>
+		/// <returns>Stadion mit dem angegebenen Namen</returns>
+		public Stadium Get(string name)
+		{
+			var stadiums = this.Where(x => x.Name == name);
+			return (stadiums.Count() != 1) ? null : stadiums.First();
+		}
 
 		/// <summary>
 		/// Gibt das Stadion mit der angegebenen ID zurück
@@ -24,6 +58,28 @@ namespace Simocracy.SportSim
 		{
 			var stadiums = this.Where(x => x.ID == id);
 			return (stadiums.Count() != 1) ? null : stadiums.First();
+		}
+
+		#endregion
+
+		#region Utilities
+
+		/// <summary>
+		/// Gibt die höchste bestehende ID eines Teams zurück
+		/// </summary>
+		/// <returns>Höchste ID</returns>
+		public int GetMaxID()
+		{
+			return this.Max(x => x.ID);
+		}
+
+		/// <summary>
+		/// Gibt eine neue ID für ein Team zurück
+		/// </summary>
+		/// <returns>Neue ID</returns>
+		public int GetNewID()
+		{
+			return GetMaxID() + 1;
 		}
 
 		#endregion

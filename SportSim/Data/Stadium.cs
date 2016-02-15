@@ -12,7 +12,7 @@ namespace Simocracy.SportSim
 	/// Klasse für Stadien bzw. Sporthallen, in denen Teams ihre Matches austragen
 	/// </summary>
 	[DataContract]
-	public class Stadium : IExtensibleDataObject
+	public class Stadium : SSSDataObject
 	{
 		#region Members
 
@@ -33,14 +33,22 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="id">ID des Stadions</param>
 		/// <param name="name">Name des Stadions</param>
+		public Stadium(int id, string name)
+			: this(id, name, State.NoneState, String.Empty, 0, EStadiumType.GenericStadium)
+		{ }
+
+		/// <summary>
+		/// Erstellt ein neues Stadion
+		/// </summary>
+		/// <param name="id">ID des Stadions</param>
+		/// <param name="name">Name des Stadions</param>
 		/// <param name="state">Staat in dem das Stadion liegt</param>
 		/// <param name="city">Stadt in dem das Stadion liegt</param>
 		/// <param name="capacity">Kapazität des Stadions</param>
 		/// <param name="stadiumType">Typ des Stadions</param>
 		public Stadium(int id, string name, State state, string city, int capacity, EStadiumType stadiumType)
+			: base(id, name)
 		{
-			ID = id;
-			Name = name;
 			State = state;
 			City = city;
 			Capacity = capacity;
@@ -63,18 +71,6 @@ namespace Simocracy.SportSim
 		}
 
 		/// <summary>
-		/// ID des Stadions
-		/// </summary>
-		[DataMember(Order = 10)]
-		public int ID { get; private set; }
-
-		/// <summary>
-		/// Name des Stadions
-		/// </summary>
-		[DataMember(Order = 20)]
-		public string Name { get; private set; }
-
-		/// <summary>
 		/// Staat in dem das Stadion liegt
 		/// </summary>
 		[IgnoreDataMember]
@@ -91,7 +87,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Staat-ID in dem das Stadion liegt
 		/// </summary>
-		[DataMember(Order = 30)]
+		[DataMember(Order = 100)]
 		private int StateID
 		{
 			get { return _StateID; }
@@ -105,29 +101,20 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Stadt in dem das Stadion liegt
 		/// </summary>
-		[DataMember(Order = 40)]
+		[DataMember(Order = 110)]
 		public string City { get; private set; }
 
 		/// <summary>
 		/// Kapazität des Stadions
 		/// </summary>
-		[DataMember(Order = 50)]
+		[DataMember(Order = 120)]
 		public int Capacity { get; private set; }
 
 		/// <summary>
 		/// Typ des Stadions
 		/// </summary>
-		[DataMember(Order = 60)]
+		[DataMember(Order = 130)]
 		public EStadiumType StadiumType { get; private set; }
-
-		#endregion
-
-		#region IExtensibleDataObject
-
-		/// <summary>
-		/// Erweiterungsdaten
-		/// </summary>
-		public ExtensionDataObject ExtensionData { get; set; }
 
 		#endregion
 	}

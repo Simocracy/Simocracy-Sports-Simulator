@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Simocracy.SportSim
 	/// Stellt verschiedene Methoden zum Verwalten von Fußballteams zur Verfügung
 	/// </summary>
 	[CollectionDataContract(Name = "FootballTeams")]
-	public class FootballTeamCollection : List<FootballTeam>, ITeamCollection<FootballTeam>
+	public class FootballTeamCollection : ObservableCollection<FootballTeam>, ICollection<FootballTeam>
 	{
 		#region Manage Teams
 
@@ -21,7 +22,7 @@ namespace Simocracy.SportSim
 		/// <param name="name">Name des Teams</param>
 		public void Add(string name)
 		{
-			Add(new FootballTeam(Count, name));
+			Add(new FootballTeam(GetNewID(), name));
 		}
 
 		/// <summary>
@@ -34,7 +35,7 @@ namespace Simocracy.SportSim
 		/// <param name="forwardStrength">Stärke der Offensive</param>
 		public void Add(string name, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
 		{
-			Add(new FootballTeam(Count, name, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength));
+			Add(new FootballTeam(GetNewID(), name, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength));
 		}
 
 		/// <summary>
@@ -48,7 +49,7 @@ namespace Simocracy.SportSim
 		/// <param name="forwardStrength">Stärke der Offensive</param>
 		public void Add(string name, string logo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
 		{
-			Add(new FootballTeam(Count, name, logo, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength));
+			Add(new FootballTeam(GetNewID(), name, logo, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength));
 		}
 
 		/// <summary>
@@ -144,7 +145,7 @@ namespace Simocracy.SportSim
 		/// Gibt eine neue ID für ein Team zurück
 		/// </summary>
 		/// <returns>Neue ID</returns>
-		private int GetNewID()
+		public int GetNewID()
 		{
 			return GetMaxID() + 1;
 		}

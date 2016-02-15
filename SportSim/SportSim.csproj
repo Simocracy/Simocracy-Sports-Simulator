@@ -113,6 +113,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\SSSDataObject.cs" />
     <Compile Include="GUI\ManageStatesPage.xaml.cs">
       <DependentUpon>ManageStatesPage.xaml</DependentUpon>
     </Compile>
@@ -139,7 +140,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Data\ITeamCollection.cs" />
+    <Compile Include="Data\ICollection.cs" />
     <Compile Include="GUI\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

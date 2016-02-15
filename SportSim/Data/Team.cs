@@ -11,7 +11,7 @@ namespace Simocracy.SportSim
 	/// Abstrakte Basisklasse für Teams
 	/// </summary>
 	[DataContract]
-	public abstract class Team : IExtensibleDataObject
+	public abstract class Team : SSSDataObject
 	{
 		#region Members
 
@@ -52,9 +52,8 @@ namespace Simocracy.SportSim
 		/// <param name="state">Staat des Teams</param>
 		/// <param name="stadium">Stadion des Teams</param>
 		public Team(int id, string name, string logo, State state, Stadium stadium)
+			: base(id, name)
 		{
-			ID = id;
-			Name = name;
 			LogoFileName = logo;
 			State = state;
 			Stadium = stadium;
@@ -65,23 +64,9 @@ namespace Simocracy.SportSim
 		#region Properties
 
 		/// <summary>
-		/// ID des Teams
-		/// </summary>
-		[DataMember(Order = 10)]
-		public int ID
-		{ get; set; }
-
-		/// <summary>
-		/// Name des Teams
-		/// </summary>
-		[DataMember(Order = 20)]
-		public string Name
-		{ get; set; }
-
-		/// <summary>
 		/// Dateiname des Logos im Wiki
 		/// </summary>
-		[DataMember(Order = 30)]
+		[DataMember(Order = 100)]
 		public string LogoFileName
 		{ get; set; }
 
@@ -102,7 +87,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Staat-ID des Teams
 		/// </summary>
-		[DataMember(Order = 40)]
+		[DataMember(Order = 110)]
 		private int StateID
 		{
 			get { return _StateID; }
@@ -130,7 +115,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Stadion-ID des Teams
 		/// </summary>
-		[DataMember(Order = 50)]
+		[DataMember(Order = 120)]
 		private int StadiumID
 		{
 			get { return _StadiumID; }
@@ -166,15 +151,6 @@ namespace Simocracy.SportSim
 		[IgnoreDataMember]
 		public abstract int PlayerCount
 		{ get; }
-
-		#endregion
-
-		#region IExtensibleDataObject
-
-		/// <summary>
-		/// Erweiterungsdaten
-		/// </summary>
-		public ExtensionDataObject ExtensionData { get; set; }
 
 		#endregion
 	}
