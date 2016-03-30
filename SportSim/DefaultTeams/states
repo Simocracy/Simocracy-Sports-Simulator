@@ -35,4 +35,10 @@
 		<Flag>KBRA.svg</Flag>
 		<Continent>Oceania</Continent>
 	</State>
+	<State>
+		<ID>44</ID>
+		<Name>Kronb. Lampedusa</Name>
+		<Flag>Datei:TKLA.svg</Flag>
+		<Continent>Europe</Continent>
+	</State>
 </States>
