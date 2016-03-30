@@ -51,7 +51,7 @@
 		<ID>6</ID>
 		<Name>Estadio Municipalde Al-Djazair</Name>
 		<StateID>41</StateID>
-		<City>Al-Djazair</Name>
+		<City>Al-Djazair</City>
 		<Capacity>40000</Capacity>
 		<StadiumType>AthleticStadium</StadiumType>
 	</Stadium>
@@ -62,10 +62,11 @@
 		<City>Casablanca</City>
 		<Capacity>84000</Capacity>
 		<StadiumType>AthleticStadium</StadiumType>
+	</Stadium>
 	<Stadium>
 		<ID>8</ID>
 		<Name>Estadio real de Danilo Olivera</Name>
-		<StateID>41<StateID>
+		<StateID>41</StateID>
 		<City>Tripoli</City>
 		<Capacity>90000</Capacity>
 		<StadiumType>AthleticStadium</StadiumType>
@@ -92,7 +93,8 @@
 		<StateID>42</StateID>
 		<City>Kolkata</City>
 		<Capacity>81241</Capacity>
-		<StadiumType>FootballStadium<StadiumType>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
 	<Stadium>
 		<ID>12</ID>
 		<Name>Estadio Dannido</Name>
