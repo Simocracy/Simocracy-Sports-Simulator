@@ -11,4 +11,22 @@
 		<Flag>FlaggeMacronien.png</Flag>
 		<Continent>America</Continent>
 	</State>
+	<State>
+		<ID>2</ID>
+		<Name>Almoravidien</Name>
+		<Flag>AlmoravidiaFlagge.svg</Flag>
+		<Continent>Africa</Continent>
+	</State>
+	<State>
+		<ID>3</ID>
+		<Name>Alm. Brumiasta</Name>
+		<Flag>AlmoGesamtzeugs.png</Flag>
+		<Continent>Asia</Continent>
+	</State>
+	<State>
+		<ID>4</ID>
+		<Name>Kronb. Raja Ampat</Name>
+		<Flag>KBRA.svg</Flag>
+		<Continent>Oceania</Continent>
+	</State>
 </States>
