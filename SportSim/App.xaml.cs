@@ -31,7 +31,7 @@ namespace Simocracy.SportSim
 
 			//var staat = new State(7, "Teststaat", "Testflagge", Continent.Europe);
 			//var stadion = new Stadium(5, "teststadion", staat, "teststadt", 123456, EStadiumType.GenericStadium);
-			//var team = new FootballTeam(12, "testteam", "testlogo", 2, 3, 4, 5, staat, stadion);
+			//var team = new FootballTeam(12, "testteam", "testlogo", false, 2, 3, 4, 5, staat, stadion);
 
 			//Settings.States = new StateCollection();
 			//Settings.States.Add(staat);
@@ -42,6 +42,8 @@ namespace Simocracy.SportSim
 			//Settings.Stadiums.Add(stadion);
 
 			//Settings.FootballTeams = new FootballTeamCollection();
+			//Settings.FootballTeams.Add(team);
+			//team = new FootballTeam(12, "testteam2", "testlogo2", true, 2, 3, 4, 5, staat, stadion);
 			//Settings.FootballTeams.Add(team);
 
 			//Settings.Save();
