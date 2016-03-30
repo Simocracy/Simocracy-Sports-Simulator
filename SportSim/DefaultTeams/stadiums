@@ -1,0 +1,18 @@
+﻿<Stadiums xmlns="http://schemas.datacontract.org/2004/07/Simocracy.SportSim" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Stadium>
+		<ID>0</ID>
+		<Name>Seattle Stadium</Name>
+		<StateID>0</StateID>
+		<City>Seattle</City>
+		<Capacity>82000</Capacity>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>1</ID>
+		<Name>Estádio Municipal</Name>
+		<StateID>1</StateID>
+		<City>San Icos</City>
+		<Capacity>16100</Capacity>
+		<StadiumType>AthleticStadium</StadiumType>
+	</Stadium>
+</Stadiums>

@@ -1,0 +1,14 @@
+﻿<States xmlns="http://schemas.datacontract.org/2004/07/Simocracy.SportSim" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<State>
+		<ID>0</ID>
+		<Name>Union of North American States</Name>
+		<Flag>UNAS-Flagge.svg</Flag>
+		<Continent>America</Continent>
+	</State>
+	<State>
+		<ID>1</ID>
+		<Name>Macronien</Name>
+		<Flag>FlaggeMacronien.png</Flag>
+		<Continent>America</Continent>
+	</State>
+</States>
