@@ -29,7 +29,12 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Stadion mit Laufbahn und Leichtathletikanlagen
 		/// </summary>
-		AthleticStadium = 3
+		AthleticStadium = 3,
+
+		/// <summary>
+		/// Multifunktionsarena
+		/// </summary>
+		MultiPurposeStadium = 4
 	}
 
 	/// <summary>
