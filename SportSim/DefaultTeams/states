@@ -12,19 +12,25 @@
 		<Continent>America</Continent>
 	</State>
 	<State>
-		<ID>2</ID>
+		<ID>40</ID>
+		<Name>Papua</Name>
+		<Flag>FlaggePapua.png</Flag>
+		<Continent>Asia</Continent>
+	</State>
+	<State>
+		<ID>41</ID>
 		<Name>Almoravidien</Name>
 		<Flag>AlmoravidiaFlagge.svg</Flag>
 		<Continent>Africa</Continent>
 	</State>
 	<State>
-		<ID>3</ID>
+		<ID>42</ID>
 		<Name>Alm. Brumiasta</Name>
 		<Flag>AlmoGesamtzeugs.png</Flag>
 		<Continent>Asia</Continent>
 	</State>
 	<State>
-		<ID>4</ID>
+		<ID>43</ID>
 		<Name>Kronb. Raja Ampat</Name>
 		<Flag>KBRA.svg</Flag>
 		<Continent>Oceania</Continent>
