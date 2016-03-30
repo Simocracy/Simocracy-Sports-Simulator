@@ -20,7 +20,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="name"></param>
 		public FootballTeam(int id, string name)
-			: this(id, name, String.Empty, 0, 0, 0, 0)
+			: this(id, name, String.Empty, false, 0, 0, 0, 0)
 		{ }
 
 		/// <summary>
@@ -32,7 +32,7 @@ namespace Simocracy.SportSim
 		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
 		/// <param name="forwardStrength">Stärke der Offensive</param>
 		public FootballTeam(int id, string name, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
-			: this(id, name, String.Empty, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength)
+			: this(id, name, String.Empty, false, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength)
 		{ }
 
 		/// <summary>
@@ -40,12 +40,13 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="name">Name des Teams</param>
 		/// <param name="logo">Name der Logodatei</param>
+		/// <param name="isExternLogo">Angabe ob Logo extern (=nicht im Wiki) hochgeladen ist</param>
 		/// <param name="goalkeeperStrength">Stärke des Torhüters</param>
 		/// <param name="defenseStrength">Stärke der Verteidigung</param>
 		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
 		/// <param name="forwardStrength">Stärke der Offensive</param>
-		public FootballTeam(int id, string name, string logo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
-			: this(id, name, logo, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength, State.NoneState, Stadium.NoneStadium)
+		public FootballTeam(int id, string name, string logo, bool isExternLogo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
+			: this(id, name, logo, isExternLogo, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength, State.NoneState, Stadium.NoneStadium)
 		{ }
 
 		/// <summary>
@@ -53,14 +54,15 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="name">Name des Teams</param>
 		/// <param name="logo">Name der Logodatei</param>
+		/// <param name="isExternLogo">Angabe ob Logo extern (=nicht im Wiki) hochgeladen ist</param>
 		/// <param name="goalkeeperStrength">Stärke des Torhüters</param>
 		/// <param name="defenseStrength">Stärke der Verteidigung</param>
 		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
 		/// <param name="forwardStrength">Stärke der Offensive</param>
 		/// <param name="state">Staat des Teams</param>
 		/// <param name="stadium">Stadion des Teams</param>
-		public FootballTeam(int id, string name, string logo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength, State state, Stadium stadium)
-			: base(id, name, logo, state, stadium)
+		public FootballTeam(int id, string name, string logo, bool isExternLogo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength, State state, Stadium stadium)
+			: base(id, name, logo, isExternLogo, state, stadium)
 		{
 			GoalkeeperStrength = goalkeeperStrength;
 			DefenseStrength = defenseStrength;

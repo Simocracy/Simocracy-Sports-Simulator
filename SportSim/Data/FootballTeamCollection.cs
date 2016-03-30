@@ -43,13 +43,14 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="name">Name des Teams</param>
 		/// <param name="logo">Name der Logodatei</param>
+		/// <param name="isExternLogo">Angabe ob Logo extern (=nicht im Wiki) hochgeladen ist</param>
 		/// <param name="goalkeeperStrength">Stärke des Torhüters</param>
 		/// <param name="defenseStrength">Stärke der Verteidigung</param>
 		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
 		/// <param name="forwardStrength">Stärke der Offensive</param>
-		public void Add(string name, string logo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
+		public void Add(string name, string logo, bool isExternLogo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
 		{
-			Add(new FootballTeam(GetNewID(), name, logo, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength));
+			Add(new FootballTeam(GetNewID(), name, logo, isExternLogo, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength));
 		}
 
 		/// <summary>

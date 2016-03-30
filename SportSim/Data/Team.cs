@@ -30,7 +30,7 @@ namespace Simocracy.SportSim
 		/// <param name="id">ID des Teams</param>
 		/// <param name="name">Name des Teams</param>
 		public Team(int id, string name)
-			: this(id, name, String.Empty)
+			: this(id, name, String.Empty, false)
 		{ }
 
 		/// <summary>
@@ -39,8 +39,9 @@ namespace Simocracy.SportSim
 		/// <param name="id">ID des Teams</param>
 		/// <param name="name">Name des Teams</param>
 		/// <param name="logo">Name der Logodatei</param>
-		public Team(int id, string name, string logo)
-			: this(id, name, logo, null, null)
+		/// <param name="isExternLogo">Angabe ob Logo extern (=nicht im Wiki) hochgeladen ist</param>
+		public Team(int id, string name, string logo, bool isExternLogo)
+			: this(id, name, logo, isExternLogo, null, null)
 		{ }
 
 		/// <summary>
@@ -49,12 +50,16 @@ namespace Simocracy.SportSim
 		/// <param name="id">ID des Teams</param>
 		/// <param name="name">Name des Teams</param>
 		/// <param name="logo">Name der Logodatei</param>
+		/// <param name="isExternLogo">Angabe ob Logo extern (=nicht im Wiki) hochgeladen ist</param>
 		/// <param name="state">Staat des Teams</param>
 		/// <param name="stadium">Stadion des Teams</param>
-		public Team(int id, string name, string logo, State state, Stadium stadium)
+		public Team(int id, string name, string logo, bool isExternLogo, State state, Stadium stadium)
 			: base(id, name)
 		{
-			LogoFileName = logo;
+			if(isExternLogo)
+				ExternLogoFile = logo;
+			else
+				LogoFileName = logo;
 			State = state;
 			Stadium = stadium;
 		}
@@ -68,6 +73,13 @@ namespace Simocracy.SportSim
 		/// </summary>
 		[DataMember(Order = 100)]
 		public string LogoFileName
+		{ get; set; }
+
+		/// <summary>
+		/// Pfad zu externem Logo
+		/// </summary>
+		[DataMember(Order = 110)]
+		public string ExternLogoFile
 		{ get; set; }
 
 		/// <summary>
@@ -87,7 +99,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Staat-ID des Teams
 		/// </summary>
-		[DataMember(Order = 110)]
+		[DataMember(Order = 120)]
 		private int StateID
 		{
 			get { return _StateID; }
@@ -115,7 +127,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Stadion-ID des Teams
 		/// </summary>
-		[DataMember(Order = 120)]
+		[DataMember(Order = 130)]
 		private int StadiumID
 		{
 			get { return _StadiumID; }
