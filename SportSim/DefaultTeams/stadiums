@@ -15,4 +15,114 @@
 		<Capacity>16100</Capacity>
 		<StadiumType>AthleticStadium</StadiumType>
 	</Stadium>
+	<Stadium>
+		<ID>2</ID>
+		<Name>Royal Amin Stadium</Name>
+		<StateID>41</StateID>
+		<City>Mediris</City>
+		<Capacity>75000</Capacity>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>3</ID>
+		<Name>Estadio real de Gibraltar Sur</Name>
+		<StateID>41</StateID>
+		<City>Gibraltar Sur</City>
+		<Capacity>53928</Capacity>
+		<StadiumType>AthleticStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>4</ID>
+		<Name>Estadio de la Libertad de Sirte</Name>
+		<StateID>41</StateID>
+		<City>Sirte</City>
+		<Capacity>48938</Capacity>
+		<StadiumType>AthleticStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>5</ID>
+		<Name>Estadio Maghreb</Name>
+		<StateID>41</StateID>
+		<City>Tamanrasset</City>
+		<Capacity>93000</Capacity>
+		<StadiumType>AthleticStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>6</ID>
+		<Name>Estadio Municipalde Al-Djazair</Name>
+		<StateID>41</StateID>
+		<City>Al-Djazair</Name>
+		<Capacity>40000</Capacity>
+		<StadiumType>AthleticStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>7</ID>
+		<Name>Estadio Rafael José Tejero</Name>
+		<StateID>41</StateID>
+		<City>Casablanca</City>
+		<Capacity>84000</Capacity>
+		<StadiumType>AthleticStadium</StadiumType>
+	<Stadium>
+		<ID>8</ID>
+		<Name>Estadio real de Danilo Olivera</Name>
+		<StateID>41<StateID>
+		<City>Tripoli</City>
+		<Capacity>90000</Capacity>
+		<StadiumType>AthleticStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>9</ID>
+		<Name>Nuevo Estadio Insular de Yerba</Name>
+		<StateID>41</StateID>
+		<City>Yerba</City>
+		<Capacity>44000</Capacity>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>10</ID>
+		<Name>Stadio San Marino</Name>
+		<StateID>44</StateID>
+		<City>Citta de Lampedusa</City>
+		<Capacity>9000</Capacity>
+		<StadiumType>AthleticStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>11</ID>
+		<Name>James-Milner-Stadium</Name>
+		<StateID>42</StateID>
+		<City>Kolkata</City>
+		<Capacity>81241</Capacity>
+		<StadiumType>FootballStadium<StadiumType>
+	<Stadium>
+		<ID>12</ID>
+		<Name>Estadio Dannido</Name>
+		<StateID>42</StateID>
+		<City>Matara</City>
+		<Capacity>54150</Capacity>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>13</ID>
+		<Name>Diego Garcia Stadium</Name>
+		<StateID>42</StateID>
+		<City>Diego Garcia</City>
+		<Capacity>2000</Capacity>
+		<StadiumType>AthleticStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>14</ID>
+		<Name>Naval Stadium</Name>
+		<StateID>42</StateID>
+		<City>Port Brumiair</City>
+		<Capacity>34020</Capacity>
+		<StadiumType>MultiPurposeStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>15</ID>
+		<Name>Australian Stadium</Name>
+		<StateID>43</StateID>
+		<City>Waiego</City>
+		<Capacity>12000</Capacity>
+		<StadiumType>AthleticStadium</StadiumType>
+	</Stadium>
 </Stadiums>
