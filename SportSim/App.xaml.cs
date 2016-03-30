@@ -22,40 +22,28 @@ namespace Simocracy.SportSim
 		public static void Main()
 		{
 			// Load Settings
-			// not yet
-			// Settings.Load();
+			Settings.Load();
 
 
 			////var application = new App();
 			////application.InitializeComponent();
 			////application.Run();
 
-			var staat = new State(7, "Teststaat", "Testflagge", Continent.Europe);
-			var stadion = new Stadium(5, "teststadion", staat, "teststadt", 123456, EStadiumType.GenericStadium);
-			var team = new FootballTeam(12, "testteam", "testlogo", 2, 3, 4, 5, staat, stadion);
+			//var staat = new State(7, "Teststaat", "Testflagge", Continent.Europe);
+			//var stadion = new Stadium(5, "teststadion", staat, "teststadt", 123456, EStadiumType.GenericStadium);
+			//var team = new FootballTeam(12, "testteam", "testlogo", 2, 3, 4, 5, staat, stadion);
 
-			Settings.States = new StateCollection();
-			Settings.States.Add(staat);
-			staat = new State(6, "Teststaat2", "Testflagge2", Continent.America);
-			Settings.States.Add(staat);
+			//Settings.States = new StateCollection();
+			//Settings.States.Add(staat);
+			//staat = new State(6, "Teststaat2", "Testflagge2", Continent.America);
+			//Settings.States.Add(staat);
 
-			Settings.Stadiums = new StadiumCollection();
-			Settings.Stadiums.Add(stadion);
+			//Settings.Stadiums = new StadiumCollection();
+			//Settings.Stadiums.Add(stadion);
 
-			Settings.FootballTeams = new FootballTeamCollection();
-			Settings.FootballTeams.Add(team);
+			//Settings.FootballTeams = new FootballTeamCollection();
+			//Settings.FootballTeams.Add(team);
 
-			////using(FileStream writer = new FileStream("file.xml", FileMode.Create, FileAccess.Write))
-			////{
-			////	DataContractSerializer ser = new DataContractSerializer(typeof(FootballTeamCollection));
-			////	ser.WriteObject(writer, Settings.FootballTeams);
-			////}
-			////FootballTeamCollection loadObj;
-			////using(FileStream reader = new FileStream("file.xml", FileMode.Open, FileAccess.Read))
-			////{
-			////	DataContractSerializer ser = new DataContractSerializer(typeof(FootballTeamCollection));
-			////	loadObj = (FootballTeamCollection) ser.ReadObject(reader);
-			////}
 			//Settings.Save();
 
 

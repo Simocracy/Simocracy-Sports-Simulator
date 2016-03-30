@@ -37,6 +37,16 @@ namespace Simocracy.SportSim
 
 		#endregion
 
+		#region Members
+
+		private static string _ZipFileName = "data.zip";
+
+		private static string _FootballTeamsFileName = "footballTeams";
+		private static string _StatesFileName = "states";
+		private static string _StadiumsFileName = "stadiums";
+
+		#endregion
+
 		#region Saving Loading
 
 		/// <summary>
@@ -45,29 +55,52 @@ namespace Simocracy.SportSim
 		public static void Save()
 		{
 			var streams = new List<Tuple<string, MemoryStream>>();
+			DataContractSerializer ser;
 
 			// FootballTeams
-			var footballTeamStream = Tuple.Create("footballTeams", new MemoryStream());
-			DataContractSerializer ser = new DataContractSerializer(typeof(FootballTeamCollection));
+			var footballTeamStream = Tuple.Create(_FootballTeamsFileName, new MemoryStream());
+			ser = new DataContractSerializer(typeof(FootballTeamCollection));
 			ser.WriteObject(footballTeamStream.Item2, FootballTeams);
 			streams.Add(footballTeamStream);
 
 			// States
-			var statesStream = Tuple.Create("states", new MemoryStream());
+			var statesStream = Tuple.Create(_StatesFileName, new MemoryStream());
 			ser = new DataContractSerializer(typeof(StateCollection));
 			ser.WriteObject(statesStream.Item2, States);
 			streams.Add(statesStream);
 
 			// States
-			var stadiumsStream = Tuple.Create("states", new MemoryStream());
+			var stadiumsStream = Tuple.Create(_StadiumsFileName, new MemoryStream());
 			ser = new DataContractSerializer(typeof(StadiumCollection));
 			ser.WriteObject(stadiumsStream.Item2, Stadiums);
 			streams.Add(stadiumsStream);
 
 
 			// Save as Zip
-			ZipFileHelper.SaveZipFile("test.zip", streams.ToArray()); // TODO korrekter Dateiname
+			ZipFileHelper.SaveZipFile(_ZipFileName, streams.ToArray()); // TODO korrekter Dateiname
 
+		}
+
+		public static async void Load()
+		{
+			// Load Zip
+			var streams = await ZipFileHelper.LoadZipFile(_ZipFileName);
+			DataContractSerializer ser;
+
+			// States
+			streams[_StatesFileName].Position = 0;
+			ser = new DataContractSerializer(typeof(StateCollection));
+			States = (StateCollection) ser.ReadObject(streams[_StatesFileName]);
+
+			// Stadiums
+			streams[_StadiumsFileName].Position = 0;
+			ser = new DataContractSerializer(typeof(StadiumCollection));
+			Stadiums = (StadiumCollection) ser.ReadObject(streams[_StadiumsFileName]);
+
+			// Football Teams
+			streams[_FootballTeamsFileName].Position = 0;
+			ser = new DataContractSerializer(typeof(FootballTeamCollection));
+			FootballTeams = (FootballTeamCollection) ser.ReadObject(streams[_FootballTeamsFileName]);
 		}
 
 		#endregion

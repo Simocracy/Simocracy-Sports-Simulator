@@ -45,5 +45,26 @@ namespace Simocracy.SportSim
 			}
 		}
 
+		/// <summary>
+		/// Lädt die angegebene ZIP-Datei und gibt die Daten zurück.
+		/// </summary>
+		/// <param name="filename">Pfad der ZIP-Datei</param>
+		/// <returns>Daten der Zip-Datei.</returns>
+		public static async Task<Dictionary<string, MemoryStream>> LoadZipFile(string filename)
+		{
+			var files = new Dictionary<string, MemoryStream>();
+			using(var zipFile = ZipFile.Open(filename, ZipArchiveMode.Read))
+			{
+				for(int i = 0; i < zipFile.Entries.Count; i++)
+				{
+					var memStream = new MemoryStream();
+					await zipFile.Entries[i].Open().CopyToAsync(memStream);
+					files.Add(zipFile.Entries[i].Name, memStream);
+				}
+			}
+			
+			return files;
+		}
+
 	}
 }
