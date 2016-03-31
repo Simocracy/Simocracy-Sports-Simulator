@@ -4,7 +4,8 @@
 		<Name>Seattle Stadium</Name>
 		<StateID>0</StateID>
 		<City>Seattle</City>
-		<Capacity>82000</Capacity>
+		<CapacityInt>75000</CapacityInt>
+		<CapacityNat>83000</CapacityNat>
 		<StadiumType>FootballStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -12,15 +13,15 @@
 		<Name>Estádio Municipal</Name>
 		<StateID>1</StateID>
 		<City>San Icos</City>
-		<Capacity>16100</Capacity>
+		<CapacityInt>16100</CapacityInt>
 		<StadiumType>AthleticStadium</StadiumType>
-	</Stadium>
+</Stadium>
 	<Stadium>
 		<ID>2</ID>
 		<Name>Royal Amin Stadium</Name>
 		<StateID>41</StateID>
 		<City>Mediris</City>
-		<Capacity>75000</Capacity>
+		<CapacityInt>75000</CapacityInt>
 		<StadiumType>FootballStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -28,7 +29,7 @@
 		<Name>Estadio real de Gibraltar Sur</Name>
 		<StateID>41</StateID>
 		<City>Gibraltar Sur</City>
-		<Capacity>53928</Capacity>
+		<CapacityInt>53928</CapacityInt>
 		<StadiumType>AthleticStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -36,7 +37,7 @@
 		<Name>Estadio de la Libertad de Sirte</Name>
 		<StateID>41</StateID>
 		<City>Sirte</City>
-		<Capacity>48938</Capacity>
+		<CapacityInt>48938</CapacityInt>
 		<StadiumType>AthleticStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -44,7 +45,7 @@
 		<Name>Estadio Maghreb</Name>
 		<StateID>41</StateID>
 		<City>Tamanrasset</City>
-		<Capacity>93000</Capacity>
+		<CapacityInt>93000</CapacityInt>
 		<StadiumType>AthleticStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -52,7 +53,7 @@
 		<Name>Estadio Municipalde Al-Djazair</Name>
 		<StateID>41</StateID>
 		<City>Al-Djazair</City>
-		<Capacity>40000</Capacity>
+		<CapacityInt>40000</CapacityInt>
 		<StadiumType>AthleticStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -60,7 +61,7 @@
 		<Name>Estadio Rafael José Tejero</Name>
 		<StateID>41</StateID>
 		<City>Casablanca</City>
-		<Capacity>84000</Capacity>
+		<CapacityInt>84000</CapacityInt>
 		<StadiumType>AthleticStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -68,7 +69,7 @@
 		<Name>Estadio real de Danilo Olivera</Name>
 		<StateID>41</StateID>
 		<City>Tripoli</City>
-		<Capacity>90000</Capacity>
+		<CapacityInt>90000</CapacityInt>
 		<StadiumType>AthleticStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -76,7 +77,7 @@
 		<Name>Nuevo Estadio Insular de Yerba</Name>
 		<StateID>41</StateID>
 		<City>Yerba</City>
-		<Capacity>44000</Capacity>
+		<CapacityInt>44000</CapacityInt>
 		<StadiumType>FootballStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -84,7 +85,7 @@
 		<Name>Stadio San Marino</Name>
 		<StateID>44</StateID>
 		<City>Citta de Lampedusa</City>
-		<Capacity>9000</Capacity>
+		<CapacityInt>9000</CapacityInt>
 		<StadiumType>AthleticStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -92,7 +93,7 @@
 		<Name>James-Milner-Stadium</Name>
 		<StateID>42</StateID>
 		<City>Kolkata</City>
-		<Capacity>81241</Capacity>
+		<CapacityInt>81241</CapacityInt>
 		<StadiumType>FootballStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -100,7 +101,7 @@
 		<Name>Estadio Dannido</Name>
 		<StateID>42</StateID>
 		<City>Matara</City>
-		<Capacity>54150</Capacity>
+		<CapacityInt>54150</CapacityInt>
 		<StadiumType>FootballStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -108,7 +109,7 @@
 		<Name>Diego Garcia Stadium</Name>
 		<StateID>42</StateID>
 		<City>Diego Garcia</City>
-		<Capacity>2000</Capacity>
+		<CapacityInt>2000</CapacityInt>
 		<StadiumType>AthleticStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -116,7 +117,7 @@
 		<Name>Naval Stadium</Name>
 		<StateID>42</StateID>
 		<City>Port Brumiair</City>
-		<Capacity>34020</Capacity>
+		<CapacityInt>34020</CapacityInt>
 		<StadiumType>MultiPurposeStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -124,7 +125,255 @@
 		<Name>Australian Stadium</Name>
 		<StateID>43</StateID>
 		<City>Waiego</City>
-		<Capacity>12000</Capacity>
+		<CapacityInt>12000</CapacityInt>
 		<StadiumType>AthleticStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>16</ID>
+		<Name>Rocky Mountains Basin Stadium</Name>
+		<StateID>0</StateID>
+		<City>Boulder</City>
+		<CapacityInt>135.000</CapacityInt>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>17</ID>
+		<Name>Zentralstadion</Name>
+		<StateID>0</StateID>
+		<City>Groß-Staufen</City>
+		<CapacityInt>150000</CapacityInt>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>18</ID>
+		<Name>Rose Bowl Stadium</Name>
+		<StateID>0</StateID>
+		<City>Los Angeles</City>
+		<CapacityInt>92.542</CapacityInt>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>19</ID>
+		<Name>Olympiastadion</Name>
+		<StateID>0</StateID>
+		<City>Groß-Staufen</City>
+		<CapacityInt>85000</CapacityInt>
+		<StadiumType>AthleticStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>20</ID>
+		<Name>Giants Stadium</Name>
+		<StateID>0</StateID>
+		<City>New York</City>
+		<CapacityInt>80242</CapacityInt>
+		<CapacityNat>86458</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>21</ID>
+		<Name>Lambeau Field</Name>
+		<StateID>0</StateID>
+		<City>Green Bay</City>
+		<CapacityInt>79438</CapacityInt>
+		<CapacityNat>72515</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>22</ID>
+		<Name>Golden Gate Stadium</Name>
+		<StateID>0</StateID>
+		<City>San Rivero</City>
+		<CapacityInt>70207</CapacityInt>
+		<CapacityNat>72700</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>23</ID>
+		<Name>George Vancouver Stadium</Name>
+		<StateID>0</StateID>
+		<City>Vancouver</City>
+		<CapacityInt>70000</CapacityInt>
+		<CapacityNat>74000</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>24</ID>
+		<Name>Foxboro Stadium</Name>
+		<StateID>0</StateID>
+		<City>Boston</City>
+		<CapacityInt>68756</CapacityInt>
+		<CapacityNat>72348</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>25</ID>
+		<Name>Miami Beach Arena</Name>
+		<StateID>2</StateID>
+		<City>Miami</City>
+		<CapacityInt>67000</CapacityInt>
+		<CapacityNat>68910</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>26</ID>
+		<Name>Chicago Soccer Arena</Name>
+		<StateID>0</StateID>
+		<City>Chicago</City>
+		<CapacityInt>61500</CapacityInt>
+		<CapacityNat>69300</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>27</ID>
+		<Name>El Paso Sport Stadium</Name>
+		<StateID>0</StateID>
+		<City>El Paso</City>
+		<CapacityInt>60000</CapacityInt>
+		<CapacityNat>65000</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>28</ID>
+		<Name>RFK Stadium</Name>
+		<StateID>0</StateID>
+		<City></City>
+		<CapacityInt>56692</CapacityInt>
+		<CapacityNat>60000</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>29</ID>
+		<Name>Rice-Eccles Stadium</Name>
+		<StateID>0</StateID>
+		<City>Salt Lake City</City>
+		<CapacityInt>55000</CapacityInt>
+		<CapacityNat>59900</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>30</ID>
+		<Name>Mississippi Soccer Arena</Name>
+		<StateID>2</StateID>
+		<City>New Orleans</City>
+		<CapacityInt>53830</CapacityInt>
+		<CapacityNat>58680</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>31</ID>
+		<Name>Ronhof</Name>
+		<StateID>0</StateID>
+		<City>Neufürth</City>
+		<CapacityInt>50000</CapacityInt>
+		<CapacityNat>58741</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>32</ID>
+		<Name>Boise Stadium</Name>
+		<StateID>0</StateID>
+		<City>Boise</City>
+		<CapacityInt>49000</CapacityInt>
+		<CapacityNat>52000</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>33</ID>
+		<Name>Estadio de Tijuana</Name>
+		<StateID>0</StateID>
+		<City>Tijuana</City>
+		<CapacityInt>48694</CapacityInt>
+		<CapacityNat>60400</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>34</ID>
+		<Name>Frankfort Stadium</Name>
+		<StateID>0</StateID>
+		<City>Frankfort</City>
+		<CapacityInt>48060</CapacityInt>
+		<CapacityNat>52361</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>35</ID>
+		<Name>Marines Stadium</Name>
+		<StateID>0</StateID>
+		<City>Norfolk</City>
+		<CapacityInt>45000</CapacityInt>
+		<CapacityNat>53800</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>36</ID>
+		<Name>Fußballstadion München</Name>
+		<StateID>0</StateID>
+		<City>München</City>
+		<CapacityInt>34400</CapacityInt>
+		<CapacityNat>36800</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>37</ID>
+		<Name>Gold Mine Stadium</Name>
+		<StateID>0</StateID>
+		<City>Sacramento</City>
+		<CapacityInt>34200</CapacityInt>
+		<CapacityNat>36800</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>38</ID>
+		<Name>Städtisches Stadion</Name>
+		<StateID>0</StateID>
+		<City>Groß-Staufen</City>
+		<CapacityInt>33500</CapacityInt>
+		<CapacityNat>39325</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>39</ID>
+		<Name>St. Marys Stadium</Name>
+		<StateID>0</StateID>
+		<City>Groß-Staufen</City>
+		<CapacityInt>33000</CapacityInt>
+		<CapacityNat>45000</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>40</ID>
+		<Name>Redmond Village Stadium</Name>
+		<StateID>0</StateID>
+		<City>Redmond</City>
+		<CapacityInt>32600</CapacityInt>
+		<CapacityNat>34600</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>41</ID>
+		<Name>University Stadium</Name>
+		<StateID>0</StateID>
+		<City>Groß-Staufen</City>
+		<CapacityInt>32000</CapacityInt>
+		<CapacityNat>47200</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>42</ID>
+		<Name>Atlanta Stadium</Name>
+		<StateID>0</StateID>
+		<City>Atlanta</City>
+		<CapacityInt>31610</CapacityInt>
+		<CapacityNat>33580</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
+	</Stadium>
+	<Stadium>
+		<ID>43</ID>
+		<Name>City Stadium</Name>
+		<StateID>0</StateID>
+		<City>San Francisco</City>
+		<CapacityInt>31000</CapacityInt>
+		<CapacityNat>34812</CapacityNat>
+		<StadiumType>FootballStadium</StadiumType>
 	</Stadium>
 </Stadiums>
