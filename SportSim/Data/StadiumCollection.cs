@@ -31,11 +31,12 @@ namespace Simocracy.SportSim
 		/// <param name="name">Name des Stadions</param>
 		/// <param name="state">Staat in dem das Stadion liegt</param>
 		/// <param name="city">Stadt in dem das Stadion liegt</param>
-		/// <param name="capacity">Kapazität des Stadions</param>
+		/// <param name="capacityInt">Internationale Kapazität des Stadions</param>
+		/// <param name="capacityNat">Nationale Kapazität des Stadions</param>
 		/// <param name="stadiumType">Typ des Stadions</param>
-		public void Add(string name, State state, string city, int capacity, EStadiumType stadiumType)
+		public void Add(string name, State state, string city, int capacityInt, int capacityNat, EStadiumType stadiumType)
 		{
-			Add(new Stadium(GetNewID(), name, state, city, capacity, stadiumType));
+			Add(new Stadium(GetNewID(), name, state, city, capacityInt, capacityNat, stadiumType));
 		}
 
 		/// <summary>

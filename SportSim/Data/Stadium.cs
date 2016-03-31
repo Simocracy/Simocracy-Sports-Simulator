@@ -19,7 +19,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Leeres Stadion ohne Angaben
 		/// </summary>
-		private static Stadium _NoneStadium = new Stadium(-1, String.Empty, State.NoneState, String.Empty, 0, EStadiumType.GenericStadium);
+		private static Stadium _NoneStadium = new Stadium(-1, String.Empty, State.NoneState, String.Empty, 0, 0, EStadiumType.GenericStadium);
 
 		private State _State;
 		private int _StateID;
@@ -34,7 +34,7 @@ namespace Simocracy.SportSim
 		/// <param name="id">ID des Stadions</param>
 		/// <param name="name">Name des Stadions</param>
 		public Stadium(int id, string name)
-			: this(id, name, State.NoneState, String.Empty, 0, EStadiumType.GenericStadium)
+			: this(id, name, State.NoneState, String.Empty, 0, 0, EStadiumType.GenericStadium)
 		{ }
 
 		/// <summary>
@@ -44,14 +44,16 @@ namespace Simocracy.SportSim
 		/// <param name="name">Name des Stadions</param>
 		/// <param name="state">Staat in dem das Stadion liegt</param>
 		/// <param name="city">Stadt in dem das Stadion liegt</param>
-		/// <param name="capacity">Kapazität des Stadions</param>
+		/// <param name="capacityInt">Internationale Kapazität des Stadions</param>
+		/// <param name="capacityNat">Natinale Kapazität des Stadions</param>
 		/// <param name="stadiumType">Typ des Stadions</param>
-		public Stadium(int id, string name, State state, string city, int capacity, EStadiumType stadiumType)
+		public Stadium(int id, string name, State state, string city, int capacityInt, int capacityNat, EStadiumType stadiumType)
 			: base(id, name)
 		{
 			State = state;
 			City = city;
-			Capacity = capacity;
+			CapacityInt = capacityInt;
+			CapacityNat = capacityNat;
 			StadiumType = stadiumType;
 		}
 
@@ -105,15 +107,21 @@ namespace Simocracy.SportSim
 		public string City { get; private set; }
 
 		/// <summary>
-		/// Kapazität des Stadions
+		/// Internationale Kapazität des Stadions
 		/// </summary>
 		[DataMember(Order = 120)]
-		public int Capacity { get; private set; }
+		public int CapacityInt { get; private set; }
+
+		/// <summary>
+		/// Nationale Kapazität des Stadions
+		/// </summary>
+		[DataMember(Order = 130)]
+		public int CapacityNat { get; private set; }
 
 		/// <summary>
 		/// Typ des Stadions
 		/// </summary>
-		[DataMember(Order = 130)]
+		[DataMember(Order = 140)]
 		public EStadiumType StadiumType { get; private set; }
 
 		#endregion
