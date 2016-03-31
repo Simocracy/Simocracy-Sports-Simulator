@@ -12,6 +12,12 @@
 		<Continent>America</Continent>
 	</State>
 	<State>
+		<ID>2</ID>
+		<Name>Südburgundische Überseegebiete</Name>
+		<Flag>Flagge-RBS.png</Flag>
+		<Continent>America</Continent>
+	</State>
+	<State>
 		<ID>40</ID>
 		<Name>Papua</Name>
 		<Flag>FlaggePapua.png</Flag>
