@@ -106,7 +106,7 @@ namespace Simocracy.SportSim
 			set
 			{
 				_StateID = value;
-				_State = Settings.States.Get(value);
+				_State = (value != -1) ? Settings.States.Get(value) : State.NoneState;
 			}
 		}
 
@@ -134,7 +134,7 @@ namespace Simocracy.SportSim
 			set
 			{
 				_StadiumID = value;
-				_Stadium = Settings.Stadiums.Get(value);
+				_Stadium = (value != -1) ? Settings.Stadiums.Get(value) : Stadium.NoneStadium;
 			}
 		}
 

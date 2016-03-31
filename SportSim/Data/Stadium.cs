@@ -94,7 +94,7 @@ namespace Simocracy.SportSim
 			set
 			{
 				_StateID = value;
-				_State = Settings.States.Get(value);
+				_State = (value != -1) ? Settings.States.Get(value) : State.NoneState;
 			}
 		}
 
