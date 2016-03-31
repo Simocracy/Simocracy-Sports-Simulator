@@ -23,6 +23,8 @@ namespace Simocracy.SportSim
 
 		private State _State;
 		private int _StateID;
+		private int _CapacityInt;
+		private int _CapacityNat;
 
 		#endregion
 
@@ -36,6 +38,24 @@ namespace Simocracy.SportSim
 		public Stadium(int id, string name)
 			: this(id, name, State.NoneState, String.Empty, 0, 0, EStadiumType.GenericStadium)
 		{ }
+
+		/// <summary>
+		/// Erstellt ein neues Stadion
+		/// </summary>
+		/// <param name="id">ID des Stadions</param>
+		/// <param name="name">Name des Stadions</param>
+		/// <param name="state">Staat in dem das Stadion liegt</param>
+		/// <param name="city">Stadt in dem das Stadion liegt</param>
+		/// <param name="capacity">Kapazität des Stadions</param>
+		/// <param name="stadiumType">Typ des Stadions</param>
+		public Stadium(int id, string name, State state, string city, int capacity, EStadiumType stadiumType)
+			: base(id, name)
+		{
+			State = state;
+			City = city;
+			CapacityInt = capacity;
+			StadiumType = stadiumType;
+		}
 
 		/// <summary>
 		/// Erstellt ein neues Stadion
@@ -110,13 +130,21 @@ namespace Simocracy.SportSim
 		/// Internationale Kapazität des Stadions
 		/// </summary>
 		[DataMember(Order = 120)]
-		public int CapacityInt { get; private set; }
+		public int CapacityInt
+		{
+			get { return _CapacityInt; }
+			set { _CapacityInt = value; }
+		}
 
 		/// <summary>
 		/// Nationale Kapazität des Stadions
 		/// </summary>
 		[DataMember(Order = 130)]
-		public int CapacityNat { get; private set; }
+		public int CapacityNat
+		{
+			get { return (_CapacityNat == 0) ? _CapacityInt : _CapacityNat; }
+			set { _CapacityNat = value; }
+		}
 
 		/// <summary>
 		/// Typ des Stadions
