@@ -66,13 +66,13 @@ namespace Simocracy.SportSim
 		/// Flaggenkürzel des Staates
 		/// </summary>
 		[DataMember(Order = 100)]
-		public string Flag { get; private set; }
+		public string Flag { get; set; }
 
 		/// <summary>
 		/// Hauptkontinent des Staates
 		/// </summary>
 		[DataMember(Order = 110)]
-		public Continent Continent { get; private set; }
+		public Continent Continent { get; set; }
 
 		#endregion
 	}
