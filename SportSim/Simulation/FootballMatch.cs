@@ -16,7 +16,7 @@ namespace Simocracy.SportSim.Simulation
 
 		private int _Ball;
 		private int _Minutes;
-		private Random _Rand = new Random();
+		private Random _Rand;
 		private int _Start;
 
 		#endregion
@@ -62,6 +62,7 @@ namespace Simocracy.SportSim.Simulation
 			TeamA = teamA;
 			TeamB = teamB;
 			_Minutes = minutes;
+			Reset();
 		}
 
 		#endregion
@@ -145,6 +146,16 @@ namespace Simocracy.SportSim.Simulation
 						break;
 				}
 			}
+		}
+
+		public void Reset()
+		{
+			ResultA = 0;
+			ResultB = 0;
+			_Rand = new Random();
+			_Ball = 0;
+			_Minutes = 0;
+			_Start = 0;
 		}
 
 		private int Turn(int strength1, int strength2)
