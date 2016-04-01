@@ -18,6 +18,24 @@
 		<Continent>America</Continent>
 	</State>
 	<State>
+		<ID>3</ID>
+		<Name>Bolivarien</Name>
+		<Flag>FlaggeBOL.png</Flag>
+		<Continent>America</Continent>
+	</State>
+	<State>
+		<ID>4</ID>
+		<Name>Neulettland</Name>
+		<Flag>Flagge-Neulettland.png</Flag>
+		<Continent>America</Continent>
+	</State>
+	<State>
+		<ID>5</ID>
+		<Name>Oranienbund</Name>
+		<Flag>Flagge-Oranienbund.png</Flag>
+		<Continent>America</Continent>
+	</State>
+	<State>
 		<ID>40</ID>
 		<Name>Papua</Name>
 		<Flag>FlaggePapua.png</Flag>

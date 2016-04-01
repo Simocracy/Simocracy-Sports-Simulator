@@ -23,4 +23,52 @@
 		<MidfieldStrength>70</MidfieldStrength>
 		<ForwardStrength>73</ForwardStrength>
 	</FootballTeam>
+	<FootballTeam>
+		<ID>2</ID>
+		<Name>1. FC Groß-Staufen</Name>
+		<LogoFileName></LogoFileName>
+		<ExternLogoFile></ExternLogoFile>
+		<StateID>0</StateID>
+		<StadiumID>17</StadiumID>
+		<GoalkeeperStrength>81</GoalkeeperStrength>
+		<DefenseStrength>85</DefenseStrength>
+		<MidfieldStrength>81</MidfieldStrength>
+		<ForwardStrength>87</ForwardStrength>
+	</FootballTeam>
+	<FootballTeam>
+		<ID>3</ID>
+		<Name>Boyacà Quito</Name>
+		<LogoFileName></LogoFileName>
+		<ExternLogoFile></ExternLogoFile>
+		<StateID>3</StateID>
+		<StadiumID>-1</StadiumID>
+		<GoalkeeperStrength>78</GoalkeeperStrength>
+		<DefenseStrength>92</DefenseStrength>
+		<MidfieldStrength>81</MidfieldStrength>
+		<ForwardStrength>85</ForwardStrength>
+	</FootballTeam>
+	<FootballTeam>
+		<ID>4</ID>
+		<Name>Impact Montreal</Name>
+		<LogoFileName></LogoFileName>
+		<ExternLogoFile></ExternLogoFile>
+		<StateID>4</StateID>
+		<StadiumID>-1</StadiumID>
+		<GoalkeeperStrength>80</GoalkeeperStrength>
+		<DefenseStrength>76</DefenseStrength>
+		<MidfieldStrength>79</MidfieldStrength>
+		<ForwardStrength>77</ForwardStrength>
+	</FootballTeam>
+	<FootballTeam>
+		<ID>5</ID>
+		<Name>FC Nassau</Name>
+		<LogoFileName></LogoFileName>
+		<ExternLogoFile></ExternLogoFile>
+		<StateID>5</StateID>
+		<StadiumID>-1</StadiumID>
+		<GoalkeeperStrength>76</GoalkeeperStrength>
+		<DefenseStrength>75</DefenseStrength>
+		<MidfieldStrength>79</MidfieldStrength>
+		<ForwardStrength>72</ForwardStrength>
+	</FootballTeam>
 </FootballTeams>
