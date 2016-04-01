@@ -117,7 +117,7 @@
     <Compile Include="GUI\ManageStatesPage.xaml.cs">
       <DependentUpon>ManageStatesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Simulation\LeagueSimulation.cs" />
+    <Compile Include="Simulation\FootballLeague.cs" />
     <Compile Include="Simulation\FootballMatch.cs" />
     <Compile Include="Utilities\ZipFileHelper.cs" />
     <Page Include="App.xaml">

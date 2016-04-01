@@ -14,6 +14,33 @@ namespace Simocracy.SportSim
 	[CollectionDataContract(Name = "FootballTeams")]
 	public class FootballTeamCollection : ObservableCollection<FootballTeam>, ICollection<FootballTeam>
 	{
+		#region Constructors
+
+		/// <summary>
+		/// Erstellt eine neue, leere FootballTeamCollection
+		/// </summary>
+		public FootballTeamCollection()
+			: base()
+		{ }
+
+		/// <summary>
+		/// Erstellt eine neue FootballTeamCollection mit Teams
+		/// </summary>
+		/// <param name="teamCollection">IEnumerable mit Teams</param>
+		public FootballTeamCollection(IEnumerable<FootballTeam> teamCollection)
+			: base(teamCollection)
+		{ }
+
+		/// <summary>
+		/// Erstellt eine neue FootballTeamCollection mit Teams
+		/// </summary>
+		/// <param name="teamList">IEnumerable mit Teams</param>
+		public FootballTeamCollection(List<FootballTeam> teamList)
+			: base(teamList)
+		{ }
+
+		#endregion
+
 		#region Manage Teams
 
 		/// <summary>

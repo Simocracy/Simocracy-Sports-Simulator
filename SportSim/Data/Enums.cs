@@ -72,4 +72,26 @@ namespace Simocracy.SportSim
 		/// </summary>
 		Oceania = 5
 	}
+
+	/// <summary>
+	/// Rundenmodus einer Liga
+	/// </summary>
+	public enum LeagueRoundMode
+	{
+		/// <summary>
+		/// Einfache Runde, nur Hinspiele
+		/// </summary>
+		SingleRound = 0,
+
+		/// <summary>
+		/// Doppelrunde, Hin- und Rückspiele
+		/// </summary>
+		DoubleRound = 1,
+
+		/// <summary>
+		/// Vierfachrunde, Je 2 Hin- und Rückspiele
+		/// </summary>
+		QuadrupleRound = 2
+
+	}
 }

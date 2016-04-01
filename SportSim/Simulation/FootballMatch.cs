@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simocracy.SportSim.Simulation
+namespace Simocracy.SportSim
 {
 
 	/// <summary>
@@ -148,6 +148,9 @@ namespace Simocracy.SportSim.Simulation
 			}
 		}
 
+		/// <summary>
+		/// Setzt die Simulation und das Spielergebnis zurück
+		/// </summary>
 		public void Reset()
 		{
 			ResultA = 0;
