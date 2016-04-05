@@ -52,6 +52,9 @@ namespace Simocracy.SportSim
 
 		private bool ValidateInputs()
 		{
+			if(String.IsNullOrEmpty(CapacityNatTextBox.Text))
+				CapacityNatTextBox.Text = "0";
+			
 			return true; // TODO Implement
 		}
 
@@ -67,7 +70,15 @@ namespace Simocracy.SportSim
 
 		private void Create()
 		{
+			Settings.Stadiums.Create(
+				NameTextBox.Text,
+				(State) StateComboBox.SelectedItem,
+				CityTextBox.Text,
+				Convert.ToInt32(CapacityIntTextBox.Text),
+				Convert.ToInt32(CapacityNatTextBox.Text),
+				(EStadiumType) TypeComboBox.SelectedItem);
 
+			_IsInNewMode = false;
 		}
 
 		private void _DeleteButton_Click(object sender, RoutedEventArgs e)
