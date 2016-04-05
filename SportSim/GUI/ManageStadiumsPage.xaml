@@ -1,0 +1,69 @@
+﻿<Page x:Class="Simocracy.SportSim.ManageStadiumsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Simocracy.SportSim"
+      mc:Ignorable="d"
+      d:DesignHeight="400" d:DesignWidth="300"
+      Title="Stadienverwaltung">
+	
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Label Content="Stadien" FontSize="16" Grid.ColumnSpan="2" FontWeight="Bold" VerticalAlignment="Center" Margin="5,0" />
+		<ListBox x:Name="StadiumsList" Margin="5,0" Grid.Row="1" ItemsSource="{Binding Source={x:Static local:Settings.Stadiums}}" DisplayMemberPath="Name" SelectionChanged="StadiumsList_SelectionChanged">
+			<!--<ListBox.ItemTemplate>
+				<DataTemplate>
+					<ListBoxItem Content="{Binding Name}"/>
+				</DataTemplate>
+			</ListBox.ItemTemplate>-->
+		</ListBox>
+		<ScrollViewer Grid.Column="1" Grid.Row="1" Margin="5,0" ScrollViewer.VerticalScrollBarVisibility="Auto">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+				</Grid.RowDefinitions>
+				<Label Content="Name:" Grid.Row="0" />
+				<TextBox x:Name="NameTextBox" Grid.Row="1" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.Name, Mode=OneWay}" />
+				<Label Content="Staat:" Grid.Row="2" />
+				<ComboBox x:Name="StateComboBox" Grid.Row="3" ItemsSource="{Binding Source={x:Static local:Settings.States}}" DisplayMemberPath="Name" SelectedItem="{Binding ElementName=StadiumsList, Path=SelectedItem.State, Mode=OneWay}">
+					
+				</ComboBox>
+				<!--<TextBox x:Name="StateTextBox" Grid.Row="3" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.State.Name, Mode=OneWay}" />-->
+				<Label Content="Stadt:" Grid.Row="4" />
+				<TextBox x:Name="CityTextBox" Grid.Row="5" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.City, Mode=OneWay}" />
+				<Label Content="Typ:" Grid.Row="6" />
+				<ComboBox x:Name="TypeComboBox" Grid.Row="7" SelectedItem="{Binding ElementName=StadiumsList, Path=SelectedItem.StadiumType, Mode=OneWay}" />
+				<Label Content="Kapazität International:" Grid.Row="8" />
+				<TextBox x:Name="CapacityIntTextBox" Grid.Row="9" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityInt, Mode=OneWay}" />
+				<Label Content="Kapazität National:" Grid.Row="10" />
+				<TextBox x:Name="CapacityNatTextBox" Grid.Row="11" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityNat, Mode=OneWay}" />
+			</Grid>
+		</ScrollViewer>
+		<StackPanel Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+			<Button x:Name="_DeleteButton" Content="Löschen" Width="70" Height="21" Margin="0,0,0,-0.429" VerticalAlignment="Bottom" Click="_DeleteButton_Click"/>
+			<Button x:Name="_AddButton" Content="Neu" Width="70" Margin="5,0" Click="_AddButton_Click"/>
+			<Button x:Name="_SaveButton" Content="Speichern" Width="70" Click="_SaveButton_Click"/>
+		</StackPanel>
+
+	</Grid>
+</Page>

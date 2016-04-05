@@ -59,7 +59,7 @@ namespace Simocracy.SportSim
 		/// <param name="e"></param>
 		private void _MenuItemStadiums_Click(object sender, RoutedEventArgs e)
 		{
-
+			_MainFrame.Content = new ManageStadiumsPage();
 		}
 
 		/// <summary>

@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Simocracy.SportSim"
         mc:Ignorable="d"
-        Title="Simocracy Sport Simulator" Height="500" Width="525">
+        Title="Simocracy Sport Simulator"
+		Height="500" Width="525"
+		MinHeight="200" MinWidth="200">
 	<Grid >
 		<Grid.RowDefinitions>
 			<RowDefinition Height="20"/>
