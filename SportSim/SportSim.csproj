@@ -114,6 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\SSSDataObject.cs" />
+    <Compile Include="GUI\ManageStadiumsPage.xaml.cs">
+      <DependentUpon>ManageStadiumsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ManageStatesPage.xaml.cs">
       <DependentUpon>ManageStatesPage.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="GUI\ManageStadiumsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\ManageStatesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
