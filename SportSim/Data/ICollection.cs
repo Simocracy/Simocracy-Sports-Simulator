@@ -17,7 +17,7 @@ namespace Simocracy.SportSim
 		/// Erstellt ein neues Objekt und fügt es der Liste hinzu
 		/// </summary>
 		/// <param name="name">Name</param>
-		void Add(string name);
+		void Create(string name);
 
 		/// <summary>
 		/// Gibt das Objekt mit dem angegebenen Namen zurück

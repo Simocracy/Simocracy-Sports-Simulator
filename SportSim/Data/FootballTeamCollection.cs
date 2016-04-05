@@ -47,7 +47,7 @@ namespace Simocracy.SportSim
 		/// Erstellt ein neues Fußballteam und fügt es der Liste hinzu
 		/// </summary>
 		/// <param name="name">Name des Teams</param>
-		public void Add(string name)
+		public void Create(string name)
 		{
 			Add(new FootballTeam(GetNewID(), name));
 		}
@@ -60,7 +60,7 @@ namespace Simocracy.SportSim
 		/// <param name="defenseStrength">Stärke der Verteidigung</param>
 		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
 		/// <param name="forwardStrength">Stärke der Offensive</param>
-		public void Add(string name, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
+		public void Create(string name, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
 		{
 			Add(new FootballTeam(GetNewID(), name, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength));
 		}
@@ -75,7 +75,7 @@ namespace Simocracy.SportSim
 		/// <param name="defenseStrength">Stärke der Verteidigung</param>
 		/// <param name="midfieldStrength">Stärke des Mittelfelds</param>
 		/// <param name="forwardStrength">Stärke der Offensive</param>
-		public void Add(string name, string logo, bool isExternLogo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
+		public void Create(string name, string logo, bool isExternLogo, int goalkeeperStrength, int defenseStrength, int midfieldStrength, int forwardStrength)
 		{
 			Add(new FootballTeam(GetNewID(), name, logo, isExternLogo, goalkeeperStrength, defenseStrength, midfieldStrength, forwardStrength));
 		}

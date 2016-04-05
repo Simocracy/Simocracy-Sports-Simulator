@@ -20,7 +20,7 @@ namespace Simocracy.SportSim
 		/// Erstellt einen neuen Staat und fügt ihn der Liste hinzu
 		/// </summary>
 		/// <param name="name">Name des Staates</param>
-		public void Add(string name)
+		public void Create(string name)
 		{
 			Add(new State(GetNewID(), name));
 		}
@@ -31,7 +31,7 @@ namespace Simocracy.SportSim
 		/// <param name="name">Name des Staates</param>
 		/// <param name="flag">Flaggenkürzel des Staates</param>
 		/// <param name="continent">Kontinent des Staates</param>
-		public void Add(string name, string flag, Continent continent)
+		public void Create(string name, string flag, Continent continent)
 		{
 			Add(new State(GetNewID(), name, flag, continent));
 		}
