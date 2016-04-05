@@ -122,7 +122,7 @@
     </Compile>
     <Compile Include="Simulation\FootballLeague.cs" />
     <Compile Include="Simulation\FootballMatch.cs" />
-    <Compile Include="Utilities\EnumerationManager.cs" />
+    <Compile Include="Utilities\EnumerationExtension.cs" />
     <Compile Include="Utilities\TextInputToVisibilityConverter.cs" />
     <Compile Include="Utilities\ZipFileHelper.cs" />
     <Page Include="App.xaml">
