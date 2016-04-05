@@ -99,7 +99,7 @@ namespace Simocracy.SportSim
 		public State State
 		{
 			get { return _State; }
-			private set
+			set
 			{
 				_State = value;
 				_StateID = value.ID;
@@ -124,7 +124,7 @@ namespace Simocracy.SportSim
 		/// Stadt in dem das Stadion liegt
 		/// </summary>
 		[DataMember(Order = 110)]
-		public string City { get; private set; }
+		public string City { get; set; }
 
 		/// <summary>
 		/// Internationale Kapazität des Stadions
@@ -143,14 +143,14 @@ namespace Simocracy.SportSim
 		public int CapacityNat
 		{
 			get { return (_CapacityNat == 0) ? _CapacityInt : _CapacityNat; }
-			set { _CapacityNat = value; }
+			set { _CapacityNat = (value == _CapacityInt) ? 0 : value; }
 		}
 
 		/// <summary>
 		/// Typ des Stadions
 		/// </summary>
 		[DataMember(Order = 140)]
-		public EStadiumType StadiumType { get; private set; }
+		public EStadiumType StadiumType { get; set; }
 
 		#endregion
 	}
