@@ -11,12 +11,6 @@
 	<Page.Resources>
 		<BooleanToVisibilityConverter x:Key="CapacityNatOptionalConverter" />
 		<local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
-
-		<!--<ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type local:EnumerationManager}" x:Key="StadiumTypesEnum">
-			<ObjectDataProvider.MethodParameters>
-				<x:Type TypeName="local:EStadiumType" />
-			</ObjectDataProvider.MethodParameters>
-		</ObjectDataProvider>-->
 	</Page.Resources>
 
 	<Grid>
@@ -30,6 +24,7 @@
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
 		<Label Content="Stadien" FontSize="16" Grid.ColumnSpan="2" FontWeight="Bold" VerticalAlignment="Center" Margin="5,0" />
+		<Label Name="DebugIDLabel" Content="{Binding ElementName=StadiumsList, Path=SelectedItem.ID}" ContentStringFormat="ID: {0}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" Margin="5,0" />
 		<ListBox x:Name="StadiumsList" Margin="5,0" Grid.Row="1" ItemsSource="{Binding Source={x:Static local:Settings.Stadiums}}" DisplayMemberPath="Name" SelectionChanged="StadiumsList_SelectionChanged">
 		</ListBox>
 		<ScrollViewer Grid.Column="1" Grid.Row="1" Margin="5,0" ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -55,16 +50,10 @@
 				<Label Content="Stadt:" Grid.Row="4" />
 				<TextBox x:Name="CityTextBox" Grid.Row="5" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.City, Mode=OneWay}" />
 				<Label Content="Typ:" Grid.Row="6" />
-				<!--<ComboBox x:Name="TypeComboBox" Grid.Row="7" ItemsSource="{Binding Source={StaticResource StadiumTypesEnum}}" SelectedItem="{Binding ElementName=StadiumsList, Path=SelectedItem.StadiumType, Mode=OneWay}" />-->
-				<ComboBox x:Name="TypeComboBox" Grid.Row="7"
-    ItemsSource="{Binding Source={local:Enumeration {x:Type local:EStadiumType}}}" 
-    DisplayMemberPath="Description" 
-    SelectedValue="{Binding ElementName=StadiumsList, Path=SelectedItem.StadiumType, Mode=OneWay}"  
-    SelectedValuePath="Value"  />
+				<ComboBox x:Name="TypeComboBox" Grid.Row="7" ItemsSource="{Binding Source={local:Enumeration {x:Type local:EStadiumType}}}" DisplayMemberPath="Description" SelectedValue="{Binding ElementName=StadiumsList, Path=SelectedItem.StadiumType, Mode=OneWay}" SelectedValuePath="Value" />
 				<Label Content="Kapazität International:" Grid.Row="8" />
 				<TextBox x:Name="CapacityIntTextBox" Grid.Row="9" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityInt, Mode=OneWay}" />
 				<Label Content="Kapazität National:" Grid.Row="10" />
-				<!--<TextBox x:Name="CapacityNatTextBox" Grid.Row="11" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityNat, Mode=OneWay}"></TextBox>-->
 				<Grid Grid.Row="11">
 					<TextBlock Text="Optional" Foreground="LightGray" 
                        Visibility="{Binding ElementName=CapacityNatTextBox, Path=Text.IsEmpty, Converter={StaticResource CapacityNatOptionalConverter}}" Background="{Binding ElementName=CapacityIntTextBox, Path=Background}" Height="{Binding ElementName=CapacityNatTextBox, Path=Height}" />
