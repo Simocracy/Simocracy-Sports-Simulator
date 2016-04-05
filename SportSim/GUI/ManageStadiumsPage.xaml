@@ -8,11 +8,6 @@
       d:DesignHeight="400" d:DesignWidth="300"
       Title="Stadienverwaltung">
 
-	<Page.Resources>
-		<BooleanToVisibilityConverter x:Key="CapacityNatOptionalConverter" />
-		<local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
-	</Page.Resources>
-
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
@@ -23,11 +18,16 @@
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-		<Label Content="Stadien" FontSize="16" Grid.ColumnSpan="2" FontWeight="Bold" VerticalAlignment="Center" Margin="5,0" />
-		<Label Name="DebugIDLabel" Content="{Binding ElementName=StadiumsList, Path=SelectedItem.ID}" ContentStringFormat="ID: {0}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" Margin="5,0" />
-		<ListBox x:Name="StadiumsList" Margin="5,0" Grid.Row="1" ItemsSource="{Binding Source={x:Static local:Settings.Stadiums}}" DisplayMemberPath="Name" SelectionChanged="StadiumsList_SelectionChanged">
-		</ListBox>
-		<ScrollViewer Grid.Column="1" Grid.Row="1" Margin="5,0" ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+		<Label Content="Stadien" Grid.ColumnSpan="2" Grid.Row="0" Style="{DynamicResource ManageTitle}"/>
+
+		<Label Name="DebugIDLabel" Grid.Column="1" Grid.Row="0" Style="{DynamicResource ManageDebug}"
+			   Content="{Binding ElementName=StadiumsList, Path=SelectedItem.ID}"/>
+		<ListBox x:Name="StadiumsList" Grid.Row="1" Style="{DynamicResource MangeList}"
+				 ItemsSource="{Binding Source={x:Static local:Settings.Stadiums}}" DisplayMemberPath="Name"
+				 SelectionChanged="StadiumsList_SelectionChanged" />
+
+		<ScrollViewer Grid.Column="1" Grid.Row="1" Style="{DynamicResource ManageScroller}">
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition Height="auto"/>
@@ -54,18 +54,21 @@
 				<Label Content="Kapazität International:" Grid.Row="8" />
 				<TextBox x:Name="CapacityIntTextBox" Grid.Row="9" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityInt, Mode=OneWay}" />
 				<Label Content="Kapazität National:" Grid.Row="10" />
-				<Grid Grid.Row="11">
+				<!--<Grid Grid.Row="11">
 					<TextBlock Text="Optional" Foreground="LightGray" 
                        Visibility="{Binding ElementName=CapacityNatTextBox, Path=Text.IsEmpty, Converter={StaticResource CapacityNatOptionalConverter}}" Background="{Binding ElementName=CapacityIntTextBox, Path=Background}" Height="{Binding ElementName=CapacityNatTextBox, Path=Height}" />
 					<TextBox Name="CapacityNatTextBox" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityNat, Mode=OneWay}" Background="Transparent"/>
-				</Grid>
+				</Grid>-->
+				<TextBox x:Name="CapacityNatTextBox" Grid.Row="11" Template="{DynamicResource OptionalInput}" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityNat, Mode=OneWay}" />
 			</Grid>
 		</ScrollViewer>
-		<StackPanel Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
-			<Button x:Name="_DeleteButton" Content="Löschen" Width="70" Height="21" Margin="0,0,0,-0.429" VerticalAlignment="Bottom" Click="_DeleteButton_Click"/>
+		
+		<!--<StackPanel Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+			<Button x:Name="_DeleteButton" Content="Löschen" Width="70" Height="21" Margin="0" VerticalAlignment="Bottom" Click="_DeleteButton_Click"/>
 			<Button x:Name="_AddButton" Content="Neu" Width="70" Margin="5,0" Click="_AddButton_Click"/>
 			<Button x:Name="_SaveButton" Content="Speichern" Width="70" Click="_SaveButton_Click"/>
-		</StackPanel>
+		</StackPanel>-->
+		<Button x:Name="ManageButtons" Template="{DynamicResource ManageButtons}" Grid.ColumnSpan="2" Grid.Row="3" Click="ManageButtons_Click" />
 
 	</Grid>
 </Page>

@@ -153,21 +153,21 @@ namespace Simocracy.SportSim
 			control.BorderThickness = new Thickness(2);
 		}
 
-		private void _DeleteButton_Click(object sender, RoutedEventArgs e)
+		private void DeleteButton_Click(object sender, RoutedEventArgs e)
 		{
 			Settings.Stadiums.Remove(SelectedStadium);
 			MarkAllValid();
 			_IsInNewMode = false;
 		}
 
-		private void _AddButton_Click(object sender, RoutedEventArgs e)
+		private void AddButton_Click(object sender, RoutedEventArgs e)
 		{
 			ClearInputs();
 			NameTextBox.Focus();
 			_IsInNewMode = true;
 		}
 
-		private void _SaveButton_Click(object sender, RoutedEventArgs e)
+		private void SaveButton_Click(object sender, RoutedEventArgs e)
 		{
 			if(ValidateInputs())
 			{
@@ -184,6 +184,22 @@ namespace Simocracy.SportSim
 		{
 			MarkAllValid();
 			_IsInNewMode = false;
+		}
+
+		private void ManageButtons_Click(object sender, RoutedEventArgs e)
+		{
+			switch(((Button) sender).Name)
+			{
+				case "NewButton":
+					System.Diagnostics.Debug.WriteLine("NewButton");
+					break;
+				case "DeleteButton":
+					System.Diagnostics.Debug.WriteLine("DeleteButton");
+					break;
+				case "SaveButton":
+					System.Diagnostics.Debug.WriteLine("SaveButton");
+					break;
+			}
 		}
 	}
 }

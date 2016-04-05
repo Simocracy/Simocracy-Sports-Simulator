@@ -52,6 +52,7 @@ namespace Simocracy.SportSim
 
 			// Open MainWindow
 			App app = new App();
+			app.InitializeComponent();
 			MainWindow window = new MainWindow();
 			app.Run(window);
 		}

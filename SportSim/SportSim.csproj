@@ -138,6 +138,10 @@
     <Compile Include="Data\State.cs" />
     <Compile Include="Data\StateCollection.cs" />
     <Compile Include="Data\Team.cs" />
+    <Page Include="GUI\GuiResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
