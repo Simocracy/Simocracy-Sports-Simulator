@@ -26,7 +26,7 @@ namespace Simocracy.SportSim
 			InitializeComponent();
 			_IsInNewMode = false;
 
-			TypeComboBox.ItemsSource = Enum.GetValues(typeof(EStadiumType)).Cast<EStadiumType>().Where(e => e != EStadiumType.UnknownStadium && e != EStadiumType.GenericStadium);
+			TypeComboBox.ItemsSource = Enum.GetValues(typeof(EStadiumType)).Cast<EStadiumType>().Where(e => e != EStadiumType.GenericStadium);
 		}
 
 		private bool _IsInNewMode;
@@ -54,8 +54,8 @@ namespace Simocracy.SportSim
 		{
 			if(String.IsNullOrEmpty(CapacityNatTextBox.Text))
 				CapacityNatTextBox.Text = "0";
-			
-			return true; // TODO Implement
+
+			return false;
 		}
 
 		private void SaveData()
@@ -79,6 +79,11 @@ namespace Simocracy.SportSim
 				(EStadiumType) TypeComboBox.SelectedItem);
 
 			_IsInNewMode = false;
+		}
+
+		private void MarkWrongInput()
+		{
+
 		}
 
 		private void _DeleteButton_Click(object sender, RoutedEventArgs e)

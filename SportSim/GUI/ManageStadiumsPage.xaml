@@ -7,7 +7,12 @@
       mc:Ignorable="d"
       d:DesignHeight="400" d:DesignWidth="300"
       Title="Stadienverwaltung">
-	
+
+	<Page.Resources>
+		<BooleanToVisibilityConverter x:Key="CapacityNatOptionalConverter" />
+		<local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
+	</Page.Resources>
+
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
@@ -20,11 +25,6 @@
 		</Grid.RowDefinitions>
 		<Label Content="Stadien" FontSize="16" Grid.ColumnSpan="2" FontWeight="Bold" VerticalAlignment="Center" Margin="5,0" />
 		<ListBox x:Name="StadiumsList" Margin="5,0" Grid.Row="1" ItemsSource="{Binding Source={x:Static local:Settings.Stadiums}}" DisplayMemberPath="Name" SelectionChanged="StadiumsList_SelectionChanged">
-			<!--<ListBox.ItemTemplate>
-				<DataTemplate>
-					<ListBoxItem Content="{Binding Name}"/>
-				</DataTemplate>
-			</ListBox.ItemTemplate>-->
 		</ListBox>
 		<ScrollViewer Grid.Column="1" Grid.Row="1" Margin="5,0" ScrollViewer.VerticalScrollBarVisibility="Auto">
 			<Grid>
@@ -56,7 +56,12 @@
 				<Label Content="Kapazität International:" Grid.Row="8" />
 				<TextBox x:Name="CapacityIntTextBox" Grid.Row="9" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityInt, Mode=OneWay}" />
 				<Label Content="Kapazität National:" Grid.Row="10" />
-				<TextBox x:Name="CapacityNatTextBox" Grid.Row="11" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityNat, Mode=OneWay}" />
+				<!--<TextBox x:Name="CapacityNatTextBox" Grid.Row="11" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityNat, Mode=OneWay}"></TextBox>-->
+				<Grid Grid.Row="11">
+					<TextBlock Text="Optional" Foreground="LightGray" 
+                       Visibility="{Binding ElementName=CapacityNatTextBox, Path=Text.IsEmpty, Converter={StaticResource CapacityNatOptionalConverter}}" Background="{Binding ElementName=CapacityIntTextBox, Path=Background}" Height="{Binding ElementName=CapacityNatTextBox, Path=Height}" />
+					<TextBox Name="CapacityNatTextBox" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityNat, Mode=OneWay}" Background="Transparent"/>
+				</Grid>
 			</Grid>
 		</ScrollViewer>
 		<StackPanel Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
