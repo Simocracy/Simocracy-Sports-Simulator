@@ -133,7 +133,7 @@
 		<Name>Rocky Mountains Basin Stadium</Name>
 		<StateID>0</StateID>
 		<City>Boulder</City>
-		<CapacityInt>135.000</CapacityInt>
+		<CapacityInt>135000</CapacityInt>
 		<StadiumType>FootballStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -141,7 +141,7 @@
 		<Name>Zentralstadion</Name>
 		<StateID>0</StateID>
 		<City>Groß-Staufen</City>
-		<CapacityInt>150000</CapacityInt>
+		<CapacityInt>105000</CapacityInt>
 		<StadiumType>FootballStadium</StadiumType>
 	</Stadium>
 	<Stadium>
@@ -149,7 +149,7 @@
 		<Name>Rose Bowl Stadium</Name>
 		<StateID>0</StateID>
 		<City>Los Angeles</City>
-		<CapacityInt>92.542</CapacityInt>
+		<CapacityInt>92542</CapacityInt>
 		<StadiumType>FootballStadium</StadiumType>
 	</Stadium>
 	<Stadium>
