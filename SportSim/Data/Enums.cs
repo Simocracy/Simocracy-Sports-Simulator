@@ -15,6 +15,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Generisches Stadion für Platzhalter
 		/// </summary>
+		[Browsable(false)]
 		[Description("Generisches Stadion")]
 		GenericStadium = 0,
 

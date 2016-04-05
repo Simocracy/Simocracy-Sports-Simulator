@@ -25,8 +25,6 @@ namespace Simocracy.SportSim
 		{
 			InitializeComponent();
 			_IsInNewMode = false;
-
-			TypeComboBox.ItemsSource = Enum.GetValues(typeof(EStadiumType)).Cast<EStadiumType>().Where(e => e != EStadiumType.GenericStadium);
 		}
 
 		private bool _IsInNewMode;
@@ -46,7 +44,7 @@ namespace Simocracy.SportSim
 			CityTextBox.Clear();
 			CapacityIntTextBox.Clear();
 			CapacityNatTextBox.Clear();
-			StateComboBox.SelectedItem = null;
+			StateComboBox.SelectedValue = null;
 			TypeComboBox.SelectedItem = null;
 		}
 
@@ -55,7 +53,7 @@ namespace Simocracy.SportSim
 			if(String.IsNullOrEmpty(CapacityNatTextBox.Text))
 				CapacityNatTextBox.Text = "0";
 
-			return false;
+			return true;
 		}
 
 		private void SaveData()
@@ -65,7 +63,7 @@ namespace Simocracy.SportSim
 			SelectedStadium.CapacityInt = Int32.Parse(CapacityIntTextBox.Text);
 			SelectedStadium.CapacityNat = Int32.Parse(CapacityNatTextBox.Text);
 			SelectedStadium.State = (State) StateComboBox.SelectedItem;
-			SelectedStadium.StadiumType = (EStadiumType) TypeComboBox.SelectedItem;
+			SelectedStadium.StadiumType = (EStadiumType) Enum.Parse(typeof(EStadiumType), TypeComboBox.SelectedValue.ToString());
 		}
 
 		private void Create()
@@ -76,7 +74,7 @@ namespace Simocracy.SportSim
 				CityTextBox.Text,
 				Convert.ToInt32(CapacityIntTextBox.Text),
 				Convert.ToInt32(CapacityNatTextBox.Text),
-				(EStadiumType) TypeComboBox.SelectedItem);
+				(EStadiumType) Enum.Parse(typeof(EStadiumType), TypeComboBox.SelectedValue.ToString()));
 
 			_IsInNewMode = false;
 		}
