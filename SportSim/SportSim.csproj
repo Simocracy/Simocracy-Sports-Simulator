@@ -114,6 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\SSSDataObject.cs" />
+    <Compile Include="GUI\FootballLeaguePage.xaml.cs">
+      <DependentUpon>FootballLeaguePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ManageFootballTeamsPage.xaml.cs">
       <DependentUpon>ManageFootballTeamsPage.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,7 @@
     <Compile Include="Simulation\FootballLeague.cs" />
     <Compile Include="Simulation\FootballMatch.cs" />
     <Compile Include="Utilities\EnumerationExtension.cs" />
+    <Compile Include="Utilities\ExpanderToBooleanConverter.cs" />
     <Compile Include="Utilities\TextInputToVisibilityConverter.cs" />
     <Compile Include="Utilities\WikiHelper.cs" />
     <Compile Include="Utilities\ZipFileHelper.cs" />
@@ -142,6 +146,10 @@
     <Compile Include="Data\State.cs" />
     <Compile Include="Data\StateCollection.cs" />
     <Compile Include="Data\Team.cs" />
+    <Page Include="GUI\FootballLeaguePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\GuiResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

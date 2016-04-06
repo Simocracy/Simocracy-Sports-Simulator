@@ -18,14 +18,14 @@ namespace Simocracy.SportSim
 		/// Erstellt eine neue Fußballliga
 		/// </summary>
 		public FootballLeague()
-			: this(LeagueRoundMode.DoubleRound)
+			: this(ELeagueRoundMode.DoubleRound)
 		{ }
 
 		/// <summary>
 		/// Erstellt eine neue Fußballliga
 		/// </summary>
 		/// <param name="roundMode">Rundenmodus der Liga</param>
-		public FootballLeague(LeagueRoundMode roundMode)
+		public FootballLeague(ELeagueRoundMode roundMode)
 			: this(roundMode, new FootballTeamCollection())
 		{ }
 
@@ -34,7 +34,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="teams">Teams der Liga</param>
 		public FootballLeague(params FootballTeam[] teams)
-			: this(LeagueRoundMode.DoubleRound, new FootballTeamCollection(teams))
+			: this(ELeagueRoundMode.DoubleRound, new FootballTeamCollection(teams))
 		{ }
 
 		/// <summary>
@@ -42,7 +42,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="teams">Teams der Liga</param>
 		public FootballLeague(List<FootballTeam> teams)
-			: this(LeagueRoundMode.DoubleRound, new FootballTeamCollection(teams))
+			: this(ELeagueRoundMode.DoubleRound, new FootballTeamCollection(teams))
 		{ }
 
 		/// <summary>
@@ -50,7 +50,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="teams">Teams der Liga</param>
 		public FootballLeague(FootballTeamCollection teams)
-			: this(LeagueRoundMode.DoubleRound, teams)
+			: this(ELeagueRoundMode.DoubleRound, teams)
 		{ }
 
 		/// <summary>
@@ -58,7 +58,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="roundMode">Rundenmodus der Liga</param>
 		/// <param name="teams">Teams der Liga</param>
-		public FootballLeague(LeagueRoundMode roundMode, params FootballTeam[] teams)
+		public FootballLeague(ELeagueRoundMode roundMode, params FootballTeam[] teams)
 			: this(roundMode, new FootballTeamCollection(teams))
 		{ }
 
@@ -67,7 +67,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="roundMode">Rundenmodus der Liga</param>
 		/// <param name="teams">Teams der Liga</param>
-		public FootballLeague(LeagueRoundMode roundMode, List<FootballTeam> teams)
+		public FootballLeague(ELeagueRoundMode roundMode, List<FootballTeam> teams)
 			: this(roundMode, new FootballTeamCollection(teams))
 		{ }
 
@@ -76,7 +76,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="roundMode">Rundenmodus der Liga</param>
 		/// <param name="teams">Teams der Liga</param>
-		public FootballLeague(LeagueRoundMode roundMode, FootballTeamCollection teams)
+		public FootballLeague(ELeagueRoundMode roundMode, FootballTeamCollection teams)
 		{
 			RoundMode = roundMode;
 			Teams = teams;
@@ -102,7 +102,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Rundenmodus
 		/// </summary>
-		public LeagueRoundMode RoundMode { get; set; }
+		public ELeagueRoundMode RoundMode { get; set; }
 
 		/// <summary>
 		/// Anzahl der Teams
@@ -120,7 +120,7 @@ namespace Simocracy.SportSim
 		{
 			switch(RoundMode)
 			{
-				case LeagueRoundMode.SingleRound:
+				case ELeagueRoundMode.SingleRound:
 					int id = 0;
 					for(int i = 0; i < Teams.Count; i++)
 					{
@@ -131,7 +131,7 @@ namespace Simocracy.SportSim
 					}
 					break;
 
-				case LeagueRoundMode.DoubleRound:
+				case ELeagueRoundMode.DoubleRound:
 					foreach(var teamA in Teams)
 					{
 						foreach(var teamB in Teams)
@@ -142,7 +142,7 @@ namespace Simocracy.SportSim
 					}
 					break;
 
-				case LeagueRoundMode.QuadrupleRound:
+				case ELeagueRoundMode.QuadrupleRound:
 					foreach(var teamA in Teams)
 					{
 						foreach(var teamB in Teams)

@@ -10,9 +10,15 @@
 		<Setter Property="SmallChange" Value="1" />
 		<Setter Property="LargeChange" Value="10" />
 	</Style>
+	<Style x:Key="Title" TargetType="Label">
+		<Setter Property="FontSize" Value="16" />
+		<Setter Property="FontWeight" Value="Bold" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="Margin" Value="5,0" />
+	</Style>
 
 
-	<!-- Manager Page Styles and Templates -->
+	<!-- Manager Pages -->
 	
 	<BooleanToVisibilityConverter x:Key="CapacityNatOptionalConverter" />
 	<local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
@@ -75,5 +81,10 @@
 		<Setter Property="BorderBrush" Value="Red" />
 		<Setter Property="BorderThickness" Value="2" />
 	</Style>
+	
+	
+	<!-- Football Simulation Pages -->
+
+	<local:ExpanderToBooleanConverter x:Key="ExpanderToBooleanConverter" />
 
 </ResourceDictionary>

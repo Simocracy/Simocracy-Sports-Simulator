@@ -79,7 +79,7 @@ namespace Simocracy.SportSim
 		/// <param name="e"></param>
 		private void MenuItemFootballLeague_Click(object sender, RoutedEventArgs e)
 		{
-
+			MainFrame.Content = new FootballLeaguePage();
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void MenuItemFootballOwn_Click(object sender, RoutedEventArgs e)
+		private void MenuItemFootballOwnSystem_Click(object sender, RoutedEventArgs e)
 		{
 
 		}
