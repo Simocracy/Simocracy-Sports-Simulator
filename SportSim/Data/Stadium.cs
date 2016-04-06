@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Simocracy.SportSim
 	/// Klasse für Stadien bzw. Sporthallen, in denen Teams ihre Matches austragen
 	/// </summary>
 	[DataContract]
+	[DebuggerDisplay("Stadium, Name={Name}, State={State}")]
 	public class Stadium : SSSDataObject
 	{
 		#region Members

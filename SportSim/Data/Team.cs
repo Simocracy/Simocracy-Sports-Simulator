@@ -11,6 +11,7 @@ namespace Simocracy.SportSim
 	/// Abstrakte Basisklasse für Teams
 	/// </summary>
 	[DataContract]
+	[DebuggerDisplay("Team, Name={Name}, State={State}, Stadium={Stadium}")]
 	public abstract class Team : SSSDataObject
 	{
 		#region Members

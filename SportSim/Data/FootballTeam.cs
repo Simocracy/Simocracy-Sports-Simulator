@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Simocracy.SportSim
 	/// Fussballteam
 	/// </summary>
 	[DataContract]
+	[DebuggerDisplay("FootballTeam, Name={Name}, State={State}, Stadium={Stadium}")]
 	public class FootballTeam : Team
 	{
 

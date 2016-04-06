@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -11,6 +12,7 @@ namespace Simocracy.SportSim
 	/// Klasse für Staaten in Simocracy
 	/// </summary>
 	[DataContract]
+	[DebuggerDisplay("State, Name={Name}")]
 	public class State : SSSDataObject
 	{
 		#region Members
