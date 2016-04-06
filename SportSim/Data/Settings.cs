@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -50,36 +51,74 @@ namespace Simocracy.SportSim
 		#region Saving Loading
 
 		/// <summary>
-		/// Speichert die aktuellen Einstellungen
+		/// Speichert die aktuellen Einstellungen im XML-Format
 		/// </summary>
 		public static void Save()
 		{
 			try
 			{
-				var streams = new List<Tuple<string, MemoryStream>>();
+				var streams = new Dictionary<string, MemoryStream>();
 				DataContractSerializer ser;
 
-				// FootballTeams
-				var footballTeamStream = Tuple.Create(_FootballTeamsFileName, new MemoryStream());
-				ser = new DataContractSerializer(typeof(FootballTeamCollection));
-				ser.WriteObject(footballTeamStream.Item2, FootballTeams);
-				streams.Add(footballTeamStream);
-
 				// States
-				var statesStream = Tuple.Create(_StatesFileName, new MemoryStream());
+				var statesStream = new MemoryStream();
 				ser = new DataContractSerializer(typeof(StateCollection));
-				ser.WriteObject(statesStream.Item2, States);
-				streams.Add(statesStream);
+				ser.WriteObject(statesStream, States);
+				streams.Add(_StatesFileName, statesStream);
 
-				// States
-				var stadiumsStream = Tuple.Create(_StadiumsFileName, new MemoryStream());
+				// Stadiums
+				var stadiumsStream = new MemoryStream();
 				ser = new DataContractSerializer(typeof(StadiumCollection));
-				ser.WriteObject(stadiumsStream.Item2, Stadiums);
-				streams.Add(stadiumsStream);
+				ser.WriteObject(stadiumsStream, Stadiums);
+				streams.Add(_StadiumsFileName, stadiumsStream);
+
+				// FootballTeams
+				var footbalTeamStream = new MemoryStream();
+				ser = new DataContractSerializer(typeof(FootballTeamCollection));
+				ser.WriteObject(footbalTeamStream, FootballTeams);
+				streams.Add(_FootballTeamsFileName, footbalTeamStream);
 
 
 				// Save as Zip
-				ZipFileHelper.SaveZipFile(_ZipFileName, streams.ToArray());
+				ZipFileHelper.SaveZipFile(_ZipFileName, streams);
+			}
+			catch(Exception e)
+			{
+				System.Diagnostics.Debug.WriteLine(e);
+			}
+		}
+
+		/// <summary>
+		/// Speichert die aktuellen Einstellungen im JSON-Format
+		/// </summary>
+		public static void SaveJson()
+		{
+			try
+			{
+				var streams = new Dictionary<string, MemoryStream>();
+				DataContractJsonSerializer ser;
+
+				// States
+				var statesStream = new MemoryStream();
+				ser = new DataContractJsonSerializer(typeof(StateCollection));
+				ser.WriteObject(statesStream, States);
+				streams.Add(_StatesFileName, statesStream);
+
+				// Stadiums
+				var stadiumsStream = new MemoryStream();
+				ser = new DataContractJsonSerializer(typeof(StadiumCollection));
+				ser.WriteObject(stadiumsStream, Stadiums);
+				streams.Add(_StadiumsFileName, stadiumsStream);
+
+				// FootballTeams
+				var footbalTeamStream = new MemoryStream();
+				ser = new DataContractJsonSerializer(typeof(FootballTeamCollection));
+				ser.WriteObject(footbalTeamStream, FootballTeams);
+				streams.Add(_FootballTeamsFileName, footbalTeamStream);
+
+
+				// Save as Zip
+				ZipFileHelper.SaveZipFile(_ZipFileName, streams);
 			}
 			catch(Exception e)
 			{

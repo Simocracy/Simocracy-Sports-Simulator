@@ -20,7 +20,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="filename">Zielpfad der ZIP-Datei</param>
 		/// <param name="files">Zu speichernde Streams. Tupelformat: Dateiname, Stream</param>
-		public static async void SaveZipFile(string filename, Tuple<string, MemoryStream>[] files)
+		public static async void SaveZipFile(string filename, Dictionary<string, MemoryStream> files)
 		{
 			using(var outStream = new FileStream(filename, FileMode.Create))
 			{
@@ -30,13 +30,13 @@ namespace Simocracy.SportSim
 					foreach(var file in files)
 					{
 						// Falls kein Name angegeben Dateiname mit Index
-						var streamName = !String.IsNullOrWhiteSpace(file.Item1) ? file.Item1 : "file" + fileIndex;
+						var streamName = !String.IsNullOrWhiteSpace(file.Key) ? file.Key : "file" + fileIndex;
 
 						var fileInZip = zipFile.CreateEntry(streamName, CompressionLevel.Optimal);
 						using(var entryStream = fileInZip.Open())
 						{
-							file.Item2.Position = 0;
-							await file.Item2.CopyToAsync(entryStream);
+							file.Value.Position = 0;
+							await file.Value.CopyToAsync(entryStream);
 						}
 
 						fileIndex++;
