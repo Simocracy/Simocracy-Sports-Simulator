@@ -14,6 +14,33 @@ namespace Simocracy.SportSim
 	[CollectionDataContract(Name = "Stadiums")]
 	public class StadiumCollection : ObservableCollection<Stadium>, ICollection<Stadium>
 	{
+		#region Constructors
+
+		/// <summary>
+		/// Erstellt eine neue, leere StadiumCollection
+		/// </summary>
+		public StadiumCollection()
+			: base()
+		{ }
+
+		/// <summary>
+		/// Erstellt eine neue StadiumCollection mit Stadien
+		/// </summary>
+		/// <param name="stadiumCollection">IEnumerable mit Teams</param>
+		public StadiumCollection(IEnumerable<Stadium> stadiumCollection)
+			: base(stadiumCollection)
+		{ }
+
+		/// <summary>
+		/// Erstellt eine neue StadiumCollection mit Stadien
+		/// </summary>
+		/// <param name="stadiumList">IEnumerable mit Teams</param>
+		public StadiumCollection(List<Stadium> stadiumList)
+			: base(stadiumList)
+		{ }
+
+		#endregion
+
 		#region Manage Stadiums
 
 		/// <summary>

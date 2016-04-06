@@ -14,6 +14,33 @@ namespace Simocracy.SportSim
 	[CollectionDataContract(Name = "States")]
 	public class StateCollection : ObservableCollection<State>, ICollection<State>
 	{
+		#region Constructors
+
+		/// <summary>
+		/// Erstellt eine neue, leere StateCollection
+		/// </summary>
+		public StateCollection()
+			: base()
+		{ }
+
+		/// <summary>
+		/// Erstellt eine neue StateCollection mit Staaten
+		/// </summary>
+		/// <param name="stateCollection">IEnumerable mit Teams</param>
+		public StateCollection(IEnumerable<State> stateCollection)
+			: base(stateCollection)
+		{ }
+
+		/// <summary>
+		/// Erstellt eine neue StateCollection mit Staaten
+		/// </summary>
+		/// <param name="stateList">IEnumerable mit Teams</param>
+		public StateCollection(List<State> stateList)
+			: base(stateList)
+		{ }
+
+		#endregion
+
 		#region Manage States
 
 		/// <summary>
