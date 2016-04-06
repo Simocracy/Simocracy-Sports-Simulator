@@ -14,8 +14,7 @@ namespace Simocracy.SportSim
 	public abstract class Team : SSSDataObject
 	{
 		#region Members
-
-		private string _LogoFileName;
+		
 		private State _State;
 		private int _StateID;
 		private Stadium _Stadium;

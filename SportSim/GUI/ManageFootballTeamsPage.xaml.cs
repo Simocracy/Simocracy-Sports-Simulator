@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,12 +19,16 @@ namespace Simocracy.SportSim
 	/// <summary>
 	/// Interaktionslogik für ManageFootballTeamsPage.xaml
 	/// </summary>
-	public partial class ManageFootballTeamsPage : Page
+	public partial class ManageFootballTeamsPage : Page, INotifyPropertyChanged
 	{
 		public ManageFootballTeamsPage()
 		{
 			InitializeComponent();
+			DataContext = this;
+
 			_IsInNewMode = false;
+			StadiumComboBoxList = new StadiumCollection(Settings.Stadiums);
+			StadiumComboBoxList.Insert(0, Stadium.NoneStadium);
 
 #if !DEBUG
 			DebugIDLabel.Visibility = Visibility.Collapsed;
@@ -31,16 +36,20 @@ namespace Simocracy.SportSim
 		}
 
 		private bool _IsInNewMode;
+		private FootballTeam _SelectedFootballTeam;
+
+		public StadiumCollection StadiumComboBoxList { get; set; }
+
 
 		public FootballTeam SelectedFootballTeam
 		{
-			get { return FootballTeamsList.SelectedItem as FootballTeam; }
+			get { return _SelectedFootballTeam; }
 			set
 			{
-				FootballTeamsList.SelectedItem = value;
-				FootballTeamsList.ScrollIntoView(value);
+				_SelectedFootballTeam = value;
 				MarkAllValid();
 				_IsInNewMode = false;
+				Notify("SelectedFootballTeam");
 			}
 		}
 
@@ -155,6 +164,13 @@ namespace Simocracy.SportSim
 		{
 			MarkAllValid();
 			_IsInNewMode = false;
+		}
+
+		// Observer
+		public event PropertyChangedEventHandler PropertyChanged;
+		protected void Notify(String propertyName)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

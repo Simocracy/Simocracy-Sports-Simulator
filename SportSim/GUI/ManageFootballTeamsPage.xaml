@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Simocracy.SportSim"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="500" d:DesignWidth="300"
       Title="Fußballteamverwaltung">
 
@@ -22,10 +22,10 @@
 		<Label Content="Fußballteams" Grid.ColumnSpan="2" Grid.Row="0" Style="{DynamicResource ManageTitle}"/>
 
 		<Label Name="DebugIDLabel" Grid.Column="1" Grid.Row="0" Style="{DynamicResource ManageDebug}"
-			   Content="{Binding ElementName=FootballTeamsList, Path=SelectedItem.ID}"/>
+			   Content="{Binding SelectedFootballTeam.ID}"/>
 		<ListBox x:Name="FootballTeamsList" Grid.Row="1" Style="{DynamicResource MangeList}"
 				 ItemsSource="{Binding Source={x:Static local:Settings.FootballTeams}}" DisplayMemberPath="Name"
-				 SelectionChanged="FootballTeamsList_SelectionChanged" />
+				 SelectionChanged="FootballTeamsList_SelectionChanged" SelectedItem="{Binding SelectedFootballTeam, Mode=TwoWay}" />
 
 		<ScrollViewer Grid.Column="1" Grid.Row="1" Style="{DynamicResource ManageScroller}">
 			<Grid>
@@ -48,21 +48,21 @@
 					<RowDefinition Height="auto"/>
 				</Grid.RowDefinitions>
 				<Label Content="Name:" Grid.Row="0" />
-				<TextBox x:Name="NameTextBox" Grid.Row="1" Text="{Binding ElementName=FootballTeamsList, Path=SelectedItem.Name, Mode=OneWay}" />
+				<TextBox x:Name="NameTextBox" Grid.Row="1" Text="{Binding SelectedFootballTeam.Name}" />
 				<Label Content="Logo:" Grid.Row="2" />
-				<TextBox x:Name="LogoTextBox" Grid.Row="3" Template="{DynamicResource OptionalInput}" Text="{Binding ElementName=FootballTeamsList, Path=SelectedItem.LogoFileName, Mode=OneWay}" />
+				<TextBox x:Name="LogoTextBox" Grid.Row="3" Template="{DynamicResource OptionalInput}" Text="{Binding SelectedFootballTeam.Logo}" />
 				<Label Content="Staat:" Grid.Row="4" />
-				<ComboBox x:Name="StateComboBox" Grid.Row="5" ItemsSource="{Binding Source={x:Static local:Settings.States}}" DisplayMemberPath="Name" SelectedItem="{Binding ElementName=FootballTeamsList, Path=SelectedItem.State, Mode=OneWay}" />
+				<ComboBox x:Name="StateComboBox" Grid.Row="5" ItemsSource="{Binding Source={x:Static local:Settings.States}}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedFootballTeam.State}" />
 				<Label Content="Stadion:" Grid.Row="6" />
-				<ComboBox x:Name="StadiumComboBox" Grid.Row="7" ItemsSource="{Binding Source={x:Static local:Settings.Stadiums}}" DisplayMemberPath="Name" SelectedItem="{Binding ElementName=FootballTeamsList, Path=SelectedItem.Stadium, Mode=OneWay}" />
+				<ComboBox x:Name="StadiumComboBox" Grid.Row="7" ItemsSource="{Binding StadiumComboBoxList}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedFootballTeam.Stadium}" />
 				<Label Content="Stärke Torhüter:" Grid.Row="8" />
-				<Slider x:Name="GoalkeeperSlider" Grid.Row="9" Template="{DynamicResource ManageSlider}" Value="{Binding ElementName=FootballTeamsList, Path=SelectedItem.GoalkeeperStrength, Mode=OneWay}" Maximum="100" />
+				<Slider x:Name="GoalkeeperSlider" Grid.Row="9" Template="{DynamicResource ManageSlider}" Value="{Binding SelectedFootballTeam.GoalkeeperStrength}" Maximum="100" />
 				<Label Content="Stärke Verteidigung:" Grid.Row="10" />
-				<Slider x:Name="DefenseSlider" Grid.Row="11" Template="{DynamicResource ManageSlider}" Value="{Binding ElementName=FootballTeamsList, Path=SelectedItem.DefenseStrength, Mode=OneWay}" Maximum="100" />
+				<Slider x:Name="DefenseSlider" Grid.Row="11" Template="{DynamicResource ManageSlider}" Value="{Binding SelectedFootballTeam.DefenseStrength}" Maximum="100" />
 				<Label Content="Stärke Mittelfeld:" Grid.Row="12" />
-				<Slider x:Name="MidfieldSlider" Grid.Row="13" Template="{DynamicResource ManageSlider}" Value="{Binding ElementName=FootballTeamsList, Path=SelectedItem.MidfieldStrength, Mode=OneWay}" Maximum="100" />
+				<Slider x:Name="MidfieldSlider" Grid.Row="13" Template="{DynamicResource ManageSlider}" Value="{Binding SelectedFootballTeam.MidfieldStrength}" Maximum="100" />
 				<Label Content="Stärke Angriff:" Grid.Row="14" />
-				<Slider x:Name="ForwardSlider" Grid.Row="15" Template="{DynamicResource ManageSlider}" Value="{Binding ElementName=FootballTeamsList, Path=SelectedItem.ForwardStrength, Mode=OneWay}" Maximum="100" />
+				<Slider x:Name="ForwardSlider" Grid.Row="15" Template="{DynamicResource ManageSlider}" Value="{Binding SelectedFootballTeam.ForwardStrength}" Maximum="100" />
 			</Grid>
 		</ScrollViewer>
 
