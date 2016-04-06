@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +19,13 @@ namespace Simocracy.SportSim
 	/// <summary>
 	/// Interaktionslogik für ManageStatesPage.xaml
 	/// </summary>
-	public partial class ManageStatesPage : Page
+	public partial class ManageStatesPage : Page, INotifyPropertyChanged
 	{
 		public ManageStatesPage()
 		{
 			InitializeComponent();
+			DataContext = this;
+
 			_IsInNewMode = false;
 
 #if !DEBUG
@@ -31,16 +34,17 @@ namespace Simocracy.SportSim
 		}
 
 		private bool _IsInNewMode;
+		private State _SelectedState;
 
 		public State SelectedState
 		{
-			get { return StatesList.SelectedItem as State; }
+			get { return _SelectedState; }
 			set
 			{
-				StatesList.SelectedItem = value;
-				StatesList.ScrollIntoView(value);
+				_SelectedState = value;
 				MarkAllValid();
 				_IsInNewMode = false;
+				Notify("SelectedState");
 			}
 		}
 
@@ -141,6 +145,13 @@ namespace Simocracy.SportSim
 		{
 			MarkAllValid();
 			_IsInNewMode = false;
+		}
+
+		// Observer
+		public event PropertyChangedEventHandler PropertyChanged;
+		protected void Notify(String propertyName)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

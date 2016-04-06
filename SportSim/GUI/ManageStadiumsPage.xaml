@@ -22,10 +22,10 @@
 		<Label Content="Stadien" Grid.ColumnSpan="2" Grid.Row="0" Style="{DynamicResource ManageTitle}"/>
 
 		<Label Name="DebugIDLabel" Grid.Column="1" Grid.Row="0" Style="{DynamicResource ManageDebug}"
-			   Content="{Binding ElementName=StadiumsList, Path=SelectedItem.ID}"/>
+			   Content="{Binding SelectedStadium.ID}"/>
 		<ListBox x:Name="StadiumsList" Grid.Row="1" Style="{DynamicResource MangeList}"
 				 ItemsSource="{Binding Source={x:Static local:Settings.Stadiums}}" DisplayMemberPath="Name"
-				 SelectionChanged="StadiumsList_SelectionChanged" />
+				 SelectionChanged="StadiumsList_SelectionChanged" SelectedItem="{Binding SelectedStadium}" />
 
 		<ScrollViewer Grid.Column="1" Grid.Row="1" Style="{DynamicResource ManageScroller}">
 			<Grid>
@@ -44,22 +44,22 @@
 					<RowDefinition Height="auto"/>
 				</Grid.RowDefinitions>
 				<Label Content="Name:" Grid.Row="0" />
-				<TextBox x:Name="NameTextBox" Grid.Row="1" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.Name, Mode=OneWay}" />
+				<TextBox x:Name="NameTextBox" Grid.Row="1" Text="{Binding SelectedStadium.Name}" />
 				<Label Content="Staat:" Grid.Row="2" />
-				<ComboBox x:Name="StateComboBox" Grid.Row="3" ItemsSource="{Binding Source={x:Static local:Settings.States}}" DisplayMemberPath="Name" SelectedItem="{Binding ElementName=StadiumsList, Path=SelectedItem.State, Mode=OneWay}" />
+				<ComboBox x:Name="StateComboBox" Grid.Row="3" ItemsSource="{Binding Source={x:Static local:Settings.States}}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedStadium.State}" />
 				<Label Content="Stadt:" Grid.Row="4" />
-				<TextBox x:Name="CityTextBox" Grid.Row="5" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.City, Mode=OneWay}" />
+				<TextBox x:Name="CityTextBox" Grid.Row="5" Text="{Binding SelectedStadium.City}" />
 				<Label Content="Typ:" Grid.Row="6" />
-				<ComboBox x:Name="TypeComboBox" Grid.Row="7" ItemsSource="{Binding Source={local:Enumeration {x:Type local:EStadiumType}}}" DisplayMemberPath="Description" SelectedValue="{Binding ElementName=StadiumsList, Path=SelectedItem.StadiumType, Mode=OneWay}" SelectedValuePath="Value" />
+				<ComboBox x:Name="TypeComboBox" Grid.Row="7" ItemsSource="{Binding Source={local:Enumeration {x:Type local:EStadiumType}}}" DisplayMemberPath="Description" SelectedValue="{Binding SelectedStadium.StadiumType}" SelectedValuePath="Value" />
 				<Label Content="Kapazität International:" Grid.Row="8" />
-				<TextBox x:Name="CapacityIntTextBox" Grid.Row="9" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityInt, Mode=OneWay}" />
+				<TextBox x:Name="CapacityIntTextBox" Grid.Row="9" Text="{Binding SelectedStadium.CapacityInt}" />
 				<Label Content="Kapazität National:" Grid.Row="10" />
 				<!--<Grid Grid.Row="11">
 					<TextBlock Text="Optional" Foreground="LightGray" 
                        Visibility="{Binding ElementName=CapacityNatTextBox, Path=Text.IsEmpty, Converter={StaticResource CapacityNatOptionalConverter}}" Background="{Binding ElementName=CapacityIntTextBox, Path=Background}" Height="{Binding ElementName=CapacityNatTextBox, Path=Height}" />
 					<TextBox Name="CapacityNatTextBox" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityNat, Mode=OneWay}" Background="Transparent"/>
 				</Grid>-->
-				<TextBox x:Name="CapacityNatTextBox" Grid.Row="11" Template="{DynamicResource OptionalInput}" Text="{Binding ElementName=StadiumsList, Path=SelectedItem.CapacityNat, Mode=OneWay}" />
+				<TextBox x:Name="CapacityNatTextBox" Grid.Row="11" Template="{DynamicResource OptionalInput}" Text="{Binding SelectedStadium.CapacityNat}" />
 			</Grid>
 		</ScrollViewer>
 		

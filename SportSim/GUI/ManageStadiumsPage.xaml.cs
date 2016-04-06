@@ -19,11 +19,13 @@ namespace Simocracy.SportSim
 	/// <summary>
 	/// Interaktionslogik für ManageStadiumsPage.xaml
 	/// </summary>
-	public partial class ManageStadiumsPage : Page
+	public partial class ManageStadiumsPage : Page, INotifyPropertyChanged
 	{
 		public ManageStadiumsPage()
 		{
 			InitializeComponent();
+			DataContext = this;
+
 			_IsInNewMode = false;
 
 #if !DEBUG
@@ -32,15 +34,17 @@ namespace Simocracy.SportSim
 		}
 
 		private bool _IsInNewMode;
+		private Stadium _SelectedStadium;
 
 		public Stadium SelectedStadium
 		{
-			get { return StadiumsList.SelectedItem as Stadium; }
-			set {
-				StadiumsList.SelectedItem = value;
-				StadiumsList.ScrollIntoView(value);
+			get { return _SelectedStadium; }
+			set
+			{
+				_SelectedStadium = value;
 				MarkAllValid();
 				_IsInNewMode = false;
+				Notify("SelectedStadium");
 			}
 		}
 
@@ -172,6 +176,13 @@ namespace Simocracy.SportSim
 		{
 			MarkAllValid();
 			_IsInNewMode = false;
+		}
+
+		// Observer
+		public event PropertyChangedEventHandler PropertyChanged;
+		protected void Notify(String propertyName)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }
