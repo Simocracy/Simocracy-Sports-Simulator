@@ -25,11 +25,18 @@
 		<Setter Property="Margin" Value="5,0" />
 		<Setter Property="VerticalScrollBarVisibility" Value="Auto" />
 	</Style>
-	<Style x:Key="InvalidInput" TargetType="Control">
-		<Setter Property="BorderBrush" Value="Red" />
-		<Setter Property="BorderThickness" Value="2" />
+	<Style x:Key="ManageButtons" TargetType="StackPanel">
+		<Setter Property="Orientation" Value="Horizontal" />
+		<Setter Property="HorizontalAlignment" Value="Right" />
+		<Setter Property="Margin" Value="2.5, 5" />
+		<Style.Resources>
+			<Style TargetType="Button">
+				<Setter Property="Width" Value="70" />
+				<Setter Property="Margin" Value="2.5, 0" />
+			</Style>
+		</Style.Resources>
 	</Style>
-	
+
 	<ControlTemplate x:Key="OptionalInput" TargetType="TextBox">
 		<Grid>
 			<TextBlock Text="Optional" Foreground="LightGray" 
@@ -37,12 +44,12 @@
 			<TextBox Name="InputBox" Text="{TemplateBinding Text}" Background="Transparent"/>
 		</Grid>
 	</ControlTemplate>
-	<ControlTemplate x:Key="ManageButtons" TargetType="Button">
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
-			<Button x:Name="DeleteButton" Content="Löschen" Width="70" />
-			<Button x:Name="NewButton" Content="Neu" Width="70" Margin="5,0" />
-			<Button x:Name="SaveButton" Content="Speichern" Width="70" />
-		</StackPanel>
-	</ControlTemplate>
+	
+	<!-- Invalid Inputs -->
+
+	<Style x:Key="InvalidInput" TargetType="Control">
+		<Setter Property="BorderBrush" Value="Red" />
+		<Setter Property="BorderThickness" Value="2" />
+	</Style>
 
 </ResourceDictionary>

@@ -26,17 +26,12 @@ namespace Simocracy.SportSim
 			InitializeComponent();
 			_IsInNewMode = false;
 
-			_DefaultTextBoxBorderBrush = NameTextBox.BorderBrush;
-			_DefaultComboBoxBorderBrush = StateComboBox.BorderBrush;
-
 #if !DEBUG
 			DebugIDLabel.Visibility = Visibility.Collapsed;
 #endif
 		}
 
 		private bool _IsInNewMode;
-		private Brush _DefaultTextBoxBorderBrush;
-		private Brush _DefaultComboBoxBorderBrush;
 
 		public Stadium SelectedStadium
 		{
@@ -133,24 +128,17 @@ namespace Simocracy.SportSim
 
 		private void MarkAllValid()
 		{
-			NameTextBox.BorderBrush = _DefaultTextBoxBorderBrush;
-			NameTextBox.BorderThickness = new Thickness(1);
-			CityTextBox.BorderBrush = _DefaultTextBoxBorderBrush;
-			CityTextBox.BorderThickness = new Thickness(1);
-			CapacityIntTextBox.BorderBrush = _DefaultTextBoxBorderBrush;
-			CapacityIntTextBox.BorderThickness = new Thickness(1);
-			CapacityNatTextBox.BorderBrush = _DefaultTextBoxBorderBrush;
-			CapacityNatTextBox.BorderThickness = new Thickness(1);
-			StateComboBox.BorderBrush = _DefaultComboBoxBorderBrush;
-			StateComboBox.BorderThickness = new Thickness(1);
-			TypeComboBox.BorderBrush = _DefaultComboBoxBorderBrush;
-			TypeComboBox.BorderThickness = new Thickness(1);
+			NameTextBox.ClearValue(Control.StyleProperty);
+			CityTextBox.ClearValue(Control.StyleProperty);
+			CapacityIntTextBox.ClearValue(Control.StyleProperty);
+			CapacityNatTextBox.ClearValue(Control.StyleProperty);
+			StateComboBox.ClearValue(Control.StyleProperty);
+			TypeComboBox.ClearValue(Control.StyleProperty);
 		}
 
 		private void MarkWrongInput(Control control)
 		{
-			control.BorderBrush = Brushes.Red;
-			control.BorderThickness = new Thickness(2);
+			control.Style = Application.Current.TryFindResource("InvalidInput") as Style;
 		}
 
 		private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -160,7 +148,7 @@ namespace Simocracy.SportSim
 			_IsInNewMode = false;
 		}
 
-		private void AddButton_Click(object sender, RoutedEventArgs e)
+		private void NewButton_Click(object sender, RoutedEventArgs e)
 		{
 			ClearInputs();
 			NameTextBox.Focus();
@@ -184,22 +172,6 @@ namespace Simocracy.SportSim
 		{
 			MarkAllValid();
 			_IsInNewMode = false;
-		}
-
-		private void ManageButtons_Click(object sender, RoutedEventArgs e)
-		{
-			switch(((Button) sender).Name)
-			{
-				case "NewButton":
-					System.Diagnostics.Debug.WriteLine("NewButton");
-					break;
-				case "DeleteButton":
-					System.Diagnostics.Debug.WriteLine("DeleteButton");
-					break;
-				case "SaveButton":
-					System.Diagnostics.Debug.WriteLine("SaveButton");
-					break;
-			}
 		}
 	}
 }
