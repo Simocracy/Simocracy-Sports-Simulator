@@ -8,12 +8,8 @@
         Title="Simocracy Sport Simulator"
 		Height="500" Width="525"
 		MinHeight="200" MinWidth="200">
-	<Grid >
-		<Grid.RowDefinitions>
-			<RowDefinition Height="20"/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-		<StackPanel Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}">
+	<DockPanel>
+		<StackPanel DockPanel.Dock="Top" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}">
 			<Menu x:Name="MenuSettings" >
 				<MenuItem Header="Verwaltung">
 					<MenuItem Name="MenuItemSave" Header="Daten speichern" Click="MenuItemSave_Click"/>
@@ -31,6 +27,6 @@
 				</MenuItem>
 			</Menu>
 		</StackPanel>
-		<Frame x:Name="MainFrame" Grid.Row="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
-	</Grid>
+		<Frame x:Name="MainFrame" DockPanel.Dock="Bottom" NavigationUIVisibility="Hidden" />
+	</DockPanel>
 </Window>
