@@ -26,39 +26,44 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Initiiert ein neues Fußballspiel
 		/// </summary>
+		/// <param name="matchID">ID des Spiels</param>
 		/// <param name="idA">ID des Heimteams</param>
 		/// <param name="idB">ID des Auswärtsteams</param>
-		public FootballMatch(int idA, int idB)
-			: this(Settings.FootballTeams.Get(idA), Settings.FootballTeams.Get(idB))
+		public FootballMatch(int matchID, int idA, int idB)
+			: this(matchID, Settings.FootballTeams.Get(idA), Settings.FootballTeams.Get(idB))
 		{ }
 
 		/// <summary>
 		/// Initiiert ein neues Fußballspiel
 		/// </summary>
+		/// <param name="matchID">ID des Spiels</param>
 		/// <param name="idA">ID des Heimteams</param>
 		/// <param name="idB">ID des Auswärtsteams</param>
 		/// <param name="minutes">Anzahl Spielminuten</param>
-		public FootballMatch(int idA, int idB, int minutes)
-			: this(Settings.FootballTeams.Get(idA), Settings.FootballTeams.Get(idB), minutes)
+		public FootballMatch(int matchID, int idA, int idB, int minutes)
+			: this(matchID, Settings.FootballTeams.Get(idA), Settings.FootballTeams.Get(idB), minutes)
 		{ }
 
 		/// <summary>
 		/// Initiiert ein neues Fußballspiel
 		/// </summary>
+		/// <param name="matchID">ID des Spiels</param>
 		/// <param name="teamA">Heimteam</param>
 		/// <param name="teamB">Auswärtsteam</param>
-		public FootballMatch(FootballTeam teamA, FootballTeam teamB)
-			: this(teamA, teamB, 90)
+		public FootballMatch(int matchID, FootballTeam teamA, FootballTeam teamB)
+			: this(matchID, teamA, teamB, 90)
 		{ }
 
 		/// <summary>
 		/// Initiiert ein neues Fußballspiel
 		/// </summary>
+		/// <param name="matchID">ID des Spiels</param>
 		/// <param name="teamA">Heimteam</param>
 		/// <param name="teamB">Auswärtsteam</param>
 		/// <param name="minutes">Anzahl Spielminuten</param>
-		public FootballMatch(FootballTeam teamA, FootballTeam teamB, int minutes)
+		public FootballMatch(int matchID, FootballTeam teamA, FootballTeam teamB, int minutes)
 		{
+			ID = matchID;
 			TeamA = teamA;
 			TeamB = teamB;
 			_Minutes = minutes;
@@ -68,6 +73,11 @@ namespace Simocracy.SportSim
 		#endregion
 
 		#region Public Properties
+
+		/// <summary>
+		/// Nummer des Spiels
+		/// </summary>
+		public int ID { get; private set; }
 
 		/// <summary>
 		/// Heimteam
