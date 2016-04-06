@@ -68,13 +68,13 @@
 					<Slider x:Name="Slider" Grid.Column="0" Maximum="100" LargeChange="10" SmallChange="1" IsSnapToTickEnabled="True" Value="{Binding ElementName=FootballTeamsList, Path=SelectedItem.GoalkeeperStrength, Mode=OneWay}" HorizontalAlignment="Stretch" />
 					<TextBox x:Name="Box" Grid.Column="1" DockPanel.Dock="Right" Margin="5,0,0,0" Text="{Binding ElementName=Slider, Path=Value, Mode=TwoWay}" VerticalAlignment="Center" />
 				</Grid>-->
-				<Slider x:Name="GoalkeeperSlider" Grid.Row="11" Template="{DynamicResource ManageSlider}" Value="{Binding ElementName=FootballTeamsList, Path=SelectedItem.GoalkeeperStrength, Mode=OneWay}" />
+				<Slider x:Name="GoalkeeperSlider" Grid.Row="11" Template="{DynamicResource ManageSlider}" Value="{Binding ElementName=FootballTeamsList, Path=SelectedItem.GoalkeeperStrength, Mode=OneWay}" Maximum="100" />
 				<Label Content="Stärke Verteidigung:" Grid.Row="12" />
-				<Slider x:Name="DefenseSlider" Grid.Row="13" Template="{DynamicResource ManageSlider}" Value="{Binding ElementName=FootballTeamsList, Path=SelectedItem.DefenseStrength, Mode=OneWay}" />
+				<Slider x:Name="DefenseSlider" Grid.Row="13" Template="{DynamicResource ManageSlider}" Value="{Binding ElementName=FootballTeamsList, Path=SelectedItem.DefenseStrength, Mode=OneWay}" Maximum="100" />
 				<Label Content="Stärke Mittelfeld:" Grid.Row="14" />
-				<Slider x:Name="MidfieldSlider" Grid.Row="15" Template="{DynamicResource ManageSlider}" Value="{Binding ElementName=FootballTeamsList, Path=SelectedItem.MidfieldStrength, Mode=OneWay}" />
+				<Slider x:Name="MidfieldSlider" Grid.Row="15" Template="{DynamicResource ManageSlider}" Value="{Binding ElementName=FootballTeamsList, Path=SelectedItem.MidfieldStrength, Mode=OneWay}" Maximum="100" />
 				<Label Content="Stärke Angriff:" Grid.Row="16" />
-				<Slider x:Name="ForwardSlider" Grid.Row="17" Template="{DynamicResource ManageSlider}" Value="{Binding ElementName=FootballTeamsList, Path=SelectedItem.ForwardStrength, Mode=OneWay}" />
+				<Slider x:Name="ForwardSlider" Grid.Row="17" Template="{DynamicResource ManageSlider}" Value="{Binding ElementName=FootballTeamsList, Path=SelectedItem.ForwardStrength, Mode=OneWay}" Maximum="100" />
 			</Grid>
 		</ScrollViewer>
 

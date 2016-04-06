@@ -103,8 +103,8 @@ namespace Simocracy.SportSim
 		private void SaveData()
 		{
 			SelectedFootballTeam.Name = NameTextBox.Text;
-			SelectedFootballTeam.LogoFileName = WikiLogoTextBox.Text;
-			SelectedFootballTeam.ExternLogoFile = ExternLogoTextBox.Text;
+			//SelectedFootballTeam.LogoFileName = WikiLogoTextBox.Text;
+			//SelectedFootballTeam.ExternLogoFile = ExternLogoTextBox.Text;
 			SelectedFootballTeam.State= StateComboBox.SelectedItem as State;
 			SelectedFootballTeam.Stadium = StadiumComboBox.SelectedItem as Stadium;
 			SelectedFootballTeam.GoalkeeperStrength = (int) GoalkeeperSlider.Value;
