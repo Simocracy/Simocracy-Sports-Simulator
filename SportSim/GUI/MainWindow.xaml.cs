@@ -37,7 +37,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void _MenuItemSave_Click(object sender, RoutedEventArgs e)
+		private void MenuItemSave_Click(object sender, RoutedEventArgs e)
 		{
 			Settings.Save();
 		}
@@ -47,7 +47,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void _MenuItemTeams_Click(object sender, RoutedEventArgs e)
+		private void MenuItemTeams_Click(object sender, RoutedEventArgs e)
 		{
 
 		}
@@ -57,9 +57,9 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void _MenuItemStadiums_Click(object sender, RoutedEventArgs e)
+		private void MenuItemStadiums_Click(object sender, RoutedEventArgs e)
 		{
-			_MainFrame.Content = new ManageStadiumsPage();
+			MainFrame.Content = new ManageStadiumsPage();
 		}
 
 		/// <summary>
@@ -67,9 +67,9 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void _MenuItemStates_Click(object sender, RoutedEventArgs e)
+		private void MenuItemStates_Click(object sender, RoutedEventArgs e)
 		{
-			_MainFrame.Content = new ManageStatesPage();
+			MainFrame.Content = new ManageStatesPage();
 		}
 
 		/// <summary>
@@ -77,7 +77,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void _MenuItemFootballLeague_Click(object sender, RoutedEventArgs e)
+		private void MenuItemFootballLeague_Click(object sender, RoutedEventArgs e)
 		{
 
 		}
@@ -87,7 +87,17 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void _MenuItemFootballTournament_Click(object sender, RoutedEventArgs e)
+		private void MenuItemFootballTournament_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		/// <summary>
+		/// Benutzerdefiniertes Fußballturnier
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void MenuItemFootballOwn_Click(object sender, RoutedEventArgs e)
 		{
 
 		}

@@ -14,22 +14,23 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 		<StackPanel Grid.Row="0" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}">
-			<Menu x:Name="_MenuSettings" >
+			<Menu x:Name="MenuSettings" >
 				<MenuItem Header="Verwaltung">
-					<MenuItem Name="_MenuItemSave" Header="_Speichern" InputGestureText="Ctrl+S" Click="_MenuItemSave_Click"/>
+					<MenuItem Name="MenuItemSave" Header="Daten speichern" Click="MenuItemSave_Click"/>
 					<Separator/>
-					<MenuItem Name="_MenuItemTeams" Header="Teams" Click="_MenuItemTeams_Click"/>
-					<MenuItem Name="_MenuItemStadiums" Header="Stadien" Click="_MenuItemStadiums_Click"/>
-					<MenuItem Name="_MenuItemStates" Header="Staaten" Click="_MenuItemStates_Click"/>
+					<MenuItem Name="MenuItemTeams" Header="Teams" Click="MenuItemTeams_Click"/>
+					<MenuItem Name="MenuItemStadiums" Header="Stadien" Click="MenuItemStadiums_Click"/>
+					<MenuItem Name="MenuItemStates" Header="Staaten" Click="MenuItemStates_Click"/>
 				</MenuItem>
 				<MenuItem Header="Simulation">
 					<MenuItem Header="Fußball">
-						<MenuItem Name="_MenuItemFootballLeague" Header="Liga" Click="_MenuItemFootballLeague_Click"/>
-						<MenuItem Name="_MenuItemFootballTournament" Header="Turnier" Click="_MenuItemFootballTournament_Click"/>
+						<MenuItem Name="MenuItemFootballLeague" Header="Liga" Click="MenuItemFootballLeague_Click"/>
+						<MenuItem Name="MenuItemFootballTournament" Header="Turnier" Click="MenuItemFootballTournament_Click"/>
+						<MenuItem Name="MenuItemFootballOwn" Header="Benutzerdefiniert" Click="MenuItemFootballOwn_Click"/>
 					</MenuItem>
 				</MenuItem>
 			</Menu>
 		</StackPanel>
-		<Frame x:Name="_MainFrame" Grid.Row="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+		<Frame x:Name="MainFrame" Grid.Row="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
 	</Grid>
 </Window>
