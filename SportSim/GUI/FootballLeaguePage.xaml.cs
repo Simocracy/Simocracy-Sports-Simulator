@@ -115,7 +115,9 @@ namespace Simocracy.SportSim
 
 		private void FilterTeamList()
 		{
-			FilteredTeamList = new FootballTeamCollection(Settings.FootballTeams.Where(x => x.State.Continent == SelectedContinent));
+			FilteredTeamList = new FootballTeamCollection(Settings.FootballTeams);
+			if(SelectedContinent != EContinent.Unknown)
+				FilteredTeamList = new FootballTeamCollection(FilteredTeamList.Where(x => x.State.Continent == SelectedContinent));
 			if(SelectedState != null && SelectedState != State.NoneState)
 				FilteredTeamList = new FootballTeamCollection(FilteredTeamList.Where(x => x.State == SelectedState));
 		}
