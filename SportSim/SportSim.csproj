@@ -127,6 +127,7 @@
     <Compile Include="Simulation\FootballMatch.cs" />
     <Compile Include="Utilities\EnumerationExtension.cs" />
     <Compile Include="Utilities\TextInputToVisibilityConverter.cs" />
+    <Compile Include="Utilities\WikiHelper.cs" />
     <Compile Include="Utilities\ZipFileHelper.cs" />
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>

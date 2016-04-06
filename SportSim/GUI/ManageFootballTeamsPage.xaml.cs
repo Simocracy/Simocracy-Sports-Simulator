@@ -48,13 +48,16 @@ namespace Simocracy.SportSim
 		{
 			MarkAllValid();
 
-			//DebugIDLabel.ClearValue(Label.ContentProperty);
-			//NameTextBox.Clear();
-			//CityTextBox.Clear();
-			//CapacityIntTextBox.Clear();
-			//CapacityNatTextBox.Clear();
-			//StateComboBox.ClearValue(ComboBox.SelectedValueProperty);
-			//TypeComboBox.ClearValue(ComboBox.SelectedValueProperty);
+			DebugIDLabel.ClearValue(Label.ContentProperty);
+			NameTextBox.Clear();
+			WikiLogoTextBox.Clear();
+			ExternLogoTextBox.Clear();
+			StateComboBox.ClearValue(ComboBox.SelectedValueProperty);
+			StadiumComboBox.ClearValue(ComboBox.SelectedValueProperty);
+			GoalkeeperSlider.ClearValue(Slider.ValueProperty);
+			DefenseSlider.ClearValue(Slider.ValueProperty);
+			MidfieldSlider.ClearValue(Slider.ValueProperty);
+			ForwardSlider.ClearValue(Slider.ValueProperty);
 		}
 
 		private bool ValidateInputs()
@@ -68,72 +71,65 @@ namespace Simocracy.SportSim
 				MarkWrongInput(NameTextBox);
 			}
 
-			//if(String.IsNullOrEmpty(CityTextBox.Text))
-			//{
-			//	isAllValid = false;
-			//	MarkWrongInput(CityTextBox);
-			//}
+			if(!String.IsNullOrWhiteSpace(WikiLogoTextBox.Text))
+			{
+				WikiLogoTextBox.Text = WikiHelper.RemoveFileNamespace(WikiLogoTextBox.Text);
+			}
 
-			//if(StateComboBox.SelectedIndex < 0)
-			//{
-			//	isAllValid = false;
-			//	MarkWrongInput(StateComboBox);
-			//}
+			if(!String.IsNullOrWhiteSpace(ExternLogoTextBox.Text))
+			{
+				if(!WikiHelper.CheckValidHttpUrl(ExternLogoTextBox.Text))
+				{
+					isAllValid = false;
+					MarkWrongInput(ExternLogoTextBox);
+				}
+			}
 
-			//if(TypeComboBox.SelectedIndex < 0)
-			//{
-			//	isAllValid = false;
-			//	MarkWrongInput(TypeComboBox);
-			//}
+			if(StateComboBox.SelectedIndex < 0)
+			{
+				isAllValid = false;
+				MarkWrongInput(StateComboBox);
+			}
 
-			//int cap;
-			//if(String.IsNullOrEmpty(CapacityIntTextBox.Text) || !Int32.TryParse(CapacityIntTextBox.Text, out cap))
-			//{
-			//	isAllValid = false;
-			//	MarkWrongInput(CapacityIntTextBox);
-			//}
-
-			//if(!String.IsNullOrEmpty(CapacityNatTextBox.Text) && !Int32.TryParse(CapacityNatTextBox.Text, out cap))
-			//{
-			//	isAllValid = false;
-			//	MarkWrongInput(CapacityNatTextBox);
-			//}
+			if(StadiumComboBox.SelectedIndex < 0)
+			{
+				isAllValid = false;
+				MarkWrongInput(StadiumComboBox);
+			}
 
 			return isAllValid;
 		}
 
 		private void SaveData()
 		{
-			//SelectedStadium.Name = NameTextBox.Text;
-			//SelectedStadium.City = CityTextBox.Text;
-			//SelectedStadium.CapacityInt = Int32.Parse(CapacityIntTextBox.Text);
-			//SelectedStadium.CapacityNat = (String.IsNullOrEmpty(CapacityNatTextBox.Text)) ? 0 : Convert.ToInt32(CapacityNatTextBox.Text);
-			//SelectedStadium.State = (State) StateComboBox.SelectedItem;
-			//SelectedStadium.StadiumType = (EStadiumType) Enum.Parse(typeof(EStadiumType), TypeComboBox.SelectedValue.ToString());
+			SelectedFootballTeam.Name = NameTextBox.Text;
+			SelectedFootballTeam.LogoFileName = WikiLogoTextBox.Text;
+			SelectedFootballTeam.ExternLogoFile = ExternLogoTextBox.Text;
+			SelectedFootballTeam.State= StateComboBox.SelectedItem as State;
+			SelectedFootballTeam.Stadium = StadiumComboBox.SelectedItem as Stadium;
+			SelectedFootballTeam.GoalkeeperStrength = (int) GoalkeeperSlider.Value;
+			SelectedFootballTeam.DefenseStrength = (int) DefenseSlider.Value;
+			SelectedFootballTeam.MidfieldStrength = (int) MidfieldSlider.Value;
+			SelectedFootballTeam.ForwardStrength = (int) ForwardSlider.Value;
 		}
 
 		private void Create()
 		{
-			//Settings.Stadiums.Create(
+			//Settings.FootballTeams.Create(
 			//	NameTextBox.Text,
-			//	(State) StateComboBox.SelectedItem,
-			//	CityTextBox.Text,
-			//	Convert.ToInt32(CapacityIntTextBox.Text),
-			//	(String.IsNullOrEmpty(CapacityNatTextBox.Text)) ? 0 : Convert.ToInt32(CapacityNatTextBox.Text),
-			//	(EStadiumType) Enum.Parse(typeof(EStadiumType), TypeComboBox.SelectedValue.ToString()));
+			//	WikiLogoTextBox.Text,
+			//	)
 
-			//_IsInNewMode = false;
-			//SelectedStadium = Settings.Stadiums.Last();
+			_IsInNewMode = false;
+			SelectedFootballTeam = Settings.FootballTeams.Last();
 		}
 
 		private void MarkAllValid()
 		{
-			//NameTextBox.ClearValue(Control.StyleProperty);
-			//CityTextBox.ClearValue(Control.StyleProperty);
-			//CapacityIntTextBox.ClearValue(Control.StyleProperty);
-			//CapacityNatTextBox.ClearValue(Control.StyleProperty);
-			//StateComboBox.ClearValue(Control.StyleProperty);
-			//TypeComboBox.ClearValue(Control.StyleProperty);
+			NameTextBox.ClearValue(Control.StyleProperty);
+
+			StateComboBox.ClearValue(Control.StyleProperty);
+			StadiumComboBox.ClearValue(Control.StyleProperty);
 		}
 
 		private void MarkWrongInput(Control control)
