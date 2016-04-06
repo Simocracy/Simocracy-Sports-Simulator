@@ -52,6 +52,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Unbekannter Kontinent
 		/// </summary>
+		[Browsable(false)]
 		[Description("Unbekannt")]
 		Unknown = 0,
 
@@ -89,7 +90,7 @@ namespace Simocracy.SportSim
 	/// <summary>
 	/// Rundenmodus einer Liga
 	/// </summary>
-	public enum LeagueRoundMode
+	public enum ELeagueRoundMode
 	{
 		/// <summary>
 		/// Einfache Runde, nur Hinspiele
