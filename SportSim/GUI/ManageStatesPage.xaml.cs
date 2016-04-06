@@ -23,28 +23,124 @@ namespace Simocracy.SportSim
 		public ManageStatesPage()
 		{
 			InitializeComponent();
+			_IsInNewMode = false;
+
+#if !DEBUG
+			DebugIDLabel.Visibility = Visibility.Collapsed;
+#endif
 		}
 
-		State _SelectedState;
+		private bool _IsInNewMode;
 
-		private void _DeleteButton_Click(object sender, RoutedEventArgs e)
+		public State SelectedState
 		{
-			
+			get { return StatesList.SelectedItem as State; }
+			set
+			{
+				StatesList.SelectedItem = value;
+				StatesList.ScrollIntoView(value);
+				MarkAllValid();
+				_IsInNewMode = false;
+			}
 		}
 
-		private void _AddButton_Click(object sender, RoutedEventArgs e)
+		private void ClearInputs()
 		{
-			
+			MarkAllValid();
+
+			DebugIDLabel.ClearValue(Label.ContentProperty);
+			NameTextBox.Clear();
+			FlagTextBox.Clear();
+			ContinentComboBox.ClearValue(ComboBox.SelectedValueProperty);
 		}
 
-		private void _SaveButton_Click(object sender, RoutedEventArgs e)
+		private bool ValidateInputs()
 		{
-			
+			MarkAllValid();
+			bool isAllValid = true;
+
+			if(String.IsNullOrEmpty(NameTextBox.Text))
+			{
+				isAllValid = false;
+				MarkWrongInput(NameTextBox);
+			}
+
+			if(String.IsNullOrEmpty(FlagTextBox.Text))
+			{
+				isAllValid = false;
+				MarkWrongInput(FlagTextBox);
+			}
+
+			if(ContinentComboBox.SelectedIndex < 0)
+			{
+				isAllValid = false;
+				MarkWrongInput(ContinentComboBox);
+			}
+
+			return isAllValid;
 		}
 
-		private void _StatesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void SaveData()
 		{
+			SelectedState.Name = NameTextBox.Text;
+			SelectedState.Flag = FlagTextBox.Text;
+			SelectedState.Continent = (EContinent) Enum.Parse(typeof(EContinent), ContinentComboBox.SelectedValue.ToString());
+		}
 
+		private void Create()
+		{
+			Settings.States.Create(
+				NameTextBox.Text,
+				FlagTextBox.Text,
+				(EContinent) Enum.Parse(typeof(EContinent), ContinentComboBox.SelectedValue.ToString()));
+
+			_IsInNewMode = false;
+			SelectedState = Settings.States.Last();
+		}
+
+		private void MarkAllValid()
+		{
+			NameTextBox.ClearValue(Control.StyleProperty);
+			FlagTextBox.ClearValue(Control.StyleProperty);
+			ContinentComboBox.ClearValue(Control.StyleProperty);
+		}
+
+		private void MarkWrongInput(Control control)
+		{
+			control.Style = Application.Current.TryFindResource("InvalidInput") as Style;
+		}
+
+		private void DeleteButton_Click(object sender, RoutedEventArgs e)
+		{
+			Settings.States.Remove(SelectedState);
+			MarkAllValid();
+			_IsInNewMode = false;
+		}
+
+		private void NewButton_Click(object sender, RoutedEventArgs e)
+		{
+			ClearInputs();
+			NameTextBox.Focus();
+			_IsInNewMode = true;
+		}
+
+		private void SaveButton_Click(object sender, RoutedEventArgs e)
+		{
+			if(ValidateInputs())
+			{
+				if(_IsInNewMode)
+					Create();
+				else
+					SaveData();
+
+				MarkAllValid();
+			}
+		}
+
+		private void StatesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			MarkAllValid();
+			_IsInNewMode = false;
 		}
 	}
 }

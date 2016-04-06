@@ -35,7 +35,7 @@ namespace Simocracy.SportSim
 
 		public Stadium SelectedStadium
 		{
-			get { return (Stadium) StadiumsList.SelectedItem; }
+			get { return StadiumsList.SelectedItem as Stadium; }
 			set {
 				StadiumsList.SelectedItem = value;
 				StadiumsList.ScrollIntoView(value);
