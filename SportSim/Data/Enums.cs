@@ -47,7 +47,7 @@ namespace Simocracy.SportSim
 	/// <summary>
 	/// Kontinent
 	/// </summary>
-	public enum Continent
+	public enum EContinent
 	{
 		/// <summary>
 		/// Unbekannter Kontinent

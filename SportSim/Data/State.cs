@@ -18,7 +18,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Leerer Staat ohne Angaben
 		/// </summary>
-		private static State _NoneState = new State(-1, String.Empty, String.Empty, Continent.Unknown);
+		private static State _NoneState = new State(-1, String.Empty, String.Empty, EContinent.Unknown);
 
 		#endregion
 
@@ -30,7 +30,7 @@ namespace Simocracy.SportSim
 		/// <param name="id">ID des Staates</param>
 		/// <param name="name">Name des Staates</param>
 		public State(int id, string name)
-			: this(id, name, String.Empty, Continent.Unknown)
+			: this(id, name, String.Empty, EContinent.Unknown)
 		{ }
 
 		/// <summary>
@@ -40,7 +40,7 @@ namespace Simocracy.SportSim
 		/// <param name="name">Name des Staates</param>
 		/// <param name="flag">Flaggenkürzel des Staates</param>
 		/// <param name="continent">Kontinent des Staates</param>
-		public State(int id, string name, string flag, Continent continent)
+		public State(int id, string name, string flag, EContinent continent)
 			: base(id, name)
 		{
 			Flag = flag;
@@ -72,7 +72,7 @@ namespace Simocracy.SportSim
 		/// Hauptkontinent des Staates
 		/// </summary>
 		[DataMember(Order = 110)]
-		public Continent Continent { get; set; }
+		public EContinent Continent { get; set; }
 
 		#endregion
 	}

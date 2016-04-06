@@ -31,7 +31,7 @@ namespace Simocracy.SportSim
 		/// <param name="name">Name des Staates</param>
 		/// <param name="flag">Flaggenkürzel des Staates</param>
 		/// <param name="continent">Kontinent des Staates</param>
-		public void Create(string name, string flag, Continent continent)
+		public void Create(string name, string flag, EContinent continent)
 		{
 			Add(new State(GetNewID(), name, flag, continent));
 		}
