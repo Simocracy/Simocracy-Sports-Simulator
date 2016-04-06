@@ -50,8 +50,7 @@ namespace Simocracy.SportSim
 
 			DebugIDLabel.ClearValue(Label.ContentProperty);
 			NameTextBox.Clear();
-			WikiLogoTextBox.Clear();
-			ExternLogoTextBox.Clear();
+			LogoTextBox.Clear();
 			StateComboBox.ClearValue(ComboBox.SelectedValueProperty);
 			StadiumComboBox.ClearValue(ComboBox.SelectedValueProperty);
 			GoalkeeperSlider.ClearValue(Slider.ValueProperty);
@@ -69,20 +68,6 @@ namespace Simocracy.SportSim
 			{
 				isAllValid = false;
 				MarkWrongInput(NameTextBox);
-			}
-
-			if(!String.IsNullOrWhiteSpace(WikiLogoTextBox.Text))
-			{
-				WikiLogoTextBox.Text = WikiHelper.RemoveFileNamespace(WikiLogoTextBox.Text);
-			}
-
-			if(!String.IsNullOrWhiteSpace(ExternLogoTextBox.Text))
-			{
-				if(!WikiHelper.CheckValidHttpUrl(ExternLogoTextBox.Text))
-				{
-					isAllValid = false;
-					MarkWrongInput(ExternLogoTextBox);
-				}
 			}
 
 			if(StateComboBox.SelectedIndex < 0)
@@ -103,8 +88,7 @@ namespace Simocracy.SportSim
 		private void SaveData()
 		{
 			SelectedFootballTeam.Name = NameTextBox.Text;
-			//SelectedFootballTeam.LogoFileName = WikiLogoTextBox.Text;
-			//SelectedFootballTeam.ExternLogoFile = ExternLogoTextBox.Text;
+			SelectedFootballTeam.Logo = LogoTextBox.Text;
 			SelectedFootballTeam.State= StateComboBox.SelectedItem as State;
 			SelectedFootballTeam.Stadium = StadiumComboBox.SelectedItem as Stadium;
 			SelectedFootballTeam.GoalkeeperStrength = (int) GoalkeeperSlider.Value;
@@ -115,10 +99,13 @@ namespace Simocracy.SportSim
 
 		private void Create()
 		{
-			//Settings.FootballTeams.Create(
-			//	NameTextBox.Text,
-			//	WikiLogoTextBox.Text,
-			//	)
+			Settings.FootballTeams.Create(
+				NameTextBox.Text,
+				LogoTextBox.Text,
+				(int) GoalkeeperSlider.Value,
+				(int) DefenseSlider.Value,
+				(int) MidfieldSlider.Value,
+				(int) ForwardSlider.Value);
 
 			_IsInNewMode = false;
 			SelectedFootballTeam = Settings.FootballTeams.Last();
@@ -127,7 +114,7 @@ namespace Simocracy.SportSim
 		private void MarkAllValid()
 		{
 			NameTextBox.ClearValue(Control.StyleProperty);
-
+			LogoTextBox.ClearValue(Control.StyleProperty);
 			StateComboBox.ClearValue(Control.StyleProperty);
 			StadiumComboBox.ClearValue(Control.StyleProperty);
 		}

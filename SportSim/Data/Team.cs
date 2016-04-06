@@ -15,6 +15,7 @@ namespace Simocracy.SportSim
 	{
 		#region Members
 
+		private string _LogoFileName;
 		private State _State;
 		private int _StateID;
 		private Stadium _Stadium;
@@ -30,7 +31,7 @@ namespace Simocracy.SportSim
 		/// <param name="id">ID des Teams</param>
 		/// <param name="name">Name des Teams</param>
 		public Team(int id, string name)
-			: this(id, name, String.Empty, false)
+			: this(id, name, String.Empty)
 		{ }
 
 		/// <summary>
@@ -38,10 +39,9 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="id">ID des Teams</param>
 		/// <param name="name">Name des Teams</param>
-		/// <param name="logo">Name der Logodatei</param>
-		/// <param name="isExternLogo">Angabe ob Logo extern (=nicht im Wiki) hochgeladen ist</param>
-		public Team(int id, string name, string logo, bool isExternLogo)
-			: this(id, name, logo, isExternLogo, null, null)
+		/// <param name="logo">Logo des Teams</param>
+		public Team(int id, string name, string logo)
+			: this(id, name, logo, State.NoneState, Stadium.NoneStadium)
 		{ }
 
 		/// <summary>
@@ -49,17 +49,13 @@ namespace Simocracy.SportSim
 		/// </summary>
 		/// <param name="id">ID des Teams</param>
 		/// <param name="name">Name des Teams</param>
-		/// <param name="logo">Name der Logodatei</param>
-		/// <param name="isExternLogo">Angabe ob Logo extern (=nicht im Wiki) hochgeladen ist</param>
+		/// <param name="logo">Logo des Teams</param>
 		/// <param name="state">Staat des Teams</param>
 		/// <param name="stadium">Stadion des Teams</param>
-		public Team(int id, string name, string logo, bool isExternLogo, State state, Stadium stadium)
+		public Team(int id, string name, string logo, State state, Stadium stadium)
 			: base(id, name)
 		{
-			if(isExternLogo)
-				ExternLogoFile = logo;
-			else
-				LogoFileName = logo;
+			Logo = logo;
 			State = state;
 			Stadium = stadium;
 		}
@@ -69,18 +65,18 @@ namespace Simocracy.SportSim
 		#region Properties
 
 		/// <summary>
-		/// Dateiname des Logos im Wiki
+		/// Logo des Teams
 		/// </summary>
 		[DataMember(Order = 100)]
-		public string LogoFileName
+		public string Logo
 		{ get; set; }
 
 		/// <summary>
-		/// Pfad zu externem Logo
+		/// Angabe ob Logo extern hochgeladen ist
 		/// </summary>
-		[DataMember(Order = 110)]
-		public string ExternLogoFile
-		{ get; set; }
+		[IgnoreDataMember]
+		public bool IsExternLogo
+		{ get { return WikiHelper.CheckValidHttpUrl(Logo); } }
 
 		/// <summary>
 		/// Staat des Teams
@@ -99,7 +95,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Staat-ID des Teams
 		/// </summary>
-		[DataMember(Order = 120)]
+		[DataMember(Order = 110)]
 		private int StateID
 		{
 			get { return _StateID; }
@@ -127,7 +123,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Stadion-ID des Teams
 		/// </summary>
-		[DataMember(Order = 130)]
+		[DataMember(Order = 120)]
 		private int StadiumID
 		{
 			get { return _StadiumID; }

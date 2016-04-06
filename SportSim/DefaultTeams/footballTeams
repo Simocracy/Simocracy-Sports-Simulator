@@ -2,8 +2,7 @@
 	<FootballTeam>
 		<ID>0</ID>
 		<Name>FC Seattle</Name>
-		<LogoFileName>FCSeattle-Logo.png</LogoFileName>
-		<ExternLogoFile></ExternLogoFile>
+		<Logo>FCSeattle-Logo.png</Logo>
 		<StateID>0</StateID>
 		<StadiumID>0</StadiumID>
 		<GoalkeeperStrength>86</GoalkeeperStrength>
@@ -14,8 +13,7 @@
 	<FootballTeam>
 		<ID>1</ID>
 		<Name>San Icos 05</Name>
-		<LogoFileName></LogoFileName>
-		<ExternLogoFile>http://i.imgur.com/lKP7jF6.png</ExternLogoFile>
+		<Logo>http://i.imgur.com/lKP7jF6.png</Logo>
 		<StateID>1</StateID>
 		<StadiumID>1</StadiumID>
 		<GoalkeeperStrength>72</GoalkeeperStrength>
@@ -26,8 +24,7 @@
 	<FootballTeam>
 		<ID>2</ID>
 		<Name>1. FC Groß-Staufen</Name>
-		<LogoFileName></LogoFileName>
-		<ExternLogoFile></ExternLogoFile>
+		<Logo></Logo>
 		<StateID>0</StateID>
 		<StadiumID>17</StadiumID>
 		<GoalkeeperStrength>81</GoalkeeperStrength>
@@ -38,8 +35,7 @@
 	<FootballTeam>
 		<ID>3</ID>
 		<Name>Boyacà Quito</Name>
-		<LogoFileName></LogoFileName>
-		<ExternLogoFile></ExternLogoFile>
+		<Logo></Logo>
 		<StateID>3</StateID>
 		<StadiumID>-1</StadiumID>
 		<GoalkeeperStrength>78</GoalkeeperStrength>
@@ -50,8 +46,7 @@
 	<FootballTeam>
 		<ID>4</ID>
 		<Name>Impact Montreal</Name>
-		<LogoFileName></LogoFileName>
-		<ExternLogoFile></ExternLogoFile>
+		<Logo></Logo>
 		<StateID>4</StateID>
 		<StadiumID>-1</StadiumID>
 		<GoalkeeperStrength>80</GoalkeeperStrength>
@@ -62,8 +57,7 @@
 	<FootballTeam>
 		<ID>5</ID>
 		<Name>FC Nassau</Name>
-		<LogoFileName></LogoFileName>
-		<ExternLogoFile></ExternLogoFile>
+		<Logo></Logo>
 		<StateID>5</StateID>
 		<StadiumID>-1</StadiumID>
 		<GoalkeeperStrength>76</GoalkeeperStrength>
