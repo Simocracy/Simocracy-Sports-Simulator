@@ -49,7 +49,7 @@ namespace Simocracy.SportSim
 		/// <param name="e"></param>
 		private void MenuItemTeams_Click(object sender, RoutedEventArgs e)
 		{
-
+			MainFrame.Content = new ManageFootballTeamsPage();
 		}
 
 		/// <summary>
