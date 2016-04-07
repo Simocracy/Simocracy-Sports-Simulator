@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,14 +12,21 @@ namespace Simocracy.SportSim
 	/// <summary>
 	/// Fußballspiel
 	/// </summary>
-	public class FootballMatch
+	[DebuggerDisplay("Match {ID}: {TeamA.Name}-{TeamB.Name}")]
+	public class FootballMatch : INotifyPropertyChanged
 	{
-		#region Simulation Members
+		#region Members
 
 		private int _Ball;
 		private int _Minutes;
 		private Random _Rand;
 		private int _Start;
+
+		private int _ID;
+		private FootballTeam _TeamA;
+		private FootballTeam _TeamB;
+		private int _ResultA;
+		private int _ResultB;
 
 		#endregion
 
@@ -77,27 +86,67 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Nummer des Spiels
 		/// </summary>
-		public int ID { get; private set; }
+		public int ID
+		{
+			get { return _ID; }
+			set
+			{
+				_ID = value;
+				Notify("ID");
+			}
+		}
 
 		/// <summary>
 		/// Heimteam
 		/// </summary>
-		public FootballTeam TeamA { get; private set; }
+		public FootballTeam TeamA
+		{
+			get { return _TeamA; }
+			set
+			{
+				_TeamA = value;
+				Notify("TeamA");
+			}
+		}
 
 		/// <summary>
 		/// Auswärtsteam
 		/// </summary>
-		public FootballTeam TeamB { get; private set; }
+		public FootballTeam TeamB
+		{
+			get { return _TeamB; }
+			set
+			{
+				_TeamB = value;
+				Notify("TeamB");
+			}
+		}
 
 		/// <summary>
 		/// Tore Heimteam
 		/// </summary>
-		public int ResultA { get; set; }
+		public int ResultA
+		{
+			get { return _ResultA; }
+			set
+			{
+				_ResultA = value;
+				Notify("ResultA");
+			}
+		}
 
 		/// <summary>
 		/// Tore Auswärtsteam
 		/// </summary>
-		public int ResultB { get; set; }
+		public int ResultB
+		{
+			get { return _ResultB; }
+			set
+			{
+				_ResultB = value;
+				Notify("ResultB");
+			}
+		}
 
 		#endregion
 
@@ -209,6 +258,16 @@ namespace Simocracy.SportSim
 			{ _Start = 12; return 22; }
 			else
 				return 0;
+		}
+
+		#endregion
+
+		#region Observer
+
+		public event PropertyChangedEventHandler PropertyChanged;
+		protected void Notify(String propertyName)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 
 		#endregion

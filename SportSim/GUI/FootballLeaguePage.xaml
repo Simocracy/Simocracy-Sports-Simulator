@@ -73,7 +73,7 @@
 						</StackPanel>
 						<Button Name="SelectAllTeamsButton" Content="Alle Auswählen" Grid.Column="1" Click="SelectAllTeamsButton_Click" />
 					</Grid>
-					<ListBox x:Name="FootballTeamsListBox" Grid.Row="1" Style="{DynamicResource MangeList}" ItemsSource="{Binding FilteredTeamList}" DisplayMemberPath="Name" SelectionMode="Multiple" SelectionChanged="FootballTeamsListBox_SelectionChanged" />
+					<ListBox x:Name="FootballTeamsListBox" Grid.Row="1" Style="{DynamicResource MangeList}" ItemsSource="{Binding FilteredTeamList}" DisplayMemberPath="Name" SelectionMode="Multiple" />
 				</Grid>
 			</Expander>
 			
@@ -104,20 +104,25 @@
 							</Button.Style>
 						</Button>
 						<Button Name="SimulateButton" Content="Simuliere Liga" Click="SimulateButton_Click" IsEnabled="{Binding League.Matches.Count}">
-							<!--<Button.Style>
-								<Style>
-									<Style.Triggers>
-										<DataTrigger Binding ="{Binding ElementName=FootballTeamsListBox, Path=SelectedItems.Count}" Value="0">
-											<Setter Property="Button.IsEnabled" Value="false"/>
-										</DataTrigger>
-										<DataTrigger Binding ="{Binding ElementName=FootballTeamsListBox, Path=SelectedItems.Count}" Value="1">
-											<Setter Property="Button.IsEnabled" Value="false"/>
-										</DataTrigger>
-									</Style.Triggers>
-								</Style>
-							</Button.Style>-->
 						</Button>
 					</StackPanel>
+					<DataGrid Grid.Row="2" ItemsSource="{Binding League.Matches}" AutoGenerateColumns="False" IsEnabled="{Binding League.Matches.Count}" >
+						<DataGrid.Resources>
+							<Style TargetType="DataGridCell">
+								<Style.Triggers>
+									<Trigger Property="IsReadOnly" Value="True">
+										<Setter Property="IsTabStop" Value="False"/>
+									</Trigger>
+								</Style.Triggers>
+							</Style>
+						</DataGrid.Resources>
+						<DataGrid.Columns>
+							<DataGridTextColumn Width="*" Header="Heim" Binding="{Binding TeamA}" IsReadOnly="True" />
+							<DataGridTextColumn Width="*" Header="Gast" Binding="{Binding TeamB}" IsReadOnly="True" />
+							<DataGridTextColumn Width="50" Header="Tore H" Binding="{Binding ResultA}" />
+							<DataGridTextColumn Width="50" Header="Tore G" Binding="{Binding ResultB}" />
+						</DataGrid.Columns>
+					</DataGrid>
 				</Grid>
 			</Expander>
 		</Grid>

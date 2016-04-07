@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace Simocracy.SportSim
 	/// <summary>
 	/// Simulation einer Fußballliga bzw. Turniergruppe
 	/// </summary>
+	[DebuggerDisplay("TeamCount={TeamCount}")]
 	public class FootballLeague
 	{
 		#region Constructor
@@ -118,6 +120,8 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public void CreateMatches()
 		{
+			Matches.Clear();
+
 			switch(RoundMode)
 			{
 				case ELeagueRoundMode.SingleRound:

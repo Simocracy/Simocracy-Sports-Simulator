@@ -125,11 +125,6 @@ namespace Simocracy.SportSim
 			StatesComboBoxList.Insert(0, State.NoneState);
 		}
 
-		private void FootballTeamsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			//League.Teams = /*FootballTeamsListBox.SelectedItems;*/
-		}
-
 		private void SelectAllTeamsButton_Click(object sender, RoutedEventArgs e)
 		{
 			FootballTeamsListBox.SelectAll();
@@ -139,7 +134,6 @@ namespace Simocracy.SportSim
 		{
 			League.Teams = FootballTeamCollection.CreateCollection(FootballTeamsListBox.SelectedItems);
 			League.CreateMatches();
-			var t = SimulateButton;
 		}
 
 		private void SimulateButton_Click(object sender, RoutedEventArgs e)
@@ -159,4 +153,4 @@ namespace Simocracy.SportSim
 
 		#endregion
 	}
-}
+ }
