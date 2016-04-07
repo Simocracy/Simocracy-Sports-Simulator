@@ -73,7 +73,7 @@
 						</StackPanel>
 						<Button Name="SelectAllTeamsButton" Content="Alle Auswählen" Grid.Column="1" Click="SelectAllTeamsButton_Click" />
 					</Grid>
-					<ListBox x:Name="FootballTeamsListBox" Grid.Row="1" Style="{DynamicResource MangeList}" ItemsSource="{Binding FilteredTeamList}" DisplayMemberPath="Name" SelectionMode="Multiple"/>
+					<ListBox x:Name="FootballTeamsListBox" Grid.Row="1" Style="{DynamicResource MangeList}" ItemsSource="{Binding FilteredTeamList}" DisplayMemberPath="Name" SelectionMode="Multiple" SelectionChanged="FootballTeamsListBox_SelectionChanged" />
 				</Grid>
 			</Expander>
 			

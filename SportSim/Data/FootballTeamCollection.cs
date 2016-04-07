@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -39,9 +40,34 @@ namespace Simocracy.SportSim
 			: base(teamList)
 		{ }
 
+		/// <summary>
+		/// Erstellt eine neue <see cref="FootballTeamCollection"/> aus der angegeben <see cref="IList"/>
+		/// </summary>
+		/// <param name="list">Liste</param>
+		public static FootballTeamCollection CreateCollection(IList list)
+		{
+			var col = new FootballTeamCollection();
+			col.Add(list);
+			return col;
+		}
+
 		#endregion
 
 		#region Manage Teams
+
+		/// <summary>
+		/// Fügt die <see cref="FootballTeam"/>-Objekte in der angegebenen <see cref="IList"/> der <see cref="FootballTeamCollection"/> hinzu
+		/// </summary>
+		/// <param name="list">Liste</param>
+		public void Add(IList list)
+		{
+			foreach(var item in list)
+			{
+				var itemFT = item as FootballTeam;
+				if(itemFT != null)
+					Add(itemFT);
+			}
+		}
 
 		/// <summary>
 		/// Erstellt ein neues Fußballteam und fügt es der Liste hinzu
