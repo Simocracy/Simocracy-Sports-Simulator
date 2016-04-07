@@ -13,7 +13,7 @@ namespace Simocracy.SportSim
 	/// Klasse für Stadien bzw. Sporthallen, in denen Teams ihre Matches austragen
 	/// </summary>
 	[DataContract]
-	[DebuggerDisplay("Stadium, Name={Name}, State={State}")]
+	[DebuggerDisplay("Stadium, Name={Name}, State={State.Name}")]
 	public class Stadium : SSSDataObject
 	{
 		#region Members

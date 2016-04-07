@@ -11,7 +11,7 @@ namespace Simocracy.SportSim
 	/// Fussballteam
 	/// </summary>
 	[DataContract]
-	[DebuggerDisplay("FootballTeam, Name={Name}, State={State}, Stadium={Stadium}")]
+	[DebuggerDisplay("FootballTeam, Name={Name}, State={State.Name}, Stadium={Stadium.Name}")]
 	public class FootballTeam : Team
 	{
 
