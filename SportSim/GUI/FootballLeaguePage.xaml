@@ -78,7 +78,47 @@
 			</Expander>
 			
 			<Expander Name="MatchExpander" Grid.Row="2" Header="Spielplan" IsExpanded="{Binding SelectedExpander, Mode=TwoWay, Converter={StaticResource ExpanderToBooleanConverter}, ConverterParameter=3}">
-				<TextBlock>Expander 3</TextBlock>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					<StackPanel Grid.Row="0" Orientation="Horizontal">
+						<Label Content="Ligagröße:"/>
+						<Label Content="{Binding ElementName=FootballTeamsListBox, Path=SelectedItems.Count}" ContentStringFormat="{}{0} Teams" />
+					</StackPanel>
+					<StackPanel Grid.Row="1" Orientation="Horizontal">
+						<Button Name="GenerateMatchesButton" Content="Erstelle Spielplan" Click="GenerateMatchesButton_Click">
+							<Button.Style>
+								<Style>
+									<Style.Triggers>
+										<DataTrigger Binding ="{Binding ElementName=FootballTeamsListBox, Path=SelectedItems.Count}" Value="0">
+											<Setter Property="Button.IsEnabled" Value="false"/>
+										</DataTrigger>
+										<DataTrigger Binding ="{Binding ElementName=FootballTeamsListBox, Path=SelectedItems.Count}" Value="1">
+											<Setter Property="Button.IsEnabled" Value="false"/>
+										</DataTrigger>
+									</Style.Triggers>
+								</Style>
+							</Button.Style>
+						</Button>
+						<Button Name="SimulateButton" Content="Simuliere Liga" Click="SimulateButton_Click" IsEnabled="{Binding League.Matches.Count}">
+							<!--<Button.Style>
+								<Style>
+									<Style.Triggers>
+										<DataTrigger Binding ="{Binding ElementName=FootballTeamsListBox, Path=SelectedItems.Count}" Value="0">
+											<Setter Property="Button.IsEnabled" Value="false"/>
+										</DataTrigger>
+										<DataTrigger Binding ="{Binding ElementName=FootballTeamsListBox, Path=SelectedItems.Count}" Value="1">
+											<Setter Property="Button.IsEnabled" Value="false"/>
+										</DataTrigger>
+									</Style.Triggers>
+								</Style>
+							</Button.Style>-->
+						</Button>
+					</StackPanel>
+				</Grid>
 			</Expander>
 		</Grid>
 

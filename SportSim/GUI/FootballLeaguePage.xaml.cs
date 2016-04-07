@@ -29,10 +29,7 @@ namespace Simocracy.SportSim
 			DataContext = this;
 
 			League = new FootballLeague();
-			//StatesComboBoxList = new StateCollection(Settings.States);
-			//StatesComboBoxList.Insert(0, State.NoneState);
 			FilterStateList();
-			//FilteredTeamList = new FootballTeamCollection(Settings.FootballTeams);
 			FilterTeamList();
 		}
 
@@ -133,6 +130,17 @@ namespace Simocracy.SportSim
 			FootballTeamsListBox.SelectAll();
 		}
 
+		private void GenerateMatchesButton_Click(object sender, RoutedEventArgs e)
+		{
+			League.CreateMatches();
+			var t = SimulateButton;
+		}
+
+		private void SimulateButton_Click(object sender, RoutedEventArgs e)
+		{
+			
+		}
+
 		#endregion
 
 		#region Observer
@@ -144,5 +152,6 @@ namespace Simocracy.SportSim
 		}
 
 		#endregion
+
 	}
 }
