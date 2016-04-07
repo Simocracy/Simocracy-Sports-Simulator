@@ -11,24 +11,40 @@
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="auto"/>
-			<RowDefinition Height="auto"/>
+			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 
 		<Label Content="Ligasimulation" Grid.Row="0" Style="{DynamicResource Title}"/>
 		<Label Name="DebugIDLabel" Grid.Row="0" Style="{DynamicResource ManageDebug}"
 			   Content="{Binding SelectedState.ID}"/>
 
-		<StackPanel Grid.Row="1">
-			<Expander Header="Teamfilter und Einstellung" IsExpanded="{Binding SelectedExpander, Mode=TwoWay, Converter={StaticResource ExpanderToBooleanConverter}, ConverterParameter=1}">
+		<Grid Grid.Row="1">
+			<Grid.Resources>
+				<Style TargetType="RowDefinition">
+					<Setter Property="Height" Value="Auto"/>
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding Tag.IsExpanded, RelativeSource={RelativeSource Self}}" Value="True">
+							<Setter Property="Height" Value="*"/>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</Grid.Resources>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto" />
+				<RowDefinition Tag="{Binding ElementName=TeamExpander}" />
+				<RowDefinition Tag="{Binding ElementName=MatchExpander}" />
+			</Grid.RowDefinitions>
+			
+			<Expander Grid.Row="0" Header="Teamfilter und Einstellung" IsExpanded="{Binding SelectedExpander, Mode=TwoWay, Converter={StaticResource ExpanderToBooleanConverter}, ConverterParameter=1}">
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition />
 						<ColumnDefinition />
 					</Grid.ColumnDefinitions>
 					<Grid.RowDefinitions>
-						<RowDefinition Height="auto" />
-						<RowDefinition Height="auto" />
-						<RowDefinition Height="auto" />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
 					</Grid.RowDefinitions>
 					<Label Content="Runden-Modus:" Grid.Row="0" Grid.Column="0"/>
 					<ComboBox x:Name="LeagueRoundComboBox" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Source={local:Enumeration {x:Type local:ELeagueRoundMode}}}" DisplayMemberPath="Description" SelectedValue="{Binding League.RoundMode, Mode=TwoWay}" SelectedValuePath="Value" />
@@ -39,11 +55,12 @@
 
 				</Grid>
 			</Expander>
-			<Expander Header="Teamauswahl" IsExpanded="{Binding SelectedExpander, Mode=TwoWay, Converter={StaticResource ExpanderToBooleanConverter}, ConverterParameter=2}">
+			
+			<Expander Name="TeamExpander" Grid.Row="1" Header="Teamauswahl" IsExpanded="{Binding SelectedExpander, Mode=TwoWay, Converter={StaticResource ExpanderToBooleanConverter}, ConverterParameter=2}">
 				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition Height="auto" />
-						<RowDefinition Height="auto" />
+						<RowDefinition Height="*" />
 					</Grid.RowDefinitions>
 					<Grid Grid.Row="0">
 						<Grid.ColumnDefinitions>
@@ -56,13 +73,14 @@
 						</StackPanel>
 						<Button Name="SelectAllTeamsButton" Content="Alle Auswählen" Grid.Column="1" Click="SelectAllTeamsButton_Click" />
 					</Grid>
-					<ListBox x:Name="FootballTeamsListBox" Grid.Row="1" Style="{DynamicResource MangeList}" ItemsSource="{Binding FilteredTeamList}" Height="200" DisplayMemberPath="Name" SelectionMode="Multiple"/>
+					<ListBox x:Name="FootballTeamsListBox" Grid.Row="1" Style="{DynamicResource MangeList}" ItemsSource="{Binding FilteredTeamList}" DisplayMemberPath="Name" SelectionMode="Multiple"/>
 				</Grid>
 			</Expander>
-			<Expander Header="Spielplan" IsExpanded="{Binding SelectedExpander, Mode=TwoWay, Converter={StaticResource ExpanderToBooleanConverter}, ConverterParameter=3}">
+			
+			<Expander Name="MatchExpander" Grid.Row="2" Header="Spielplan" IsExpanded="{Binding SelectedExpander, Mode=TwoWay, Converter={StaticResource ExpanderToBooleanConverter}, ConverterParameter=3}">
 				<TextBlock>Expander 3</TextBlock>
 			</Expander>
-		</StackPanel>
+		</Grid>
 
 	</Grid>
 </Page>
