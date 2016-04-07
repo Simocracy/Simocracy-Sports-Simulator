@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Simocracy Sport Simulator"
 		Height="500" Width="525"
-		MinHeight="200" MinWidth="200">
+		MinHeight="300" MinWidth="300">
 	<DockPanel>
 		<StackPanel DockPanel.Dock="Top" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}">
 			<Menu x:Name="MenuSettings" >
@@ -27,6 +27,6 @@
 				</MenuItem>
 			</Menu>
 		</StackPanel>
-		<Frame x:Name="MainFrame" DockPanel.Dock="Bottom" NavigationUIVisibility="Hidden" />
+		<Frame x:Name="MainFrame" DockPanel.Dock="Bottom" NavigationUIVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" />
 	</DockPanel>
 </Window>
