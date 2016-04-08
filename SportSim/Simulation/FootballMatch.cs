@@ -12,7 +12,7 @@ namespace Simocracy.SportSim
 	/// <summary>
 	/// Fußballspiel
 	/// </summary>
-	[DebuggerDisplay("Match {ID}: {TeamA.Name}-{TeamB.Name}")]
+	[DebuggerDisplay("Match {ID}: {TeamA.Name} - {TeamB.Name}")]
 	public class FootballMatch : INotifyPropertyChanged
 	{
 		#region Members
@@ -81,7 +81,7 @@ namespace Simocracy.SportSim
 
 		#endregion
 
-		#region Public Properties
+		#region Properties
 
 		/// <summary>
 		/// Nummer des Spiels
@@ -146,6 +146,23 @@ namespace Simocracy.SportSim
 				_ResultB = value;
 				Notify("ResultB");
 			}
+		}
+
+		#endregion
+
+		#region Methods
+
+		/// <summary>
+		/// Tauscht die beiden Teams
+		/// </summary>
+		public void SwapTeams()
+		{
+			var oldTeamA = TeamA;
+			var oldResultA = ResultA;
+			TeamA = TeamB;
+			ResultA = ResultB;
+			TeamB = oldTeamA;
+			ResultB = oldResultA;
 		}
 
 		#endregion

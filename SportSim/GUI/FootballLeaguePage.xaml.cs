@@ -138,7 +138,13 @@ namespace Simocracy.SportSim
 
 		private void SimulateButton_Click(object sender, RoutedEventArgs e)
 		{
-			
+
+		}
+
+		private void SwapTeamsButton_Click(object sender, RoutedEventArgs e)
+		{
+			var match = ((FrameworkElement) sender).DataContext as FootballMatch;
+			match.SwapTeams();
 		}
 
 		#endregion
