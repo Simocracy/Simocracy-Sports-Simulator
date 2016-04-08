@@ -167,6 +167,15 @@ namespace Simocracy.SportSim
 			}
 		}
 
+		/// <summary>
+		/// Simuliert alle Spiele in der Liga
+		/// </summary>
+		public void Simulate()
+		{
+			foreach(var match in Matches)
+				match.Simulate();
+		}
+
 		#endregion
 	}
 }

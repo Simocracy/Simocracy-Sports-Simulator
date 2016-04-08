@@ -236,15 +236,18 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public void Simulate()
 		{
+			int resA = 0;
+			int resB = 0;
+
 			_Ball = Kickoff();
 			for(int i = 1; i <= _Minutes; i++)
 			{
 				if(i == 45)
 				{
 					if(_Ball == 14)
-						ResultA++;
+						resA++;
 					if(_Ball == 24)
-						ResultB++;
+						resB++;
 					_Ball = _Start;
 				}
 
@@ -260,10 +263,10 @@ namespace Simocracy.SportSim
 						_Ball = Turn(TeamA.MidfieldStrength, TeamB.DefenseStrength);
 						break;
 					case 13:
-						_Ball = Turn(TeamA.DefenseStrength, TeamB.GoalkeeperStrength + TeamB.DefenseStrength / 2);
+						_Ball = Turn(TeamA.ForwardStrength, TeamB.GoalkeeperStrength + TeamB.DefenseStrength / 2);
 						break;
 					case 14:
-						ResultA++;
+						resA++;
 						_Ball = 22;
 						break;
 					case 20:
@@ -276,14 +279,17 @@ namespace Simocracy.SportSim
 						_Ball = Turn(TeamB.MidfieldStrength, TeamA.DefenseStrength);
 						break;
 					case 23:
-						_Ball = Turn(TeamB.DefenseStrength, TeamA.GoalkeeperStrength + TeamA.DefenseStrength / 2);
+						_Ball = Turn(TeamB.ForwardStrength, TeamA.GoalkeeperStrength + TeamA.DefenseStrength / 2);
 						break;
 					case 24:
-						ResultB++;
+						resB++;
 						_Ball = 12;
 						break;
 				}
 			}
+
+			ResultA = resA;
+			ResultB = resB;
 		}
 
 		/// <summary>

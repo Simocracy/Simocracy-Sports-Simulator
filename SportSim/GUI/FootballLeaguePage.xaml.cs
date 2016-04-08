@@ -138,7 +138,7 @@ namespace Simocracy.SportSim
 
 		private void SimulateButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			League.Simulate();
 		}
 
 		private void SwapTeamsButton_Click(object sender, RoutedEventArgs e)
