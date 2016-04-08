@@ -118,6 +118,13 @@
 							</Style>
 						</DataGrid.Resources>
 						<DataGrid.Columns>
+							<DataGridTemplateColumn Header="Datum">
+								<DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<DatePicker Text="{Binding Date, Mode=TwoWay}" DisplayDateStart="01/01/2020" />
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
 							<DataGridTextColumn Width="*" Header="Heim" Binding="{Binding TeamA}" IsReadOnly="True" />
 							<DataGridTextColumn Width="*" Header="Gast" Binding="{Binding TeamB}" IsReadOnly="True" />
 							<DataGridTextColumn Width="50" Header="Tore H" Binding="{Binding ResultA}" />

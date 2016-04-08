@@ -27,6 +27,7 @@ namespace Simocracy.SportSim
 		private FootballTeam _TeamB;
 		private int _ResultA;
 		private int _ResultB;
+		private DateTime _Date;
 
 		#endregion
 
@@ -48,9 +49,32 @@ namespace Simocracy.SportSim
 		/// <param name="matchID">ID des Spiels</param>
 		/// <param name="idA">ID des Heimteams</param>
 		/// <param name="idB">ID des Auswärtsteams</param>
+		/// <param name="date">Spieldatum</param>
+		public FootballMatch(int matchID, int idA, int idB, DateTime date)
+			: this(matchID, Settings.FootballTeams.Get(idA), Settings.FootballTeams.Get(idB), date)
+		{ }
+
+		/// <summary>
+		/// Initiiert ein neues Fußballspiel
+		/// </summary>
+		/// <param name="matchID">ID des Spiels</param>
+		/// <param name="idA">ID des Heimteams</param>
+		/// <param name="idB">ID des Auswärtsteams</param>
 		/// <param name="minutes">Anzahl Spielminuten</param>
 		public FootballMatch(int matchID, int idA, int idB, int minutes)
 			: this(matchID, Settings.FootballTeams.Get(idA), Settings.FootballTeams.Get(idB), minutes)
+		{ }
+
+		/// <summary>
+		/// Initiiert ein neues Fußballspiel
+		/// </summary>
+		/// <param name="matchID">ID des Spiels</param>
+		/// <param name="idA">ID des Heimteams</param>
+		/// <param name="idB">ID des Auswärtsteams</param>
+		/// <param name="date">Spieldatum</param>
+		/// <param name="minutes">Anzahl Spielminuten</param>
+		public FootballMatch(int matchID, int idA, int idB, DateTime date, int minutes)
+			: this(matchID, Settings.FootballTeams.Get(idA), Settings.FootballTeams.Get(idB), date, minutes)
 		{ }
 
 		/// <summary>
@@ -69,13 +93,38 @@ namespace Simocracy.SportSim
 		/// <param name="matchID">ID des Spiels</param>
 		/// <param name="teamA">Heimteam</param>
 		/// <param name="teamB">Auswärtsteam</param>
+		/// <param name="date">Spieldatum</param>
+		public FootballMatch(int matchID, FootballTeam teamA, FootballTeam teamB, DateTime date)
+			: this(matchID, teamA, teamB, date, 90)
+		{ }
+
+		/// <summary>
+		/// Initiiert ein neues Fußballspiel
+		/// </summary>
+		/// <param name="matchID">ID des Spiels</param>
+		/// <param name="teamA">Heimteam</param>
+		/// <param name="teamB">Auswärtsteam</param>
 		/// <param name="minutes">Anzahl Spielminuten</param>
 		public FootballMatch(int matchID, FootballTeam teamA, FootballTeam teamB, int minutes)
+			: this(matchID, teamA, teamB, new DateTime(2050, 1, 1), minutes)
+		{ }
+
+		/// <summary>
+		/// Initiiert ein neues Fußballspiel
+		/// </summary>
+		/// <param name="matchID">ID des Spiels</param>
+		/// <param name="teamA">Heimteam</param>
+		/// <param name="teamB">Auswärtsteam</param>
+		/// <param name="date">Spieldatum</param>
+		/// <param name="minutes">Anzahl Spielminuten</param>
+		public FootballMatch(int matchID, FootballTeam teamA, FootballTeam teamB, DateTime date, int minutes)
 		{
 			ID = matchID;
 			TeamA = teamA;
 			TeamB = teamB;
 			_Minutes = minutes;
+			Date = date;
+
 			Reset();
 		}
 
@@ -145,6 +194,19 @@ namespace Simocracy.SportSim
 			{
 				_ResultB = value;
 				Notify("ResultB");
+			}
+		}
+
+		/// <summary>
+		/// Spieldatum
+		/// </summary>
+		public DateTime Date
+		{
+			get { return _Date; }
+			set
+			{
+				_Date = value;
+				Notify("Date");
 			}
 		}
 
