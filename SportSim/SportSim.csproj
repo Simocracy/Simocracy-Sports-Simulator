@@ -94,6 +94,7 @@
       <HintPath>libs\DotNetWikiBot\DotNetWikiBot.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
@@ -128,6 +129,7 @@
     </Compile>
     <Compile Include="Simulation\FootballLeague.cs" />
     <Compile Include="Simulation\FootballMatch.cs" />
+    <Compile Include="Utilities\Datumsrechner.cs" />
     <Compile Include="Utilities\EnumerationExtension.cs" />
     <Compile Include="Utilities\ExpanderToBooleanConverter.cs" />
     <Compile Include="Utilities\TextInputToVisibilityConverter.cs" />

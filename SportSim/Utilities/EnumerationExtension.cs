@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Markup;
@@ -69,10 +70,17 @@ namespace Simocracy.SportSim
 			  .GetCustomAttributes(typeof(DescriptionAttribute), false)
 			  .FirstOrDefault() as DescriptionAttribute;
 
+			var displayAttribute = EnumType
+			  .GetField(enumValue.ToString())
+			  .GetCustomAttributes(typeof(DisplayAttribute), false)
+			  .FirstOrDefault() as DisplayAttribute;
 
-			return descriptionAttribute != null
-			  ? descriptionAttribute.Description
-			  : enumValue.ToString();
+			if(descriptionAttribute != null)
+				return descriptionAttribute.Description;
+			else if(displayAttribute != null)
+				return displayAttribute.Description;
+			else
+				return enumValue.ToString();
 		}
 
 		public class EnumerationMember
