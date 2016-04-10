@@ -115,6 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\SSSDataObject.cs" />
+    <Compile Include="Data\LeagueWikiTemplate.cs" />
+    <Compile Include="Data\LeagueWikiTemplateCollection.cs" />
+    <Compile Include="Data\WikiTemplate.cs" />
     <Compile Include="GUI\FootballLeaguePage.xaml.cs">
       <DependentUpon>FootballLeaguePage.xaml</DependentUpon>
     </Compile>

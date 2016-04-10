@@ -22,7 +22,7 @@ namespace Simocracy.SportSim
 		public static void Main()
 		{
 			// Load Settings
-			Settings.Load();
+			Settings.LoadXml();
 
 
 			////var application = new App();
