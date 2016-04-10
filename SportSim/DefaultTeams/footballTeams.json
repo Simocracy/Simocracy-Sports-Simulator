@@ -1,0 +1,68 @@
+﻿[
+  {
+    "ID": 0,
+    "Name": "FC Seattle",
+    "Logo": "FCSeattle-Logo.png",
+    "StateID": 0,
+    "StadiumID": 0,
+    "GoalkeeperStrength": 86,
+    "DefenseStrength": 84,
+    "MidfieldStrength": 92,
+    "ForwardStrength": 90
+  },
+  {
+    "ID": 1,
+    "Name": "San Icos 05",
+    "Logo": "http:\/\/i.imgur.com\/lKP7jF6.png",
+    "StateID": 1,
+    "StadiumID": 1,
+    "GoalkeeperStrength": 72,
+    "DefenseStrength": 69,
+    "MidfieldStrength": 70,
+    "ForwardStrength": 73
+  },
+  {
+    "ID": 2,
+    "Name": "1. FC Groß-Staufen",
+    "Logo": "",
+    "StateID": 0,
+    "StadiumID": 17,
+    "GoalkeeperStrength": 81,
+    "DefenseStrength": 85,
+    "MidfieldStrength": 81,
+    "ForwardStrength": 87
+  },
+  {
+    "ID": 3,
+    "Name": "Boyacà Quito",
+    "Logo": "",
+    "StateID": 3,
+    "StadiumID": -1,
+    "GoalkeeperStrength": 78,
+    "DefenseStrength": 92,
+    "MidfieldStrength": 81,
+    "ForwardStrength": 85
+  },
+  {
+    "ID": 4,
+    "Name": "Impact Montreal",
+    "Logo": "",
+    "StateID": 4,
+    "StadiumID": -1,
+    "GoalkeeperStrength": 80,
+    "DefenseStrength": 76,
+    "MidfieldStrength": 79,
+    "ForwardStrength": 77
+  },
+  {
+    "ID": 5,
+    "Name": "FC Nassau",
+    "Logo": "",
+    "StateID": 5,
+    "StadiumID": -1,
+    "GoalkeeperStrength": 76,
+    "DefenseStrength": 75,
+    "MidfieldStrength": 79,
+    "ForwardStrength": 72
+  }
+]

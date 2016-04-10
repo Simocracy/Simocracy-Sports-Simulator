@@ -204,6 +204,8 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Codemap.dgml" />
+    <None Include="DefaultTeams\footballTeams.json" />
+    <None Include="DefaultTeams\leageWikiTemplates.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -229,13 +231,10 @@
     <Folder Include="Wiki\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DefaultTeams\footballTeams" />
+    <None Include="DefaultTeams\stadiums.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DefaultTeams\stadiums" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="DefaultTeams\states" />
+    <None Include="DefaultTeams\states.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,398 @@
+﻿[
+  {
+    "ID": 0,
+    "Name": "Seattle Stadium",
+    "StateID": 0,
+    "City": "Seattle",
+    "CapacityInt": 75000,
+    "CapacityNat": 83000,
+    "StadiumType": 2
+  },
+  {
+    "ID": 1,
+    "Name": "Estádio Municipal",
+    "StateID": 1,
+    "City": "San Icos",
+    "CapacityInt": 16100,
+    "CapacityNat": 16100,
+    "StadiumType": 3
+  },
+  {
+    "ID": 2,
+    "Name": "Royal Amin Stadium",
+    "StateID": 41,
+    "City": "Mediris",
+    "CapacityInt": 75000,
+    "CapacityNat": 75000,
+    "StadiumType": 2
+  },
+  {
+    "ID": 3,
+    "Name": "Estadio real de Gibraltar Sur",
+    "StateID": 41,
+    "City": "Gibraltar Sur",
+    "CapacityInt": 53928,
+    "CapacityNat": 53928,
+    "StadiumType": 3
+  },
+  {
+    "ID": 4,
+    "Name": "Estadio de la Libertad de Sirte",
+    "StateID": 41,
+    "City": "Sirte",
+    "CapacityInt": 48938,
+    "CapacityNat": 48938,
+    "StadiumType": 3
+  },
+  {
+    "ID": 5,
+    "Name": "Estadio Maghreb",
+    "StateID": 41,
+    "City": "Tamanrasset",
+    "CapacityInt": 93000,
+    "CapacityNat": 93000,
+    "StadiumType": 3
+  },
+  {
+    "ID": 6,
+    "Name": "Estadio Municipalde Al-Djazair",
+    "StateID": 41,
+    "City": "Al-Djazair",
+    "CapacityInt": 40000,
+    "CapacityNat": 40000,
+    "StadiumType": 3
+  },
+  {
+    "ID": 7,
+    "Name": "Estadio Rafael José Tejero",
+    "StateID": 41,
+    "City": "Casablanca",
+    "CapacityInt": 84000,
+    "CapacityNat": 84000,
+    "StadiumType": 3
+  },
+  {
+    "ID": 8,
+    "Name": "Estadio real de Danilo Olivera",
+    "StateID": 41,
+    "City": "Tripoli",
+    "CapacityInt": 90000,
+    "CapacityNat": 90000,
+    "StadiumType": 3
+  },
+  {
+    "ID": 9,
+    "Name": "Nuevo Estadio Insular de Yerba",
+    "StateID": 41,
+    "City": "Yerba",
+    "CapacityInt": 44000,
+    "CapacityNat": 44000,
+    "StadiumType": 2
+  },
+  {
+    "ID": 10,
+    "Name": "Stadio San Marino",
+    "StateID": 44,
+    "City": "Citta de Lampedusa",
+    "CapacityInt": 9000,
+    "CapacityNat": 9000,
+    "StadiumType": 3
+  },
+  {
+    "ID": 11,
+    "Name": "James-Milner-Stadium",
+    "StateID": 42,
+    "City": "Kolkata",
+    "CapacityInt": 81241,
+    "CapacityNat": 81241,
+    "StadiumType": 2
+  },
+  {
+    "ID": 12,
+    "Name": "Estadio Dannido",
+    "StateID": 42,
+    "City": "Matara",
+    "CapacityInt": 54150,
+    "CapacityNat": 54150,
+    "StadiumType": 2
+  },
+  {
+    "ID": 13,
+    "Name": "Diego Garcia Stadium",
+    "StateID": 42,
+    "City": "Diego Garcia",
+    "CapacityInt": 2000,
+    "CapacityNat": 2000,
+    "StadiumType": 3
+  },
+  {
+    "ID": 14,
+    "Name": "Naval Stadium",
+    "StateID": 42,
+    "City": "Port Brumiair",
+    "CapacityInt": 34020,
+    "CapacityNat": 34020,
+    "StadiumType": 4
+  },
+  {
+    "ID": 15,
+    "Name": "Australian Stadium",
+    "StateID": 43,
+    "City": "Waiego",
+    "CapacityInt": 12000,
+    "CapacityNat": 12000,
+    "StadiumType": 3
+  },
+  {
+    "ID": 16,
+    "Name": "Rocky Mountains Basin Stadium",
+    "StateID": 0,
+    "City": "Boulder",
+    "CapacityInt": 135000,
+    "CapacityNat": 135000,
+    "StadiumType": 2
+  },
+  {
+    "ID": 17,
+    "Name": "Zentralstadion",
+    "StateID": 0,
+    "City": "Groß-Staufen",
+    "CapacityInt": 105000,
+    "CapacityNat": 105000,
+    "StadiumType": 2
+  },
+  {
+    "ID": 18,
+    "Name": "Rose Bowl Stadium",
+    "StateID": 0,
+    "City": "Los Angeles",
+    "CapacityInt": 92542,
+    "CapacityNat": 92542,
+    "StadiumType": 2
+  },
+  {
+    "ID": 19,
+    "Name": "Olympiastadion",
+    "StateID": 0,
+    "City": "Groß-Staufen",
+    "CapacityInt": 85000,
+    "CapacityNat": 85000,
+    "StadiumType": 3
+  },
+  {
+    "ID": 20,
+    "Name": "Giants Stadium",
+    "StateID": 0,
+    "City": "New York",
+    "CapacityInt": 80242,
+    "CapacityNat": 86458,
+    "StadiumType": 2
+  },
+  {
+    "ID": 21,
+    "Name": "Lambeau Field",
+    "StateID": 0,
+    "City": "Green Bay",
+    "CapacityInt": 79438,
+    "CapacityNat": 72515,
+    "StadiumType": 2
+  },
+  {
+    "ID": 22,
+    "Name": "Golden Gate Stadium",
+    "StateID": 0,
+    "City": "San Rivero",
+    "CapacityInt": 70207,
+    "CapacityNat": 72700,
+    "StadiumType": 2
+  },
+  {
+    "ID": 23,
+    "Name": "George Vancouver Stadium",
+    "StateID": 0,
+    "City": "Vancouver",
+    "CapacityInt": 70000,
+    "CapacityNat": 74000,
+    "StadiumType": 2
+  },
+  {
+    "ID": 24,
+    "Name": "Foxboro Stadium",
+    "StateID": 0,
+    "City": "Boston",
+    "CapacityInt": 68756,
+    "CapacityNat": 72348,
+    "StadiumType": 2
+  },
+  {
+    "ID": 25,
+    "Name": "Miami Beach Arena",
+    "StateID": 2,
+    "City": "Miami",
+    "CapacityInt": 67000,
+    "CapacityNat": 68910,
+    "StadiumType": 2
+  },
+  {
+    "ID": 26,
+    "Name": "Chicago Soccer Arena",
+    "StateID": 0,
+    "City": "Chicago",
+    "CapacityInt": 61500,
+    "CapacityNat": 69300,
+    "StadiumType": 2
+  },
+  {
+    "ID": 27,
+    "Name": "El Paso Sport Stadium",
+    "StateID": 0,
+    "City": "El Paso",
+    "CapacityInt": 60000,
+    "CapacityNat": 65000,
+    "StadiumType": 2
+  },
+  {
+    "ID": 28,
+    "Name": "RFK Stadium",
+    "StateID": 0,
+    "City": "",
+    "CapacityInt": 56692,
+    "CapacityNat": 60000,
+    "StadiumType": 2
+  },
+  {
+    "ID": 29,
+    "Name": "Rice-Eccles Stadium",
+    "StateID": 0,
+    "City": "Salt Lake City",
+    "CapacityInt": 55000,
+    "CapacityNat": 59900,
+    "StadiumType": 2
+  },
+  {
+    "ID": 30,
+    "Name": "Mississippi Soccer Arena",
+    "StateID": 2,
+    "City": "New Orleans",
+    "CapacityInt": 53830,
+    "CapacityNat": 58680,
+    "StadiumType": 2
+  },
+  {
+    "ID": 31,
+    "Name": "Ronhof",
+    "StateID": 0,
+    "City": "Neufürth",
+    "CapacityInt": 50000,
+    "CapacityNat": 58741,
+    "StadiumType": 2
+  },
+  {
+    "ID": 32,
+    "Name": "Boise Stadium",
+    "StateID": 0,
+    "City": "Boise",
+    "CapacityInt": 49000,
+    "CapacityNat": 52000,
+    "StadiumType": 2
+  },
+  {
+    "ID": 33,
+    "Name": "Estadio de Tijuana",
+    "StateID": 0,
+    "City": "Tijuana",
+    "CapacityInt": 48694,
+    "CapacityNat": 60400,
+    "StadiumType": 2
+  },
+  {
+    "ID": 34,
+    "Name": "Frankfort Stadium",
+    "StateID": 0,
+    "City": "Frankfort",
+    "CapacityInt": 48060,
+    "CapacityNat": 52361,
+    "StadiumType": 2
+  },
+  {
+    "ID": 35,
+    "Name": "Marines Stadium",
+    "StateID": 0,
+    "City": "Norfolk",
+    "CapacityInt": 45000,
+    "CapacityNat": 53800,
+    "StadiumType": 2
+  },
+  {
+    "ID": 36,
+    "Name": "Fußballstadion München",
+    "StateID": 0,
+    "City": "München",
+    "CapacityInt": 34400,
+    "CapacityNat": 36800,
+    "StadiumType": 2
+  },
+  {
+    "ID": 37,
+    "Name": "Gold Mine Stadium",
+    "StateID": 0,
+    "City": "Sacramento",
+    "CapacityInt": 34200,
+    "CapacityNat": 36800,
+    "StadiumType": 2
+  },
+  {
+    "ID": 38,
+    "Name": "Städtisches Stadion",
+    "StateID": 0,
+    "City": "Groß-Staufen",
+    "CapacityInt": 33500,
+    "CapacityNat": 39325,
+    "StadiumType": 2
+  },
+  {
+    "ID": 39,
+    "Name": "St. Marys Stadium",
+    "StateID": 0,
+    "City": "Groß-Staufen",
+    "CapacityInt": 33000,
+    "CapacityNat": 45000,
+    "StadiumType": 2
+  },
+  {
+    "ID": 40,
+    "Name": "Redmond Village Stadium",
+    "StateID": 0,
+    "City": "Redmond",
+    "CapacityInt": 32600,
+    "CapacityNat": 34600,
+    "StadiumType": 2
+  },
+  {
+    "ID": 41,
+    "Name": "University Stadium",
+    "StateID": 0,
+    "City": "Groß-Staufen",
+    "CapacityInt": 32000,
+    "CapacityNat": 47200,
+    "StadiumType": 2
+  },
+  {
+    "ID": 42,
+    "Name": "Atlanta Stadium",
+    "StateID": 0,
+    "City": "Atlanta",
+    "CapacityInt": 31610,
+    "CapacityNat": 33580,
+    "StadiumType": 2
+  },
+  {
+    "ID": 43,
+    "Name": "City Stadium",
+    "StateID": 0,
+    "City": "San Francisco",
+    "CapacityInt": 31000,
+    "CapacityNat": 34812,
+    "StadiumType": 2
+  }
+]

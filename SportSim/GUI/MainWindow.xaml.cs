@@ -39,7 +39,7 @@ namespace Simocracy.SportSim
 		/// <param name="e"></param>
 		private void MenuItemSave_Click(object sender, RoutedEventArgs e)
 		{
-			Settings.Save();
+			Settings.SaveSettings();
 		}
 
 		/// <summary>
