@@ -106,6 +106,8 @@ namespace Simocracy.SportSim
 			}
 		}
 
+		//public 
+
 		#endregion
 
 		#region Methods
@@ -125,6 +127,23 @@ namespace Simocracy.SportSim
 			StatesComboBoxList.Insert(0, State.NoneState);
 		}
 
+		private void FillWikiCodeQualComboBoxes()
+		{
+			var valuesQ1 = new int[League.TeamCount + 1];
+			for(int i = 0; i <= League.TeamCount; i++)
+				valuesQ1[i] = i;
+			Qual1PlacesComboBox.ItemsSource = valuesQ1;
+			if(Qual1PlacesComboBox.SelectedIndex == -1)
+				Qual1PlacesComboBox.SelectedIndex = 0;
+
+			var valuesQ2 = new int[League.TeamCount - Qual1PlacesComboBox.SelectedIndex + 1];
+			for(int i = 0; i <= League.TeamCount - Qual1PlacesComboBox.SelectedIndex; i++)
+				valuesQ2[i] = i;
+			Qual2PlacesComboBox.ItemsSource = valuesQ2;
+			if(Qual2PlacesComboBox.SelectedIndex == -1)
+				Qual2PlacesComboBox.SelectedIndex = 0;
+		}
+
 		private void SelectAllTeamsButton_Click(object sender, RoutedEventArgs e)
 		{
 			FootballTeamsListBox.SelectAll();
@@ -134,6 +153,8 @@ namespace Simocracy.SportSim
 		{
 			League.Teams = FootballTeamCollection.CreateCollection(FootballTeamsListBox.SelectedItems);
 			League.CreateMatches();
+
+			FillWikiCodeQualComboBoxes();
 		}
 
 		private void SimulateButton_Click(object sender, RoutedEventArgs e)
@@ -145,6 +166,21 @@ namespace Simocracy.SportSim
 		{
 			var match = ((FrameworkElement) sender).DataContext as FootballMatch;
 			match.SwapTeams();
+		}
+
+		private void Qual1PlacesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			FillWikiCodeQualComboBoxes();
+		}
+
+		private void GenerateWikiCodeButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void CopyWikiCodeButton_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetText(WikiCodeTextBox.Text);
 		}
 
 		#endregion
