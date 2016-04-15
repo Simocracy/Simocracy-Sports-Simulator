@@ -47,10 +47,21 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Erstellt eine neues <see cref="LeagueWikiTemplate"/> und fügt es der Liste hinzu
 		/// </summary>
-		/// <param name="name">Name des Teams</param>
+		/// <param name="name">Name des <see cref="LeagueWikiTemplate"/></param>
 		public void Create(string name)
 		{
 			Add(new LeagueWikiTemplate(GetNewID(), name));
+		}
+
+		/// <summary>
+		/// Erstellt eine neues <see cref="LeagueWikiTemplate"/> und fügt es der Liste hinzu
+		/// </summary>
+		/// <param name="name">Name des <see cref="LeagueWikiTemplate"/></param>
+		/// <param name="templateCode">Einbindungscode des <see cref="LeagueWikiTemplate"/></param>
+		/// <param name="leagueSize">Gruppengröße</param>
+		public void Create(string name, string templateCode, int leagueSize)
+		{
+			Add(new LeagueWikiTemplate(GetNewID(), name, templateCode, leagueSize));
 		}
 
 		/// <summary>
@@ -85,7 +96,10 @@ namespace Simocracy.SportSim
 		/// <returns>Höchste ID</returns>
 		public int GetMaxID()
 		{
-			return this.Max(x => x.ID);
+			if(Count > 0)
+				return this.Max(x => x.ID);
+			else
+				return 0;
 		}
 
 		/// <summary>

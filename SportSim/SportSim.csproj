@@ -124,6 +124,9 @@
     <Compile Include="GUI\ManageFootballTeamsPage.xaml.cs">
       <DependentUpon>ManageFootballTeamsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ManageLeagueWikiTemplatesPage.xaml.cs">
+      <DependentUpon>ManageLeagueWikiTemplatesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ManageStadiumsPage.xaml.cs">
       <DependentUpon>ManageStadiumsPage.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="GUI\ManageFootballTeamsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\ManageLeagueWikiTemplatesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

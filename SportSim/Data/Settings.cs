@@ -22,25 +22,25 @@ namespace Simocracy.SportSim
 		/// Liste aller Fussballteams
 		/// </summary>
 		[IgnoreDataMember]
-		public static FootballTeamCollection FootballTeams { get; set; }
+		public static FootballTeamCollection FootballTeams { get; set; } = new FootballTeamCollection();
 
 		/// <summary>
 		/// Liste aller Staaten
 		/// </summary>
 		[IgnoreDataMember]
-		public static StateCollection States { get; set; }
+		public static StateCollection States { get; set; } = new StateCollection();
 
 		/// <summary>
 		/// Liste aller Stadien
 		/// </summary>
 		[IgnoreDataMember]
-		public static StadiumCollection Stadiums { get; set; }
+		public static StadiumCollection Stadiums { get; set; } = new StadiumCollection();
 
 		/// <summary>
 		/// Liste aller Gruppenvorlagen im Wiki
 		/// </summary>
 		[IgnoreDataMember]
-		public static LeagueWikiTemplateCollection LeageWikiTemplates { get; set; }
+		public static LeagueWikiTemplateCollection LeageWikiTemplates { get; set; } = new LeagueWikiTemplateCollection();
 
 		#endregion
 

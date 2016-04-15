@@ -45,6 +45,11 @@
 			</Style>
 		</Style.Resources>
 	</Style>
+	<Style x:Key="ManageMultiline" TargetType="TextBox">
+		<Setter Property="AcceptsReturn" Value="True" />
+		<Setter Property="AcceptsTab" Value="True" />
+		<Setter Property="TextWrapping" Value="Wrap" />
+	</Style>
 	<Style x:Key="ManageButtons" TargetType="StackPanel">
 		<Setter Property="Orientation" Value="Horizontal" />
 		<Setter Property="HorizontalAlignment" Value="Right" />
@@ -73,16 +78,20 @@
 			<TextBox x:Name="Box" Grid.Column="1" Margin="5,0,0,0" Text="{Binding ElementName=Slider, Path=Value, Mode=TwoWay}" VerticalAlignment="Center" />
 		</Grid>
 	</ControlTemplate>
-	
+
 
 	<!-- Invalid Inputs -->
-	
+
 	<Style x:Key="InvalidInput" TargetType="Control">
 		<Setter Property="BorderBrush" Value="Red" />
 		<Setter Property="BorderThickness" Value="2" />
 	</Style>
-	
-	
+	<Style x:Key="InvalidInputMultiline" TargetType="TextBox" BasedOn="{StaticResource ManageMultiline}">
+		<Setter Property="BorderBrush" Value="Red" />
+		<Setter Property="BorderThickness" Value="2" />
+	</Style>
+
+
 	<!-- Football Simulation Pages -->
 
 	<local:ExpanderToBooleanConverter x:Key="ExpanderToBooleanConverter" />

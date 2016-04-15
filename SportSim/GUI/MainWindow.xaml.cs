@@ -73,6 +73,16 @@ namespace Simocracy.SportSim
 		}
 
 		/// <summary>
+		/// Gruppenvorlagenverwaltung öffnen
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void MenuItemLeagueTemplates_Click(object sender, RoutedEventArgs e)
+		{
+			MainFrame.Content = new ManageLeagueWikiTemplatesPage();
+		}
+
+		/// <summary>
 		/// Fußballliga simulieren
 		/// </summary>
 		/// <param name="sender"></param>

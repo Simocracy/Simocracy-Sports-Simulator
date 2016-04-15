@@ -17,6 +17,7 @@
 					<MenuItem Name="MenuItemTeams" Header="Teams" Click="MenuItemTeams_Click"/>
 					<MenuItem Name="MenuItemStadiums" Header="Stadien" Click="MenuItemStadiums_Click"/>
 					<MenuItem Name="MenuItemStates" Header="Staaten" Click="MenuItemStates_Click"/>
+					<MenuItem Name="MenuItemLeagueTemplates" Header="Gruppenvorlagen" Click="MenuItemLeagueTemplates_Click"/>
 				</MenuItem>
 				<MenuItem Header="Simulation">
 					<MenuItem Header="Fußball">

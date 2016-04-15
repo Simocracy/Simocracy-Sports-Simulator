@@ -1,0 +1,56 @@
+﻿<Page x:Class="Simocracy.SportSim.ManageLeagueWikiTemplatesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Simocracy.SportSim"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="Gruppenvorlagenverwaltung">
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<Label Content="Gruppenvorlagen" Grid.ColumnSpan="2" Grid.Row="0" Style="{DynamicResource ManageTitle}"/>
+
+		<Label Name="DebugIDLabel" Grid.Column="1" Grid.Row="0" Style="{DynamicResource ManageDebug}"
+			   Content="{Binding SelectedTemplate.ID}"/>
+		<ListBox x:Name="TemplatesList" Grid.Row="1" Style="{DynamicResource MangeList}"
+				 ItemsSource="{Binding Source={x:Static local:Settings.LeageWikiTemplates}}" DisplayMemberPath="Name"
+				 SelectionChanged="TemplatesList_SelectionChanged" SelectedItem="{Binding SelectedTemplate}" />
+
+		<ScrollViewer Grid.Column="1" Grid.Row="1" Style="{DynamicResource ManageScroller}">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="auto"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<Label Content="Name:" Grid.Row="0" />
+				<TextBox x:Name="NameTextBox" Grid.Row="1" Text="{Binding SelectedTemplate.Name}" />
+				<Label Content="Gruppengröße:" Grid.Row="2" />
+				<TextBox x:Name="LeagueSizeTextBox" Grid.Row="3" Text="{Binding SelectedTemplate.LeagueSize}" />
+				<Label Content="Einbindungscode:" Grid.Row="4" />
+				<TextBox Name="WikiCodeTextBox" Grid.Row="5" Text="{Binding SelectedTemplate.TemplateCode}" Style="{DynamicResource ManageMultiline}" />
+			</Grid>
+		</ScrollViewer>
+
+		<StackPanel Grid.ColumnSpan="2" Grid.Row="3" Style="{DynamicResource ManageButtons}">
+			<Button x:Name="DeleteButton" Content="Löschen" Click="DeleteButton_Click" />
+			<Button x:Name="NewButton" Content="Neu" Click="NewButton_Click" />
+			<Button x:Name="SaveButton" Content="Speichern" Click="SaveButton_Click" />
+		</StackPanel>
+
+	</Grid>
+</Page>
