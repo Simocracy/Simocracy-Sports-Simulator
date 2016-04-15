@@ -20,7 +20,7 @@
   {
     "ID": 2,
     "Name": "Royal Amin Stadium",
-    "StateID": 41,
+    "StateID": 8,
     "City": "Mediris",
     "CapacityInt": 75000,
     "CapacityNat": 75000,
@@ -29,7 +29,7 @@
   {
     "ID": 3,
     "Name": "Estadio real de Gibraltar Sur",
-    "StateID": 41,
+    "StateID": 8,
     "City": "Gibraltar Sur",
     "CapacityInt": 53928,
     "CapacityNat": 53928,
@@ -38,7 +38,7 @@
   {
     "ID": 4,
     "Name": "Estadio de la Libertad de Sirte",
-    "StateID": 41,
+    "StateID": 8,
     "City": "Sirte",
     "CapacityInt": 48938,
     "CapacityNat": 48938,
@@ -47,7 +47,7 @@
   {
     "ID": 5,
     "Name": "Estadio Maghreb",
-    "StateID": 41,
+    "StateID": 8,
     "City": "Tamanrasset",
     "CapacityInt": 93000,
     "CapacityNat": 93000,
@@ -56,7 +56,7 @@
   {
     "ID": 6,
     "Name": "Estadio Municipalde Al-Djazair",
-    "StateID": 41,
+    "StateID": 8,
     "City": "Al-Djazair",
     "CapacityInt": 40000,
     "CapacityNat": 40000,
@@ -65,7 +65,7 @@
   {
     "ID": 7,
     "Name": "Estadio Rafael José Tejero",
-    "StateID": 41,
+    "StateID": 8,
     "City": "Casablanca",
     "CapacityInt": 84000,
     "CapacityNat": 84000,
@@ -74,7 +74,7 @@
   {
     "ID": 8,
     "Name": "Estadio real de Danilo Olivera",
-    "StateID": 41,
+    "StateID": 8,
     "City": "Tripoli",
     "CapacityInt": 90000,
     "CapacityNat": 90000,
@@ -83,7 +83,7 @@
   {
     "ID": 9,
     "Name": "Nuevo Estadio Insular de Yerba",
-    "StateID": 41,
+    "StateID": 8,
     "City": "Yerba",
     "CapacityInt": 44000,
     "CapacityNat": 44000,
@@ -92,7 +92,7 @@
   {
     "ID": 10,
     "Name": "Stadio San Marino",
-    "StateID": 44,
+    "StateID": 11,
     "City": "Citta de Lampedusa",
     "CapacityInt": 9000,
     "CapacityNat": 9000,
@@ -137,7 +137,7 @@
   {
     "ID": 15,
     "Name": "Australian Stadium",
-    "StateID": 43,
+    "StateID": 10,
     "City": "Waiego",
     "CapacityInt": 12000,
     "CapacityNat": 12000,
