@@ -65,6 +65,19 @@ namespace Simocracy.SportSim
 		}
 
 		/// <summary>
+		/// Erstellt eine neues <see cref="LeagueWikiTemplate"/> und fügt es der Liste hinzu
+		/// </summary>
+		/// <param name="name">Name des <see cref="LeagueWikiTemplate"/></param>
+		/// <param name="templateCode">Einbindungscode des <see cref="LeagueWikiTemplate"/></param>
+		/// <param name="leagueSize">Gruppengröße</param>
+		/// <param name="isDate">Angabe ob Datum enthalten</param>
+		/// <param name="isLocation">Angabe ob Ort enthalten</param>
+		public void Create(string name, string templateCode, int leagueSize, bool isDate, bool isLocation)
+		{
+			Add(new LeagueWikiTemplate(GetNewID(), name, templateCode, leagueSize, isDate, isLocation));
+		}
+
+		/// <summary>
 		/// Gibt das <see cref="LeagueWikiTemplate"/> mit dem angegebenen Namen zurück
 		/// </summary>
 		/// <param name="name">Name des <see cref="LeagueWikiTemplate"/></param>

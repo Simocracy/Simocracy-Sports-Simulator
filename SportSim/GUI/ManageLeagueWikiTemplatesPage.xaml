@@ -27,24 +27,26 @@
 				 ItemsSource="{Binding Source={x:Static local:Settings.LeageWikiTemplates}}" DisplayMemberPath="Name"
 				 SelectionChanged="TemplatesList_SelectionChanged" SelectedItem="{Binding SelectedTemplate}" />
 
-		<!--<ScrollViewer Grid.Column="1" Grid.Row="1" Style="{DynamicResource ManageScroller}">-->
-			<Grid Grid.Column="1" Grid.Row="1" Style="{DynamicResource ManageContentGrid}">
-				<Grid.RowDefinitions>
-					<RowDefinition Height="auto"/>
-					<RowDefinition Height="auto"/>
-					<RowDefinition Height="auto"/>
-					<RowDefinition Height="auto"/>
-					<RowDefinition Height="auto"/>
-					<RowDefinition Height="*"/>
-				</Grid.RowDefinitions>
-				<Label Content="Name:" Grid.Row="0" />
-				<TextBox x:Name="NameTextBox" Grid.Row="1" Text="{Binding SelectedTemplate.Name}" />
-				<Label Content="Gruppengröße:" Grid.Row="2" />
-				<TextBox x:Name="LeagueSizeTextBox" Grid.Row="3" Text="{Binding SelectedTemplate.LeagueSize}" />
-				<Label Content="Einbindungscode:" Grid.Row="4" />
-				<TextBox Name="WikiCodeTextBox" Grid.Row="5" Text="{Binding SelectedTemplate.TemplateCode}" Style="{DynamicResource ManageMultiline}" />
-			</Grid>
-		<!--</ScrollViewer>-->
+		<Grid Grid.Column="1" Grid.Row="1" Style="{DynamicResource ManageContentGrid}">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+			<Label Content="Name:" Grid.Row="0" />
+			<TextBox x:Name="NameTextBox" Grid.Row="1" Text="{Binding SelectedTemplate.Name}" />
+			<Label Content="Gruppengröße:" Grid.Row="2" />
+			<TextBox x:Name="LeagueSizeTextBox" Grid.Row="3" Text="{Binding SelectedTemplate.LeagueSize}" />
+			<CheckBox Name="IsDateCheckBox" Grid.Row="4" Content="Enthält Datumsangabe" IsChecked="{Binding SelectedTemplate.IsDate}" Style="{DynamicResource ManageCheckBox}" Margin="0, 5, 0, 2.5" />
+			<CheckBox Name="IsLocationCheckBox" Grid.Row="5" Content="Enthält Ortsangabe" IsChecked="{Binding SelectedTemplate.IsLocation}" Style="{DynamicResource ManageCheckBox}" />
+			<Label Content="Einbindungscode:" Grid.Row="6" />
+			<TextBox Name="WikiCodeTextBox" Grid.Row="7" Text="{Binding SelectedTemplate.TemplateCode}" Style="{DynamicResource ManageMultiline}" />
+		</Grid>
 
 		<StackPanel Grid.ColumnSpan="2" Grid.Row="3" Style="{DynamicResource ManageButtons}">
 			<Button x:Name="DeleteButton" Content="Löschen" Click="DeleteButton_Click" />

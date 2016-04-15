@@ -24,7 +24,7 @@ namespace Simocracy.SportSim
 		/// <param name="id">ID</param>
 		/// <param name="name">Vorlagenname</param>
 		public LeagueWikiTemplate(int id, string name)
-			: base(id, name)
+			: this(id, name, String.Empty, 0)
 		{ }
 
 		/// <summary>
@@ -35,9 +35,24 @@ namespace Simocracy.SportSim
 		/// <param name="templateCode">Einbindungscode der Vorlage</param>
 		/// <param name="leagueSize">Gruppengröße</param>
 		public LeagueWikiTemplate(int id, string name, string templateCode, int leagueSize)
+			: this(id, name, templateCode, 0, false, false)
+		{ }
+
+		/// <summary>
+		/// Definiert eine neue Gruppenvorlage
+		/// </summary>
+		/// <param name="id">ID</param>
+		/// <param name="name">Vorlagenname</param>
+		/// <param name="templateCode">Einbindungscode der Vorlage</param>
+		/// <param name="leagueSize">Gruppengröße</param>
+		/// <param name="isDate">Angabe ob Datum enthalten ist</param>
+		/// <param name="isLocation">Angabe ob Ort enthalten ist</param>
+		public LeagueWikiTemplate(int id, string name, string templateCode, int leagueSize, bool isDate, bool isLocation)
 			: base(id, name, templateCode)
 		{
 			LeagueSize = leagueSize;
+			IsDate = isDate;
+			IsLocation = isLocation;
 		}
 
 		#endregion
@@ -49,6 +64,20 @@ namespace Simocracy.SportSim
 		/// </summary>
 		[DataMember(Order = 1000)]
 		public int LeagueSize
+		{ get; set; }
+
+		/// <summary>
+		/// Ist Datumsangabe enthalten
+		/// </summary>
+		[DataMember(Order = 1010)]
+		public bool IsDate
+		{ get; set; }
+
+		/// <summary>
+		/// Ist Ortsangabe Enthalten
+		/// </summary>
+		[DataMember(Order = 1020)]
+		public bool IsLocation
 		{ get; set; }
 
 		#endregion
