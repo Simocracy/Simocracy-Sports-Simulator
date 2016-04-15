@@ -91,7 +91,7 @@ namespace Simocracy.SportSim
 		#region Utilities
 
 		/// <summary>
-		/// Gibt die höchste bestehende ID einer <see cref="LeagueWikiTemplate"/> zurück
+		/// Gibt die höchste bestehende ID einer <see cref="LeagueWikiTemplate"/> zurück oder -1 wenn keine <see cref="LeagueWikiTemplate"/> vorhanden sind
 		/// </summary>
 		/// <returns>Höchste ID</returns>
 		public int GetMaxID()
@@ -99,7 +99,7 @@ namespace Simocracy.SportSim
 			if(Count > 0)
 				return this.Max(x => x.ID);
 			else
-				return 0;
+				return -1;
 		}
 
 		/// <summary>

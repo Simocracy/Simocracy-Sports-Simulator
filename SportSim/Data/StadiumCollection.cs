@@ -106,16 +106,19 @@ namespace Simocracy.SportSim
 		#region Utilities
 
 		/// <summary>
-		/// Gibt die höchste bestehende ID eines Teams zurück
+		/// Gibt die höchste bestehende ID eines Stadions zurück oder -1, wenn kein Stadion vorhanden ist
 		/// </summary>
 		/// <returns>Höchste ID</returns>
 		public int GetMaxID()
 		{
-			return this.Max(x => x.ID);
+			if(Count > 0)
+				return this.Max(x => x.ID);
+			else
+				return -1;
 		}
 
 		/// <summary>
-		/// Gibt eine neue ID für ein Team zurück
+		/// Gibt eine neue ID für ein Stadion zurück
 		/// </summary>
 		/// <returns>Neue ID</returns>
 		public int GetNewID()
