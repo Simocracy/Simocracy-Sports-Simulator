@@ -138,7 +138,7 @@ namespace Simocracy.SportSim
 			{
 				// Load Zip
 				var streams = await ZipFileHelper.LoadZipFile(_ZipFileName);
-				XmlObjectSerializer ser;
+				DataContractJsonSerializer ser;
 
 				// States
 				try

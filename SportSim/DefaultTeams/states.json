@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "ID": 0,
     "Name": "Union of North American States",
@@ -33,6 +33,12 @@
     "ID": 5,
     "Name": "Oranienbund",
     "Flag": "ORA",
+    "Continent": 1
+  },
+  {
+    "ID": 6,
+    "Name": "Meyham",
+    "Flag": "MEY",
     "Continent": 1
   },
   {
