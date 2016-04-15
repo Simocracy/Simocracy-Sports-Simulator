@@ -27,8 +27,8 @@
 				 ItemsSource="{Binding Source={x:Static local:Settings.LeageWikiTemplates}}" DisplayMemberPath="Name"
 				 SelectionChanged="TemplatesList_SelectionChanged" SelectedItem="{Binding SelectedTemplate}" />
 
-		<ScrollViewer Grid.Column="1" Grid.Row="1" Style="{DynamicResource ManageScroller}">
-			<Grid>
+		<!--<ScrollViewer Grid.Column="1" Grid.Row="1" Style="{DynamicResource ManageScroller}">-->
+			<Grid Grid.Column="1" Grid.Row="1" Style="{DynamicResource ManageContentGrid}">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="auto"/>
 					<RowDefinition Height="auto"/>
@@ -44,7 +44,7 @@
 				<Label Content="Einbindungscode:" Grid.Row="4" />
 				<TextBox Name="WikiCodeTextBox" Grid.Row="5" Text="{Binding SelectedTemplate.TemplateCode}" Style="{DynamicResource ManageMultiline}" />
 			</Grid>
-		</ScrollViewer>
+		<!--</ScrollViewer>-->
 
 		<StackPanel Grid.ColumnSpan="2" Grid.Row="3" Style="{DynamicResource ManageButtons}">
 			<Button x:Name="DeleteButton" Content="Löschen" Click="DeleteButton_Click" />

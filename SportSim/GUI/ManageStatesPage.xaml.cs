@@ -132,7 +132,7 @@ namespace Simocracy.SportSim
 		{
 			if(ValidateInputs())
 			{
-				if(_IsInNewMode)
+				if(_IsInNewMode || SelectedState == null)
 					Create();
 				else
 					SaveData();

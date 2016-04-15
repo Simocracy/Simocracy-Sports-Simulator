@@ -24,6 +24,7 @@ namespace Simocracy.SportSim
 		public ManageLeagueWikiTemplatesPage()
 		{
 			InitializeComponent();
+			DataContext = this;
 
 #if !DEBUG
 			DebugIDLabel.Visibility = Visibility.Collapsed;
@@ -31,14 +32,14 @@ namespace Simocracy.SportSim
 		}
 
 		private bool _IsInNewMode;
-		private LeagueWikiTemplate _SelectedTeplate;
+		private LeagueWikiTemplate _SelectedTemplate;
 
 		public LeagueWikiTemplate SelectedTemplate
 		{
-			get { return _SelectedTeplate; }
+			get { return _SelectedTemplate; }
 			set
 			{
-				_SelectedTeplate = value;
+				_SelectedTemplate = value;
 				MarkAllValid();
 				_IsInNewMode = false;
 				Notify("SelectedTemplate");
