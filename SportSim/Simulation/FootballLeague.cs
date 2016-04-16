@@ -183,6 +183,9 @@ namespace Simocracy.SportSim
 				match.Simulate();
 		}
 
+		/// <summary>
+		/// Berechnet die Tabelle
+		/// </summary>
 		public void CalculateTable()
 		{
 			foreach(var team in Teams)
@@ -232,8 +235,10 @@ namespace Simocracy.SportSim
 
 				Table.Rows.Add(row);
 			}
-
-			// TODO: Sort
+			
+			DataView dv = Table.DefaultView;
+			dv.Sort = "Points, GoalDiff, GoalsFor";
+			Table = dv.ToTable();
 		}
 
 		/// <summary>
