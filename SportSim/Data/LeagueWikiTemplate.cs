@@ -16,6 +16,12 @@ namespace Simocracy.SportSim
 	public class LeagueWikiTemplate : WikiTemplate
 	{
 
+		#region Members
+
+		private static LeagueWikiTemplate _NoneTemplate = new LeagueWikiTemplate(-1, String.Empty, String.Empty, 0, false, false);
+
+		#endregion
+
 		#region Constructor
 
 		/// <summary>
@@ -58,6 +64,15 @@ namespace Simocracy.SportSim
 		#endregion
 
 		#region Properties
+
+		/// <summary>
+		/// Leere Vorlage
+		/// </summary>
+		[IgnoreDataMember]
+		public static LeagueWikiTemplate NoneTemplate
+		{
+			get { return _NoneTemplate; }
+		}
 
 		/// <summary>
 		/// Gruppengröße

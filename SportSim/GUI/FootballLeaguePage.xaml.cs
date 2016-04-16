@@ -106,6 +106,17 @@ namespace Simocracy.SportSim
 			}
 		}
 
+		private LeagueWikiTemplateCollection _TemplatesComboBoxList;
+		public LeagueWikiTemplateCollection TemplatesComboBoxList
+		{
+			get { return _TemplatesComboBoxList; }
+			set
+			{
+				_TemplatesComboBoxList = value;
+				Notify("TemplatesComboBoxList");
+			}
+		}
+
 		//public 
 
 		#endregion
@@ -125,6 +136,15 @@ namespace Simocracy.SportSim
 		{
 			StatesComboBoxList = new StateCollection(Settings.States.Where(x => x.Continent == SelectedContinent));
 			StatesComboBoxList.Insert(0, State.NoneState);
+		}
+
+		private void FilterTemplatesList()
+		{
+			TemplatesComboBoxList = new LeagueWikiTemplateCollection(Settings.LeageWikiTemplates.Where(x =>
+					x.LeagueSize == League.TeamCount &&
+					x.IsDate == DateCheckBox.IsChecked &&
+					x.IsLocation == LocationCheckBox.IsChecked));
+			TemplatesComboBoxList.Insert(0, LeagueWikiTemplate.NoneTemplate);
 		}
 
 		private void FillWikiCodeQualComboBoxes()
@@ -155,6 +175,7 @@ namespace Simocracy.SportSim
 			League.CreateMatches();
 
 			FillWikiCodeQualComboBoxes();
+			FilterTemplatesList();
 		}
 
 		private void SimulateButton_Click(object sender, RoutedEventArgs e)
@@ -171,6 +192,26 @@ namespace Simocracy.SportSim
 		private void Qual1PlacesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			FillWikiCodeQualComboBoxes();
+		}
+
+		private void DateCheckBox_Checked(object sender, RoutedEventArgs e)
+		{
+			FilterTemplatesList();
+		}
+
+		private void DateCheckBox_Unchecked(object sender, RoutedEventArgs e)
+		{
+			FilterTemplatesList();
+		}
+
+		private void LocationCheckBox_Checked(object sender, RoutedEventArgs e)
+		{
+			FilterTemplatesList();
+		}
+
+		private void LocationCheckBox_Unchecked(object sender, RoutedEventArgs e)
+		{
+			FilterTemplatesList();
 		}
 
 		private void GenerateWikiCodeButton_Click(object sender, RoutedEventArgs e)

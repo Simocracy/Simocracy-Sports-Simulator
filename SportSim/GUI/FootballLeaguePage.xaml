@@ -188,10 +188,10 @@
 							<RowDefinition Height="auto" />
 							<RowDefinition Height="auto" />
 						</Grid.RowDefinitions>
-						<CheckBox Name="DateCheckBox" Content="Datum" Grid.Row="0" Grid.ColumnSpan="2" />
-						<CheckBox Name="LocationCheckBox" Content="Spielorte" Grid.Row="1" Grid.ColumnSpan="2" />
+						<CheckBox Name="DateCheckBox" Content="Datum" Grid.Row="0" Grid.ColumnSpan="2" Checked="DateCheckBox_Checked" Unchecked="DateCheckBox_Unchecked" />
+						<CheckBox Name="LocationCheckBox" Content="Spielorte" Grid.Row="1" Grid.ColumnSpan="2" Checked="LocationCheckBox_Checked" Unchecked="LocationCheckBox_Unchecked" />
 						<Label Content="Vorlage:" Grid.Row="2" Grid.Column="0" />
-						<ComboBox Name="WikiTemplateComboBox" Grid.Row="2" Grid.Column="1" />
+						<ComboBox Name="WikiTemplateComboBox" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding TemplatesComboBoxList}" DisplayMemberPath="Name" />
 					</Grid>
 				</GroupBox>
 				

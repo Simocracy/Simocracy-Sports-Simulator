@@ -106,7 +106,7 @@ namespace Simocracy.SportSim
 		/// <param name="teamB">Auswärtsteam</param>
 		/// <param name="minutes">Anzahl Spielminuten</param>
 		public FootballMatch(int matchID, FootballTeam teamA, FootballTeam teamB, int minutes)
-			: this(matchID, teamA, teamB, new DateTime(2050, 1, 1), minutes)
+			: this(matchID, teamA, teamB, Datumsrechner.Now, minutes)
 		{ }
 
 		/// <summary>
