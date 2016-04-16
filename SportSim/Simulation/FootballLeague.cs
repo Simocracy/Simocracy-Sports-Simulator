@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -85,6 +86,7 @@ namespace Simocracy.SportSim
 
 			Matches = new ObservableCollection<FootballMatch>();
 			CreateMatches();
+			CreateTable();
 		}
 
 		#endregion
@@ -110,6 +112,11 @@ namespace Simocracy.SportSim
 		/// Anzahl der Teams
 		/// </summary>
 		public int TeamCount { get { return Teams.Count; } }
+
+		/// <summary>
+		/// Tabelle der Liga
+		/// </summary>
+		public DataTable Table { get; set; }
 
 		#endregion
 
@@ -174,6 +181,79 @@ namespace Simocracy.SportSim
 		{
 			foreach(var match in Matches)
 				match.Simulate();
+		}
+
+		public void CalculateTable()
+		{
+			foreach(var team in Teams)
+			{
+				var row = Table.NewRow();
+
+				int win, drawn, lose, goalsFor, goalsAgainst;
+				win = drawn = lose = goalsFor = goalsAgainst = 0;
+
+				foreach(var match in Matches)
+				{
+					if(match.TeamA == team)
+					{
+						if(match.ResultA > match.ResultB)
+							win++;
+						else if(match.ResultA == match.ResultB)
+							drawn++;
+						else
+							lose++;
+
+						goalsFor += match.ResultA;
+						goalsAgainst += match.ResultB;
+					}
+					else if(match.TeamB == team)
+					{
+						if(match.ResultB > match.ResultA)
+							win++;
+						else if(match.ResultB == match.ResultA)
+							drawn++;
+						else
+							lose++;
+
+						goalsFor += match.ResultB;
+						goalsAgainst += match.ResultA;
+					}
+				}
+
+				row["Team"] = team;
+				row["Matches"] = win + drawn + lose;
+				row["Win"] = win;
+				row["Drawn"] = drawn;
+				row["Lose"] = lose;
+				row["GoalsFor"] = goalsFor;
+				row["GoalsAgainst"] = goalsAgainst;
+				row["GoalDiff"] = goalsFor - goalsAgainst;
+				row["Points"] = win * 3 + drawn;
+
+				Table.Rows.Add(row);
+			}
+
+			// TODO: Sort
+		}
+
+		/// <summary>
+		/// Erstellt die Ergebnistabelle
+		/// </summary>
+		private void CreateTable()
+		{
+			var table = new DataTable();
+
+			table.Columns.Add("Team", typeof(FootballTeam));
+			table.Columns.Add("Matches", typeof(int));
+			table.Columns.Add("Win", typeof(int));
+			table.Columns.Add("Drawn", typeof(int));
+			table.Columns.Add("Lose", typeof(int));
+			table.Columns.Add("GoalsFor", typeof(int));
+			table.Columns.Add("GoalsAgainst", typeof(int));
+			table.Columns.Add("GoalDiff", typeof(int));
+			table.Columns.Add("Points", typeof(int));
+
+			Table = table;
 		}
 
 		#endregion
