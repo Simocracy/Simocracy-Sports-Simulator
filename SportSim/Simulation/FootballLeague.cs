@@ -188,6 +188,8 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public void CalculateTable()
 		{
+			CreateTable();
+
 			foreach(var team in Teams)
 			{
 				var row = Table.NewRow();
@@ -237,7 +239,7 @@ namespace Simocracy.SportSim
 			}
 			
 			DataView dv = Table.DefaultView;
-			dv.Sort = "Points, GoalDiff, GoalsFor";
+			dv.Sort = "Points DESC, GoalDiff DESC, GoalsFor DESC";
 			Table = dv.ToTable();
 		}
 

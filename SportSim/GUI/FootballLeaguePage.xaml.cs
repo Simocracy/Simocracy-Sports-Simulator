@@ -216,7 +216,7 @@ namespace Simocracy.SportSim
 
 		private void GenerateWikiCodeButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			League.CalculateTable();
 		}
 
 		private void CopyWikiCodeButton_Click(object sender, RoutedEventArgs e)
