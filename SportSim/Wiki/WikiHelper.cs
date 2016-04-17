@@ -82,7 +82,7 @@ namespace Simocracy.SportSim
 		}
 
 		/// <summary>
-		/// Generiert den Code für die Darstellung der Ergebnisse der angegebenen <see cref="FootballLeague"/> und nutzt dazu optional die angegebene <see cref="LeagueWikiTemplate"/>
+		/// Generiert den Code für die Darstellung der Ergebnisse der angegebenen <see cref="FootballLeague"/> und nutzt dazu die angegebene <see cref="LeagueWikiTemplate"/>
 		/// </summary>
 		/// <param name="league"><see cref="FootballLeague"/> der darzustellenden Ergebnisse</param>
 		/// <param name="isDate">Angabe, ob das Datum in der Ausgabe enthalten ist</param>
@@ -92,7 +92,9 @@ namespace Simocracy.SportSim
 		public static string GenerateResultsCode(FootballLeague league, bool isDate, bool isLocation, LeagueWikiTemplate template = null)
 		{
 			if(template == null)
-				return GenerateResultsCode(league, isDate, isLocation);
+				//return GenerateResultsCode(league, isDate, isLocation);
+				throw new NotImplementedException("Results output without template not implemented");
+
 
 
 			return String.Empty;

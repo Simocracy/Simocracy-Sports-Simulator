@@ -144,7 +144,7 @@ namespace Simocracy.SportSim
 					x.LeagueSize == League.TeamCount &&
 					x.IsDate == DateCheckBox.IsChecked &&
 					x.IsLocation == LocationCheckBox.IsChecked));
-			TemplatesComboBoxList.Insert(0, LeagueWikiTemplate.NoneTemplate);
+			//TemplatesComboBoxList.Insert(0, LeagueWikiTemplate.NoneTemplate);
 		}
 
 		private void FillWikiCodeQualComboBoxes()
