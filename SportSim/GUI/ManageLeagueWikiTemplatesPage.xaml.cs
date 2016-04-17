@@ -53,6 +53,8 @@ namespace Simocracy.SportSim
 			DebugIDLabel.ClearValue(Label.ContentProperty);
 			NameTextBox.Clear();
 			LeagueSizeTextBox.Clear();
+			IsDateCheckBox.ClearValue(CheckBox.IsCheckedProperty);
+			IsLocationCheckBox.ClearValue(CheckBox.IsCheckedProperty);
 			WikiCodeTextBox.Clear();
 		}
 
@@ -87,6 +89,8 @@ namespace Simocracy.SportSim
 		{
 			SelectedTemplate.Name = NameTextBox.Text;
 			SelectedTemplate.LeagueSize = Int32.Parse(LeagueSizeTextBox.Text);
+			SelectedTemplate.IsDate = (IsDateCheckBox.IsChecked == true) ? true : false;
+			SelectedTemplate.IsLocation = (IsLocationCheckBox.IsChecked == true) ? true : false;
 			SelectedTemplate.TemplateCode = WikiCodeTextBox.Text;
 		}
 
@@ -95,7 +99,9 @@ namespace Simocracy.SportSim
 			Settings.LeageWikiTemplates.Create(
 				NameTextBox.Text,
 				WikiCodeTextBox.Text,
-				Int32.Parse(LeagueSizeTextBox.Text));
+				Int32.Parse(LeagueSizeTextBox.Text),
+				(IsDateCheckBox.IsChecked == true) ? true : false,
+				(IsLocationCheckBox.IsChecked == true) ? true : false);
 
 			_IsInNewMode = false;
 			SelectedTemplate = Settings.LeageWikiTemplates.Last();
@@ -105,6 +111,8 @@ namespace Simocracy.SportSim
 		{
 			NameTextBox.ClearValue(Control.StyleProperty);
 			LeagueSizeTextBox.ClearValue(Control.StyleProperty);
+			IsDateCheckBox.ClearValue(Control.StyleProperty);
+			IsLocationCheckBox.ClearValue(Control.StyleProperty);
 			WikiCodeTextBox.Style = Application.Current.TryFindResource("ManageMultiline") as Style;
 		}
 

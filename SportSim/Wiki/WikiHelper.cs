@@ -93,7 +93,7 @@ namespace Simocracy.SportSim
 			if(template == null)
 				throw new NotImplementedException("Results output without template not implemented");
 
-			var templateRegex = new Regex(@"\||=");
+			var templateRegex = new Regex(@"\|?\s*([^=]*)\s*=");
 			var teamRegex = new Regex(@"(A\d+)");
 			var teamIndexRegex = new Regex(@"(\d+)");
 			var templateCode = Regex.Replace(template.TemplateCode, @"\r\n?|\n", String.Empty);
@@ -104,8 +104,10 @@ namespace Simocracy.SportSim
 			for(int i = 0; i < templateLines.Length; i++)
 			{
 				var line = templateLines[i].Replace("}}", String.Empty);
-				var teamMatches = teamRegex.Matches(line);
 
+				var templateMatch = templateRegex.Match(line);
+				var teamMatches = teamRegex.Matches(line);
+				
 				// Wenn nur ein Team enthalten ist: Teamnamen
 				if(teamMatches.Count == 1)
 				{
@@ -140,6 +142,12 @@ namespace Simocracy.SportSim
 					{
 						line += String.Format("{0}:{1}", match.ResultA, match.ResultB);
 					}
+				}
+				
+				// Wenn nicht benötigte Variable
+				else if(templateMatch.Success)
+				{
+					line = String.Format("|{0}", line);
 				}
 
 				filledLines[i] = line;
