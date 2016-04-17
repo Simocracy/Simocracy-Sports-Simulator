@@ -134,7 +134,7 @@ namespace Simocracy.SportSim
 
 		private void FilterStateList()
 		{
-			StatesComboBoxList = new StateCollection(Settings.States.Where(x => x.Continent == SelectedContinent));
+			StatesComboBoxList = (SelectedContinent != EContinent.Unknown) ? new StateCollection(Settings.States.Where(x => x.Continent == SelectedContinent)) : new StateCollection(Settings.States);
 			StatesComboBoxList.Insert(0, State.NoneState);
 		}
 
