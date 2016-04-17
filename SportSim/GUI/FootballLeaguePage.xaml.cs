@@ -232,7 +232,7 @@ namespace Simocracy.SportSim
 				WikiCodeTextBox.Text += WikiHelper.GenerateTableCode(League, Qual1PlacesComboBox.SelectedIndex, Qual2PlacesComboBox.SelectedIndex);
 			}
 
-			if(ResultsCheckBox.IsChecked == true)
+			if(ResultsCheckBox.IsChecked == true && WikiTemplateComboBox.SelectedIndex >= 0)
 			{
 				WikiCodeTextBox.Text += WikiHelper.GenerateResultsCode(League, WikiTemplateComboBox.SelectedItem as LeagueWikiTemplate);
 			}
