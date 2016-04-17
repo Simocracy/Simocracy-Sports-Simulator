@@ -45,10 +45,29 @@ namespace Simocracy.SportSim
 		public readonly string FootballLeagueTableHeader;
 
 		/// <summary>
-		/// Tabellenelemente für Fußballtabellen
+		/// Tabellenelemente für Fußballtabellen.
+		/// Format: Klasse, Platz, Team, S, U, N, Tore, Punkte
 		/// </summary>
 		[DataMember]
 		public readonly string FootballLeagueTableElememt;
+
+		#endregion
+
+		#region Results
+
+		/// <summary>
+		/// Tabellenheader für Ergebnistabellen für Einzelrunden.
+		/// Format: Breite
+		/// </summary>
+		[DataMember]
+		public readonly string ResultsSingleRoundTableHeader;
+
+		/// <summary>
+		/// Tabellenheader für Ergebnistabellen für Doppelrunden.
+		/// Format: Breite, Seite
+		/// </summary>
+		[DataMember]
+		public readonly string ResultsDoubleRoundTableHeader;
 
 		#endregion
 	}
