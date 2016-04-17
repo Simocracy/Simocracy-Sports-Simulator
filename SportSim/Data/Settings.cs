@@ -13,7 +13,7 @@ namespace Simocracy.SportSim
 	/// Statische Einstellungsklasse des ganzen SportSim
 	/// </summary>
 	[DataContract]
-	public static class Settings
+	public class Settings
 	{
 
 		#region Lists
@@ -42,8 +42,15 @@ namespace Simocracy.SportSim
 		[IgnoreDataMember]
 		public static LeagueWikiTemplateCollection LeageWikiTemplates { get; set; } = new LeagueWikiTemplateCollection();
 
-		#endregion
+		/// <summary>
+		/// Basis-Strings für die Wikicode-Generierung
+		/// </summary>
+		/// <remarks>Werden in JSON-File definiert und über <see cref="WikiStrings"/> verfügbar gemacht.</remarks>
+		[IgnoreDataMember]
+		public static WikiStrings WikiStrings { get; set; } = new WikiStrings();
 
+		#endregion
+		
 		#region Members
 
 		private static string _ZipFileName = "data.zip"; // TODO: Dateiformat in .sss benennen
@@ -52,6 +59,7 @@ namespace Simocracy.SportSim
 		private static string _StatesFileName = "states.json";
 		private static string _StadiumsFileName = "stadiums.json";
 		private static string _LeagueWikiTemplatesFileName = "leageWikiTemplates.json";
+		private static string _WikiStrings = "wikiStrings.json";
 
 		#endregion
 
@@ -182,6 +190,18 @@ namespace Simocracy.SportSim
 					streams[_LeagueWikiTemplatesFileName].Position = 0;
 					ser = new DataContractJsonSerializer(typeof(LeagueWikiTemplateCollection));
 					LeageWikiTemplates = (LeagueWikiTemplateCollection) ser.ReadObject(streams[_LeagueWikiTemplatesFileName]);
+				}
+				catch(Exception e)
+				{
+					System.Diagnostics.Debug.WriteLine(e);
+				}
+
+				// LeagueWikiTemplates
+				try
+				{
+					streams[_WikiStrings].Position = 0;
+					ser = new DataContractJsonSerializer(typeof(WikiStrings));
+					WikiStrings = (WikiStrings) ser.ReadObject(streams[_WikiStrings]);
 				}
 				catch(Exception e)
 				{
