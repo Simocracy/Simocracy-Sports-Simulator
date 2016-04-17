@@ -116,10 +116,10 @@
 						</Style>
 					</DataGrid.Resources>
 					<DataGrid.Columns>
-						<DataGridTemplateColumn Header="Datum" IsReadOnly="True">
+						<DataGridTemplateColumn Width="100" Header="Datum" IsReadOnly="True">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate>
-									<DatePicker Text="{Binding Date, Mode=TwoWay}" DisplayDateStart="01/01/2020" />
+									<DatePicker Text="{Binding Date, Mode=TwoWay, StringFormat=dd.MM.yyyy}" DisplayDateStart="01/01/2020" />
 								</DataTemplate>
 							</DataGridTemplateColumn.CellTemplate>
 						</DataGridTemplateColumn>
