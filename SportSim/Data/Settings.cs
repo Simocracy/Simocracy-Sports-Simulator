@@ -59,7 +59,7 @@ namespace Simocracy.SportSim
 		private static string _StatesFileName = "states.json";
 		private static string _StadiumsFileName = "stadiums.json";
 		private static string _LeagueWikiTemplatesFileName = "leageWikiTemplates.json";
-		private static string _WikiStrings = "wikiStrings.json";
+		private static string _WikiStringsFileName = "wikiStrings.json";
 
 		#endregion
 
@@ -121,6 +121,19 @@ namespace Simocracy.SportSim
 					ser = new DataContractJsonSerializer(typeof(LeagueWikiTemplateCollection));
 					ser.WriteObject(leagueWikiTemplateStream, LeageWikiTemplates);
 					streams.Add(_LeagueWikiTemplatesFileName, leagueWikiTemplateStream);
+				}
+				catch(Exception e)
+				{
+					System.Diagnostics.Debug.WriteLine(e);
+				}
+
+				// WikiStrings
+				try
+				{
+					var wikiStringsStream = new MemoryStream();
+					ser = new DataContractJsonSerializer(typeof(WikiStrings));
+					ser.WriteObject(wikiStringsStream, LeageWikiTemplates);
+					streams.Add(_WikiStringsFileName, wikiStringsStream);
 				}
 				catch(Exception e)
 				{
@@ -196,12 +209,12 @@ namespace Simocracy.SportSim
 					System.Diagnostics.Debug.WriteLine(e);
 				}
 
-				// LeagueWikiTemplates
+				// WikiStrings
 				try
 				{
-					streams[_WikiStrings].Position = 0;
+					streams[_WikiStringsFileName].Position = 0;
 					ser = new DataContractJsonSerializer(typeof(WikiStrings));
-					WikiStrings = (WikiStrings) ser.ReadObject(streams[_WikiStrings]);
+					WikiStrings = (WikiStrings) ser.ReadObject(streams[_WikiStringsFileName]);
 				}
 				catch(Exception e)
 				{
