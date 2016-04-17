@@ -1,8 +1,18 @@
 [
-    {
-        "ID": 0,
-        "Name": "CL-Gruppe",
-        "TemplateCode": "{{CL-Gruppe\u000d\u000a|A1=\u000d\u000a|A2=\u000d\u000a|A3=\u000d\u000a|A4=\u000d\u000a|A1-A2=\u000d\u000a|A3-A4=\u000d\u000a|A4-A1=\u000d\u000a|A2-A3=\u000d\u000a|A1-A3=\u000d\u000a|A2-A4=\u000d\u000a|A4-A2=\u000d\u000a|A3-A1=\u000d\u000a|A4-A3=\u000d\u000a|A2-A1=\u000d\u000a|A3-A2=\u000d\u000a|A1-A4=\u000d\u000a}}",
-        "LeagueSize": 4
-    }
+  {
+    "ID": 0,
+    "Name": "CL-Gruppe",
+    "TemplateCode": "{{CL-Gruppe\u000d\u000a|A1=\u000d\u000a|A2=\u000d\u000a|A3=\u000d\u000a|A4=\u000d\u000a|A1-A2=\u000d\u000a|A3-A4=\u000d\u000a|A4-A1=\u000d\u000a|A2-A3=\u000d\u000a|A1-A3=\u000d\u000a|A2-A4=\u000d\u000a|A4-A2=\u000d\u000a|A3-A1=\u000d\u000a|A4-A3=\u000d\u000a|A2-A1=\u000d\u000a|A3-A2=\u000d\u000a|A1-A4=\u000d\u000a}}",
+    "LeagueSize": 4,
+    "IsDate": false,
+    "IsLocation": false
+  },
+  {
+    "ID": 1,
+    "Name": "4er-Gruppe einzeln Datum",
+    "TemplateCode": "{{4er-Gruppe einzeln Datum\r\n|Farbe=\r\n|A1=\r\n|A2=\r\n|A3=\r\n|A4=\r\n|A1-A2=\r\n|A3-A4=\r\n|A1-A3=\r\n|A4-A2=\r\n|A4-A1=\r\n|A2-A3=\r\n|Datum A1-A2=\r\n|Datum A3-A4=\r\n|Datum A1-A3=\r\n|Datum A4-A2=\r\n|Datum A4-A1=\r\n|Datum A2-A3=\r\n|Ort A1-A2=\r\n|Ort A3-A4=\r\n|Ort A1-A3=\r\n|Ort A4-A2=\r\n|Ort A4-A1=\r\n|Ort A2-A3=\r\n}}",
+    "LeagueSize": 4,
+    "IsDate": true,
+    "IsLocation": true
+  }
 ]
