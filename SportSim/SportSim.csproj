@@ -211,7 +211,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Codemap.dgml" />
     <None Include="DefaultTeams\footballTeams.json" />
     <None Include="DefaultTeams\leageWikiTemplates.json" />
     <None Include="DefaultTeams\wikiStrings.json" />
