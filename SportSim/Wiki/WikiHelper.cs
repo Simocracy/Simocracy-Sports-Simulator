@@ -44,7 +44,7 @@ namespace Simocracy.SportSim
 		/// <param name="qual1Count">Anzahl der Qual1-Plätze</param>
 		/// <param name="qual2Count">Anzahl der Qual2-Plätze</param>
 		/// <returns>Generierten Tabellencode</returns>
-		public static string GenerateFootballTableCode(FootballLeague league, int qual1Count, int qual2Count)
+		public static string GenerateTableCode(FootballLeague league, int qual1Count, int qual2Count)
 		{
 			StringBuilder sb = new StringBuilder(Settings.WikiStrings.FootballLeagueTableHeader);
 
@@ -79,6 +79,35 @@ namespace Simocracy.SportSim
 
 			sb.Append(Settings.WikiStrings.TableEnd);
 			return sb.ToString();
+		}
+
+		/// <summary>
+		/// Generiert den Code für die Darstellung der Ergebnisse der angegebenen <see cref="FootballLeague"/> und nutzt dazu optional die angegebene <see cref="LeagueWikiTemplate"/>
+		/// </summary>
+		/// <param name="league"><see cref="FootballLeague"/> der darzustellenden Ergebnisse</param>
+		/// <param name="isDate">Angabe, ob das Datum in der Ausgabe enthalten ist</param>
+		/// <param name="isLocation">Angabe, ob der Spielort in der Ausgabe enthalten ist</param>
+		/// <param name="template"><see cref="LeagueWikiTemplate"/> der darzustellenden Ergebnisse</param>
+		/// <returns>Generierten Ergebniscode</returns>
+		public static string GenerateResultsCode(FootballLeague league, bool isDate, bool isLocation, LeagueWikiTemplate template = null)
+		{
+			if(template == null)
+				return GenerateResultsCode(league, isDate, isLocation);
+
+
+			return String.Empty;
+		}
+
+		/// <summary>
+		/// Generiert den Code für die Darstellung der Ergebnisse der angegebenen <see cref="FootballLeague"/>
+		/// </summary>
+		/// <param name="league"><see cref="FootballLeague"/> der darzustellenden Ergebnisse</param>
+		/// <param name="isDate">Angabe, ob das Datum in der Ausgabe enthalten ist</param>
+		/// <param name="isLocation">Angabe, ob der Spielort in der Ausgabe enthalten ist</param>
+		/// <returns>Generierten Ergebniscode</returns>
+		public static string GenerateResultsCode(FootballLeague league, bool isDate, bool isLocation)
+		{
+			return String.Empty;
 		}
 
 		#endregion
