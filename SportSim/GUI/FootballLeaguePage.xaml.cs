@@ -117,12 +117,13 @@ namespace Simocracy.SportSim
 			}
 		}
 
-		//public 
-
 		#endregion
 
 		#region Methods
-
+		
+		/// <summary>
+		/// Filtert die Teamliste basierend auf Kontinent und Staat
+		/// </summary>
 		private void FilterTeamList()
 		{
 			FilteredTeamList = new FootballTeamCollection(Settings.FootballTeams);
@@ -132,12 +133,18 @@ namespace Simocracy.SportSim
 				FilteredTeamList = new FootballTeamCollection(FilteredTeamList.Where(x => x.State == SelectedState));
 		}
 
+		/// <summary>
+		/// Filtert die Staatenliste basierend auf dem Kontinent
+		/// </summary>
 		private void FilterStateList()
 		{
 			StatesComboBoxList = (SelectedContinent != EContinent.Unknown) ? new StateCollection(Settings.States.Where(x => x.Continent == SelectedContinent)) : new StateCollection(Settings.States);
 			StatesComboBoxList.Insert(0, State.NoneState);
 		}
 
+		/// <summary>
+		/// Filtert die Vorlagenliste basierend auf Ligagröße und Datums/Ortsangaben
+		/// </summary>
 		private void FilterTemplatesList()
 		{
 			TemplatesComboBoxList = new LeagueWikiTemplateCollection(Settings.LeageWikiTemplates.Where(x =>
@@ -150,6 +157,9 @@ namespace Simocracy.SportSim
 				WikiTemplateComboBox.SelectedIndex = 0;
 		}
 
+		/// <summary>
+		/// Füllt die Comboboxen für die Positionen der Qualx-Tabellenplätze
+		/// </summary>
 		private void FillWikiCodeQualComboBoxes()
 		{
 			var valuesQ1 = new int[League.TeamCount + 1];
