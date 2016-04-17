@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Simocracy.SportSim
@@ -85,31 +86,68 @@ namespace Simocracy.SportSim
 		/// Generiert den Code für die Darstellung der Ergebnisse der angegebenen <see cref="FootballLeague"/> und nutzt dazu die angegebene <see cref="LeagueWikiTemplate"/>
 		/// </summary>
 		/// <param name="league"><see cref="FootballLeague"/> der darzustellenden Ergebnisse</param>
-		/// <param name="isDate">Angabe, ob das Datum in der Ausgabe enthalten ist</param>
-		/// <param name="isLocation">Angabe, ob der Spielort in der Ausgabe enthalten ist</param>
 		/// <param name="template"><see cref="LeagueWikiTemplate"/> der darzustellenden Ergebnisse</param>
 		/// <returns>Generierten Ergebniscode</returns>
-		public static string GenerateResultsCode(FootballLeague league, bool isDate, bool isLocation, LeagueWikiTemplate template = null)
+		public static string GenerateResultsCode(FootballLeague league, LeagueWikiTemplate template)
 		{
 			if(template == null)
-				//return GenerateResultsCode(league, isDate, isLocation);
 				throw new NotImplementedException("Results output without template not implemented");
 
+			var templateRegex = new Regex(@"\||=");
+			var teamRegex = new Regex(@"(A\d+)");
+			var teamIndexRegex = new Regex(@"(\d+)");
+			var templateCode = Regex.Replace(template.TemplateCode, @"\r\n?|\n", String.Empty);
+			string[] templateLines = templateCode.Split('|');
+			string[] filledLines = new string[templateLines.Length + 1];
 
+			// Vorlagenzeilen einzeln durchgehen
+			for(int i = 0; i < templateLines.Length; i++)
+			{
+				var line = templateLines[i].Replace("}}", String.Empty);
+				var teamMatches = teamRegex.Matches(line);
 
-			return String.Empty;
-		}
+				// Wenn nur ein Team enthalten ist: Teamnamen
+				if(teamMatches.Count == 1)
+				{
+					var index = Int32.Parse(teamMatches[0].Value.Substring(1));
+					var team = league.Teams[index - 1];
+					line = String.Format("|{0}{1}", line, team.Name);
+				}
 
-		/// <summary>
-		/// Generiert den Code für die Darstellung der Ergebnisse der angegebenen <see cref="FootballLeague"/>
-		/// </summary>
-		/// <param name="league"><see cref="FootballLeague"/> der darzustellenden Ergebnisse</param>
-		/// <param name="isDate">Angabe, ob das Datum in der Ausgabe enthalten ist</param>
-		/// <param name="isLocation">Angabe, ob der Spielort in der Ausgabe enthalten ist</param>
-		/// <returns>Generierten Ergebniscode</returns>
-		public static string GenerateResultsCode(FootballLeague league, bool isDate, bool isLocation)
-		{
-			throw new NotImplementedException("Results output without template not implemented");
+				// Wenn 2 Teams enthalten sind: Ergebnisse oder Zusatzdaten
+				else if(teamMatches.Count == 2)
+				{
+					var index1 = Int32.Parse(teamMatches[0].Value.Substring(1));
+					var team1 = league.Teams[index1 - 1];
+					var index2 = Int32.Parse(teamMatches[1].Value.Substring(1));
+					var team2 = league.Teams[index2 - 1];
+
+					var match = league.Matches.Where(x => x.TeamA == team1 && x.TeamB == team2).FirstOrDefault();
+					line = String.Format("|{0}", line);
+
+					// Datumsangabe
+					if(line.Contains("Datum"))
+					{
+						line += match.Date.ToShortDateString();
+					}
+					// Ortsangabe
+					else if(line.Contains("Ort"))
+					{
+						line += match.TeamA.Stadium.City;
+					}
+					// Spielergebnis
+					else
+					{
+						line += String.Format("{0}:{1}", match.ResultA, match.ResultB);
+					}
+				}
+
+				filledLines[i] = line;
+
+			}
+			filledLines[filledLines.Length - 1] = "}}";
+
+			return String.Join(Environment.NewLine, filledLines);
 		}
 
 		#endregion

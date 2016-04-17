@@ -145,6 +145,9 @@ namespace Simocracy.SportSim
 					x.IsDate == DateCheckBox.IsChecked &&
 					x.IsLocation == LocationCheckBox.IsChecked));
 			//TemplatesComboBoxList.Insert(0, LeagueWikiTemplate.NoneTemplate);
+
+			if(TemplatesComboBoxList.Count > 0)
+				WikiTemplateComboBox.SelectedIndex = 0;
 		}
 
 		private void FillWikiCodeQualComboBoxes()
@@ -226,7 +229,7 @@ namespace Simocracy.SportSim
 
 			if(ResultsCheckBox.IsChecked == true)
 			{
-				WikiCodeTextBox.Text += WikiHelper.GenerateResultsCode(League, (bool) DateCheckBox.IsChecked, (bool) LocationCheckBox.IsChecked, WikiTemplateComboBox.SelectedItem as LeagueWikiTemplate);
+				WikiCodeTextBox.Text += WikiHelper.GenerateResultsCode(League, WikiTemplateComboBox.SelectedItem as LeagueWikiTemplate);
 			}
 		}
 
