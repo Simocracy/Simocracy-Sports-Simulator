@@ -172,6 +172,11 @@ namespace Simocracy.SportSim
 			FootballTeamsListBox.SelectAll();
 		}
 
+		private void DiselectAllTeamsButton_Click(object sender, RoutedEventArgs e)
+		{
+			FootballTeamsListBox.SelectedItems.Clear();
+		}
+
 		private void GenerateMatchesButton_Click(object sender, RoutedEventArgs e)
 		{
 			League.Teams = FootballTeamCollection.CreateCollection(FootballTeamsListBox.SelectedItems);
