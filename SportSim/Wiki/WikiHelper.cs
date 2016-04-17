@@ -109,7 +109,7 @@ namespace Simocracy.SportSim
 		/// <returns>Generierten Ergebniscode</returns>
 		public static string GenerateResultsCode(FootballLeague league, bool isDate, bool isLocation)
 		{
-			return String.Empty;
+			throw new NotImplementedException("Results output without template not implemented");
 		}
 
 		#endregion
