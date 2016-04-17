@@ -216,7 +216,11 @@ namespace Simocracy.SportSim
 
 		private void GenerateWikiCodeButton_Click(object sender, RoutedEventArgs e)
 		{
-			League.CalculateTable();
+			if(TableCheckBox.IsChecked == true)
+			{
+				League.CalculateTable();
+				WikiCodeTextBox.Text = WikiHelper.GenerateFootballTableCode(League, Qual1PlacesComboBox.SelectedIndex, Qual2PlacesComboBox.SelectedIndex);
+			}
 		}
 
 		private void CopyWikiCodeButton_Click(object sender, RoutedEventArgs e)

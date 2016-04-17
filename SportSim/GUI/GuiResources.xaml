@@ -16,6 +16,12 @@
 		<Setter Property="VerticalAlignment" Value="Center" />
 		<Setter Property="Margin" Value="5,0" />
 	</Style>
+	<Style x:Key="Multiline" TargetType="TextBox">
+		<Setter Property="AcceptsReturn" Value="True" />
+		<Setter Property="AcceptsTab" Value="True" />
+		<Setter Property="TextWrapping" Value="Wrap" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+	</Style>
 
 
 	<!-- Manager Pages -->
@@ -48,12 +54,6 @@
 	</Style>
 	<Style x:Key="ManageCheckBox" TargetType="CheckBox">
 		<Setter Property="Margin" Value="0, 2.5" />
-	</Style>
-	<Style x:Key="ManageMultiline" TargetType="TextBox">
-		<Setter Property="AcceptsReturn" Value="True" />
-		<Setter Property="AcceptsTab" Value="True" />
-		<Setter Property="TextWrapping" Value="Wrap" />
-		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
 	</Style>
 	<Style x:Key="ManageButtons" TargetType="StackPanel">
 		<Setter Property="Orientation" Value="Horizontal" />
@@ -91,7 +91,7 @@
 		<Setter Property="BorderBrush" Value="Red" />
 		<Setter Property="BorderThickness" Value="2" />
 	</Style>
-	<Style x:Key="InvalidInputMultiline" TargetType="TextBox" BasedOn="{StaticResource ManageMultiline}">
+	<Style x:Key="InvalidInputMultiline" TargetType="TextBox" BasedOn="{StaticResource Multiline}">
 		<Setter Property="BorderBrush" Value="Red" />
 		<Setter Property="BorderThickness" Value="2" />
 	</Style>

@@ -141,6 +141,7 @@
     <Compile Include="Utilities\TextInputToVisibilityConverter.cs" />
     <Compile Include="Wiki\WikiHelper.cs" />
     <Compile Include="Utilities\ZipFileHelper.cs" />
+    <Compile Include="Wiki\WikiStrings.cs" />
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -213,6 +214,7 @@
     <None Include="Codemap.dgml" />
     <None Include="DefaultTeams\footballTeams.json" />
     <None Include="DefaultTeams\leageWikiTemplates.json" />
+    <None Include="DefaultTeams\wikiStrings.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -234,7 +236,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="DefaultTeams\stadiums.json" />
   </ItemGroup>

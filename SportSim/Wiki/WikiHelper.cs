@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,8 @@ namespace Simocracy.SportSim
 {
 	public class WikiHelper
 	{
+		#region Basics
+
 		/// <summary>
 		/// Entfernt den Wiki-Dateinamensraum aus dem angegeben String
 		/// </summary>
@@ -29,5 +32,55 @@ namespace Simocracy.SportSim
 			return Uri.TryCreate(url, UriKind.Absolute, out uriResult)
 				&& (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
 		}
+
+		#endregion
+
+		#region Football
+
+		/// <summary>
+		/// Erstellt den Code für die Tabelle der angegebenen <see cref="FootballLeague"/>
+		/// </summary>
+		/// <param name="league"><see cref="FootballLeague"/> der zu generierenden Tabelle</param>
+		/// <param name="qual1Count">Anzahl der Qual1-Plätze</param>
+		/// <param name="qual2Count">Anzahl der Qual2-Plätze</param>
+		/// <returns>Generierten Tabellencode</returns>
+		public static string GenerateFootballTableCode(FootballLeague league, int qual1Count, int qual2Count)
+		{
+			StringBuilder sb = new StringBuilder(Settings.WikiStrings.FootballLeagueTableHeader);
+
+			int position = 1;
+			foreach(DataRow row in league.Table.Rows)
+			{
+				try
+				{
+					var team = row["Team"] as FootballTeam;
+					var matches = (int) row["Matches"];
+					var win = (int) row["Win"];
+					var drawn = (int) row["Drawn"];
+					var lose = (int) row["Lose"];
+					var goalsFor = (int) row["GoalsFor"];
+					var goalsAgainst = (int) row["GoalsAgainst"];
+					var goalsString = String.Format("{0}:{1}", goalsFor, goalsAgainst);
+					var points = (int) row["Points"];
+
+					string classString = String.Empty;
+					if(position <= qual1Count)
+						classString = Settings.WikiStrings.ClassQual1;
+					else if(position - qual1Count <= qual2Count)
+						classString = Settings.WikiStrings.ClassQual2;
+
+					sb.AppendFormat(Settings.WikiStrings.FootballLeagueTableElememt, classString, position++, team.Name, matches, win, drawn, lose, goalsString, points);
+				}
+				catch(Exception e)
+				{
+					System.Diagnostics.Debug.WriteLine(e);
+				}
+			}
+
+			sb.Append(Settings.WikiStrings.TableEnd);
+			return sb.ToString();
+		}
+
+		#endregion
 	}
 }

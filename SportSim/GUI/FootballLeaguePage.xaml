@@ -200,7 +200,7 @@
 					<Button Name="GenerateWikiCodeButton" Content="Wikicode generieren" Click="GenerateWikiCodeButton_Click" />
 					<Button Name="CopyWikiCodeButton" Content="Kopieren" ToolTip="Kopiert den Wikicode in die Zwischenablage" Click="CopyWikiCodeButton_Click" />
 				</StackPanel>
-				<TextBox Name="WikiCodeTextBox" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" />
+				<TextBox Name="WikiCodeTextBox" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{DynamicResource Multiline}" />
 			</Grid>
 		</Expander>
 	</Grid>

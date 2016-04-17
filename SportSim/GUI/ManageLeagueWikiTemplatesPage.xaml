@@ -45,7 +45,7 @@
 			<CheckBox Name="IsDateCheckBox" Grid.Row="4" Content="Enthält Datumsangabe" IsChecked="{Binding SelectedTemplate.IsDate}" Style="{DynamicResource ManageCheckBox}" Margin="0, 5, 0, 2.5" />
 			<CheckBox Name="IsLocationCheckBox" Grid.Row="5" Content="Enthält Ortsangabe" IsChecked="{Binding SelectedTemplate.IsLocation}" Style="{DynamicResource ManageCheckBox}" />
 			<Label Content="Einbindungscode:" Grid.Row="6" />
-			<TextBox Name="WikiCodeTextBox" Grid.Row="7" Text="{Binding SelectedTemplate.TemplateCode}" Style="{DynamicResource ManageMultiline}" />
+			<TextBox Name="WikiCodeTextBox" Grid.Row="7" Text="{Binding SelectedTemplate.TemplateCode}" Style="{DynamicResource Multiline}" />
 		</Grid>
 
 		<StackPanel Grid.ColumnSpan="2" Grid.Row="3" Style="{DynamicResource ManageButtons}">
