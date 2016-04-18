@@ -144,6 +144,7 @@
     <Compile Include="Utilities\Datumsrechner.cs" />
     <Compile Include="Utilities\EnumerationExtension.cs" />
     <Compile Include="Utilities\Converter.cs" />
+    <Compile Include="Utilities\SimpleLog.cs" />
     <Compile Include="Wiki\WikiHelper.cs" />
     <Compile Include="Utilities\ZipFileHelper.cs" />
     <Compile Include="Wiki\WikiStrings.cs" />

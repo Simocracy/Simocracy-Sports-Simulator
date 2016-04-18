@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Simocracy.SportSim"
       xmlns:drns="clr-namespace:Simocracy"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="400" d:DesignWidth="400"
       Title="Home">
 
 	<ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -29,8 +29,9 @@
 				Hauptentwickler: Gobo77, Laserdisc<LineBreak/>
 				Hilfe und weitere Informationen sind im <Hyperlink NavigateUri="https://simocracy.de/SY:Simocracy_Sport_Simulator">Wikiartikel</Hyperlink> zu finden.<LineBreak/>
 				Allg. Kontaktmöglichkeit im IRC-Channel <Hyperlink NavigateUri="ircs://irc.newerairc.net:6697/Simocracy">#Simocracy</Hyperlink> im <Hyperlink NavigateUri="https://newerairc.net/">NewEraIRC</Hyperlink>.<LineBreak/>
-				Der <Run Text="{Binding Source={x:Static local:Settings.ProgramName}, Mode=OneTime}" /> wird unter der <Hyperlink NavigateUri="https://github.com/Simocracy/SportSim/blob/master/LICENSE">MIT-Lizenz</Hyperlink> bereitgestellt.<LineBreak/>
-				Der Quellcode ist auf <Hyperlink NavigateUri="https://github.com/Simocracy/SportSim">Github</Hyperlink> verfügbar.
+				Der <Run Text="{Binding Source={x:Static local:Settings.ProgramName}, Mode=OneTime}" /> wird unter der <Hyperlink NavigateUri="https://github.com/Simocracy/SportSim/blob/master/LICENSE">MIT-Lizenz</Hyperlink> bereitgestellt.
+				Der Quellcode ist auf <Hyperlink NavigateUri="https://github.com/Simocracy/SportSim">Github</Hyperlink> verfügbar.<LineBreak/>
+				<Hyperlink NavigateUri="http://www.codeproject.com/Tips/585796/Simple-Log">SimpleLog</Hyperlink> ist unter der <Hyperlink NavigateUri="https://opensource.org/licenses/mit-license.php">MIT-Lizenz</Hyperlink> verfügbar.
 			</TextBlock>
 		</StackPanel>
 	</ScrollViewer>
