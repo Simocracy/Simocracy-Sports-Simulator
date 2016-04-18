@@ -22,7 +22,7 @@
 				<MenuItem Header="Simulation">
 					<MenuItem Header="Fußball">
 						<MenuItem Name="MenuItemFootballLeague" Header="Liga" Click="MenuItemFootballLeague_Click"/>
-						<MenuItem Name="MenuItemFootballTournament" Header="Turnier" Click="MenuItemFootballTournament_Click" />
+						<MenuItem Name="MenuItemFootballTournament" Header="Turnier" Click="MenuItemFootballTournament_Click" IsEnabled="False"/>
 						<MenuItem Name="MenuItemFootballOwnSystem" Header="Benutzerdefiniert" Click="MenuItemFootballOwnSystem_Click" IsEnabled="False"/>
 					</MenuItem>
 				</MenuItem>
