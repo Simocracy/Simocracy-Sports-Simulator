@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Simocracy.SportSim"
         mc:Ignorable="d"
-        Title="Simocracy Sport Simulator"
+        Title="{Binding ElementName=MainFrame, Path=Content.Title, StringFormat={}Simocracy Sport Simulator - {0}}"
 		Height="500" Width="525"
 		MinHeight="300" MinWidth="300">
 	<DockPanel>
