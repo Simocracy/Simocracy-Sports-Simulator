@@ -4,6 +4,12 @@
 	
 	<!-- General -->
 
+
+	<BooleanToVisibilityConverter x:Key="CapacityNatOptionalConverter" />
+	<local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
+	<local:ExpanderToBooleanConverter x:Key="ExpanderToBooleanConverter" />
+	<local:TitleConverter x:Key="TitleConverter" />
+
 	<Style x:Key="MarginBase">
 		<Setter Property="Control.Margin" Value="5" />
 	</Style>
@@ -68,9 +74,6 @@
 
 
 	<!-- Manager Pages -->
-	
-	<BooleanToVisibilityConverter x:Key="CapacityNatOptionalConverter" />
-	<local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
 
 	<Style x:Key="ManageTitle" TargetType="Label" BasedOn="{StaticResource MarginSideBase}">
 		<Setter Property="FontSize" Value="16" />
@@ -135,9 +138,5 @@
 		<Setter Property="BorderThickness" Value="2" />
 	</Style>
 
-
-	<!-- Football Simulation Pages -->
-
-	<local:ExpanderToBooleanConverter x:Key="ExpanderToBooleanConverter" />
 
 </ResourceDictionary>

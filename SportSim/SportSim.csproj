@@ -89,6 +89,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Simocracy.SportSim.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetWikiBot">
       <HintPath>libs\DotNetWikiBot\DotNetWikiBot.dll</HintPath>
@@ -140,8 +143,7 @@
     <Compile Include="Simulation\FootballMatch.cs" />
     <Compile Include="Utilities\Datumsrechner.cs" />
     <Compile Include="Utilities\EnumerationExtension.cs" />
-    <Compile Include="Utilities\ExpanderToBooleanConverter.cs" />
-    <Compile Include="Utilities\TextInputToVisibilityConverter.cs" />
+    <Compile Include="Utilities\Converter.cs" />
     <Compile Include="Wiki\WikiHelper.cs" />
     <Compile Include="Utilities\ZipFileHelper.cs" />
     <Compile Include="Wiki\WikiStrings.cs" />

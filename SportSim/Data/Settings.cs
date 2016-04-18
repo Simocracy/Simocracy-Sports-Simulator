@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -15,6 +16,37 @@ namespace Simocracy.SportSim
 	[DataContract]
 	public class Settings
 	{
+
+		#region Assembly Infos
+
+		/// <summary>
+		/// Gibt die aktuelle Programmversion (Major.Minor.Revision) zurück.
+		/// </summary>
+		public static string ProgramVersion
+		{
+			get
+			{
+				var version = Assembly.GetExecutingAssembly().GetName().Version;
+				var versionString = String.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Revision);
+#if DEBUG
+				versionString = String.Format("{0} Debug Build", versionString);
+#endif
+				return versionString;
+			}
+		}
+
+		/// <summary>
+		/// Gibt den aktuellen Programmnamen zurück
+		/// </summary>
+		public static string ProgramName
+		{
+			get
+			{
+				return ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly().GetCustomAttribute(typeof(AssemblyTitleAttribute))).Title;
+			}
+		}
+
+		#endregion
 
 		#region Lists
 
