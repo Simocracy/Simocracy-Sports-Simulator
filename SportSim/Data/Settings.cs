@@ -117,7 +117,8 @@ namespace Simocracy.SportSim
 				}
 				catch(Exception e)
 				{
-					System.Diagnostics.Debug.WriteLine(e);
+					SimpleLog.Error("Could not serialize State List");
+					SimpleLog.Log(e);
 				}
 
 				// Stadiums
@@ -130,7 +131,8 @@ namespace Simocracy.SportSim
 				}
 				catch(Exception e)
 				{
-					System.Diagnostics.Debug.WriteLine(e);
+					SimpleLog.Error("Could not serialize Stadium List");
+					SimpleLog.Log(e);
 				}
 
 				// FootballTeams
@@ -143,7 +145,8 @@ namespace Simocracy.SportSim
 				}
 				catch(Exception e)
 				{
-					System.Diagnostics.Debug.WriteLine(e);
+					SimpleLog.Error("Could not serialize FootballTeam List");
+					SimpleLog.Log(e);
 				}
 
 				// LeagueWikiTemplates
@@ -156,7 +159,8 @@ namespace Simocracy.SportSim
 				}
 				catch(Exception e)
 				{
-					System.Diagnostics.Debug.WriteLine(e);
+					SimpleLog.Error("Could not serialize LeagueWikiTemplate List");
+					SimpleLog.Log(e);
 				}
 
 				// WikiStrings
@@ -169,7 +173,8 @@ namespace Simocracy.SportSim
 				}
 				catch(Exception e)
 				{
-					System.Diagnostics.Debug.WriteLine(e);
+					SimpleLog.Error("Could not serialize WikiStrings");
+					SimpleLog.Log(e);
 				}
 
 
@@ -178,7 +183,8 @@ namespace Simocracy.SportSim
 			}
 			catch(Exception e)
 			{
-				System.Diagnostics.Debug.WriteLine(e);
+				SimpleLog.Error(String.Format("{0} {1}", "Error saving Settings to", _ZipFileName));
+				SimpleLog.Log(e);
 			}
 		}
 
@@ -202,7 +208,8 @@ namespace Simocracy.SportSim
 				}
 				catch(Exception e)
 				{
-					System.Diagnostics.Debug.WriteLine(e);
+					SimpleLog.Error("Could not read States");
+					SimpleLog.Log(e);
 				}
 
 				// Stadiums
@@ -214,7 +221,8 @@ namespace Simocracy.SportSim
 				}
 				catch(Exception e)
 				{
-					System.Diagnostics.Debug.WriteLine(e);
+					SimpleLog.Error("Could not read Stadiums");
+					SimpleLog.Log(e);
 				}
 
 				// FootballTeams
@@ -226,7 +234,8 @@ namespace Simocracy.SportSim
 				}
 				catch(Exception e)
 				{
-					System.Diagnostics.Debug.WriteLine(e);
+					SimpleLog.Error("Could not read FootballTeams");
+					SimpleLog.Log(e);
 				}
 
 				// LeagueWikiTemplates
@@ -238,7 +247,8 @@ namespace Simocracy.SportSim
 				}
 				catch(Exception e)
 				{
-					System.Diagnostics.Debug.WriteLine(e);
+					SimpleLog.Error("Could not read LeagueWikiTemplates");
+					SimpleLog.Log(e);
 				}
 
 				// WikiStrings
@@ -250,12 +260,14 @@ namespace Simocracy.SportSim
 				}
 				catch(Exception e)
 				{
-					System.Diagnostics.Debug.WriteLine(e);
+					SimpleLog.Error("Could not read WikiStrings");
+					SimpleLog.Log(e);
 				}
 			}
 			catch(Exception e)
 			{
-				System.Diagnostics.Debug.WriteLine(e);
+				SimpleLog.Error(String.Format("{0} {1}", "Could not read database", _ZipFileName));
+				SimpleLog.Log(e);
 			}
 		}
 
@@ -263,7 +275,13 @@ namespace Simocracy.SportSim
 
 		#region Logging
 
-		// TODO: Implement Logging
+		/// <summary>
+		/// Initialisiert den Logger
+		/// </summary>
+		public static void SetupLogger()
+		{
+			SimpleLog.SetLogFile(prefix: "SSS_Log_", writeText: true, check:false);
+		}
 
 		#endregion
 

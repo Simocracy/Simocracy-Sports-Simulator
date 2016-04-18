@@ -599,7 +599,7 @@ namespace Simocracy.SportSim
         /// <returns>Null on success or the <see cref="Exception"/> that occurred when processing the message, i.e. when enqueuing the message (when <paramref name="useBackgroundTask"/> is true) or when writing the message to disk (when <paramref name="useBackgroundTask"/> is false).</returns>
         public static Exception Info(string message, bool useBackgroundTask = true)
         {
-            return Log(message);
+            return Log(message, useBackgroundTask:useBackgroundTask);
         }
 
         /// <summary>
@@ -610,7 +610,7 @@ namespace Simocracy.SportSim
         /// <returns>Null on success or the <see cref="Exception"/> that occurred when processing the message, i.e. when enqueuing the message (when <paramref name="useBackgroundTask"/> is true) or when writing the message to disk (when <paramref name="useBackgroundTask"/> is false).</returns>
         public static Exception Warning(string message, bool useBackgroundTask = true)
         {
-            return Log(message, Severity.Warning);
+            return Log(message, Severity.Warning, useBackgroundTask);
         }
 
         /// <summary>
@@ -621,7 +621,7 @@ namespace Simocracy.SportSim
         /// <returns>Null on success or the <see cref="Exception"/> that occurred when processing the message, i.e. when enqueuing the message (when <paramref name="useBackgroundTask"/> is true) or when writing the message to disk (when <paramref name="useBackgroundTask"/> is false).</returns>
         public static Exception Error(string message, bool useBackgroundTask = true)
         {
-            return Log(message, Severity.Error);
+            return Log(message, Severity.Error, useBackgroundTask);
         }
 
         /// <summary>

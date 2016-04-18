@@ -21,14 +21,27 @@ namespace Simocracy.SportSim
 		[STAThread]
 		public static void Main()
 		{
+			// Setup logger
+			Settings.SetupLogger();
+			SimpleLog.Check(String.Format("{0} {1} {2}", Settings.ProgramName, Settings.ProgramVersion, "started"));
+
 			// Load Settings
 			Settings.LoadSettings();
 
 			// Open MainWindow
-			App app = new App();
-			app.InitializeComponent();
-			MainWindow window = new MainWindow();
-			app.Run(window);
+			try
+			{
+				App app = new App();
+				app.InitializeComponent();
+				MainWindow window = new MainWindow();
+				app.Run(window);
+			}
+			catch(Exception e)
+			{
+				SimpleLog.Log(e);
+			}
+
+			SimpleLog.Info(String.Format("{0} {1} {2}", Settings.ProgramName, Settings.ProgramVersion, "closed"), false);
 		}
 	}
 }
