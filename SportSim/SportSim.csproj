@@ -121,6 +121,9 @@
     <Compile Include="GUI\FootballLeaguePage.xaml.cs">
       <DependentUpon>FootballLeaguePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\InfoPage.xaml.cs">
+      <DependentUpon>InfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ManageFootballTeamsPage.xaml.cs">
       <DependentUpon>ManageFootballTeamsPage.xaml</DependentUpon>
     </Compile>
@@ -160,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\GuiResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\InfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

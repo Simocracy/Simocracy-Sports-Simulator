@@ -26,6 +26,8 @@ namespace Simocracy.SportSim
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			MainFrame.Content = new InfoPage();
 		}
 
 		#endregion
