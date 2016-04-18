@@ -27,11 +27,11 @@
 			<TextBlock Style="{StaticResource MarginSideBase}" TextWrapping="Wrap">
 				<Run Text="{Binding Source={x:Static local:Settings.ProgramVersion}, StringFormat=Version: {0}, Mode=OneTime}" /><LineBreak/>
 				Hauptentwickler: Gobo77, Laserdisc<LineBreak/>
-				Hilfe und weitere Informationen sind im <Hyperlink NavigateUri="https://simocracy.de/SY:Simocracy_Sport_Simulator">Wikiartikel</Hyperlink> zu finden.<LineBreak/>
-				Allg. Kontaktmöglichkeit im IRC-Channel <Hyperlink NavigateUri="ircs://irc.newerairc.net:6697/Simocracy">#Simocracy</Hyperlink> im <Hyperlink NavigateUri="https://newerairc.net/">NewEraIRC</Hyperlink>.<LineBreak/>
-				Der <Run Text="{Binding Source={x:Static local:Settings.ProgramName}, Mode=OneTime}" /> wird unter der <Hyperlink NavigateUri="https://github.com/Simocracy/SportSim/blob/master/LICENSE">MIT-Lizenz</Hyperlink> bereitgestellt.
-				Der Quellcode ist auf <Hyperlink NavigateUri="https://github.com/Simocracy/SportSim">Github</Hyperlink> verfügbar.<LineBreak/>
-				<Hyperlink NavigateUri="http://www.codeproject.com/Tips/585796/Simple-Log">SimpleLog</Hyperlink> ist unter der <Hyperlink NavigateUri="https://opensource.org/licenses/mit-license.php">MIT-Lizenz</Hyperlink> verfügbar.
+				Hilfe und weitere Informationen sind im <Hyperlink NavigateUri="https://simocracy.de/SY:Simocracy_Sport_Simulator" RequestNavigate="Hyperlink_RequestNavigate">Wikiartikel</Hyperlink> zu finden.<LineBreak/>
+				Allg. Kontaktmöglichkeit im IRC-Channel <Hyperlink NavigateUri="ircs://irc.newerairc.net:6697/Simocracy" RequestNavigate="Hyperlink_RequestNavigate">#Simocracy</Hyperlink> im <Hyperlink NavigateUri="https://newerairc.net/" RequestNavigate="Hyperlink_RequestNavigate">NewEraIRC</Hyperlink>.<LineBreak/>
+				Der <Run Text="{Binding Source={x:Static local:Settings.ProgramName}, Mode=OneTime}" /> wird unter der <Hyperlink NavigateUri="https://github.com/Simocracy/SportSim/blob/master/LICENSE" RequestNavigate="Hyperlink_RequestNavigate">MIT-Lizenz</Hyperlink> bereitgestellt.<LineBreak/>
+				Der Quellcode ist auf <Hyperlink NavigateUri="https://github.com/Simocracy/SportSim" RequestNavigate="Hyperlink_RequestNavigate">Github</Hyperlink> verfügbar.<LineBreak/>
+				<Hyperlink NavigateUri="http://www.codeproject.com/Tips/585796/Simple-Log" RequestNavigate="Hyperlink_RequestNavigate">SimpleLog</Hyperlink> ist unter der <Hyperlink NavigateUri="https://opensource.org/licenses/mit-license.php" RequestNavigate="Hyperlink_RequestNavigate">MIT-Lizenz</Hyperlink> verfügbar.
 			</TextBlock>
 		</StackPanel>
 	</ScrollViewer>

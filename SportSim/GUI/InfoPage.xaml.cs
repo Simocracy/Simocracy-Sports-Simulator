@@ -24,5 +24,17 @@ namespace Simocracy.SportSim
 		{
 			InitializeComponent();
 		}
+
+		private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+		{
+			try
+			{
+				var navigateUri = (sender as Hyperlink).NavigateUri.ToString();
+				if(WikiHelper.CheckValidHttpUrl(navigateUri))
+					System.Diagnostics.Process.Start(navigateUri);
+			}
+			catch { }
+			e.Handled = true;
+		}
 	}
 }
