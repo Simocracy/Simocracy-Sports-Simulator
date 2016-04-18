@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Simocracy.SportSim"
         mc:Ignorable="d"
-        Title="{Binding ElementName=MainFrame, Path=Content.Title, StringFormat={}Simocracy Sport Simulator - {0}}"
 		Height="500" Width="525"
 		MinHeight="300" MinWidth="300">
+	<Window.Title>
+		<MultiBinding Converter="{StaticResource TitleConverter}">
+			<Binding Source="{x:Static local:Settings.ProgramName}" Mode="OneWay" />
+			<Binding ElementName="MainFrame" Path="Content.Title" Mode="OneWay" />
+		</MultiBinding>
+	</Window.Title>
 	<DockPanel>
 		<StackPanel DockPanel.Dock="Top" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}">
 			<Menu x:Name="MenuSettings" >

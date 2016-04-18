@@ -26,6 +26,7 @@ namespace Simocracy.SportSim
 		public MainWindow()
 		{
 			InitializeComponent();
+			DataContext = this;
 
 			MainFrame.Content = new InfoPage();
 		}
