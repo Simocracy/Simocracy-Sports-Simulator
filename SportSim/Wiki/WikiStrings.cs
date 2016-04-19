@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Simocracy.SportSim
 {
 	/// <summary>
-	/// Basisstrings für die Wikicode-Generierung
+	/// Strings für das Parsen und Generieren von Wikicode
 	/// </summary>
 	[DataContract]
 	public class WikiStrings
@@ -19,8 +19,20 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Tabellenende
 		/// </summary>
-		[DataMember]
-		public readonly string TableEnd;
+		[IgnoreDataMember]
+		public const string TableEnd = "|}";
+
+		/// <summary>
+		/// Vorlagenstart
+		/// </summary>
+		[IgnoreDataMember]
+		public const string TemplateStart = "{{";
+
+		/// <summary>
+		/// Vorlagenende
+		/// </summary>
+		[IgnoreDataMember]
+		public const string TemplateEnd = "}}";
 
 		/// <summary>
 		/// Nur CSS-Klasse Qual1
@@ -33,6 +45,46 @@ namespace Simocracy.SportSim
 		/// </summary>
 		[DataMember]
 		public readonly string ClassQual2;
+
+		#endregion
+
+		#region Templates
+
+		/// <summary>
+		/// Allgemeine <see cref="System.Text.RegularExpressions.Regex"/>-Expression für Variablen in einer <see cref="WikiTemplate"/>
+		/// </summary>
+		[DataMember]
+		public const string TemplateRegexString = @"\|\s*([^=]*)\s*=";
+
+		/// <summary>
+		/// Allgemeine <see cref="System.Text.RegularExpressions.Regex"/>-Expression Vorlagennamen in einer <see cref="WikiTemplate"/>
+		/// </summary>
+		[DataMember]
+		public const string TemplateNameRegexString = @"([^\\{])([^\\|]*)";
+
+		/// <summary>
+		/// Allgemeine <see cref="System.Text.RegularExpressions.Regex"/>-Expression für den Beginn einer Variablen in einer <see cref="WikiTemplate"/>
+		/// </summary>
+		[DataMember]
+		public const string TemplateVariableStartRegexString = "|";
+
+		/// <summary>
+		/// <see cref="System.Text.RegularExpressions.Regex"/>-Expression für Teamnamen in einer <see cref="WikiTemplate"/>
+		/// </summary>
+		[DataMember]
+		public readonly string TemplateLeagueTeamRegexString;
+
+		/// <summary>
+		/// <see cref="System.Text.RegularExpressions.Regex"/>-Expression für Datumsangaben in einer <see cref="WikiTemplate"/>
+		/// </summary>
+		[DataMember]
+		public readonly string TemplateLeagueDateRegexString;
+
+		/// <summary>
+		/// <see cref="System.Text.RegularExpressions.Regex"/>-Expression für Ortsangaben in einer <see cref="WikiTemplate"/>
+		/// </summary>
+		[DataMember]
+		public readonly string TemplateLeagueLocationRegexString;
 
 		#endregion
 

@@ -88,23 +88,14 @@ namespace Simocracy.SportSim
 
 		private void SaveData()
 		{
-			SelectedTemplate.Name = NameTextBox.Text;
-			SelectedTemplate.LeagueSize = Int32.Parse(LeagueSizeTextBox.Text);
-			SelectedTemplate.IsDate = (IsDateCheckBox.IsChecked == true) ? true : false;
-			SelectedTemplate.IsLocation = (IsLocationCheckBox.IsChecked == true) ? true : false;
-			SelectedTemplate.TemplateCode = WikiCodeTextBox.Text;
+			SelectedTemplate = WikiHelper.ParseLeagueTemplate(WikiCodeTextBox.Text, SelectedTemplate);
 
 			Settings.LogObjSaved(SelectedTemplate);
 		}
 
 		private void Create()
 		{
-			Settings.LeageWikiTemplates.Create(
-				NameTextBox.Text,
-				WikiCodeTextBox.Text,
-				Int32.Parse(LeagueSizeTextBox.Text),
-				(IsDateCheckBox.IsChecked == true) ? true : false,
-				(IsLocationCheckBox.IsChecked == true) ? true : false);
+			Settings.LeageWikiTemplates.Add(WikiHelper.ParseLeagueTemplate(WikiCodeTextBox.Text));
 
 			_IsInNewMode = false;
 			SelectedTemplate = Settings.LeageWikiTemplates.Last();

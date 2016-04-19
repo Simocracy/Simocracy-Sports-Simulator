@@ -1,7 +1,9 @@
 {
-  "TableEnd": "|}",
-  "ClassQual1": "class=\"qual1\"",
-  "ClassQual2": "class=\"qual2\"",
+  "ClassQual1": "class='qual1",
+  "ClassQual2": "class='qual2",
+  "TemplateLeagueDateRegexString": "\\|?\\s*Datum([^=]*)\\s*=",
+  "TemplateLeagueLocationRegexString": "\\|?\\s*Ort([^=]*)\\s*=",
+  "TemplateLeagueTeamRegexString": "\\|\\s*A\\d+\\s*=",
   "FootballLeagueTableHeader": "{| class=\"wikitable\" style=\"width: 65%; text-align: center; background-color: white;\"\n|-\n! style=\"width: 10%;\" | Pl.\n! style=\"width: 50%;\" | Team\n! style=\"width: 5%;\" | Sp.\n! style=\"width: 5%;\" | S\n! style=\"width: 5%;\" | U\n! style=\"width: 5%;\" | N\n! style=\"width: 12%;\" | Tore\n! style=\"width: 8%;\" | Pkt.\n",
   "FootballLeagueTableElememt": "|-{0}\n| '''{1}'''\n| style=\"text-align: left;\" | {2}\n| {3}\n| {4}\n| {5}\n| {6}\n| {7}\n| '''{8}'''\n",
   "ResultsSingleRoundTableHeader": "{| style=\"border:1px solid #bbb; width:{0}; background-color:#FFFFFF;\"\n",

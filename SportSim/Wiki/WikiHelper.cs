@@ -34,9 +34,72 @@ namespace Simocracy.SportSim
 				&& (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
 		}
 
+		/// <summary>
+		/// Entfernt Zeilenumbrüche im angegebenen Text
+		/// </summary>
+		/// <param name="text">Text</param>
+		/// <returns>Text ohne Zeilenumbrüche</returns>
+		public static string RemoveNewLines(string text)
+		{
+			return Regex.Replace(text, @"\r\n?|\n", String.Empty);
+		}
+
 		#endregion
 
-		#region Football
+		#region Template Parsing
+
+		/// <summary>
+		/// Versucht den übergebenen Vorlagencode in eine <see cref="LeagueWikiTemplate"/> zu parsen. Übernimmt die ID der optional übergebenen <see cref="LeagueWikiTemplate"/>.
+		/// Wird keine übergeben, wird die nächsthöhere ID aus <see cref="Settings.LeageWikiTemplates"/> genutzt.
+		/// </summary>
+		/// <param name="templateCode">Vorlagencode</param>
+		/// <param name="oldTemplate"><see cref="LeagueWikiTemplate"/> deren ID übernommen werden soll</param>
+		/// <returns>Eine <see cref="LeagueWikiTemplate"/>-Instanz, wenn Vorlage nicht geparst werden konnte, <c>null</c></returns>
+		public static LeagueWikiTemplate ParseLeagueTemplate(string templateCode, LeagueWikiTemplate oldTemplate = null)
+		{
+			try
+			{
+				var id = (oldTemplate == null || oldTemplate == LeagueWikiTemplate.NoneTemplate) ? Settings.LeageWikiTemplates.GetNewID() : oldTemplate.ID;
+
+				bool isDate = HasLeagueTemplateDate(templateCode);
+				bool isLocation = HasLeagueTemplateLocation(templateCode);
+
+				var teamRegex = new Regex(Settings.WikiStrings.TemplateLeagueTeamRegexString);
+				var teamsCount = teamRegex.Matches(templateCode).Count;
+
+				var nameRegex = new Regex(WikiStrings.TemplateNameRegexString);
+				var name = RemoveNewLines(nameRegex.Match(templateCode).Value);
+
+				return new LeagueWikiTemplate(id, name, templateCode, teamsCount, isDate, isLocation);
+			}
+			catch { return null; }
+		}
+
+		/// <summary>
+		/// Prüft ob der angegebene Code einer <see cref="LeagueWikiTemplate"/> eine Datumsangabe enthält
+		/// </summary>
+		/// <param name="templateCode">Code einer <see cref="LeagueWikiTemplate"/></param>
+		/// <returns>True wenn Datumsangabe enthalten</returns>
+		public static bool HasLeagueTemplateDate(string templateCode)
+		{
+			var dateRegex = new Regex(Settings.WikiStrings.TemplateLeagueDateRegexString);
+			return dateRegex.IsMatch(templateCode);
+		}
+
+		/// <summary>
+		/// Prüft ob der angegebene Code einer <see cref="LeagueWikiTemplate"/> eine Ortsangabe enthält
+		/// </summary>
+		/// <param name="templateCode">Code einer <see cref="LeagueWikiTemplate"/></param>
+		/// <returns>True wenn Ortsangabe enthalten</returns>
+		public static bool HasLeagueTemplateLocation(string templateCode)
+		{
+			var locationRegex = new Regex(Settings.WikiStrings.TemplateLeagueLocationRegexString);
+			return locationRegex.IsMatch(templateCode);
+		}
+
+		#endregion
+
+		#region Football Code Generation
 
 		/// <summary>
 		/// Erstellt den Code für die Tabelle der angegebenen <see cref="FootballLeague"/> asynchron
@@ -90,7 +153,7 @@ namespace Simocracy.SportSim
 				}
 			}
 
-			sb.Append(Settings.WikiStrings.TableEnd);
+			sb.Append(WikiStrings.TableEnd);
 			return sb.ToString();
 		}
 
@@ -117,7 +180,7 @@ namespace Simocracy.SportSim
 			if(template == null)
 				throw new NotImplementedException("Results output without template not implemented");
 
-			var templateRegex = new Regex(@"\|?\s*([^=]*)\s*=");
+			var templateRegex = new Regex(WikiStrings.TemplateRegexString);
 			var teamRegex = new Regex(@"(A\d+)");
 			var teamIndexRegex = new Regex(@"(\d+)");
 			var templateCode = Regex.Replace(template.TemplateCode, @"\r\n?|\n", String.Empty);
@@ -127,17 +190,17 @@ namespace Simocracy.SportSim
 			// Vorlagenzeilen einzeln durchgehen
 			for(int i = 0; i < templateLines.Length; i++)
 			{
-				var line = templateLines[i].Replace("}}", String.Empty);
+				var line = templateLines[i].Replace(WikiStrings.TemplateEnd, String.Empty);
 
 				var templateMatch = templateRegex.Match(line);
 				var teamMatches = teamRegex.Matches(line);
-				
+
 				// Wenn nur ein Team enthalten ist: Teamnamen
 				if(teamMatches.Count == 1)
 				{
 					var index = Int32.Parse(teamMatches[0].Value.Substring(1));
 					var team = league.Teams[index - 1];
-					line = String.Format("|{0}{1}", line, team.Name);
+					line = String.Format("{0}{1}{2}", WikiStrings.TemplateVariableStartRegexString, line, team.Name);
 				}
 
 				// Wenn 2 Teams enthalten sind: Ergebnisse oder Zusatzdaten
@@ -149,15 +212,15 @@ namespace Simocracy.SportSim
 					var team2 = league.Teams[index2 - 1];
 
 					var match = league.Matches.Where(x => x.TeamA == team1 && x.TeamB == team2).FirstOrDefault();
-					line = String.Format("|{0}", line);
+					line = String.Format("{0}{1}", WikiStrings.TemplateVariableStartRegexString, line);
 
 					// Datumsangabe
-					if(line.Contains("Datum"))
+					if(HasLeagueTemplateDate(line))
 					{
 						line += match.Date.ToShortDateString();
 					}
 					// Ortsangabe
-					else if(line.Contains("Ort"))
+					else if(HasLeagueTemplateLocation(line))
 					{
 						line += match.TeamA.Stadium.City;
 					}
@@ -167,17 +230,17 @@ namespace Simocracy.SportSim
 						line += String.Format("{0}:{1}", match.ResultA, match.ResultB);
 					}
 				}
-				
+
 				// Wenn nicht benötigte Variable
 				else if(templateMatch.Success)
 				{
-					line = String.Format("|{0}", line);
+					line = (line.StartsWith(WikiStrings.TemplateVariableStartRegexString) ? line : String.Format("{0}{1}", WikiStrings.TemplateVariableStartRegexString, line));
 				}
 
 				filledLines[i] = line;
 
 			}
-			filledLines[filledLines.Length - 1] = "}}";
+			filledLines[filledLines.Length - 1] = WikiStrings.TemplateEnd;
 
 			return String.Join(Environment.NewLine, filledLines);
 		}
