@@ -70,5 +70,17 @@
     "Name": "Kronb. Lampedusa",
     "Flag": "KBLA",
     "Continent": 2
+  },
+  {
+    "ID": 12,
+    "Name": "Grafenberg",
+    "Flag": "GRA",
+    "Continent": 1
+  },
+  {
+    "ID": 13,
+    "Name": "Emmeria",
+    "Flag": "EMA",
+    "Continent": 1
   }
 ]
