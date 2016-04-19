@@ -141,10 +141,10 @@
     </Compile>
     <Compile Include="Simulation\FootballLeague.cs" />
     <Compile Include="Simulation\FootballMatch.cs" />
-    <Compile Include="Utilities\Datumsrechner.cs" />
+    <Compile Include="Utilities\External\Datumsrechner.cs" />
     <Compile Include="Utilities\EnumerationExtension.cs" />
     <Compile Include="Utilities\Converter.cs" />
-    <Compile Include="Utilities\SimpleLog.cs" />
+    <Compile Include="Utilities\External\SimpleLog.cs" />
     <Compile Include="Wiki\WikiHelper.cs" />
     <Compile Include="Utilities\ZipFileHelper.cs" />
     <Compile Include="Wiki\WikiStrings.cs" />
