@@ -13,7 +13,7 @@ namespace Simocracy.SportSim
 	/// Fußballspiel
 	/// </summary>
 	[DebuggerDisplay("Match {ID}: {TeamA.Name} - {TeamB.Name}")]
-	public class FootballMatch : INotifyPropertyChanged
+	public class FootballMatch : SSSDataObject, INotifyPropertyChanged
 	{
 		#region Members
 
@@ -118,8 +118,8 @@ namespace Simocracy.SportSim
 		/// <param name="date">Spieldatum</param>
 		/// <param name="minutes">Anzahl Spielminuten</param>
 		public FootballMatch(int matchID, FootballTeam teamA, FootballTeam teamB, DateTime date, int minutes)
+			:base (matchID, String.Format("{0}-{1}", teamA.Name, teamB.Name))
 		{
-			ID = matchID;
 			TeamA = teamA;
 			TeamB = teamB;
 			_Minutes = minutes;
@@ -131,19 +131,6 @@ namespace Simocracy.SportSim
 		#endregion
 
 		#region Properties
-
-		/// <summary>
-		/// Nummer des Spiels
-		/// </summary>
-		public int ID
-		{
-			get { return _ID; }
-			set
-			{
-				_ID = value;
-				Notify("ID");
-			}
-		}
 
 		/// <summary>
 		/// Heimteam
@@ -225,6 +212,17 @@ namespace Simocracy.SportSim
 			ResultA = ResultB;
 			TeamB = oldTeamA;
 			ResultB = oldResultA;
+			Name = String.Format("{0}-{1}", TeamA, TeamB);
+		}
+
+		/// <summary>
+		/// Gibt einen <see cref="String"/> zurück, der das Objekt darstellt.
+		/// </summary>
+		/// <returns>Objekt als String</returns>
+		public override string ToString()
+		{
+			return String.Format("{0}, TeamA={1}, TeamB={2}, ResultA={3}, ResultB={4}, Date={5}",
+				base.ToString(), TeamA, TeamB, ResultA, ResultB, Date.ToShortDateString());
 		}
 
 		#endregion
@@ -236,6 +234,8 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public void Simulate()
 		{
+			SimpleLog.Info(String.Format("Simulate Match: TeamA={0}, TeamB={1}", TeamA, TeamB));
+
 			int resA = 0;
 			int resB = 0;
 
@@ -343,16 +343,6 @@ namespace Simocracy.SportSim
 			{ _Start = 12; return 22; }
 			else
 				return 0;
-		}
-
-		#endregion
-
-		#region Observer
-
-		public event PropertyChangedEventHandler PropertyChanged;
-		protected void Notify(String propertyName)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 
 		#endregion

@@ -39,6 +39,18 @@ namespace Simocracy.SportSim
 		#region Football
 
 		/// <summary>
+		/// Erstellt den Code für die Tabelle der angegebenen <see cref="FootballLeague"/> asynchron
+		/// </summary>
+		/// <param name="league"><see cref="FootballLeague"/> der zu generierenden Tabelle</param>
+		/// <param name="qual1Count">Anzahl der Qual1-Plätze</param>
+		/// <param name="qual2Count">Anzahl der Qual2-Plätze</param>
+		/// <returns>Generierten Tabellencode</returns>
+		public async static Task<string> GenerateTableCodeAsync(FootballLeague league, int qual1Count, int qual2Count)
+		{
+			return await Task.Run(() => GenerateTableCode(league, qual1Count, qual2Count));
+		}
+
+		/// <summary>
 		/// Erstellt den Code für die Tabelle der angegebenen <see cref="FootballLeague"/>
 		/// </summary>
 		/// <param name="league"><see cref="FootballLeague"/> der zu generierenden Tabelle</param>
@@ -80,6 +92,18 @@ namespace Simocracy.SportSim
 
 			sb.Append(Settings.WikiStrings.TableEnd);
 			return sb.ToString();
+		}
+
+
+		/// <summary>
+		/// Generiert den Code für die Darstellung der Ergebnisse der angegebenen <see cref="FootballLeague"/> und nutzt dazu die angegebene <see cref="LeagueWikiTemplate"/> asynchron
+		/// </summary>
+		/// <param name="league"><see cref="FootballLeague"/> der darzustellenden Ergebnisse</param>
+		/// <param name="template"><see cref="LeagueWikiTemplate"/> der darzustellenden Ergebnisse</param>
+		/// <returns>Generierten Ergebniscode</returns>
+		public async static Task<string> GenerateResultsCodeAsync(FootballLeague league, LeagueWikiTemplate template)
+		{
+			return await Task.Run(() => GenerateResultsCode(league, template));
 		}
 
 		/// <summary>

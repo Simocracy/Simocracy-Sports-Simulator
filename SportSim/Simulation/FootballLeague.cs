@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
@@ -13,8 +14,17 @@ namespace Simocracy.SportSim
 	/// Simulation einer Fußballliga bzw. Turniergruppe
 	/// </summary>
 	[DebuggerDisplay("TeamCount={TeamCount}")]
-	public class FootballLeague
+	public class FootballLeague : INotifyPropertyChanged
 	{
+		#region Members
+
+		private FootballTeamCollection _Teams;
+		private ObservableCollection<FootballMatch> _Matches;
+		private ELeagueRoundMode _RoundMode;
+		private DataTable _Table;
+
+		#endregion
+
 		#region Constructor
 
 		/// <summary>
@@ -87,6 +97,8 @@ namespace Simocracy.SportSim
 			Matches = new ObservableCollection<FootballMatch>();
 			CreateMatches();
 			CreateTable();
+
+			SimpleLog.Log("League created");
 		}
 
 		#endregion
@@ -96,17 +108,29 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Teams der Liga
 		/// </summary>
-		public FootballTeamCollection Teams { get; set; }
+		public FootballTeamCollection Teams
+		{
+			get { return _Teams; }
+			set { _Teams = value; Notify(); }
+		}
 
 		/// <summary>
 		/// Spiele der Liga
 		/// </summary>
-		public ObservableCollection<FootballMatch> Matches { get; set; }
+		public ObservableCollection<FootballMatch> Matches
+		{
+			get { return _Matches; }
+			set { _Matches = value; Notify(); }
+		}
 
 		/// <summary>
 		/// Rundenmodus
 		/// </summary>
-		public ELeagueRoundMode RoundMode { get; set; }
+		public ELeagueRoundMode RoundMode
+		{
+			get { return _RoundMode; }
+			set { _RoundMode = value; Notify(); }
+		}
 
 		/// <summary>
 		/// Anzahl der Teams
@@ -116,7 +140,11 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Tabelle der Liga
 		/// </summary>
-		public DataTable Table { get; set; }
+		public DataTable Table
+		{
+			get { return _Table; }
+			set { _Table = value; Notify(); }
+		}
 
 		#endregion
 
@@ -172,6 +200,8 @@ namespace Simocracy.SportSim
 					}
 					break;
 			}
+
+			SimpleLog.Info("Matches Created");
 		}
 
 		/// <summary>
@@ -179,8 +209,25 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public void Simulate()
 		{
+			SimpleLog.Info("Simulate Matches");
 			foreach(var match in Matches)
 				match.Simulate();
+		}
+
+		/// <summary>
+		/// Simuliert alle Spiele in der Liga asynchron
+		/// </summary>
+		public async Task SimulateAsync()
+		{
+			await Task.Run(() => Simulate());
+		}
+
+		/// <summary>
+		/// Berechnet die Tabelle asynchron
+		/// </summary>
+		public async Task CalculateTableAsync()
+		{
+			await Task.Run(() => CalculateTable());
 		}
 
 		/// <summary>
@@ -188,6 +235,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public void CalculateTable()
 		{
+			SimpleLog.Info("Calculate Table");
 			CreateTable();
 
 			foreach(var team in Teams)
@@ -237,7 +285,7 @@ namespace Simocracy.SportSim
 
 				Table.Rows.Add(row);
 			}
-			
+
 			DataView dv = Table.DefaultView;
 			dv.Sort = "Points DESC, GoalDiff DESC, GoalsFor DESC";
 			Table = dv.ToTable();
@@ -261,6 +309,16 @@ namespace Simocracy.SportSim
 			table.Columns.Add("Points", typeof(int));
 
 			Table = table;
+		}
+
+		#endregion
+
+		#region INotifyPropertyChanged
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		protected void Notify([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 
 		#endregion
