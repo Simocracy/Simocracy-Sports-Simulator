@@ -27,6 +27,8 @@ namespace Simocracy.SportSim
 			DataContext = this;
 
 			_IsInNewMode = false;
+			Settings.LogPageOpened(this);
+
 			StadiumComboBoxList = new StadiumCollection(Settings.Stadiums);
 			StadiumComboBoxList.Insert(0, Stadium.NoneStadium);
 
@@ -104,6 +106,8 @@ namespace Simocracy.SportSim
 			SelectedFootballTeam.DefenseStrength = (int) DefenseSlider.Value;
 			SelectedFootballTeam.MidfieldStrength = (int) MidfieldSlider.Value;
 			SelectedFootballTeam.ForwardStrength = (int) ForwardSlider.Value;
+
+			Settings.LogObjSaved(SelectedFootballTeam);
 		}
 
 		private void Create()
@@ -118,6 +122,17 @@ namespace Simocracy.SportSim
 
 			_IsInNewMode = false;
 			SelectedFootballTeam = Settings.FootballTeams.Last();
+
+			Settings.LogObjCreated(SelectedFootballTeam);
+		}
+
+		public void Delete()
+		{
+			Settings.FootballTeams.Remove(SelectedFootballTeam);
+			MarkAllValid();
+			_IsInNewMode = false;
+			Settings.LogDeleted(SelectedFootballTeam);
+			SelectedFootballTeam = null;
 		}
 
 		private void MarkAllValid()
@@ -135,13 +150,13 @@ namespace Simocracy.SportSim
 
 		private void DeleteButton_Click(object sender, RoutedEventArgs e)
 		{
-			Settings.FootballTeams.Remove(SelectedFootballTeam);
-			MarkAllValid();
-			_IsInNewMode = false;
+			Settings.LogButtonClicked(sender as Button);
+			Delete();
 		}
 
 		private void NewButton_Click(object sender, RoutedEventArgs e)
 		{
+			Settings.LogButtonClicked(sender as Button);
 			ClearInputs();
 			NameTextBox.Focus();
 			_IsInNewMode = true;
@@ -149,6 +164,7 @@ namespace Simocracy.SportSim
 
 		private void SaveButton_Click(object sender, RoutedEventArgs e)
 		{
+			Settings.LogButtonClicked(sender as Button);
 			if(ValidateInputs())
 			{
 				if(_IsInNewMode || SelectedFootballTeam == null)
@@ -168,7 +184,7 @@ namespace Simocracy.SportSim
 
 		// Observer
 		public event PropertyChangedEventHandler PropertyChanged;
-		protected void Notify(String propertyName)
+		protected void Notify([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}

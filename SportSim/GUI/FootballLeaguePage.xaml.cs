@@ -27,6 +27,7 @@ namespace Simocracy.SportSim
 		{
 			InitializeComponent();
 			DataContext = this;
+			Settings.LogPageOpened(this);
 
 			League = new FootballLeague();
 			FilterStateList();
@@ -126,6 +127,8 @@ namespace Simocracy.SportSim
 		/// </summary>
 		private void FilterTeamList()
 		{
+			SimpleLog.Info(String.Format("Filter Teamlist: Continent={0} State={1}", SelectedContinent, SelectedState.Name));
+
 			FilteredTeamList = new FootballTeamCollection(Settings.FootballTeams);
 			if(SelectedContinent != EContinent.Unknown)
 				FilteredTeamList = new FootballTeamCollection(FilteredTeamList.Where(x => x.State.Continent == SelectedContinent));
@@ -138,6 +141,8 @@ namespace Simocracy.SportSim
 		/// </summary>
 		private void FilterStateList()
 		{
+			SimpleLog.Info(String.Format("Filter Statelist: Continent={0}", SelectedContinent));
+
 			StatesComboBoxList = (SelectedContinent != EContinent.Unknown) ? new StateCollection(Settings.States.Where(x => x.Continent == SelectedContinent)) : new StateCollection(Settings.States);
 			StatesComboBoxList.Insert(0, State.NoneState);
 		}
@@ -147,6 +152,9 @@ namespace Simocracy.SportSim
 		/// </summary>
 		private void FilterTemplatesList()
 		{
+			SimpleLog.Info(String.Format("Filter Templatelist: LeagueSize={0}, IsDate={1}, IsLocation={2}",
+				League.TeamCount, DateCheckBox.IsChecked, LocationCheckBox.IsChecked));
+
 			TemplatesComboBoxList = new LeagueWikiTemplateCollection(Settings.LeageWikiTemplates.Where(x =>
 					x.LeagueSize == League.TeamCount &&
 					x.IsDate == DateCheckBox.IsChecked &&
@@ -162,6 +170,9 @@ namespace Simocracy.SportSim
 		/// </summary>
 		private void FillWikiCodeQualComboBoxes()
 		{
+			SimpleLog.Info(String.Format("Filter Qual-Classes: LeagueSize={0}, Qual1Count={1}, Qual2Count={2}",
+				League.TeamCount, Qual1PlacesComboBox.SelectedIndex, Qual2PlacesComboBox.SelectedIndex));
+
 			var valuesQ1 = new int[League.TeamCount + 1];
 			for(int i = 0; i <= League.TeamCount; i++)
 				valuesQ1[i] = i;
@@ -179,16 +190,19 @@ namespace Simocracy.SportSim
 
 		private void SelectAllTeamsButton_Click(object sender, RoutedEventArgs e)
 		{
+			Settings.LogButtonClicked(sender as Button);
 			FootballTeamsListBox.SelectAll();
 		}
 
 		private void DiselectAllTeamsButton_Click(object sender, RoutedEventArgs e)
 		{
+			Settings.LogButtonClicked(sender as Button);
 			FootballTeamsListBox.SelectedItems.Clear();
 		}
 
 		private void GenerateMatchesButton_Click(object sender, RoutedEventArgs e)
 		{
+			Settings.LogButtonClicked(sender as Button);
 			League.Teams = FootballTeamCollection.CreateCollection(FootballTeamsListBox.SelectedItems);
 			League.CreateMatches();
 
@@ -196,13 +210,15 @@ namespace Simocracy.SportSim
 			FilterTemplatesList();
 		}
 
-		private void SimulateButton_Click(object sender, RoutedEventArgs e)
+		private async void SimulateButton_Click(object sender, RoutedEventArgs e)
 		{
-			League.Simulate();
+			Settings.LogButtonClicked(sender as Button);
+			await League.SimulateAsync();
 		}
 
 		private void SwapTeamsButton_Click(object sender, RoutedEventArgs e)
 		{
+			Settings.LogButtonClicked(sender as Button);
 			var match = ((FrameworkElement) sender).DataContext as FootballMatch;
 			match.SwapTeams();
 		}
@@ -232,25 +248,48 @@ namespace Simocracy.SportSim
 			FilterTemplatesList();
 		}
 
-		private void GenerateWikiCodeButton_Click(object sender, RoutedEventArgs e)
+		private async void GenerateWikiCodeButton_Click(object sender, RoutedEventArgs e)
 		{
+			Settings.LogButtonClicked(sender as Button);
+			SimpleLog.Info(String.Format("Generate Wikicode, LeagueSize={0}, Table={1}, Qual1Count={2}, Qual2Count={3}, Results={4}, Template={5}",
+				League.TeamCount, TableCheckBox.IsChecked, Qual1PlacesComboBox.SelectedIndex, Qual2PlacesComboBox.SelectedIndex,
+				ResultsCheckBox.IsChecked, (WikiTemplateComboBox.SelectedItem as LeagueWikiTemplate).Name));
 			WikiCodeTextBox.Text = String.Empty;
-
+			
 			if(TableCheckBox.IsChecked == true)
 			{
-				League.CalculateTable();
-				WikiCodeTextBox.Text += WikiHelper.GenerateTableCode(League, Qual1PlacesComboBox.SelectedIndex, Qual2PlacesComboBox.SelectedIndex);
+				try
+				{
+					await League.CalculateTableAsync();
+					WikiCodeTextBox.Text += await WikiHelper.GenerateTableCodeAsync(League, Qual1PlacesComboBox.SelectedIndex, Qual2PlacesComboBox.SelectedIndex);
+				}
+				catch(Exception ex)
+				{
+					SimpleLog.Log(ex);
+				}
 			}
 
 			if(ResultsCheckBox.IsChecked == true && WikiTemplateComboBox.SelectedIndex >= 0)
 			{
-				WikiCodeTextBox.Text += WikiHelper.GenerateResultsCode(League, WikiTemplateComboBox.SelectedItem as LeagueWikiTemplate);
+				try
+				{
+					WikiCodeTextBox.Text += await WikiHelper.GenerateResultsCodeAsync(League, WikiTemplateComboBox.SelectedItem as LeagueWikiTemplate);
+				}
+				catch(Exception ex)
+				{
+					SimpleLog.Log(ex);
+				}
 			}
 		}
 
 		private void CopyWikiCodeButton_Click(object sender, RoutedEventArgs e)
 		{
-			Clipboard.SetText(WikiCodeTextBox.Text);
+			Settings.LogButtonClicked(sender as Button);
+			try
+			{
+				Clipboard.SetText(WikiCodeTextBox.Text);
+			}
+			catch { }
 		}
 
 		#endregion
@@ -258,7 +297,7 @@ namespace Simocracy.SportSim
 		#region Observer
 
 		public event PropertyChangedEventHandler PropertyChanged;
-		protected void Notify(String propertyName)
+		protected void Notify([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}

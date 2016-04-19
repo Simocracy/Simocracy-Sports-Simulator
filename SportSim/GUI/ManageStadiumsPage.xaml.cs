@@ -27,6 +27,7 @@ namespace Simocracy.SportSim
 			DataContext = this;
 
 			_IsInNewMode = false;
+			Settings.LogPageOpened(this);
 
 #if !DEBUG
 			DebugIDLabel.Visibility = Visibility.Collapsed;
@@ -114,6 +115,8 @@ namespace Simocracy.SportSim
 			SelectedStadium.CapacityNat = (String.IsNullOrEmpty(CapacityNatTextBox.Text)) ? 0 : Convert.ToInt32(CapacityNatTextBox.Text);
 			SelectedStadium.State = (State) StateComboBox.SelectedItem;
 			SelectedStadium.StadiumType = (EStadiumType) Enum.Parse(typeof(EStadiumType), TypeComboBox.SelectedValue.ToString());
+
+			Settings.LogObjSaved(SelectedStadium);
 		}
 
 		private void Create()
@@ -128,6 +131,17 @@ namespace Simocracy.SportSim
 
 			_IsInNewMode = false;
 			SelectedStadium = Settings.Stadiums.Last();
+
+			Settings.LogObjCreated(SelectedStadium);
+		}
+
+		public void Delete()
+		{
+			Settings.Stadiums.Remove(SelectedStadium);
+			MarkAllValid();
+			_IsInNewMode = false;
+			Settings.LogDeleted(SelectedStadium);
+			SelectedStadium = null;
 		}
 
 		private void MarkAllValid()
@@ -147,13 +161,13 @@ namespace Simocracy.SportSim
 
 		private void DeleteButton_Click(object sender, RoutedEventArgs e)
 		{
-			Settings.Stadiums.Remove(SelectedStadium);
-			MarkAllValid();
-			_IsInNewMode = false;
+			Settings.LogButtonClicked(sender as Button);
+			Delete();
 		}
 
 		private void NewButton_Click(object sender, RoutedEventArgs e)
 		{
+			Settings.LogButtonClicked(sender as Button);
 			ClearInputs();
 			NameTextBox.Focus();
 			_IsInNewMode = true;
@@ -161,6 +175,7 @@ namespace Simocracy.SportSim
 
 		private void SaveButton_Click(object sender, RoutedEventArgs e)
 		{
+			Settings.LogButtonClicked(sender as Button);
 			if(ValidateInputs())
 			{
 				if(_IsInNewMode || SelectedStadium == null)
@@ -180,7 +195,7 @@ namespace Simocracy.SportSim
 
 		// Observer
 		public event PropertyChangedEventHandler PropertyChanged;
-		protected void Notify(String propertyName)
+		protected void Notify([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}

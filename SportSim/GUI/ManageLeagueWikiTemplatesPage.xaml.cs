@@ -25,6 +25,7 @@ namespace Simocracy.SportSim
 		{
 			InitializeComponent();
 			DataContext = this;
+			Settings.LogPageOpened(this);
 
 #if !DEBUG
 			DebugIDLabel.Visibility = Visibility.Collapsed;
@@ -92,6 +93,8 @@ namespace Simocracy.SportSim
 			SelectedTemplate.IsDate = (IsDateCheckBox.IsChecked == true) ? true : false;
 			SelectedTemplate.IsLocation = (IsLocationCheckBox.IsChecked == true) ? true : false;
 			SelectedTemplate.TemplateCode = WikiCodeTextBox.Text;
+
+			Settings.LogObjSaved(SelectedTemplate);
 		}
 
 		private void Create()
@@ -105,6 +108,17 @@ namespace Simocracy.SportSim
 
 			_IsInNewMode = false;
 			SelectedTemplate = Settings.LeageWikiTemplates.Last();
+
+			Settings.LogObjCreated(SelectedTemplate);
+		}
+
+		public void Delete()
+		{
+			Settings.LeageWikiTemplates.Remove(SelectedTemplate);
+			MarkAllValid();
+			_IsInNewMode = false;
+			Settings.LogDeleted(SelectedTemplate);
+			SelectedTemplate = null;
 		}
 
 		private void MarkAllValid()
@@ -126,13 +140,13 @@ namespace Simocracy.SportSim
 
 		private void DeleteButton_Click(object sender, RoutedEventArgs e)
 		{
-			Settings.LeageWikiTemplates.Remove(SelectedTemplate);
-			MarkAllValid();
-			_IsInNewMode = false;
+			Settings.LogButtonClicked(sender as Button);
+			Delete();
 		}
 
 		private void NewButton_Click(object sender, RoutedEventArgs e)
 		{
+			Settings.LogButtonClicked(sender as Button);
 			ClearInputs();
 			NameTextBox.Focus();
 			_IsInNewMode = true;
@@ -140,6 +154,7 @@ namespace Simocracy.SportSim
 
 		private void SaveButton_Click(object sender, RoutedEventArgs e)
 		{
+			Settings.LogButtonClicked(sender as Button);
 			if(ValidateInputs())
 			{
 				if(_IsInNewMode || SelectedTemplate == null)
