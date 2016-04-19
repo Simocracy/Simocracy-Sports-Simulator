@@ -104,8 +104,9 @@ namespace Simocracy.SportSim
 			set
 			{
 				_State = value;
-				StateID = value.ID;
-				Notify();
+				_StateID = value.ID;
+				Notify("State");
+				Notify("StateID");
 			}
 		}
 
@@ -119,8 +120,9 @@ namespace Simocracy.SportSim
 			set
 			{
 				_StateID = value;
-				State = (value != -1) ? Settings.States.Get(value) : State.NoneState;
-				Notify();
+				_State = (value != -1) ? Settings.States.Get(value) : State.NoneState;
+				Notify("State");
+				Notify("StateID");
 			}
 		}
 

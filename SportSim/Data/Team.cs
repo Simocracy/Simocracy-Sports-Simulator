@@ -93,8 +93,9 @@ namespace Simocracy.SportSim
 			set
 			{
 				_State = value;
-				StateID = value.ID;
-				Notify();
+				_StateID = value.ID;
+				Notify("State");
+				Notify("StateID");
 			}
 		}
 
@@ -108,8 +109,9 @@ namespace Simocracy.SportSim
 			set
 			{
 				_StateID = value;
-				State = (value != -1) ? Settings.States.Get(value) : State.NoneState;
-				Notify();
+				_State = (value != -1) ? Settings.States.Get(value) : State.NoneState;
+				Notify("State");
+				Notify("StateID");
 			}
 		}
 
@@ -123,8 +125,9 @@ namespace Simocracy.SportSim
 			set
 			{
 				_Stadium = value;
-				StadiumID = value.ID;
-				Notify();
+				_StadiumID = value.ID;
+				Notify("Stadium");
+				Notify("StadiumID");
 			}
 		}
 
@@ -138,8 +141,9 @@ namespace Simocracy.SportSim
 			set
 			{
 				_StadiumID = value;
-				Stadium = (value != -1) ? Settings.Stadiums.Get(value) : Stadium.NoneStadium;
-				Notify();
+				_Stadium = (value != -1) ? Settings.Stadiums.Get(value) : Stadium.NoneStadium;
+				Notify("Stadium");
+				Notify("StadiumID");
 			}
 		}
 
