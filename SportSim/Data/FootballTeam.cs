@@ -141,7 +141,7 @@ namespace Simocracy.SportSim
 		public int ForwardStrength
 		{
 			get { return _ForwardStrength; }
-			set { ForwardStrength = value; Notify(); }
+			set { _ForwardStrength = value; Notify(); }
 		}
 
 		#endregion
