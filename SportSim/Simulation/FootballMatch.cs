@@ -21,8 +21,7 @@ namespace Simocracy.SportSim
 		private int _Minutes;
 		private Random _Rand;
 		private int _Start;
-
-		private int _ID;
+		
 		private FootballTeam _TeamA;
 		private FootballTeam _TeamB;
 		private int _ResultA;
