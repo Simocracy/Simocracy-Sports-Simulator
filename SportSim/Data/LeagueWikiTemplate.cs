@@ -19,6 +19,9 @@ namespace Simocracy.SportSim
 		#region Members
 
 		private static LeagueWikiTemplate _NoneTemplate = new LeagueWikiTemplate(-1, String.Empty, String.Empty, 0, false, false);
+		private int _LeagueSize;
+		private bool _IsDate;
+		private bool _IsLocation;
 
 		#endregion
 
@@ -79,21 +82,44 @@ namespace Simocracy.SportSim
 		/// </summary>
 		[DataMember(Order = 1000)]
 		public int LeagueSize
-		{ get; set; }
+		{
+			get { return _LeagueSize; }
+			set { _LeagueSize = value; Notify(); }
+		}
 
 		/// <summary>
 		/// Ist Datumsangabe enthalten
 		/// </summary>
 		[DataMember(Order = 1010)]
 		public bool IsDate
-		{ get; set; }
+		{
+			get { return _IsDate; }
+			set { _IsDate = value; Notify(); }
+		}
 
 		/// <summary>
 		/// Ist Ortsangabe Enthalten
 		/// </summary>
 		[DataMember(Order = 1020)]
 		public bool IsLocation
-		{ get; set; }
+		{
+			get { return _IsLocation; }
+			set { _IsLocation = value; Notify(); }
+		}
+
+		#endregion
+
+		#region Overrided Methods
+
+		/// <summary>
+		/// Gibt einen <see cref="String"/> zurück, der das Objekt darstellt.
+		/// </summary>
+		/// <returns>Objekt als String</returns>
+		public override string ToString()
+		{
+			return String.Format("{0} {1}={2} {3}={4} {5}={6}", base.ToString(),
+				nameof(LeagueSize), LeagueSize, nameof(IsDate), IsDate, nameof(IsLocation), IsLocation);
+		}
 
 		#endregion
 	}

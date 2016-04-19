@@ -21,6 +21,7 @@ namespace Simocracy.SportSim
 		private int _StateID;
 		private Stadium _Stadium;
 		private int _StadiumID;
+		private string _Logo;
 
 		#endregion
 
@@ -70,7 +71,10 @@ namespace Simocracy.SportSim
 		/// </summary>
 		[DataMember(Order = 100)]
 		public string Logo
-		{ get; set; }
+		{
+			get { return _Logo; }
+			set { _Logo = value; Notify(); }
+		}
 
 		/// <summary>
 		/// Angabe ob Logo extern hochgeladen ist
@@ -89,7 +93,8 @@ namespace Simocracy.SportSim
 			set
 			{
 				_State = value;
-				_StateID = value.ID;
+				StateID = value.ID;
+				Notify();
 			}
 		}
 
@@ -103,7 +108,8 @@ namespace Simocracy.SportSim
 			set
 			{
 				_StateID = value;
-				_State = (value != -1) ? Settings.States.Get(value) : State.NoneState;
+				State = (value != -1) ? Settings.States.Get(value) : State.NoneState;
+				Notify();
 			}
 		}
 
@@ -117,7 +123,8 @@ namespace Simocracy.SportSim
 			set
 			{
 				_Stadium = value;
-				_StadiumID = value.ID;
+				StadiumID = value.ID;
+				Notify();
 			}
 		}
 
@@ -131,7 +138,8 @@ namespace Simocracy.SportSim
 			set
 			{
 				_StadiumID = value;
-				_Stadium = (value != -1) ? Settings.Stadiums.Get(value) : Stadium.NoneStadium;
+				Stadium = (value != -1) ? Settings.Stadiums.Get(value) : Stadium.NoneStadium;
+				Notify();
 			}
 		}
 
@@ -148,10 +156,7 @@ namespace Simocracy.SportSim
 		[IgnoreDataMember]
 		public double StrengthPerPlayer
 		{
-			get
-			{
-				return Strength / PlayerCount;
-			}
+			get { return Strength / PlayerCount; }
 		}
 
 		/// <summary>
@@ -162,12 +167,17 @@ namespace Simocracy.SportSim
 		{ get; }
 
 		#endregion
+		
+		#region Overrided Methods
 
-		#region Methods
-
+		/// <summary>
+		/// Gibt einen <see cref="String"/> zurück, der das Objekt darstellt.
+		/// </summary>
+		/// <returns>Objekt als String</returns>
 		public override string ToString()
 		{
-			return Name;
+			return String.Format("{0} {1}={2} {3}={4} {5}={6}", base.ToString(),
+				nameof(Logo), Logo, nameof(StateID), StateID, nameof(StadiumID), StadiumID);
 		}
 
 		#endregion

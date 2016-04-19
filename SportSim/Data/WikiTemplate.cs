@@ -16,6 +16,12 @@ namespace Simocracy.SportSim
 	public class WikiTemplate : SSSDataObject
 	{
 
+		#region Members
+
+		private string _TemplateCode;
+
+		#endregion
+
 		#region Constructor
 
 		/// <summary>
@@ -48,7 +54,23 @@ namespace Simocracy.SportSim
 		/// </summary>
 		[DataMember(Order = 100)]
 		public string TemplateCode
-		{ get; set; }
+		{
+			get { return _TemplateCode; }
+			set { _TemplateCode = value; Notify(); }
+		}
+
+		#endregion
+
+		#region Overrided Methods
+
+		/// <summary>
+		/// Gibt einen <see cref="String"/> zurück, der das Objekt darstellt.
+		/// </summary>
+		/// <returns>Objekt als String</returns>
+		public override string ToString()
+		{
+			return String.Format("{0} {1}={2}", base.ToString(), nameof(TemplateCode), TemplateCode);
+		}
 
 		#endregion
 

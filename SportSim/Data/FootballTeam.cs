@@ -15,6 +15,15 @@ namespace Simocracy.SportSim
 	public class FootballTeam : Team
 	{
 
+		#region Members
+
+		private int _GoalkeeperStrength;
+		private int _DefenseStrength;
+		private int _MidfieldStrength;
+		private int _ForwardStrength;
+
+		#endregion
+
 		#region Constructors
 
 		/// <summary>
@@ -92,10 +101,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public override int PlayerCount
 		{
-			get
-			{
-				return 11;
-			}
+			get { return 11; }
 		}
 
 		/// <summary>
@@ -103,28 +109,55 @@ namespace Simocracy.SportSim
 		/// </summary>
 		[DataMember(Order = 1000)]
 		public int GoalkeeperStrength
-		{ get; set; }
+		{
+			get { return _GoalkeeperStrength; }
+			set { _GoalkeeperStrength = value; Notify(); }
+		}
 
 		/// <summary>
 		/// Stärke der Verteidigung
 		/// </summary>
-		[DataMember(Order = 1100)]
+		[DataMember(Order = 1010)]
 		public int DefenseStrength
-		{ get; set; }
+		{
+			get { return _DefenseStrength; }
+			set { _DefenseStrength = value; Notify(); }
+		}
 
 		/// <summary>
 		/// Stärke des Mittelfelds
 		/// </summary>
-		[DataMember(Order = 1200)]
+		[DataMember(Order = 1020)]
 		public int MidfieldStrength
-		{ get; set; }
+		{
+			get { return _MidfieldStrength; }
+			set { _MidfieldStrength = value; Notify(); }
+		}
 
 		/// <summary>
 		/// Stärke der Stürmer
 		/// </summary>
-		[DataMember(Order = 1300)]
+		[DataMember(Order = 1030)]
 		public int ForwardStrength
-		{ get; set; }
+		{
+			get { return _ForwardStrength; }
+			set { ForwardStrength = value; Notify(); }
+		}
+
+		#endregion
+
+		#region Overrided Methods
+
+		/// <summary>
+		/// Gibt einen <see cref="String"/> zurück, der das Objekt darstellt.
+		/// </summary>
+		/// <returns>Objekt als String</returns>
+		public override string ToString()
+		{
+			return String.Format("{0} {1}={2} {3}={4} {5}={6} {7}={8}", base.ToString(),
+				nameof(GoalkeeperStrength), GoalkeeperStrength, nameof(DefenseStrength), DefenseStrength,
+				nameof(MidfieldStrength), MidfieldStrength, nameof(ForwardStrength), ForwardStrength);
+		}
 
 		#endregion
 	}

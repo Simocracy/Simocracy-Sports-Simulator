@@ -27,6 +27,8 @@ namespace Simocracy.SportSim
 		private int _StateID;
 		private int _CapacityInt;
 		private int _CapacityNat;
+		private EStadiumType _StadiumType;
+		private string _City;
 
 		#endregion
 
@@ -86,12 +88,10 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Leeres Stadion ohne Angaben
 		/// </summary>
+		[IgnoreDataMember]
 		public static Stadium NoneStadium
 		{
-			get
-			{
-				return _NoneStadium;
-			}
+			get { return _NoneStadium; }
 		}
 
 		/// <summary>
@@ -104,7 +104,8 @@ namespace Simocracy.SportSim
 			set
 			{
 				_State = value;
-				_StateID = value.ID;
+				StateID = value.ID;
+				Notify();
 			}
 		}
 
@@ -118,7 +119,8 @@ namespace Simocracy.SportSim
 			set
 			{
 				_StateID = value;
-				_State = (value != -1) ? Settings.States.Get(value) : State.NoneState;
+				State = (value != -1) ? Settings.States.Get(value) : State.NoneState;
+				Notify();
 			}
 		}
 
@@ -126,7 +128,11 @@ namespace Simocracy.SportSim
 		/// Stadt in dem das Stadion liegt
 		/// </summary>
 		[DataMember(Order = 110)]
-		public string City { get; set; }
+		public string City
+		{
+			get { return _City; }
+			set { _City = value; Notify(); }
+		}
 
 		/// <summary>
 		/// Internationale Kapazität des Stadions
@@ -135,7 +141,7 @@ namespace Simocracy.SportSim
 		public int CapacityInt
 		{
 			get { return _CapacityInt; }
-			set { _CapacityInt = value; }
+			set { _CapacityInt = value; Notify(); }
 		}
 
 		/// <summary>
@@ -144,15 +150,34 @@ namespace Simocracy.SportSim
 		[DataMember(Order = 130)]
 		public int CapacityNat
 		{
-			get { return (_CapacityNat == 0) ? _CapacityInt : _CapacityNat; }
-			set { _CapacityNat = (value == _CapacityInt) ? 0 : value; }
+			get { return (_CapacityNat == 0) ? CapacityInt : _CapacityNat; }
+			set { _CapacityNat = (value == CapacityInt) ? 0 : value; Notify(); }
 		}
 
 		/// <summary>
 		/// Typ des Stadions
 		/// </summary>
 		[DataMember(Order = 140)]
-		public EStadiumType StadiumType { get; set; }
+		public EStadiumType StadiumType
+		{
+			get { return _StadiumType; }
+			set { _StadiumType = value; Notify(); }
+		}
+
+		#endregion
+
+		#region Overrided Methods
+
+		/// <summary>
+		/// Gibt einen <see cref="String"/> zurück, der das Objekt darstellt.
+		/// </summary>
+		/// <returns>Objekt als String</returns>
+		public override string ToString()
+		{
+			return String.Format("{0} {1}={2} {3}={4} {5}={6} {7}={8} {9}={10}", base.ToString(),
+				nameof(StateID), StateID, nameof(City), City, nameof(CapacityInt), CapacityInt,
+				nameof(CapacityNat), CapacityNat, nameof(StadiumType), StadiumType);
+		}
 
 		#endregion
 	}
