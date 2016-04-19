@@ -23,12 +23,16 @@
 					<MenuItem Name="MenuItemStadiums" Header="Stadien" Click="MenuItemStadiums_Click"/>
 					<MenuItem Name="MenuItemStates" Header="Staaten" Click="MenuItemStates_Click"/>
 					<MenuItem Name="MenuItemLeagueTemplates" Header="Gruppenvorlagen" Click="MenuItemLeagueTemplates_Click"/>
+					<Separator/>
+					<MenuItem Name="MenuItemCredits" Header="Credits" Click="MenuItemCredits_Click"/>
+					<MenuItem Name="MenuItemExit" Header="Beenden" Click="MenuItemExit_Click"/>
 				</MenuItem>
 				<MenuItem Header="Simulation">
 					<MenuItem Header="Fußball">
 						<MenuItem Name="MenuItemFootballLeague" Header="Liga" Click="MenuItemFootballLeague_Click"/>
-						<MenuItem Name="MenuItemFootballTournament" Header="Turnier" Click="MenuItemFootballTournament_Click" IsEnabled="False"/>
-						<MenuItem Name="MenuItemFootballOwnSystem" Header="Benutzerdefiniert" Click="MenuItemFootballOwnSystem_Click" IsEnabled="False"/>
+						<MenuItem Name="MenuItemUAFATournament" Header="Amerikapokal" IsEnabled="False"/>
+						<MenuItem Name="MenuItemAFBTournament" Header="Afrikapokal" IsEnabled="False"/>
+						<MenuItem Name="MenuItemFootballOwnSystem" Header="Benutzerdefiniert" IsEnabled="False"/>
 					</MenuItem>
 				</MenuItem>
 			</Menu>

@@ -86,6 +86,26 @@ namespace Simocracy.SportSim
 		}
 
 		/// <summary>
+		/// Credits öffnen
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void MenuItemCredits_Click(object sender, RoutedEventArgs e)
+		{
+			MainFrame.Content = new InfoPage();
+		}
+
+		/// <summary>
+		/// Programm beenden
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void MenuItemExit_Click(object sender, RoutedEventArgs e)
+		{
+			Application.Current.Shutdown();
+		}
+
+		/// <summary>
 		/// Fußballliga simulieren
 		/// </summary>
 		/// <param name="sender"></param>
@@ -93,26 +113,6 @@ namespace Simocracy.SportSim
 		private void MenuItemFootballLeague_Click(object sender, RoutedEventArgs e)
 		{
 			MainFrame.Content = new FootballLeaguePage();
-		}
-
-		/// <summary>
-		/// Fußballturnier simulieren
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void MenuItemFootballTournament_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
-
-		/// <summary>
-		/// Benutzerdefiniertes Fußballturnier
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void MenuItemFootballOwnSystem_Click(object sender, RoutedEventArgs e)
-		{
-
 		}
 
 		#endregion
