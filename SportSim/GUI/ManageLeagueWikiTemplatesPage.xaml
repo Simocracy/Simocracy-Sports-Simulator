@@ -39,11 +39,11 @@
 				<RowDefinition Height="*"/>
 			</Grid.RowDefinitions>
 			<Label Content="Name:" Grid.Row="0" />
-			<TextBox x:Name="NameTextBox" Grid.Row="1" Text="{Binding SelectedTemplate.Name}" />
+			<TextBox x:Name="NameTextBox" Grid.Row="1" Text="{Binding SelectedTemplate.Name}" IsReadOnly="True" />
 			<Label Content="Gruppengröße:" Grid.Row="2" />
-			<TextBox x:Name="LeagueSizeTextBox" Grid.Row="3" Text="{Binding SelectedTemplate.LeagueSize}" />
-			<CheckBox Name="IsDateCheckBox" Grid.Row="4" Content="Enthält Datumsangabe" IsChecked="{Binding SelectedTemplate.IsDate}" Style="{DynamicResource ManageCheckBox}" Margin="0, 5, 0, 2.5" />
-			<CheckBox Name="IsLocationCheckBox" Grid.Row="5" Content="Enthält Ortsangabe" IsChecked="{Binding SelectedTemplate.IsLocation}" Style="{DynamicResource ManageCheckBox}" />
+			<TextBox x:Name="LeagueSizeTextBox" Grid.Row="3" Text="{Binding SelectedTemplate.LeagueSize}" IsReadOnly="True" />
+			<CheckBox Name="IsDateCheckBox" Grid.Row="4" Content="Enthält Datumsangabe" IsChecked="{Binding SelectedTemplate.IsDate}" Style="{DynamicResource ManageCheckBox}" Margin="0, 5, 0, 2.5" IsHitTestVisible="False" />
+			<CheckBox Name="IsLocationCheckBox" Grid.Row="5" Content="Enthält Ortsangabe" IsChecked="{Binding SelectedTemplate.IsLocation}" Style="{DynamicResource ManageCheckBox}" IsHitTestVisible="False" />
 			<Label Content="Einbindungscode:" Grid.Row="6" />
 			<TextBox Name="WikiCodeTextBox" Grid.Row="7" Text="{Binding SelectedTemplate.TemplateCode}" Style="{DynamicResource Multiline}" />
 		</Grid>
