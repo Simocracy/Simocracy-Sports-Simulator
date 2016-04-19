@@ -95,8 +95,7 @@ namespace Simocracy.SportSim
 		/// <returns>Objekt als String</returns>
 		public override string ToString()
 		{
-			return String.Format("{0} {1}={2} {3}={4}", base.ToString(),
-				nameof(Flag), Flag, nameof(Continent), Continent);
+			return String.Format("{0}, Flag={1}, Continent={2}", base.ToString(), Flag, Continent);
 		}
 
 		#endregion

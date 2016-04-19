@@ -167,7 +167,7 @@ namespace Simocracy.SportSim
 		{ get; }
 
 		#endregion
-		
+
 		#region Overrided Methods
 
 		/// <summary>
@@ -176,8 +176,7 @@ namespace Simocracy.SportSim
 		/// <returns>Objekt als String</returns>
 		public override string ToString()
 		{
-			return String.Format("{0} {1}={2} {3}={4} {5}={6}", base.ToString(),
-				nameof(Logo), Logo, nameof(StateID), StateID, nameof(StadiumID), StadiumID);
+			return String.Format("{0}, Logo={2}, StateID={4}, StadiumID={6}", base.ToString(), Logo, StateID, StadiumID);
 		}
 
 		#endregion

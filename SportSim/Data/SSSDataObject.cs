@@ -70,8 +70,7 @@ namespace Simocracy.SportSim
 		/// <returns>Objekt als String</returns>
 		public override string ToString()
 		{
-			return String.Format("{0},{1}={2} {3}={4}", GetType(),
-				nameof(ID), ID, nameof(Name), Name);
+			return String.Format("{0}: ID={1}, Name={2}", GetType(), ID, Name);
 		}
 
 		#endregion

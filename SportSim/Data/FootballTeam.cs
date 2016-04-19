@@ -154,9 +154,8 @@ namespace Simocracy.SportSim
 		/// <returns>Objekt als String</returns>
 		public override string ToString()
 		{
-			return String.Format("{0} {1}={2} {3}={4} {5}={6} {7}={8}", base.ToString(),
-				nameof(GoalkeeperStrength), GoalkeeperStrength, nameof(DefenseStrength), DefenseStrength,
-				nameof(MidfieldStrength), MidfieldStrength, nameof(ForwardStrength), ForwardStrength);
+			return String.Format("{0}, GoalkeeperStrength={1}, DefenseStrength={2}, MidfieldStrength={3}, ForwardStrength={4}",
+				base.ToString(), GoalkeeperStrength, DefenseStrength, MidfieldStrength, ForwardStrength);
 		}
 
 		#endregion

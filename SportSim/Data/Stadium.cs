@@ -174,9 +174,8 @@ namespace Simocracy.SportSim
 		/// <returns>Objekt als String</returns>
 		public override string ToString()
 		{
-			return String.Format("{0} {1}={2} {3}={4} {5}={6} {7}={8} {9}={10}", base.ToString(),
-				nameof(StateID), StateID, nameof(City), City, nameof(CapacityInt), CapacityInt,
-				nameof(CapacityNat), CapacityNat, nameof(StadiumType), StadiumType);
+			return String.Format("{0}, StateID={1}, City={2}, CapacityInt={3}, CapacityNat={4}, StadiumType={5}",
+				base.ToString(), StateID, City, CapacityInt, CapacityNat, StadiumType);
 		}
 
 		#endregion

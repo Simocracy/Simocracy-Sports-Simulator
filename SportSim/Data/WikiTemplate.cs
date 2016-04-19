@@ -69,7 +69,7 @@ namespace Simocracy.SportSim
 		/// <returns>Objekt als String</returns>
 		public override string ToString()
 		{
-			return String.Format("{0} {1}={2}", base.ToString(), nameof(TemplateCode), TemplateCode);
+			return String.Format("{0}, TemplateCode={2}", base.ToString(), TemplateCode);
 		}
 
 		#endregion
