@@ -280,7 +280,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public static void SetupLogger()
 		{
-			SimpleLog.SetLogFile(prefix: "SSS_Log_", writeText: true, check:false);
+			SimpleLog.SetLogFile(logDir:"SSS-Log", writeText: true, check:false);
 		}
 
 		#endregion
