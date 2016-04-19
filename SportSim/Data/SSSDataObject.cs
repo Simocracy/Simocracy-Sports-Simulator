@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,8 +13,15 @@ namespace Simocracy.SportSim
 	/// Basisklasse für speicherbare und auflistbare Objekte
 	/// </summary>
 	[DataContract]
-	public abstract class SSSDataObject : IExtensibleDataObject
+	public abstract class SSSDataObject : IExtensibleDataObject, INotifyPropertyChanged
 	{
+
+		#region Members
+
+		private int _ID;
+		private string _Name;
+
+		#endregion
 
 		#region Constructors
 
@@ -37,14 +45,34 @@ namespace Simocracy.SportSim
 		/// </summary>
 		[DataMember(Order = 10)]
 		public int ID
-		{ get; set; }
+		{
+			get { return _ID; }
+			set { _ID = value; Notify(); }
+		}
 
 		/// <summary>
 		/// Name
 		/// </summary>
 		[DataMember(Order = 20)]
 		public string Name
-		{ get; set; }
+		{
+			get { return _Name; }
+			set { _Name = value; Notify(); }
+		}
+
+		#endregion
+
+		#region Overrided Methods
+
+		/// <summary>
+		/// Gibt einen <see cref="String"/> zurück, der das Objekt darstellt.
+		/// </summary>
+		/// <returns>Objekt als String</returns>
+		public override string ToString()
+		{
+			return String.Format("{0},{1}={2} {3}={4}", GetType(),
+				nameof(ID), ID, nameof(Name), Name);
+		}
 
 		#endregion
 
@@ -56,5 +84,24 @@ namespace Simocracy.SportSim
 		public ExtensionDataObject ExtensionData { get; set; }
 
 		#endregion
+
+		#region INotifyPropertyChanged
+
+		/// <summary>
+		/// Observer-Event
+		/// </summary>
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		/// <summary>
+		/// Observer
+		/// </summary>
+		/// <param name="propertyName">Property</param>
+		protected void Notify([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+
+		#endregion
+
 	}
 }

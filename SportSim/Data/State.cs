@@ -22,6 +22,9 @@ namespace Simocracy.SportSim
 		/// </summary>
 		private static State _NoneState = new State(-1, String.Empty, String.Empty, EContinent.Unknown);
 
+		private string _Flag;
+		private EContinent _Continent;
+
 		#endregion
 
 		#region Constructors
@@ -58,23 +61,43 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public static State NoneState
 		{
-			get
-			{
-				return _NoneState;
-			}
+			get { return _NoneState; }
 		}
 
 		/// <summary>
 		/// Flaggenkürzel des Staates
 		/// </summary>
 		[DataMember(Order = 100)]
-		public string Flag { get; set; }
+		public string Flag
+		{
+			get { return _Flag; }
+			set { _Flag = value; Notify(); }
+		}
+
 
 		/// <summary>
 		/// Hauptkontinent des Staates
 		/// </summary>
 		[DataMember(Order = 110)]
-		public EContinent Continent { get; set; }
+		public EContinent Continent
+		{
+			get { return _Continent; }
+			set { _Continent = value; Notify(); }
+		}
+
+		#endregion
+
+		#region Overrided Methods
+
+		/// <summary>
+		/// Gibt einen <see cref="String"/> zurück, der das Objekt darstellt.
+		/// </summary>
+		/// <returns>Objekt als String</returns>
+		public override string ToString()
+		{
+			return String.Format("{0} {1}={2} {3}={4}", base.ToString(),
+				nameof(Flag), Flag, nameof(Continent), Continent);
+		}
 
 		#endregion
 	}
