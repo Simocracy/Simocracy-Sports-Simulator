@@ -83,10 +83,14 @@ namespace Simocracy.SportSim
 		public static WikiStrings WikiStrings { get; set; } = new WikiStrings();
 
 		#endregion
-		
+
 		#region Members
 
-		private static string _ZipFileName = "data.zip"; // TODO: Dateiformat in .sss benennen
+#if DEBUG
+		private static string _ZipFileName = "data.zip";
+#else
+		private static string _ZipFileName = "data.sss";
+#endif
 
 		private static string _FootballTeamsFileName = "footballTeams.json";
 		private static string _StatesFileName = "states.json";
