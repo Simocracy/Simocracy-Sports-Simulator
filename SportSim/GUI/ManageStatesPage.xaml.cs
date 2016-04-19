@@ -27,6 +27,7 @@ namespace Simocracy.SportSim
 			DataContext = this;
 
 			_IsInNewMode = false;
+			Settings.LogPageOpened(this);
 
 #if !DEBUG
 			DebugIDLabel.Visibility = Visibility.Collapsed;
@@ -89,6 +90,8 @@ namespace Simocracy.SportSim
 			SelectedState.Name = NameTextBox.Text;
 			SelectedState.Flag = FlagTextBox.Text;
 			SelectedState.Continent = (EContinent) Enum.Parse(typeof(EContinent), ContinentComboBox.SelectedValue.ToString());
+
+			Settings.LogObjSaved(SelectedState);
 		}
 
 		private void Create()
@@ -100,6 +103,19 @@ namespace Simocracy.SportSim
 
 			_IsInNewMode = false;
 			SelectedState = Settings.States.Last();
+
+			Settings.LogObjCreated(SelectedState);
+		}
+
+		private void Delete()
+		{
+			Settings.States.Remove(SelectedState);
+			MarkAllValid();
+			_IsInNewMode = false;
+
+			Settings.LogDeleted(SelectedState);
+
+			SelectedState = null;
 		}
 
 		private void MarkAllValid()
@@ -116,9 +132,8 @@ namespace Simocracy.SportSim
 
 		private void DeleteButton_Click(object sender, RoutedEventArgs e)
 		{
-			Settings.States.Remove(SelectedState);
-			MarkAllValid();
-			_IsInNewMode = false;
+			Settings.LogButtonClicked(sender as Button);
+			Delete();
 		}
 
 		private void NewButton_Click(object sender, RoutedEventArgs e)

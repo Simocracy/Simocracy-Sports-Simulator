@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Simocracy.SportSim
 {
@@ -168,7 +169,7 @@ namespace Simocracy.SportSim
 				{
 					var wikiStringsStream = new MemoryStream();
 					ser = new DataContractJsonSerializer(typeof(WikiStrings));
-					ser.WriteObject(wikiStringsStream, LeageWikiTemplates);
+					ser.WriteObject(wikiStringsStream, WikiStrings);
 					streams.Add(_WikiStringsFileName, wikiStringsStream);
 				}
 				catch(Exception e)
@@ -281,6 +282,51 @@ namespace Simocracy.SportSim
 		public static void SetupLogger()
 		{
 			SimpleLog.SetLogFile(logDir:"SSS-Log", writeText: true, check:false);
+		}
+
+		/// <summary>
+		/// Loggt, dass das angegebene <see cref="SSSDataObject"/> erstellt wurde.
+		/// </summary>
+		/// <param name="obj">Erstelltes <see cref="SSSDataObject"/></param>
+		public static void LogObjCreated(SSSDataObject obj)
+		{
+			SimpleLog.Info(String.Format("Created: {0}", obj.ToString()));
+		}
+
+		/// <summary>
+		/// Loggt, dass das angegebene <see cref="SSSDataObject"/> gespeichert wurde.
+		/// </summary>
+		/// <param name="obj">Gespeichertes <see cref="SSSDataObject"/></param>
+		public static void LogObjSaved(SSSDataObject obj)
+		{
+			SimpleLog.Info(String.Format("Saved: {0}", obj.ToString()));
+		}
+
+		/// <summary>
+		/// Loggt, dass das angegebene <see cref="SSSDataObject"/> gelöscht wurde.
+		/// </summary>
+		/// <param name="obj">Gelöschtes <see cref="SSSDataObject"/></param>
+		public static void LogDeleted(SSSDataObject obj)
+		{
+			SimpleLog.Info(String.Format("Deleted: {0}", obj.ToString()));
+		}
+
+		/// <summary>
+		/// Loggt, dass die angegebene <see cref="Page"/> geöffnet wurde.
+		/// </summary>
+		/// <param name="obj">Geöffnete <see cref="Page"/></param>
+		public static void LogPageOpened(Page obj)
+		{
+			SimpleLog.Info(String.Format("Opened Page: {0}", (obj != null) ? obj.Title : "Unknown"));
+		}
+
+		/// <summary>
+		/// Loggt, dass der angegebene <see cref="Button"/> angeklickt wurde.
+		/// </summary>
+		/// <param name="obj">Angeklickter <see cref="Button"/></param>
+		public static void LogButtonClicked(Button obj)
+		{
+			SimpleLog.Info(String.Format("Clicked Button: {0}", (obj != null) ? obj.Content : "Unknown"));
 		}
 
 		#endregion
