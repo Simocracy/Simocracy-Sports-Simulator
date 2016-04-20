@@ -56,13 +56,13 @@
 				<Label Content="Stadion:" Grid.Row="6" />
 				<ComboBox x:Name="StadiumComboBox" Grid.Row="7" ItemsSource="{Binding StadiumComboBoxList}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedFootballTeam.Stadium}" />
 				<Label Content="Stärke Torhüter:" Grid.Row="8" />
-				<Slider x:Name="GoalkeeperSlider" Grid.Row="9" Template="{DynamicResource ManageSlider}" Value="{Binding SelectedFootballTeam.GoalkeeperStrength}" Maximum="100" />
+				<Slider x:Name="GoalkeeperSlider" Grid.Row="9" Template="{DynamicResource ManageSlider}" Value="{Binding SelectedFootballTeam.GoalkeeperStrength}" Maximum="{Binding Source={x:Static local:FootballTeam.MaxGoalkeeperStrength}}" />
 				<Label Content="Stärke Verteidigung:" Grid.Row="10" />
-				<Slider x:Name="DefenseSlider" Grid.Row="11" Template="{DynamicResource ManageSlider}" Value="{Binding SelectedFootballTeam.DefenseStrength}" Maximum="100" />
+				<Slider x:Name="DefenseSlider" Grid.Row="11" Template="{DynamicResource ManageSlider}" Value="{Binding SelectedFootballTeam.DefenseStrength}" Maximum="{Binding Source={x:Static local:FootballTeam.MaxDefenseStrength}}" />
 				<Label Content="Stärke Mittelfeld:" Grid.Row="12" />
-				<Slider x:Name="MidfieldSlider" Grid.Row="13" Template="{DynamicResource ManageSlider}" Value="{Binding SelectedFootballTeam.MidfieldStrength}" Maximum="100" />
+				<Slider x:Name="MidfieldSlider" Grid.Row="13" Template="{DynamicResource ManageSlider}" Value="{Binding SelectedFootballTeam.MidfieldStrength}" Maximum="{Binding Source={x:Static local:FootballTeam.MaxMidfieldStrength}}" />
 				<Label Content="Stärke Angriff:" Grid.Row="14" />
-				<Slider x:Name="ForwardSlider" Grid.Row="15" Template="{DynamicResource ManageSlider}" Value="{Binding SelectedFootballTeam.ForwardStrength}" Maximum="100" />
+				<Slider x:Name="ForwardSlider" Grid.Row="15" Template="{DynamicResource ManageSlider}" Value="{Binding SelectedFootballTeam.ForwardStrength}" Maximum="{Binding Source={x:Static local:FootballTeam.MaxForwardStrength}}" />
 			</Grid>
 		</ScrollViewer>
 

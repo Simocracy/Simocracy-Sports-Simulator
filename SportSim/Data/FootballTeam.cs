@@ -24,6 +24,30 @@ namespace Simocracy.SportSim
 
 		#endregion
 
+		#region Constants
+
+		/// <summary>
+		/// Gibt die maximal mögliche Stärke des Torhüters zurück
+		/// </summary>
+		public const int MaxGoalkeeperStrength = 100;
+
+		/// <summary>
+		/// Gibt die maximal mögliche Stärke der Verteitigung zurück
+		/// </summary>
+		public const int MaxDefenseStrength = 500;
+
+		/// <summary>
+		/// Gibt die maximal mögliche Stärke des Mittelfeldes zurück
+		/// </summary>
+		public const int MaxMidfieldStrength = 300;
+
+		/// <summary>
+		/// Gibt die maximal mögliche Stärke der Stürmer zurück
+		/// </summary>
+		public const int MaxForwardStrength = 200;
+
+		#endregion
+
 		#region Constructors
 
 		/// <summary>
@@ -90,10 +114,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public override int Strength
 		{
-			get
-			{
-				return GoalkeeperStrength + DefenseStrength + MidfieldStrength + ForwardStrength;
-			}
+			get { return GoalkeeperStrength + DefenseStrength + MidfieldStrength + ForwardStrength; }
 		}
 
 		/// <summary>
@@ -110,8 +131,8 @@ namespace Simocracy.SportSim
 		[DataMember(Order = 1000)]
 		public int GoalkeeperStrength
 		{
-			get { return _GoalkeeperStrength; }
-			set { _GoalkeeperStrength = value; Notify(); }
+			get { return (_GoalkeeperStrength > MaxGoalkeeperStrength) ? MaxGoalkeeperStrength : _GoalkeeperStrength; }
+			set { _GoalkeeperStrength = (value > MaxGoalkeeperStrength) ? MaxGoalkeeperStrength : value; Notify(); }
 		}
 
 		/// <summary>
@@ -120,8 +141,8 @@ namespace Simocracy.SportSim
 		[DataMember(Order = 1010)]
 		public int DefenseStrength
 		{
-			get { return _DefenseStrength; }
-			set { _DefenseStrength = value; Notify(); }
+			get { return (_DefenseStrength > MaxDefenseStrength) ? MaxDefenseStrength : _DefenseStrength; }
+			set { _DefenseStrength = (value > MaxDefenseStrength) ? MaxDefenseStrength : value; Notify(); }
 		}
 
 		/// <summary>
@@ -130,8 +151,8 @@ namespace Simocracy.SportSim
 		[DataMember(Order = 1020)]
 		public int MidfieldStrength
 		{
-			get { return _MidfieldStrength; }
-			set { _MidfieldStrength = value; Notify(); }
+			get { return (_MidfieldStrength > MaxMidfieldStrength) ? MaxMidfieldStrength : _MidfieldStrength; }
+			set { _MidfieldStrength = (value > MaxMidfieldStrength) ? MaxMidfieldStrength : value; Notify(); }
 		}
 
 		/// <summary>
@@ -140,8 +161,8 @@ namespace Simocracy.SportSim
 		[DataMember(Order = 1030)]
 		public int ForwardStrength
 		{
-			get { return _ForwardStrength; }
-			set { _ForwardStrength = value; Notify(); }
+			get { return (_ForwardStrength > MaxMidfieldStrength) ? MaxMidfieldStrength : _ForwardStrength; }
+			set { _ForwardStrength = (value > MaxMidfieldStrength) ? MaxMidfieldStrength : value; Notify(); }
 		}
 
 		#endregion

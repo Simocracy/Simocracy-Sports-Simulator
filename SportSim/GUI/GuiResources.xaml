@@ -121,7 +121,7 @@
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="30" />
 			</Grid.ColumnDefinitions>
-			<Slider x:Name="Slider" Grid.Column="0" Style="{DynamicResource IntPercentSlider}" Value="{TemplateBinding Value}" />
+			<Slider x:Name="Slider" Grid.Column="0" Style="{DynamicResource IntPercentSlider}" Value="{TemplateBinding Value}" Maximum="{TemplateBinding Maximum}" />
 			<TextBox x:Name="Box" Grid.Column="1" Margin="5,0,0,0" Text="{Binding ElementName=Slider, Path=Value, Mode=TwoWay}" VerticalAlignment="Center" />
 		</Grid>
 	</ControlTemplate>
