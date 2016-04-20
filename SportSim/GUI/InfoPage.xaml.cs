@@ -23,6 +23,7 @@ namespace Simocracy.SportSim
 		public InfoPage()
 		{
 			InitializeComponent();
+			Settings.LogPageOpened(this);
 		}
 
 		private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)

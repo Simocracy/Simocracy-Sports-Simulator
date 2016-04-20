@@ -678,7 +678,7 @@ namespace Simocracy.SportSim
 
                 foreach(DictionaryEntry de in ex.Data)
                 {
-                    xDataElement.Add(new XElement("Entry", new XAttribute("Key", de.Key), new XAttribute("Value", de.Value)));
+					xDataElement.Add(new XElement("Entry", new XAttribute("Key", de.Key), new XAttribute("Value", de.Value ?? "null")));
                 }
 
                 xElement.Add(xDataElement);

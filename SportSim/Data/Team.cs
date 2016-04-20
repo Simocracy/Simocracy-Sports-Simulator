@@ -180,7 +180,7 @@ namespace Simocracy.SportSim
 		/// <returns>Objekt als String</returns>
 		public override string ToString()
 		{
-			return String.Format("{0}, Logo={2}, StateID={4}, StadiumID={6}", base.ToString(), Logo, StateID, StadiumID);
+			return String.Format("{0}, Logo={1}, StateID={2}, StadiumID={3}", base.ToString(), Logo, StateID, StadiumID);
 		}
 
 		#endregion

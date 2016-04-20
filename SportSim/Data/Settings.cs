@@ -294,7 +294,7 @@ namespace Simocracy.SportSim
 		/// <param name="obj">Erstelltes <see cref="SSSDataObject"/></param>
 		public static void LogObjCreated(SSSDataObject obj)
 		{
-			SimpleLog.Info(String.Format("Created: {0}", obj.ToString()));
+			SimpleLog.Log(String.Format("Created: {0}", (obj != null) ? obj.ToString() : "Unknown"), SimpleLog.Severity.Info, framesToSkip: 1);
 		}
 
 		/// <summary>
@@ -303,7 +303,7 @@ namespace Simocracy.SportSim
 		/// <param name="obj">Gespeichertes <see cref="SSSDataObject"/></param>
 		public static void LogObjSaved(SSSDataObject obj)
 		{
-			SimpleLog.Info(String.Format("Saved: {0}", obj.ToString()));
+			SimpleLog.Log(String.Format("Saved: {0}", (obj != null) ? obj.ToString() : "Unknown"), SimpleLog.Severity.Info, framesToSkip: 1);
 		}
 
 		/// <summary>
@@ -312,7 +312,7 @@ namespace Simocracy.SportSim
 		/// <param name="obj">Gelöschtes <see cref="SSSDataObject"/></param>
 		public static void LogDeleted(SSSDataObject obj)
 		{
-			SimpleLog.Info(String.Format("Deleted: {0}", obj.ToString()));
+			SimpleLog.Log(String.Format("Deleted: {0}", (obj != null) ? obj.ToString() : "Unknown"), SimpleLog.Severity.Info, framesToSkip: 1);
 		}
 
 		/// <summary>
@@ -321,7 +321,7 @@ namespace Simocracy.SportSim
 		/// <param name="obj">Geöffnete <see cref="Page"/></param>
 		public static void LogPageOpened(Page obj)
 		{
-			SimpleLog.Info(String.Format("Opened Page: {0}", (obj != null) ? obj.Title : "Unknown"));
+			SimpleLog.Log(String.Format("Opened Page: {0}", (obj != null) ? obj.Title : "Unknown"), SimpleLog.Severity.Info, framesToSkip: 1);
 		}
 
 		/// <summary>
@@ -330,7 +330,7 @@ namespace Simocracy.SportSim
 		/// <param name="obj">Angeklickter <see cref="Button"/></param>
 		public static void LogButtonClicked(Button obj)
 		{
-			SimpleLog.Info(String.Format("Clicked Button: {0}", (obj != null) ? obj.Content : "Unknown"));
+			SimpleLog.Log(String.Format("Clicked Button: {0}", (obj != null) ? obj.Content : "Unknown"), SimpleLog.Severity.Info, framesToSkip: 1);
 		}
 
 		#endregion

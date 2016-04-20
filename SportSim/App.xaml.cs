@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -29,9 +30,9 @@ namespace Simocracy.SportSim
 			Settings.LoadSettings();
 
 			// Open MainWindow
+			App app = new App();
 			try
 			{
-				App app = new App();
 				app.InitializeComponent();
 				MainWindow window = new MainWindow();
 				app.Run(window);
@@ -41,7 +42,10 @@ namespace Simocracy.SportSim
 				SimpleLog.Log(e);
 			}
 
-			SimpleLog.Info(String.Format("{0} {1} {2}", Settings.ProgramName, Settings.ProgramVersion, "closed"), false);
+			app.Shutdown();
+			SimpleLog.Info(String.Format("{0} {1} {2}", Settings.ProgramName, Settings.ProgramVersion, "closed"));
+			SimpleLog.Flush();
+			SimpleLog.StopLogging();
 		}
 	}
 }
