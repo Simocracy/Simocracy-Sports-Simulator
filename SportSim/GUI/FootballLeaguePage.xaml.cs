@@ -127,7 +127,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		private void FilterTeamList()
 		{
-			SimpleLog.Info(String.Format("Filter Teamlist: Continent={0} State={1}", SelectedContinent, SelectedState.Name));
+			SimpleLog.Info(String.Format("Filter Teamlist: Continent={0} State={1}", SelectedContinent, SelectedState?.Name));
 
 			FilteredTeamList = new FootballTeamCollection(Settings.FootballTeams);
 			if(SelectedContinent != EContinent.Unknown)
