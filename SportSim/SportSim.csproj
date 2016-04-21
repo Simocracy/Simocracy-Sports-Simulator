@@ -218,9 +218,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DefaultTeams\footballTeams.json" />
-    <None Include="DefaultTeams\leageWikiTemplates.json" />
-    <None Include="DefaultTeams\wikiStrings.json" />
+    <None Include="DefaultDB\footballTeams.json" />
+    <None Include="DefaultDB\leageWikiTemplates.json" />
+    <None Include="DefaultDB\wikiStrings.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -243,10 +243,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DefaultTeams\stadiums.json" />
+    <None Include="DefaultDB\stadiums.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DefaultTeams\states.json" />
+    <None Include="DefaultDB\states.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
