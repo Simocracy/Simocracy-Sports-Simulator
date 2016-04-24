@@ -22,6 +22,7 @@ namespace Simocracy.SportSim
 		public AmericaCup()
 		{
 			Randomizer = new Random();
+			IsSimulatable = false;
 		}
 
 		#endregion
@@ -38,6 +39,7 @@ namespace Simocracy.SportSim
 		private ObservableCollection<FootballTeam> _ALPot4;
 
 		private ObservableCollection<FootballLeague> _Groups;
+		private bool _IsSimulatable;
 
 		#endregion
 
@@ -129,14 +131,24 @@ namespace Simocracy.SportSim
 			set { _Groups = value; Notify(); }
 		}
 
+		/// <summary>
+		/// Auslosung war Erfolgreich und Ergebnisse können simuliert werden
+		/// </summary>
+		public bool IsSimulatable
+		{
+			get { return _IsSimulatable; }
+			set { _IsSimulatable = value; Notify(); }
+		}
+
 		#endregion
 
 		#region Methods
 
 		/// <summary>
-		/// Lost die Gruppen aus und initialisiert diese.
+		/// Lost die Gruppen aus und initialisiert diese. Versucht bis zu 5 Auslosungsdurchläufe.
 		/// </summary>
-		public void Draw()
+		/// <param name="recursiveCount">Nummer des Losungsdurchlaufes</param>
+		public void Draw(int recursiveCount = 0)
 		{
 			CLPot1.OrderBy(x => Randomizer.Next());
 			CLPot2.OrderBy(x => Randomizer.Next());
@@ -152,6 +164,217 @@ namespace Simocracy.SportSim
 				Groups.Add(new FootballLeague(CLPot1[i], CLPot2[i], CLPot3[i], CLPot4[i]));
 			for(int i = 0; i < 8; i++)
 				Groups.Add(new FootballLeague(ALPot1[i], ALPot2[i], ALPot3[i], ALPot4[i]));
+
+			// Gleiche Nationen in einer CL-Gruppe behandeln
+			bool[] isNationValid = new bool[16];
+			for(int i = 0; i < 8; i++)
+			{
+				var group = Groups[i];
+				isNationValid[i] = true;
+
+				if(group.Teams[0].State == group.Teams[1].State)
+				{
+					if(i > 0 && Groups[i - 1].Teams[1].State != group.Teams[1].State)
+					{
+						var newTeam = Groups[i - 1].Teams[1];
+						Groups[i - 1].Teams[1] = group.Teams[1];
+						group.Teams[1] = newTeam;
+					}
+					else if(i < 7 && Groups[i + 1].Teams[1].State != group.Teams[1].State)
+					{
+						var newTeam = Groups[i + 1].Teams[1];
+						Groups[i + 1].Teams[1] = group.Teams[1];
+						group.Teams[1] = newTeam;
+					}
+				}
+				if(group.Teams[0].State == group.Teams[2].State)
+				{
+					if(i > 0 && Groups[i - 1].Teams[2].State != group.Teams[2].State)
+					{
+						var newTeam = Groups[i - 1].Teams[2];
+						Groups[i - 1].Teams[2] = group.Teams[2];
+						group.Teams[2] = newTeam;
+					}
+					else if(i < 7 && Groups[i + 1].Teams[2].State != group.Teams[2].State)
+					{
+						var newTeam = Groups[i + 1].Teams[2];
+						Groups[i + 1].Teams[2] = group.Teams[2];
+						group.Teams[2] = newTeam;
+					}
+				}
+				if(group.Teams[0].State == group.Teams[3].State)
+				{
+					if(i > 0 && Groups[i - 1].Teams[3].State != group.Teams[3].State)
+					{
+						var newTeam = Groups[i - 1].Teams[3];
+						Groups[i - 1].Teams[3] = group.Teams[3];
+						group.Teams[3] = newTeam;
+					}
+					else if(i < 7 && Groups[i + 1].Teams[3].State != group.Teams[3].State)
+					{
+						var newTeam = Groups[i + 1].Teams[3];
+						Groups[i + 1].Teams[3] = group.Teams[3];
+						group.Teams[3] = newTeam;
+					}
+				}
+				if(group.Teams[1].State == group.Teams[2].State)
+				{
+					if(i > 0 && Groups[i - 1].Teams[2].State != group.Teams[2].State)
+					{
+						var newTeam = Groups[i - 1].Teams[2];
+						Groups[i - 1].Teams[2] = group.Teams[2];
+						group.Teams[2] = newTeam;
+					}
+					else if(i < 7 && Groups[i + 1].Teams[2].State != group.Teams[2].State)
+					{
+						var newTeam = Groups[i + 1].Teams[2];
+						Groups[i + 1].Teams[2] = group.Teams[2];
+						group.Teams[2] = newTeam;
+					}
+				}
+				if(group.Teams[1].State == group.Teams[3].State)
+				{
+					if(i > 0 && Groups[i - 1].Teams[3].State != group.Teams[3].State)
+					{
+						var newTeam = Groups[i - 1].Teams[3];
+						Groups[i - 1].Teams[3] = group.Teams[3];
+						group.Teams[3] = newTeam;
+					}
+					else if(i < 7 && Groups[i + 1].Teams[3].State != group.Teams[3].State)
+					{
+						var newTeam = Groups[i + 1].Teams[3];
+						Groups[i + 1].Teams[3] = group.Teams[3];
+						group.Teams[3] = newTeam;
+					}
+				}
+				if(group.Teams[2].State == group.Teams[3].State)
+				{
+					if(i > 0 && Groups[i - 1].Teams[3].State != group.Teams[3].State)
+					{
+						var newTeam = Groups[i - 1].Teams[3];
+						Groups[i - 1].Teams[3] = group.Teams[3];
+						group.Teams[3] = newTeam;
+					}
+					else if(i < 7 && Groups[i + 1].Teams[3].State != group.Teams[3].State)
+					{
+						var newTeam = Groups[i + 1].Teams[3];
+						Groups[i + 1].Teams[3] = group.Teams[3];
+						group.Teams[3] = newTeam;
+					}
+				}
+
+				isNationValid[i] = AreSameStatesInGroup(group);
+			}
+
+			// AL-Gruppen prüfen
+			for(int i = 8; i < 16; i++)
+			{
+				var group = Groups[i];
+				isNationValid[i] = true;
+
+				if(group.Teams[0].State == group.Teams[1].State)
+				{
+					if(i > 0 && Groups[i - 1].Teams[1].State != group.Teams[1].State)
+					{
+						var newTeam = Groups[i - 1].Teams[1];
+						Groups[i - 1].Teams[1] = group.Teams[1];
+						group.Teams[1] = newTeam;
+					}
+					else if(i < 7 && Groups[i + 1].Teams[1].State != group.Teams[1].State)
+					{
+						var newTeam = Groups[i + 1].Teams[1];
+						Groups[i + 1].Teams[1] = group.Teams[1];
+						group.Teams[1] = newTeam;
+					}
+				}
+				if(group.Teams[0].State == group.Teams[2].State)
+				{
+					if(i > 0 && Groups[i - 1].Teams[2].State != group.Teams[2].State)
+					{
+						var newTeam = Groups[i - 1].Teams[2];
+						Groups[i - 1].Teams[2] = group.Teams[2];
+						group.Teams[2] = newTeam;
+					}
+					else if(i < 7 && Groups[i + 1].Teams[2].State != group.Teams[2].State)
+					{
+						var newTeam = Groups[i + 1].Teams[2];
+						Groups[i + 1].Teams[2] = group.Teams[2];
+						group.Teams[2] = newTeam;
+					}
+				}
+				if(group.Teams[0].State == group.Teams[3].State)
+				{
+					if(i > 0 && Groups[i - 1].Teams[3].State != group.Teams[3].State)
+					{
+						var newTeam = Groups[i - 1].Teams[3];
+						Groups[i - 1].Teams[3] = group.Teams[3];
+						group.Teams[3] = newTeam;
+					}
+					else if(i < 7 && Groups[i + 1].Teams[3].State != group.Teams[3].State)
+					{
+						var newTeam = Groups[i + 1].Teams[3];
+						Groups[i + 1].Teams[3] = group.Teams[3];
+						group.Teams[3] = newTeam;
+					}
+				}
+				if(group.Teams[1].State == group.Teams[2].State)
+				{
+					if(i > 0 && Groups[i - 1].Teams[2].State != group.Teams[2].State)
+					{
+						var newTeam = Groups[i - 1].Teams[2];
+						Groups[i - 1].Teams[2] = group.Teams[2];
+						group.Teams[2] = newTeam;
+					}
+					else if(i < 7 && Groups[i + 1].Teams[2].State != group.Teams[2].State)
+					{
+						var newTeam = Groups[i + 1].Teams[2];
+						Groups[i + 1].Teams[2] = group.Teams[2];
+						group.Teams[2] = newTeam;
+					}
+				}
+				if(group.Teams[1].State == group.Teams[3].State)
+				{
+					if(i > 0 && Groups[i - 1].Teams[3].State != group.Teams[3].State)
+					{
+						var newTeam = Groups[i - 1].Teams[3];
+						Groups[i - 1].Teams[3] = group.Teams[3];
+						group.Teams[3] = newTeam;
+					}
+					else if(i < 7 && Groups[i + 1].Teams[3].State != group.Teams[3].State)
+					{
+						var newTeam = Groups[i + 1].Teams[3];
+						Groups[i + 1].Teams[3] = group.Teams[3];
+						group.Teams[3] = newTeam;
+					}
+				}
+				if(group.Teams[2].State == group.Teams[3].State)
+				{
+					if(i > 0 && Groups[i - 1].Teams[3].State != group.Teams[3].State)
+					{
+						var newTeam = Groups[i - 1].Teams[3];
+						Groups[i - 1].Teams[3] = group.Teams[3];
+						group.Teams[3] = newTeam;
+					}
+					else if(i < 7 && Groups[i + 1].Teams[3].State != group.Teams[3].State)
+					{
+						var newTeam = Groups[i + 1].Teams[3];
+						Groups[i + 1].Teams[3] = group.Teams[3];
+						group.Teams[3] = newTeam;
+					}
+				}
+
+				isNationValid[i] = AreSameStatesInGroup(group);
+			}
+
+			// Wenn eine Gruppe immer noch nicht passt, dann Prozedere von vorne beginnen
+			IsSimulatable = true;
+			if(isNationValid.Contains(false))
+			{
+				if(recursiveCount < 5)
+					Draw();
+				else
+					IsSimulatable = false;
+			}
 		}
 
 		/// <summary>
@@ -170,6 +393,18 @@ namespace Simocracy.SportSim
 		public async void SimulateGroupsAsync()
 		{
 			await Task.Run(() => SimulateGroups());
+		}
+
+		/// <summary>
+		/// Prüft, ob in der Gruppe 2 Mannschaften oder mehr aus dem gleichen Staat sind
+		/// </summary>
+		/// <param name="group">Gruppe</param>
+		/// <returns>True, wenn 2 oder mehr Mannschaften aus dem gleichen Staat</returns>
+		private bool AreSameStatesInGroup(FootballLeague group)
+		{
+			return (group.Teams[0].State == group.Teams[1].State) || (group.Teams[0].State == group.Teams[2].State) ||
+				(group.Teams[0].State == group.Teams[3].State) || (group.Teams[1].State == group.Teams[2].State) ||
+				(group.Teams[1].State == group.Teams[3].State) || (group.Teams[2].State == group.Teams[3].State);
 		}
 
 		#endregion
