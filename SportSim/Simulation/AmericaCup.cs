@@ -22,7 +22,7 @@ namespace Simocracy.SportSim
 		public AmericaCup()
 		{
 			Randomizer = new Random();
-			IsSimulatable = false;
+			IsGroupsSimulatable = false;
 		}
 
 		#endregion
@@ -39,7 +39,7 @@ namespace Simocracy.SportSim
 		private ObservableCollection<FootballTeam> _ALPot4;
 
 		private ObservableCollection<FootballLeague> _Groups;
-		private bool _IsSimulatable;
+		private bool _IsGroupsSimulatable;
 
 		#endregion
 
@@ -134,10 +134,10 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Auslosung war Erfolgreich und Ergebnisse können simuliert werden
 		/// </summary>
-		public bool IsSimulatable
+		public bool IsGroupsSimulatable
 		{
-			get { return _IsSimulatable; }
-			set { _IsSimulatable = value; Notify(); }
+			get { return _IsGroupsSimulatable; }
+			private set { _IsGroupsSimulatable = value; Notify(); }
 		}
 
 		#endregion
@@ -148,7 +148,7 @@ namespace Simocracy.SportSim
 		/// Lost die Gruppen aus und initialisiert diese. Versucht bis zu 5 Auslosungsdurchläufe.
 		/// </summary>
 		/// <param name="recursiveCount">Nummer des Losungsdurchlaufes</param>
-		public void Draw(int recursiveCount = 0)
+		public void DrawGroups(int recursiveCount = 0)
 		{
 			CLPot1.OrderBy(x => Randomizer.Next());
 			CLPot2.OrderBy(x => Randomizer.Next());
@@ -367,13 +367,13 @@ namespace Simocracy.SportSim
 			}
 
 			// Wenn eine Gruppe immer noch nicht passt, dann Prozedere von vorne beginnen
-			IsSimulatable = true;
+			IsGroupsSimulatable = true;
 			if(isNationValid.Contains(false))
 			{
 				if(recursiveCount < 5)
-					Draw();
+					DrawGroups();
 				else
-					IsSimulatable = false;
+					IsGroupsSimulatable = false;
 			}
 		}
 
@@ -382,7 +382,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public void SimulateGroups()
 		{
-			if(Groups != null)
+			if(IsGroupsSimulatable && Groups != null)
 				foreach(var group in Groups)
 					group.Simulate();
 		}
