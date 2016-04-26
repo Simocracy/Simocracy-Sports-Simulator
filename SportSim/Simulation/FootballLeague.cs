@@ -90,7 +90,7 @@ namespace Simocracy.SportSim
 		/// <param name="roundMode">Rundenmodus der Liga</param>
 		/// <param name="teams">Teams der Liga</param>
 		public FootballLeague(ELeagueRoundMode roundMode, FootballTeamCollection teams)
-			: this(-1, String.Empty, roundMode, teams)
+			: this(new Guid().GetHashCode(), String.Empty, roundMode, teams)
 		{ }
 
 		/// <summary>
@@ -106,11 +106,13 @@ namespace Simocracy.SportSim
 			RoundMode = roundMode;
 			Teams = teams;
 
+			SimpleLog.Log(String.Format("Create Football League: {0}", ToString()));
+
 			Matches = new ObservableCollection<FootballMatch>();
 			CreateMatches();
 			CreateTable();
 
-			SimpleLog.Log("League created");
+			SimpleLog.Log(String.Format("Football League created with ID={0}", ID));
 		}
 
 		#endregion
@@ -213,7 +215,7 @@ namespace Simocracy.SportSim
 					break;
 			}
 
-			SimpleLog.Info("Matches Created");
+			SimpleLog.Log(String.Format("Matches Created in Football League ID={0}", ID));
 		}
 
 		/// <summary>
@@ -221,7 +223,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public void Simulate()
 		{
-			SimpleLog.Info("Simulate Matches");
+			SimpleLog.Log(String.Format("Simulate Matches in Football League ID={0}", ID));
 			foreach(var match in Matches)
 				match.Simulate();
 		}
@@ -247,7 +249,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public void CalculateTable()
 		{
-			SimpleLog.Info("Calculate Table");
+			SimpleLog.Log(String.Format("Calculate Table in Football League ID={0}", ID));
 			CreateTable();
 
 			foreach(var team in Teams)
