@@ -14,7 +14,7 @@ namespace Simocracy.SportSim
 	/// Simulation einer Fußballliga bzw. Turniergruppe
 	/// </summary>
 	[DebuggerDisplay("TeamCount={TeamCount}")]
-	public class FootballLeague : INotifyPropertyChanged
+	public class FootballLeague : SSSDataObject
 	{
 		#region Members
 
@@ -90,6 +90,18 @@ namespace Simocracy.SportSim
 		/// <param name="roundMode">Rundenmodus der Liga</param>
 		/// <param name="teams">Teams der Liga</param>
 		public FootballLeague(ELeagueRoundMode roundMode, FootballTeamCollection teams)
+			: this(-1, String.Empty, roundMode, teams)
+		{ }
+
+		/// <summary>
+		/// Erstellt eine neue Fußballliga
+		/// </summary>
+		/// <param name="id">ID der Liga</param>
+		/// <param name="name">Name der Liga</param>
+		/// <param name="roundMode">Rundenmodus der Liga</param>
+		/// <param name="teams">Teams der Liga</param>
+		public FootballLeague(int id, string name, ELeagueRoundMode roundMode, FootballTeamCollection teams)
+			: base(id, name)
 		{
 			RoundMode = roundMode;
 			Teams = teams;
@@ -311,14 +323,13 @@ namespace Simocracy.SportSim
 			Table = table;
 		}
 
-		#endregion
-
-		#region INotifyPropertyChanged
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		protected void Notify([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
+		/// <summary>
+		/// Gibt einen <see cref="String"/> zurück, der das Objekt darstellt.
+		/// </summary>
+		/// <returns>Objekt als String</returns>
+		public override string ToString()
 		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+			return String.Format("{0}, TeamCount={1}, RoundMode={2}", base.ToString(), TeamCount, RoundMode);
 		}
 
 		#endregion
