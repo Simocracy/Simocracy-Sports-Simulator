@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Simocracy.SportSim
 {
+
+	#region EStadiumType
+
 	/// <summary>
 	/// Stadiontyp
 	/// </summary>
@@ -43,6 +46,10 @@ namespace Simocracy.SportSim
 		[Description("Multifunktionsarena")]
 		MultiPurposeStadium = 4
 	}
+
+	#endregion
+
+	#region EContinent
 
 	/// <summary>
 	/// Kontinent
@@ -87,6 +94,10 @@ namespace Simocracy.SportSim
 		Oceania = 5
 	}
 
+	#endregion
+
+	#region ELeagueRoundMode
+
 	/// <summary>
 	/// Rundenmodus einer Liga
 	/// </summary>
@@ -111,4 +122,47 @@ namespace Simocracy.SportSim
 		QuadrupleRound = 2
 
 	}
+
+	#endregion
+
+	#region EKORoundMode
+
+	/// <summary>
+	/// Spielmodus einer KO-Runde
+	/// </summary>
+	public enum EKORoundMode
+	{
+		/// <summary>
+		/// Ein Spiel
+		/// </summary>
+		[Description("Ein Spiel")]
+		OneMatch = 0,
+
+		/// <summary>
+		/// 2 Spiele, Hin- und Rückspiel
+		/// </summary>
+		[Description("Zwei Spiele")]
+		TwoMatches = 1,
+
+		/// <summary>
+		/// Sieger aus 3 Spielen
+		/// </summary>
+		[Description("Best of 3")]
+		BestOf3 = 2,
+
+		/// <summary>
+		/// Sieger aus 5 Spielen
+		/// </summary>
+		[Description("Best of 5")]
+		BestOf5 = 3,
+
+		/// <summary>
+		/// Sieger aus 7 Spielen
+		/// </summary>
+		[Description("Best of 7")]
+		BestOf7 = 4
+
+	}
+
+	#endregion
 }

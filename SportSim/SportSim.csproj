@@ -137,6 +137,7 @@
       <DependentUpon>ManageStatesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Simulation\AmericaCup.cs" />
+    <Compile Include="Simulation\FootballKORound.cs" />
     <Compile Include="Simulation\FootballLeague.cs" />
     <Compile Include="Simulation\FootballMatch.cs" />
     <Compile Include="Utilities\External\Datumsrechner.cs" />
