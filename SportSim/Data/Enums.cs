@@ -165,4 +165,63 @@ namespace Simocracy.SportSim
 	}
 
 	#endregion
+
+	#region EKORoundMode
+
+	/// <summary>
+	/// Runde innerhalb der KO-Runde
+	/// </summary>
+	public enum EKORound
+	{
+		/// <summary>
+		/// Unbekannt
+		/// </summary>
+		[Description("Unbekannt")]
+		Unknown = 0,
+
+		/// <summary>
+		/// Runde der 128
+		/// </summary>
+		[Description("Runde der 128")]
+		RoundOf128 = 1,
+
+		/// <summary>
+		/// Runde der 64
+		/// </summary>
+		[Description("Runde der 64")]
+		RoundOf64 = 2,
+
+		/// <summary>
+		/// Runde der 32
+		/// </summary>
+		[Description("Runde der 32")]
+		RoundOf32 = 3,
+
+		/// <summary>
+		/// Achtelfinale
+		/// </summary>
+		[Description("Achtelfinale")]
+		RoundOf16 = 4,
+
+		/// <summary>
+		/// Viertelfinale
+		/// </summary>
+		[Description("Viertelfinale")]
+		QuarterFinal = 5,
+
+		/// <summary>
+		/// Halbfinale
+		/// </summary>
+		[Description("Halbfinale")]
+		SemiFinal = 6,
+
+		/// <summary>
+		/// Finale
+		/// </summary>
+		[Description("Finale")]
+		Final = 7
+
+	}
+
+	#endregion
 }
