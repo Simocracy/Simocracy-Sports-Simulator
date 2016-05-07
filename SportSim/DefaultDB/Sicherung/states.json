@@ -1,0 +1,86 @@
+[
+  {
+    "ID": 0,
+    "Name": "Union of North American States",
+    "Flag": "UNS",
+    "Continent": 1
+  },
+  {
+    "ID": 1,
+    "Name": "Macronien",
+    "Flag": "MAC",
+    "Continent": 1
+  },
+  {
+    "ID": 2,
+    "Name": "Südburgundische Überseegebiete",
+    "Flag": "RBS",
+    "Continent": 1
+  },
+  {
+    "ID": 3,
+    "Name": "Bolivarien",
+    "Flag": "BOL",
+    "Continent": 1
+  },
+  {
+    "ID": 4,
+    "Name": "Neulettland",
+    "Flag": "NLL",
+    "Continent": 1
+  },
+  {
+    "ID": 5,
+    "Name": "Oranienbund",
+    "Flag": "ORA",
+    "Continent": 1
+  },
+  {
+    "ID": 6,
+    "Name": "Meyham",
+    "Flag": "MEY",
+    "Continent": 1
+  },
+  {
+    "ID": 7,
+    "Name": "Papua",
+    "Flag": "RPP",
+    "Continent": 4
+  },
+  {
+    "ID": 8,
+    "Name": "Almoravidien",
+    "Flag": "AKM",
+    "Continent": 3
+  },
+  {
+    "ID": 9,
+    "Name": "Alm. Brumiasta",
+    "Flag": "KBAB",
+    "Continent": 4
+  },
+  {
+    "ID": 10,
+    "Name": "Kronb. Raja Ampat",
+    "Flag": "KBRA",
+    "Continent": 5
+  },
+  {
+    "ID": 11,
+    "Name": "Kronb. Lampedusa",
+    "Flag": "KBLA",
+    "Continent": 2
+  },
+  {
+    "ID": 12,
+    "Name": "Grafenberg",
+    "Flag": "GRA",
+    "Continent": 1
+  },
+  {
+    "ID": 13,
+    "Name": "Emmeria",
+    "Flag": "EMA",
+    "Continent": 1
+  }
+]

@@ -5,10 +5,10 @@
     "Logo": "FCSeattle-Logo.png",
     "StateID": 0,
     "StadiumID": 0,
-    "GoalkeeperStrength": 50,
-    "DefenseStrength": 200,
-    "MidfieldStrength": 200,
-    "ForwardStrength": 100
+    "GoalkeeperStrength": 86,
+    "DefenseStrength": 84,
+    "MidfieldStrength": 92,
+    "ForwardStrength": 90
   },
   {
     "ID": 1,
@@ -16,10 +16,10 @@
     "Logo": "http:\/\/i.imgur.com\/lKP7jF6.png",
     "StateID": 1,
     "StadiumID": 1,
-    "GoalkeeperStrength": 50,
-    "DefenseStrength": 200,
-    "MidfieldStrength": 200,
-    "ForwardStrength": 100
+    "GoalkeeperStrength": 72,
+    "DefenseStrength": 69,
+    "MidfieldStrength": 70,
+    "ForwardStrength": 73
   },
   {
     "ID": 2,

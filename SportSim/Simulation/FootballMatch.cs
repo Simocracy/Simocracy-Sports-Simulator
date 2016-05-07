@@ -28,16 +28,16 @@ namespace Simocracy.SportSim
 		private int _ResultB;
 		private DateTime _Date;
 
-        private final static int TORWART_A = 10;
-        private final static int TORWART_B = 20;
-        private final static int ABWEHR_A = 11;
-        private final static int ABWEHR_B = 21;
-        private final static int MITTELFELD_A = 12;
-        private final static int MITTELFELD_B = 22;
-        private final static int STURM_A = 13;
-        private final static int STURM_B = 23;
-        private final static int TOR_A = 14;
-        private final static int TOR_B = 24;
+        private const int TORWART_A = 10;
+        private const int TORWART_B = 20;
+        private const int ABWEHR_A = 11;
+        private const int ABWEHR_B = 21;
+        private const int MITTELFELD_A = 12;
+        private const int MITTELFELD_B = 22;
+        private const int STURM_A = 13;
+        private const int STURM_B = 23;
+        private const int TOR_A = 14;
+        private const int TOR_B = 24;
 
         #endregion
 
@@ -327,7 +327,7 @@ namespace Simocracy.SportSim
 		{
 			int random = _Rand.Next(strength1 + strength2);
 			if(random < strength1)
-				_Ball++;
+				return ++_Ball;
 			else
 				switch(_Ball)
 				{
