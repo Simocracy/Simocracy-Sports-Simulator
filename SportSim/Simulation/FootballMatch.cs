@@ -28,17 +28,28 @@ namespace Simocracy.SportSim
 		private int _ResultB;
 		private DateTime _Date;
 
-		#endregion
+        private final static int TORWART_A = 10;
+        private final static int TORWART_B = 20;
+        private final static int ABWEHR_A = 11;
+        private final static int ABWEHR_B = 21;
+        private final static int MITTELFELD_A = 12;
+        private final static int MITTELFELD_B = 22;
+        private final static int STURM_A = 13;
+        private final static int STURM_B = 23;
+        private final static int TOR_A = 14;
+        private final static int TOR_B = 24;
 
-		#region Constructors
+        #endregion
 
-		/// <summary>
-		/// Initiiert ein neues Fußballspiel
-		/// </summary>
-		/// <param name="matchID">ID des Spiels</param>
-		/// <param name="idA">ID des Heimteams</param>
-		/// <param name="idB">ID des Auswärtsteams</param>
-		public FootballMatch(int matchID, int idA, int idB)
+        #region Constructors
+
+        /// <summary>
+        /// Initiiert ein neues Fußballspiel
+        /// </summary>
+        /// <param name="matchID">ID des Spiels</param>
+        /// <param name="idA">ID des Heimteams</param>
+        /// <param name="idB">ID des Auswärtsteams</param>
+        public FootballMatch(int matchID, int idA, int idB)
 			: this(matchID, Settings.FootballTeams.Get(idA), Settings.FootballTeams.Get(idB))
 		{ }
 
@@ -238,51 +249,53 @@ namespace Simocracy.SportSim
 			int resA = 0;
 			int resB = 0;
 
+            Reset(90);
+
 			_Ball = Kickoff();
 			for(int i = 1; i <= _Minutes; i++)
 			{
 				if(i == 45)
 				{
-					if(_Ball == 14)
+					if(_Ball == TOR_A)
 						resA++;
-					if(_Ball == 24)
+					else if(_Ball == TOR_B)
 						resB++;
 					_Ball = _Start;
 				}
 
 				switch(_Ball)
 				{
-					case 10:
+					case TORWART_A:
 						_Ball = Turn(TeamA.GoalkeeperStrength, TeamB.ForwardStrength);
 						break;
-					case 11:
+					case ABWEHR_A:
 						_Ball = Turn(TeamA.DefenseStrength, TeamB.MidfieldStrength);
 						break;
-					case 12:
+					case MITTELFELD_A:
 						_Ball = Turn(TeamA.MidfieldStrength, TeamB.DefenseStrength);
 						break;
-					case 13:
+					case STURM_A:
 						_Ball = Turn(TeamA.ForwardStrength, TeamB.GoalkeeperStrength + TeamB.DefenseStrength / 2);
 						break;
-					case 14:
+					case TOR_A:
 						resA++;
-						_Ball = 22;
+						_Ball = MITTELFELD_B;
 						break;
-					case 20:
+					case TORWART_B:
 						_Ball = Turn(TeamB.GoalkeeperStrength, TeamA.ForwardStrength);
 						break;
-					case 21:
+					case ABWEHR_B:
 						_Ball = Turn(TeamB.DefenseStrength, TeamA.MidfieldStrength);
 						break;
-					case 22:
+					case MITTELFELD_B:
 						_Ball = Turn(TeamB.MidfieldStrength, TeamA.DefenseStrength);
 						break;
-					case 23:
+					case STURM_B:
 						_Ball = Turn(TeamB.ForwardStrength, TeamA.GoalkeeperStrength + TeamA.DefenseStrength / 2);
 						break;
-					case 24:
+					case TOR_B:
 						resB++;
-						_Ball = 12;
+						_Ball = MITTELFELD_A;
 						break;
 				}
 			}
@@ -294,7 +307,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Setzt die Simulation und das Spielergebnis zurück
 		/// </summary>
-		public void Reset()
+		private void Reset()
 		{
 			ResultA = 0;
 			ResultB = 0;
@@ -304,6 +317,12 @@ namespace Simocracy.SportSim
 			_Start = 0;
 		}
 
+        private void Reset(int zeit)
+        {
+            Reset();
+            _Minutes = zeit;
+        }
+
 		private int Turn(int strength1, int strength2)
 		{
 			int random = _Rand.Next(strength1 + strength2);
@@ -312,22 +331,22 @@ namespace Simocracy.SportSim
 			else
 				switch(_Ball)
 				{
-					case 10:
-						return 23;
-					case 11:
-						return 22;
-					case 12:
-						return 21;
-					case 13:
-						return 20;
-					case 20:
-						return 13;
-					case 21:
-						return 12;
-					case 22:
-						return 11;
-					case 23:
-						return 10;
+					case TORWART_A:
+						return STURM_B;
+					case ABWEHR_A:
+						return MITTELFELD_B;
+					case MITTELFELD_A:
+						return ABWEHR_B;
+					case STURM_A:
+						return TORWART_B;
+					case TORWART_B:
+						return STURM_A;
+					case ABWEHR_B:
+						return MITTELFELD_A;
+					case MITTELFELD_B:
+						return ABWEHR_A;
+					case STURM_B:
+						return TORWART_A;
 				}
 
 			return 0;
@@ -337,9 +356,9 @@ namespace Simocracy.SportSim
 		{
 			int random = _Rand.Next(2);
 			if(random == 0)
-			{ _Start = 22; return 12; }
+			{ _Start = MITTELFELD_B; return MITTELFELD_A; }
 			if(random == 1)
-			{ _Start = 12; return 22; }
+			{ _Start = MITTELFELD_A; return MITTELFELD_B; }
 			else
 				return 0;
 		}
