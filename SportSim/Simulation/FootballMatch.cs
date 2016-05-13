@@ -19,7 +19,6 @@ namespace Simocracy.SportSim
 
 		private int _Ball;
 		private int _Minutes;
-		private Random _Rand;
 		private int _Start;
 		
 		private FootballTeam _TeamA;
@@ -311,7 +310,6 @@ namespace Simocracy.SportSim
 		{
 			ResultA = 0;
 			ResultB = 0;
-			_Rand = new Random();
 			_Ball = 0;
 			_Minutes = 0;
 			_Start = 0;
@@ -325,7 +323,7 @@ namespace Simocracy.SportSim
 
 		private int Turn(int strength1, int strength2)
 		{
-			int random = _Rand.Next(strength1 + strength2);
+			int random = Settings.Random.Next(strength1 + strength2);
 			if(random < strength1)
 				return ++_Ball;
 			else
@@ -354,7 +352,7 @@ namespace Simocracy.SportSim
 
 		private int Kickoff()
 		{
-			int random = _Rand.Next(2);
+			int random = Settings.Random.Next(2);
 			if(random == 0)
 			{ _Start = MITTELFELD_B; return MITTELFELD_A; }
 			if(random == 1)

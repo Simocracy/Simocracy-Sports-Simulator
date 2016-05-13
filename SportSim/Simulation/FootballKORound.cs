@@ -127,11 +127,6 @@ namespace Simocracy.SportSim
 		#region Properties
 
 		/// <summary>
-		/// Zufallsgenerator
-		/// </summary>
-		private Random Randomizer { get; set; }
-
-		/// <summary>
 		/// Teams in der 1. Runde
 		/// </summary>
 		public FootballTeamCollection OriginalTeams
@@ -306,7 +301,6 @@ namespace Simocracy.SportSim
 			MatchesQuarterFinal = new ObservableCollection<FootballMatch>();
 			MatchesSemiFinal = new ObservableCollection<FootballMatch>();
 			MatchesFinal = new ObservableCollection<FootballMatch>();
-			Randomizer = new Random();
 		}
 
 		/// <summary>
@@ -314,7 +308,7 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public void Draw()
 		{
-			CurrentTeams.OrderBy(x => Randomizer.Next());
+			CurrentTeams.OrderBy(x => Settings.Random.Next());
 		}
 
 		/// <summary>

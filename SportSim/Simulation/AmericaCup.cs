@@ -21,7 +21,6 @@ namespace Simocracy.SportSim
 		/// </summary>
 		public AmericaCup()
 		{
-			Randomizer = new Random();
 			IsGroupsSimulatable = false;
 		}
 
@@ -44,11 +43,6 @@ namespace Simocracy.SportSim
 		#endregion
 
 		#region Properties
-
-		/// <summary>
-		/// Zufallsgenerator
-		/// </summary>
-		private Random Randomizer { get; set; }
 
 		/// <summary>
 		/// CL-Lostopf 1
@@ -150,14 +144,14 @@ namespace Simocracy.SportSim
 		/// <param name="recursiveCount">Nummer des Losungsdurchlaufes</param>
 		public void DrawGroups(int recursiveCount = 0)
 		{
-			CLPot1.OrderBy(x => Randomizer.Next());
-			CLPot2.OrderBy(x => Randomizer.Next());
-			CLPot3.OrderBy(x => Randomizer.Next());
-			CLPot4.OrderBy(x => Randomizer.Next());
-			ALPot1.OrderBy(x => Randomizer.Next());
-			ALPot2.OrderBy(x => Randomizer.Next());
-			ALPot3.OrderBy(x => Randomizer.Next());
-			ALPot4.OrderBy(x => Randomizer.Next());
+			CLPot1.OrderBy(x => Settings.Random.Next());
+			CLPot2.OrderBy(x => Settings.Random.Next());
+			CLPot3.OrderBy(x => Settings.Random.Next());
+			CLPot4.OrderBy(x => Settings.Random.Next());
+			ALPot1.OrderBy(x => Settings.Random.Next());
+			ALPot2.OrderBy(x => Settings.Random.Next());
+			ALPot3.OrderBy(x => Settings.Random.Next());
+			ALPot4.OrderBy(x => Settings.Random.Next());
 
 			Groups = new ObservableCollection<FootballLeague>();
 			for(int i = 0; i < 8; i++)

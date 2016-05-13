@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
@@ -23,6 +24,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Gibt die aktuelle Programmversion (Major.Minor.Revision) zurück.
 		/// </summary>
+		[IgnoreDataMember]
 		public static string ProgramVersion
 		{
 			get
@@ -39,6 +41,7 @@ namespace Simocracy.SportSim
 		/// <summary>
 		/// Gibt den aktuellen Programmnamen zurück
 		/// </summary>
+		[IgnoreDataMember]
 		public static string ProgramName
 		{
 			get
@@ -46,6 +49,17 @@ namespace Simocracy.SportSim
 				return ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly().GetCustomAttribute(typeof(AssemblyTitleAttribute))).Title;
 			}
 		}
+
+		#endregion
+
+		#region Global Utilities
+
+		/// <summary>
+		/// Gibt den globalen Zufallsgenerator zurück
+		/// </summary>
+		[IgnoreDataMember]
+		public static Random Random
+		{ get { return _Random.Value; } }
 
 		#endregion
 
@@ -85,6 +99,8 @@ namespace Simocracy.SportSim
 		#endregion
 
 		#region Members
+
+		private static readonly ThreadLocal<Random> _Random = new ThreadLocal<Random>(() => new Random());
 
 #if DEBUG
 		private static string _ZipFileName = "data.zip";
