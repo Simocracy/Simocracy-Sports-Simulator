@@ -96,6 +96,12 @@ namespace Simocracy.SportSim
 		public static RacingDriverCollection RacingDrivers { get; set; } = new RacingDriverCollection();
 
 		/// <summary>
+		/// Liste aller Rennteams
+		/// </summary>
+		[IgnoreDataMember]
+		public static RacingTeamCollection RacingTeams { get; set; } = new RacingTeamCollection();
+
+		/// <summary>
 		/// Basis-Strings für die Wikicode-Generierung
 		/// </summary>
 		/// <remarks>Werden in JSON-File definiert und über <see cref="WikiStrings"/> verfügbar gemacht.</remarks>
@@ -119,6 +125,7 @@ namespace Simocracy.SportSim
 		private static string _StadiumsFileName = "stadiums.json";
 		private static string _LeagueWikiTemplatesFileName = "leageWikiTemplates.json";
 		private static string _RacingDriversFileName = "racingDrivers.json";
+		private static string _RacingTeamsFileName = "racingTeams.json";
 		private static string _WikiStringsFileName = "wikiStrings.json";
 
 		#endregion
@@ -198,6 +205,20 @@ namespace Simocracy.SportSim
 					ser = new DataContractJsonSerializer(typeof(RacingDriverCollection));
 					ser.WriteObject(racingDriversStream, RacingDrivers);
 					streams.Add(_RacingDriversFileName, racingDriversStream);
+				}
+				catch(Exception e)
+				{
+					SimpleLog.Error("Could not serialize RacingDriver List");
+					SimpleLog.Log(e);
+				}
+
+				// RacingTeams
+				try
+				{
+					var racingTeamsStream = new MemoryStream();
+					ser = new DataContractJsonSerializer(typeof(RacingTeamCollection));
+					ser.WriteObject(racingTeamsStream, RacingTeams);
+					streams.Add(_RacingTeamsFileName, racingTeamsStream);
 				}
 				catch(Exception e)
 				{
@@ -299,6 +320,19 @@ namespace Simocracy.SportSim
 					streams[_RacingDriversFileName].Position = 0;
 					ser = new DataContractJsonSerializer(typeof(RacingDriverCollection));
 					RacingDrivers = (RacingDriverCollection) ser.ReadObject(streams[_RacingDriversFileName]);
+				}
+				catch(Exception e)
+				{
+					SimpleLog.Error("Could not read RacingDrivers");
+					SimpleLog.Log(e);
+				}
+
+				// RacingTeams
+				try
+				{
+					streams[_RacingTeamsFileName].Position = 0;
+					ser = new DataContractJsonSerializer(typeof(RacingTeamCollection));
+					RacingTeams = (RacingTeamCollection) ser.ReadObject(streams[_RacingTeamsFileName]);
 				}
 				catch(Exception e)
 				{
