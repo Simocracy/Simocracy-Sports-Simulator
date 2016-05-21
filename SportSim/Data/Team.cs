@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Simocracy.SportSim
 {
 	/// <summary>
-	/// Abstrakte Basisklasse für Teams
+	/// Abstrakte Basisklasse für Teams (kein Motorsport!)
 	/// </summary>
 	[DataContract]
 	[DebuggerDisplay("Team, Name={Name}, State={State}, Stadium={Stadium}")]

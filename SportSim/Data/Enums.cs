@@ -224,4 +224,70 @@ namespace Simocracy.SportSim
 	}
 
 	#endregion
+
+	#region ERacingSeries
+
+	/// <summary>
+	/// Rennserien
+	/// </summary>
+	public enum ERacingSeries
+	{
+
+		/// <summary>
+		/// Unbekannte Rennserie
+		/// </summary>
+		[Browsable(false)]
+		[Description("Unbekannt")]
+		Unknwon = 0,
+
+		/// <summary>
+		/// VALMOL
+		/// </summary>
+		[Description("VALMOL")]
+		VALMOL = 1
+	}
+
+	#endregion
+
+	#region ERaceTrackType
+
+	/// <summary>
+	/// Streckentyp einer Rennstrecke
+	/// </summary>
+	public enum ERaceTrackType
+	{
+
+		/// <summary>
+		/// Generische Strecke
+		/// </summary>
+		[Browsable(false)]
+		[Description("Generische Strecke")]
+		GenericTrack = 0,
+
+		/// <summary>
+		/// Unbekannte Strecke
+		/// </summary>
+		[Description("Unbekannte Strecke")]
+		UnknownTrack = 1,
+
+		/// <summary>
+		/// Straßenkurs
+		/// </summary>
+		[Description("Straßenkurs")]
+		StreetTrack = 2,
+
+		/// <summary>
+		/// Speedway
+		/// </summary>
+		[Description("Speedway")]
+		SpeedwayTrack = 3,
+
+		/// <summary>
+		/// Rallystrecke
+		/// </summary>
+		[Description("Rallystrecke")]
+		RallyTrack = 4
+	}
+
+	#endregion
 }

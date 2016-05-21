@@ -90,6 +90,12 @@ namespace Simocracy.SportSim
 		public static LeagueWikiTemplateCollection LeageWikiTemplates { get; set; } = new LeagueWikiTemplateCollection();
 
 		/// <summary>
+		/// Liste aller Rennfahrer
+		/// </summary>
+		[IgnoreDataMember]
+		public static RacingDriverCollection RacingDrivers { get; set; } = new RacingDriverCollection();
+
+		/// <summary>
 		/// Basis-Strings für die Wikicode-Generierung
 		/// </summary>
 		/// <remarks>Werden in JSON-File definiert und über <see cref="WikiStrings"/> verfügbar gemacht.</remarks>
@@ -112,6 +118,7 @@ namespace Simocracy.SportSim
 		private static string _StatesFileName = "states.json";
 		private static string _StadiumsFileName = "stadiums.json";
 		private static string _LeagueWikiTemplatesFileName = "leageWikiTemplates.json";
+		private static string _RacingDriversFileName = "racingDrivers.json";
 		private static string _WikiStringsFileName = "wikiStrings.json";
 
 		#endregion
@@ -181,6 +188,20 @@ namespace Simocracy.SportSim
 				catch(Exception e)
 				{
 					SimpleLog.Error("Could not serialize LeagueWikiTemplate List");
+					SimpleLog.Log(e);
+				}
+
+				// RacingDrivers
+				try
+				{
+					var racingDriversStream = new MemoryStream();
+					ser = new DataContractJsonSerializer(typeof(RacingDriverCollection));
+					ser.WriteObject(racingDriversStream, RacingDrivers);
+					streams.Add(_RacingDriversFileName, racingDriversStream);
+				}
+				catch(Exception e)
+				{
+					SimpleLog.Error("Could not serialize RacingDriver List");
 					SimpleLog.Log(e);
 				}
 
@@ -269,6 +290,19 @@ namespace Simocracy.SportSim
 				catch(Exception e)
 				{
 					SimpleLog.Error("Could not read LeagueWikiTemplates");
+					SimpleLog.Log(e);
+				}
+
+				// RacingDrivers
+				try
+				{
+					streams[_RacingDriversFileName].Position = 0;
+					ser = new DataContractJsonSerializer(typeof(RacingDriverCollection));
+					RacingDrivers = (RacingDriverCollection) ser.ReadObject(streams[_RacingDriversFileName]);
+				}
+				catch(Exception e)
+				{
+					SimpleLog.Error("Could not read RacingDrivers");
 					SimpleLog.Log(e);
 				}
 

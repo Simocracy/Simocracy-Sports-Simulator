@@ -114,6 +114,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\RacingDriver.cs" />
+    <Compile Include="Data\RacingDriverCollection.cs" />
+    <Compile Include="Data\RacingTeam.cs" />
+    <Compile Include="Data\RacingTeamCollection.cs" />
     <Compile Include="Data\SSSDataObject.cs" />
     <Compile Include="Data\LeagueWikiTemplate.cs" />
     <Compile Include="Data\LeagueWikiTemplateCollection.cs" />
